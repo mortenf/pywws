@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.ZambrettiCore &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>pywws.ZambrettiCore &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +25,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../../index.html" />
+    <link rel="up" title="Codice del modulo" href="../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,10 +36,10 @@
           <a href="../../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Codice del modulo</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for pywws.ZambrettiCore</h1><div class="highlight"><pre>
+  <h1>Codice sorgente per pywws.ZambrettiCore</h1><div class="highlight"><pre>
 <span class="c">#!/usr/bin/env python</span>
 
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
@@ -107,7 +105,7 @@
 
 <span class="k">del</span> <span class="n">_</span>
 
-<div class="viewcode-block" id="ZambrettiCode"><a class="viewcode-back" href="../../api/pywws.ZambrettiCore.html#pywws.ZambrettiCore.ZambrettiCode">[docs]</a><span class="k">def</span> <span class="nf">ZambrettiCode</span><span class="p">(</span><span class="n">pressure</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">trend</span><span class="p">,</span>
+<div class="viewcode-block" id="ZambrettiCode"><a class="viewcode-back" href="../../api/pywws.ZambrettiCore.html#pywws.ZambrettiCore.ZambrettiCode">[documenti]</a><span class="k">def</span> <span class="nf">ZambrettiCode</span><span class="p">(</span><span class="n">pressure</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">trend</span><span class="p">,</span>
                   <span class="n">north</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">baro_top</span><span class="o">=</span><span class="mf">1050.0</span><span class="p">,</span> <span class="n">baro_bottom</span><span class="o">=</span><span class="mf">950.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Simple implementation of Zambretti forecaster algorithm.</span>
 <span class="sd">    Inspired by beteljuice.com Java algorithm, as converted to Python by</span>
@@ -147,10 +145,10 @@
     <span class="c"># convert to letter code</span>
     <span class="k">return</span> <span class="n">LUT</span><span class="p">[</span><span class="n">F</span><span class="p">]</span>
 </div>
-<div class="viewcode-block" id="ZambrettiText"><a class="viewcode-back" href="../../api/pywws.ZambrettiCore.html#pywws.ZambrettiCore.ZambrettiText">[docs]</a><span class="k">def</span> <span class="nf">ZambrettiText</span><span class="p">(</span><span class="n">letter</span><span class="p">):</span>
+<div class="viewcode-block" id="ZambrettiText"><a class="viewcode-back" href="../../api/pywws.ZambrettiCore.html#pywws.ZambrettiCore.ZambrettiText">[documenti]</a><span class="k">def</span> <span class="nf">ZambrettiText</span><span class="p">(</span><span class="n">letter</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">forecast_text</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span>
 </div>
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../api/pywws.ZambrettiCore.html#pywws.ZambrettiCore.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../api/pywws.ZambrettiCore.html#pywws.ZambrettiCore.main">[documenti]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">conversions</span>
     <span class="k">for</span> <span class="n">pressure</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1030</span><span class="p">,</span> <span class="mi">960</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">trend_txt</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;S&#39;</span><span class="p">,</span> <span class="s">&#39;R-S&#39;</span><span class="p">,</span> <span class="s">&#39;R-W&#39;</span><span class="p">,</span> <span class="s">&#39;F-W&#39;</span><span class="p">,</span> <span class="s">&#39;F-S&#39;</span><span class="p">):</span>
@@ -207,15 +205,15 @@
           <a href="../../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+          <li><a href="../index.html" >Codice del modulo</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

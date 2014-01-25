@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.DataStore &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>pywws.DataStore &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +25,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../../index.html" />
+    <link rel="up" title="Codice del modulo" href="../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,10 +36,10 @@
           <a href="../../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Codice del modulo</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for pywws.DataStore</h1><div class="highlight"><pre>
+  <h1>Codice sorgente per pywws.DataStore</h1><div class="highlight"><pre>
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
 <span class="c"># http://github.com/jim-easterbrook/pywws</span>
 <span class="c"># Copyright (C) 2008-13  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
@@ -130,7 +128,7 @@
 
 <span class="n">DAY</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<div class="viewcode-block" id="safestrptime"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.safestrptime">[docs]</a><span class="k">def</span> <span class="nf">safestrptime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="safestrptime"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.safestrptime">[documenti]</a><span class="k">def</span> <span class="nf">safestrptime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="c"># time.strptime is time consuming (because it&#39;s so flexible?) so don&#39;t use</span>
     <span class="c"># it for the fixed format datetime strings in our csv files</span>
     <span class="k">if</span> <span class="n">format</span><span class="p">:</span>
@@ -142,7 +140,7 @@
                                <span class="n">date_string</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span>
                                <span class="n">date_string</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">19</span><span class="p">])))</span>
 </div>
-<div class="viewcode-block" id="ParamStore"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore">[docs]</a><span class="k">class</span> <span class="nc">ParamStore</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ParamStore"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore">[documenti]</a><span class="k">class</span> <span class="nc">ParamStore</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
@@ -155,7 +153,7 @@
     <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-<div class="viewcode-block" id="ParamStore.flush"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ParamStore.flush"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.flush">[documenti]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span> <span class="o">=</span> <span class="bp">False</span>
@@ -163,7 +161,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">of</span><span class="p">)</span>
         <span class="n">of</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </div>
-<div class="viewcode-block" id="ParamStore.get"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ParamStore.get"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.get">[documenti]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a parameter value and return a string.</span>
 
 <span class="sd">        If default is specified and section or option are not defined</span>
@@ -177,13 +175,13 @@
             <span class="k">return</span> <span class="n">default</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="ParamStore.get_datetime"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.get_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">get_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ParamStore.get_datetime"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.get_datetime">[documenti]</a>    <span class="k">def</span> <span class="nf">get_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">safestrptime</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
 </div>
-<div class="viewcode-block" id="ParamStore.set"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.set">[docs]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="ParamStore.set"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.set">[documenti]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set option in section to string value.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
@@ -193,7 +191,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span> <span class="o">=</span> <span class="bp">True</span>
 </div>
-<div class="viewcode-block" id="ParamStore.unset"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.unset">[docs]</a>    <span class="k">def</span> <span class="nf">unset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
+<div class="viewcode-block" id="ParamStore.unset"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.ParamStore.unset">[documenti]</a>    <span class="k">def</span> <span class="nf">unset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove option from section.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
             <span class="k">return</span>
@@ -204,12 +202,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">remove_section</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span> <span class="o">=</span> <span class="bp">True</span>
 </div></div>
-<div class="viewcode-block" id="params"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.params">[docs]</a><span class="k">class</span> <span class="nc">params</span><span class="p">(</span><span class="n">ParamStore</span><span class="p">):</span>
+<div class="viewcode-block" id="params"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.params">[documenti]</a><span class="k">class</span> <span class="nc">params</span><span class="p">(</span><span class="n">ParamStore</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parameters are stored in a file &quot;weather.ini&quot; in root_dir.&quot;&quot;&quot;</span>
         <span class="n">ParamStore</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;weather.ini&#39;</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="status"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.status">[docs]</a><span class="k">class</span> <span class="nc">status</span><span class="p">(</span><span class="n">ParamStore</span><span class="p">):</span>
+<div class="viewcode-block" id="status"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.status">[documenti]</a><span class="k">class</span> <span class="nc">status</span><span class="p">(</span><span class="n">ParamStore</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Status is stored in a file &quot;status.ini&quot; in root_dir.&quot;&quot;&quot;</span>
         <span class="n">ParamStore</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;status.ini&#39;</span><span class="p">)</span>
@@ -253,7 +251,7 @@
                 <span class="n">hi</span> <span class="o">=</span> <span class="n">mid</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">hi</span>
 
-<div class="viewcode-block" id="core_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store">[docs]</a><span class="k">class</span> <span class="nc">core_store</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="core_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store">[documenti]</a><span class="k">class</span> <span class="nc">core_store</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
         <span class="c"># initialise caches</span>
@@ -415,7 +413,7 @@
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wr_cache</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_wr_cache</span><span class="o">.</span><span class="n">ptr</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wr_cache</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="bp">True</span>
 
-<div class="viewcode-block" id="core_store.before"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.before">[docs]</a>    <span class="k">def</span> <span class="nf">before</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+<div class="viewcode-block" id="core_store.before"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.before">[documenti]</a>    <span class="k">def</span> <span class="nf">before</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return datetime of newest existing data record whose</span>
 <span class="sd">        datetime is &lt; idx.</span>
 
@@ -433,7 +431,7 @@
             <span class="n">day</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rd_cache</span><span class="o">.</span><span class="n">lo</span> <span class="o">-</span> <span class="n">DAY</span>
         <span class="k">return</span> <span class="bp">None</span>
 </div>
-<div class="viewcode-block" id="core_store.after"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.after">[docs]</a>    <span class="k">def</span> <span class="nf">after</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+<div class="viewcode-block" id="core_store.after"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.after">[documenti]</a>    <span class="k">def</span> <span class="nf">after</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return datetime of oldest existing data record whose</span>
 <span class="sd">        datetime is &gt;= idx.</span>
 
@@ -451,7 +449,7 @@
             <span class="n">day</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rd_cache</span><span class="o">.</span><span class="n">hi</span>
         <span class="k">return</span> <span class="bp">None</span>
 </div>
-<div class="viewcode-block" id="core_store.nearest"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.nearest">[docs]</a>    <span class="k">def</span> <span class="nf">nearest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+<div class="viewcode-block" id="core_store.nearest"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.nearest">[documenti]</a>    <span class="k">def</span> <span class="nf">nearest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return datetime of record whose datetime is nearest idx.&quot;&quot;&quot;</span>
         <span class="n">hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
         <span class="n">lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
@@ -498,7 +496,7 @@
             <span class="n">cache</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="n">csvfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<div class="viewcode-block" id="core_store.flush"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="core_store.flush"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.core_store.flush">[documenti]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_flush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wr_cache</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_flush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rd_cache</span><span class="p">)</span>
 </div>
@@ -539,7 +537,7 @@
         <span class="n">hi</span> <span class="o">=</span> <span class="n">lo</span> <span class="o">+</span> <span class="n">DAY</span>
         <span class="k">return</span> <span class="n">path</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span>
 </div>
-<div class="viewcode-block" id="data_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.data_store">[docs]</a><span class="k">class</span> <span class="nc">data_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
+<div class="viewcode-block" id="data_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.data_store">[documenti]</a><span class="k">class</span> <span class="nc">data_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stores raw weather station data.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="n">core_store</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;raw&#39;</span><span class="p">))</span>
@@ -566,7 +564,7 @@
         <span class="s">&#39;uv&#39;</span>           <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="p">}</span>
 </div>
-<div class="viewcode-block" id="calib_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.calib_store">[docs]</a><span class="k">class</span> <span class="nc">calib_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
+<div class="viewcode-block" id="calib_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.calib_store">[documenti]</a><span class="k">class</span> <span class="nc">calib_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stores &#39;calibrated&#39; weather station data.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="n">core_store</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;calib&#39;</span><span class="p">))</span>
@@ -594,7 +592,7 @@
         <span class="s">&#39;uv&#39;</span>           <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="p">}</span>
 </div>
-<div class="viewcode-block" id="hourly_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.hourly_store">[docs]</a><span class="k">class</span> <span class="nc">hourly_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
+<div class="viewcode-block" id="hourly_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.hourly_store">[documenti]</a><span class="k">class</span> <span class="nc">hourly_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stores hourly summary weather station data.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="n">core_store</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;hourly&#39;</span><span class="p">))</span>
@@ -621,7 +619,7 @@
         <span class="s">&#39;uv&#39;</span>                <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="p">}</span>
 </div>
-<div class="viewcode-block" id="daily_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.daily_store">[docs]</a><span class="k">class</span> <span class="nc">daily_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
+<div class="viewcode-block" id="daily_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.daily_store">[documenti]</a><span class="k">class</span> <span class="nc">daily_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stores daily summary weather station data.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="n">core_store</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;daily&#39;</span><span class="p">))</span>
@@ -708,7 +706,7 @@
             <span class="n">lo</span> <span class="o">=</span> <span class="n">hi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">month</span><span class="o">=</span><span class="n">hi</span><span class="o">.</span><span class="n">month</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">path</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span>
 </div>
-<div class="viewcode-block" id="monthly_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.monthly_store">[docs]</a><span class="k">class</span> <span class="nc">monthly_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
+<div class="viewcode-block" id="monthly_store"><a class="viewcode-back" href="../../api/pywws.DataStore.html#pywws.DataStore.monthly_store">[documenti]</a><span class="k">class</span> <span class="nc">monthly_store</span><span class="p">(</span><span class="n">core_store</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stores monthly summary weather station data.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
         <span class="n">core_store</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s">&#39;monthly&#39;</span><span class="p">))</span>
@@ -853,15 +851,15 @@
           <a href="../../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+          <li><a href="../index.html" >Codice del modulo</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

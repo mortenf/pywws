@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Template &mdash; pywws 13.12.dev1120 documentation</title>
+    <title>pywws.Template &mdash; pywws 14.01.dev1137 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '13.12.dev1120',
+        VERSION:     '14.01.dev1137',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1120 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.Forecast" href="pywws.Forecast.html" />
     <link rel="prev" title="pywws.WindRose" href="pywws.WindRose.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="pywws.WindRose.html" title="pywws.WindRose"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1120 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -119,9 +117,17 @@ value.</p>
 <div class="section" id="raw">
 <h3><tt class="docutils literal"><span class="pre">#raw#</span></tt><a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h3>
 <p>switch to &#8220;raw&#8221; data. The index is reset to the most recent value.</p>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
+<div class="versionchanged">
+<p><span>Changed in version 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
 unchanged for backwards compatibility.</p>
+</div>
+</div>
+<div class="section" id="live">
+<h3><tt class="docutils literal"><span class="pre">#live#</span></tt><a class="headerlink" href="#live" title="Permalink to this headline">¶</a></h3>
+<p>switch to &#8220;live&#8221; data. If the template is processed in the <tt class="docutils literal"><span class="pre">[live]</span></tt>
+section of <tt class="docutils literal"><span class="pre">weather.ini</span></tt> this will select the most up-to-date
+weather data, otherwise it will have the same effect as <tt class="docutils literal"><span class="pre">#raw#</span></tt>. Any
+<tt class="docutils literal"><span class="pre">#jump#</span></tt> will go to &#8220;raw&#8221; data.</p>
 </div>
 <div class="section" id="timezone-name">
 <h3><tt class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></tt><a class="headerlink" href="#timezone-name" title="Permalink to this headline">¶</a></h3>
@@ -183,7 +189,9 @@ output instead of <tt class="docutils literal"><span class="pre">fmt_string</spa
 if the station lost contact with the outside sensor. <tt class="docutils literal"><span class="pre">conversion</span></tt> is
 a Python expression to convert the data, e.g. to convert wind speed
 from m/s to mph you could use <tt class="docutils literal"><span class="pre">&quot;x</span> <span class="pre">*</span> <span class="pre">3.6</span> <span class="pre">/</span> <span class="pre">1.609344&quot;</span></tt>, or the more
-convenient provided function <tt class="docutils literal"><span class="pre">&quot;wind_mph(x)&quot;</span></tt>.</p>
+convenient provided function <tt class="docutils literal"><span class="pre">&quot;wind_mph(x)&quot;</span></tt>. See the
+<a class="reference internal" href="pywws.conversions.html#module-pywws.conversions" title="pywws.conversions"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.conversions</span></tt></a> module for details of the available
+functions.</p>
 <p>All these values need double quotes &#8221; if they contain spaces or other
 potentially difficult characters. All except <tt class="docutils literal"><span class="pre">key</span></tt> are optional, but
 note that if you want to specify a conversion, you also need to
@@ -197,6 +205,11 @@ any valid Python expression, e.g. <tt class="docutils literal"><span class="pre"
 <tt class="docutils literal"><span class="pre">no_value_string</span></tt> and <tt class="docutils literal"><span class="pre">conversion</span></tt> are as described above. Note
 that it is probably more efficient to incorporate any conversion into
 expression.</p>
+<p>In addition to the functions in the <a class="reference internal" href="pywws.conversions.html#module-pywws.conversions" title="pywws.conversions"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.conversions</span></tt></a> module
+there are three more useful functions: <tt class="docutils literal"><span class="pre">rain_hour(data)</span></tt> returns the
+amount of rain in the last hour, <tt class="docutils literal"><span class="pre">rain_day(data)</span></tt> returns the amount
+of rain since midnight (local time) and <tt class="docutils literal"><span class="pre">hour_diff(data,</span> <span class="pre">key)</span></tt>
+returns the change in data item <tt class="docutils literal"><span class="pre">key</span></tt> over the last hour.</p>
 </div>
 </div>
 <div class="section" id="example">
@@ -383,6 +396,7 @@ the array <tt class="docutils literal"><span class="pre">[None,</span> <span cla
 <li><a class="reference internal" href="#daily"><tt class="docutils literal"><span class="pre">#daily#</span></tt></a></li>
 <li><a class="reference internal" href="#hourly"><tt class="docutils literal"><span class="pre">#hourly#</span></tt></a></li>
 <li><a class="reference internal" href="#raw"><tt class="docutils literal"><span class="pre">#raw#</span></tt></a></li>
+<li><a class="reference internal" href="#live"><tt class="docutils literal"><span class="pre">#live#</span></tt></a></li>
 <li><a class="reference internal" href="#timezone-name"><tt class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></tt></a></li>
 <li><a class="reference internal" href="#locale-expr"><tt class="docutils literal"><span class="pre">#locale</span> <span class="pre">expr#</span></tt></a></li>
 <li><a class="reference internal" href="#roundtime-expr"><tt class="docutils literal"><span class="pre">#roundtime</span> <span class="pre">expr#</span></tt></a></li>
@@ -438,13 +452,13 @@ the array <tt class="docutils literal"><span class="pre">[None,</span> <span cla
         <li class="right" >
           <a href="pywws.WindRose.html" title="pywws.WindRose"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1120 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

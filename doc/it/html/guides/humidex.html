@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Indice di umidità (Humidex) &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>Indice di umidità (Humidex) &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../index.html" />
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../index.html" />
     <link rel="up" title="Guide per gli utenti" href="index.html" />
     <link rel="next" title="Programmi Python e moduli" href="../api_index.html" />
     <link rel="prev" title="weather.ini - configurazione del formato del file" href="weather_ini.html" /> 
@@ -40,7 +38,7 @@
           <a href="../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="../api_index.html" title="Programmi Python e moduli"
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="weather_ini.html" title="weather.ini - configurazione del formato del file"
              accesskey="P">precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>  
@@ -70,29 +68,40 @@
 <h2>Introduzione<a class="headerlink" href="#introduction" title="link permanente per questa intestazione">¶</a></h2>
 <p>Humidex è uno strumento per determinare in che modo il corpo di un individuo reagirà alla combinazione di vento, umidità e temperatura. Sullo sfondo del quale c&#8217;è l&#8217;equilibrio termico tra la vita e la pelle, e&#8217; gratuito per ISO 7243 &#8220;Ambienti caldi - Valutazione dello stress termico sul lavoro l&#8217;uomo&#8221;.  Alcune note importanti,</p>
 <ul class="simple">
-<li>Questi indici sono basati su un certo numero di ipotesi che possono risultare in sopra o sottovalutazione del tuo stato interno del corpo</li>
-<li>Una stazione meteo personale potrebbe non mostrare le corrette condizioni, e possono avere una sovra o sottostima dell&#8217;umidità, vento, temperatura</li>
-<li>Scelte di abbigliamento personale, effetto della stanchezza e la capacità del fisico di respingere il calore, un basso indice di umidità non significa che si può indossare qualsiasi cosa</li>
-<li>Un individuale idoneità effettuerà la propria risposta del fisico alla temperatura che cambia, e l&#8217;esperienza sarà di aiuto nel sapere quando smettere di lavorare</li>
-<li>La durata delle attività che possono essere eseguite richiede conoscenze sull&#8217;intensità, che non può essere rappresentata da questo indice</li>
+<li><p class="first">Questi indici sono basati su un certo numero di ipotesi che possono risultare in sopra o sottovalutazione del tuo stato interno del corpo</p>
+</li>
+<li><p class="first">Una stazione meteo personale potrebbe non mostrare le corrette condizioni, e possono avere una sovra o sottostima dell&#8217;umidità, vento, temperatura</p>
+</li>
+<li><p class="first">Scelte di abbigliamento personale, effetto della stanchezza e la capacità del fisico di respingere il calore, un basso indice di umidità non significa che si può indossare qualsiasi cosa</p>
+</li>
+<li><p class="first">Un individuale idoneità effettuerà la propria risposta del fisico alla temperatura che cambia, e l&#8217;esperienza sarà di aiuto nel sapere quando smettere di lavorare</p>
+</li>
+<li><p class="first">La durata delle attività che possono essere eseguite richiede conoscenze sull&#8217;intensità, che non può essere rappresentata da questo indice</p>
+</li>
 </ul>
 </div>
 <div class="section" id="assumptions">
 <h2>Ipotesi<a class="headerlink" href="#assumptions" title="link permanente per questa intestazione">¶</a></h2>
 <p>Ci sono un certo numero di ipotesi che sono state fatte per fare questo lavoro che influenzerà direttamente la sua utilizzabilità. Queste ipotesi tuttavia non sono state messe a disposizione da Environment Canada, che sono gli sviluppatori originali dell&#8217;Humidex utilizzato nel PYWWS funzione cadhumidex. Tuttavia è abbastanza sicuro nel dire che sarebbe sono state eseguite alcune ipotesi:</p>
 <ul class="simple">
-<li>Tipo di abbigliamento, spessore</li>
-<li>Zona di pelle esposta all&#8217;aria libera</li>
-<li>Esposizione al sole</li>
+<li><p class="first">Tipo di abbigliamento, spessore</p>
+</li>
+<li><p class="first">Zona di pelle esposta all&#8217;aria libera</p>
+</li>
+<li><p class="first">Esposizione al sole</p>
+</li>
 </ul>
 <p>Tuttavia, ci sono un certo numero di ipotesi che pywws deve fare nel calcolo Humidex:</p>
 <ul class="simple">
-<li>Le letture di temperatura, vento e umidità sono corrette</li>
+<li><p class="first">Le letture di temperatura, vento e umidità sono corrette</p>
+</li>
 </ul>
 <p>Ci sono anche ipotesi circa il tipo di fisico individuale e di &#8216;acclimatazione&#8217;</p>
 <ul class="simple">
-<li>Un individuale idoneità effettuerà la risposta del fisico alla temperatura che cambia</li>
-<li>L&#8217;esperienza sarà di aiuto nel sapere quando smettere di lavorare</li>
+<li><p class="first">Un individuale idoneità effettuerà la risposta del fisico alla temperatura che cambia</p>
+</li>
+<li><p class="first">L&#8217;esperienza sarà di aiuto nel sapere quando smettere di lavorare</p>
+</li>
 </ul>
 </div>
 <div class="section" id="important-references">
@@ -219,7 +228,7 @@
           <a href="../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="../api_index.html" title="Programmi Python e moduli"
@@ -227,13 +236,13 @@
         <li class="right" >
           <a href="weather_ini.html" title="weather.ini - configurazione del formato del file"
              >precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="index.html" >Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

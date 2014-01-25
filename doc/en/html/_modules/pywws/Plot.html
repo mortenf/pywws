@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Plot &mdash; pywws 13.12.dev1120 documentation</title>
+    <title>pywws.Plot &mdash; pywws 14.01.dev1137 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '13.12.dev1120',
+        VERSION:     '14.01.dev1137',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1120 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1120 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -496,6 +494,7 @@
 <span class="kn">import</span> <span class="nn">codecs</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">import</span> <span class="nn">getopt</span>
+<span class="kn">import</span> <span class="nn">locale</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
@@ -517,7 +516,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">daily_data</span> <span class="o">=</span> <span class="n">daily_data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">monthly_data</span> <span class="o">=</span> <span class="n">monthly_data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span> <span class="o">=</span> <span class="n">work_dir</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pressure_offset</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;pressure offset&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressure_offset</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;pressure offset&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gnuplot_version</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;gnuplot version&#39;</span><span class="p">,</span> <span class="s">&#39;4.2&#39;</span><span class="p">))</span>
         <span class="c"># set language related stuff</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;gnuplot encoding&#39;</span><span class="p">,</span> <span class="s">&#39;iso_8859_1&#39;</span><span class="p">)</span>
         <span class="c"># create work directory</span>
@@ -545,31 +546,30 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;stop&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;duration&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;timedelta(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;datetime(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;datetime(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;datetime(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hourly_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>    <span class="c"># only if no hourly data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">+=</span> <span class="n">Local</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
             <span class="c"># set end of graph to start of the next hour after last item</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">+</span> <span class="n">Local</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span> <span class="o">=</span> <span class="n">Local</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span> <span class="o">=</span> <span class="n">Local</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
         <span class="c"># open gnuplot command file</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tmp_files</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">cmd_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span><span class="p">,</span> <span class="s">&#39;plot.cmd&#39;</span><span class="p">)</span>
@@ -595,6 +595,9 @@
             <span class="n">terminal</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> large size </span><span class="si">%d</span><span class="s">,</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fileformat</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
         <span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;terminal&#39;</span><span class="p">,</span> <span class="n">terminal</span><span class="p">)</span>
         <span class="n">of</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;set encoding </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">))</span>
+        <span class="n">lcl</span> <span class="o">=</span> <span class="n">locale</span><span class="o">.</span><span class="n">getlocale</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">lcl</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">of</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;set locale &quot;</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lcl</span><span class="p">)</span>
         <span class="n">of</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;set terminal </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">terminal</span><span class="p">))</span>
         <span class="n">of</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;set output &quot;</span><span class="si">%s</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">output_file</span><span class="p">))</span>
         <span class="c"># set overall title</span>
@@ -729,14 +732,14 @@
             <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">xlabel</span> <span class="o">=</span> <span class="n">xlabel</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
             <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set xlabel &quot;</span><span class="si">%s</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">Local</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">xlabel</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">Local</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">xlabel</span><span class="p">))</span>
             <span class="n">dateformat</span> <span class="o">=</span> <span class="s">&#39;%Y/%m/</span><span class="si">%d</span><span class="s">&#39;</span>
             <span class="n">dateformat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;dateformat&#39;</span><span class="p">,</span> <span class="n">dateformat</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">dateformat</span> <span class="o">=</span> <span class="n">dateformat</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
             <span class="n">ldat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">Local</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">dateformat</span><span class="p">)</span>
             <span class="n">rdat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">Local</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">dateformat</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">ldat</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ldat</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set label &quot;</span><span class="si">%s</span><span class="s">&quot; at &quot;</span><span class="si">%s</span><span class="s">&quot;, graph -0.3 left</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
                     <span class="n">ldat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
             <span class="k">if</span> <span class="n">rdat</span> <span class="o">!=</span> <span class="n">ldat</span><span class="p">:</span>
@@ -767,7 +770,7 @@
         <span class="c"># set grid</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;unset grid</span><span class="se">\n</span><span class="s">&#39;</span>
         <span class="n">grid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s">&#39;grid&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">grid</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">grid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set grid </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">grid</span>
         <span class="c"># x_lo &amp; x_hi are in local time, data is indexed in UTC</span>
         <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span>
@@ -945,13 +948,13 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1120 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

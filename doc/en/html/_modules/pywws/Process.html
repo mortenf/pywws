@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Process &mdash; pywws 13.12.dev1120 documentation</title>
+    <title>pywws.Process &mdash; pywws 14.01.dev1137 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '13.12.dev1120',
+        VERSION:     '14.01.dev1137',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1120 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1120 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -136,11 +134,10 @@
 <span class="kn">from</span> <span class="nn">pywws.calib</span> <span class="kn">import</span> <span class="n">Calib</span>
 <span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">DataStore</span>
 <span class="kn">from</span> <span class="nn">pywws.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
-<span class="kn">from</span> <span class="nn">pywws.TimeZone</span> <span class="kn">import</span> <span class="n">Local</span><span class="p">,</span> <span class="n">utc</span>
+<span class="kn">from</span> <span class="nn">pywws.TimeZone</span> <span class="kn">import</span> <span class="n">STDOFFSET</span><span class="p">,</span> <span class="n">HOUR</span>
 
 <span class="n">SECOND</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">TIME_ERR</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">HOUR</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">HOURx3</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">DAY</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">WEEK</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
@@ -298,9 +295,8 @@
 <span class="sd">    &quot;day end hour&quot; setting.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daytime</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&#39;pywws.Process.DayAcc&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_daytime</span> <span class="o">=</span> <span class="n">daytime</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_illuminance</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wind_dir</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
@@ -329,6 +325,7 @@
 </div>
 <div class="viewcode-block" id="DayAcc.add_raw"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.add_raw">[docs]</a>    <span class="k">def</span> <span class="nf">add_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span>
+        <span class="n">local_hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">STDOFFSET</span><span class="p">)</span><span class="o">.</span><span class="n">hour</span>
         <span class="n">wind_gust</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;wind_gust&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">wind_gust</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">wind_gust</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">wind_gust</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">wind_gust</span> <span class="o">=</span> <span class="p">(</span><span class="n">wind_gust</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
@@ -336,7 +333,7 @@
             <span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">ave</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_daytime</span><span class="p">[</span><span class="n">idx</span><span class="o">.</span><span class="n">hour</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">local_hour</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">local_hour</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">:</span>
                     <span class="c"># daytime max temperature</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -566,7 +563,7 @@
                  <span class="n">result</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">_max_hi_t&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_hi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
 </div></div>
-<div class="viewcode-block" id="calibrate_data"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.calibrate_data">[docs]</a><span class="k">def</span> <span class="nf">calibrate_data</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">):</span>
+<div class="viewcode-block" id="calibrate_data"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.calibrate_data">[docs]</a><span class="k">def</span> <span class="nf">calibrate_data</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;&#39;Calibrate&#39; raw data, using a user-supplied function.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">calib_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -575,7 +572,7 @@
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">start</span>
     <span class="k">del</span> <span class="n">calib_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>
-    <span class="n">calibrator</span> <span class="o">=</span> <span class="n">Calib</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+    <span class="n">calibrator</span> <span class="o">=</span> <span class="n">Calib</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]:</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span>
@@ -600,7 +597,10 @@
             <span class="n">start</span> <span class="o">=</span> <span class="n">process_from</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">start</span>
+    <span class="c"># set start of hour in local time (not all time offsets are integer hours)</span>
+    <span class="n">start</span> <span class="o">+=</span> <span class="n">STDOFFSET</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">-=</span> <span class="n">STDOFFSET</span>
     <span class="k">del</span> <span class="n">hourly_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>
     <span class="c"># preload pressure history, and find last valid rain</span>
     <span class="n">prev</span> <span class="o">=</span> <span class="bp">None</span>
@@ -654,7 +654,7 @@
         <span class="n">hour_start</span> <span class="o">=</span> <span class="n">hour_end</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="generate_daily"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_daily">[docs]</a><span class="k">def</span> <span class="nf">generate_daily</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">daytime</span><span class="p">,</span>
+<div class="viewcode-block" id="generate_daily"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_daily">[docs]</a><span class="k">def</span> <span class="nf">generate_daily</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span>
                    <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">daily_data</span><span class="p">,</span> <span class="n">process_from</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate daily summaries from calibrated and hourly data.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">daily_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
@@ -668,14 +668,16 @@
             <span class="n">start</span> <span class="o">=</span> <span class="n">process_from</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">start</span>
-    <span class="c"># round to start of this day</span>
+    <span class="c"># round to start of this day, in local time</span>
+    <span class="n">start</span> <span class="o">+=</span> <span class="n">STDOFFSET</span>
     <span class="k">if</span> <span class="n">start</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="n">day_end_hour</span><span class="p">:</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="n">DAY</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="n">day_end_hour</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">-=</span> <span class="n">STDOFFSET</span>
     <span class="k">del</span> <span class="n">daily_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>
     <span class="n">stop</span> <span class="o">=</span> <span class="n">calib_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="n">day_start</span> <span class="o">=</span> <span class="n">start</span>
-    <span class="n">acc</span> <span class="o">=</span> <span class="n">DayAcc</span><span class="p">(</span><span class="n">daytime</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">DayAcc</span><span class="p">()</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">day_start</span> <span class="o">&lt;=</span> <span class="n">stop</span><span class="p">:</span>
         <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -696,7 +698,7 @@
         <span class="n">day_start</span> <span class="o">=</span> <span class="n">day_end</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="generate_monthly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_monthly">[docs]</a><span class="k">def</span> <span class="nf">generate_monthly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">rain_day_threshold</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">time_offset</span><span class="p">,</span>
+<div class="viewcode-block" id="generate_monthly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_monthly">[docs]</a><span class="k">def</span> <span class="nf">generate_monthly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">rain_day_threshold</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span>
                      <span class="n">daily_data</span><span class="p">,</span> <span class="n">monthly_data</span><span class="p">,</span> <span class="n">process_from</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate monthly summaries from daily data.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
@@ -711,15 +713,12 @@
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">start</span>
     <span class="c"># set start to start of first day of month (local time)</span>
-    <span class="k">if</span> <span class="n">start</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="n">day_end_hour</span><span class="p">:</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="n">DAY</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="n">day_end_hour</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">local_start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">time_offset</span>
-    <span class="n">local_start</span> <span class="o">=</span> <span class="n">local_start</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">local_start</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="n">start</span> <span class="o">+=</span> <span class="n">STDOFFSET</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hour</span><span class="o">=</span><span class="n">day_end_hour</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">day_end_hour</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
         <span class="c"># month actually starts on the last day of previous month</span>
-        <span class="n">local_start</span> <span class="o">-=</span> <span class="n">DAY</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">local_start</span> <span class="o">-</span> <span class="n">time_offset</span>
+        <span class="n">start</span> <span class="o">-=</span> <span class="n">DAY</span>
+    <span class="n">start</span> <span class="o">-=</span> <span class="n">STDOFFSET</span>
     <span class="k">del</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>
     <span class="n">stop</span> <span class="o">=</span> <span class="n">daily_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="n">month_start</span> <span class="o">=</span> <span class="n">start</span>
@@ -747,7 +746,7 @@
         <span class="n">month_start</span> <span class="o">=</span> <span class="n">month_end</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="Process"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Process">[docs]</a><span class="k">def</span> <span class="nf">Process</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span>
+<div class="viewcode-block" id="Process"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Process">[docs]</a><span class="k">def</span> <span class="nf">Process</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
             <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">daily_data</span><span class="p">,</span> <span class="n">monthly_data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate summaries from raw weather station data.</span>
 
@@ -763,30 +762,19 @@
     <span class="n">last_raw</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">last_raw</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;No data found. Check data directory parameter.&#39;</span><span class="p">)</span>
-    <span class="c"># get local time&#39;s offset from UTC, without DST</span>
-    <span class="n">time_offset</span> <span class="o">=</span> <span class="n">Local</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="n">last_raw</span><span class="p">)</span> <span class="o">-</span> <span class="n">Local</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="n">last_raw</span><span class="p">)</span>
-    <span class="c"># set daytime end hour, in UTC</span>
-    <span class="n">day_end_hour</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;day end hour&#39;</span><span class="p">,</span> <span class="s">&#39;21&#39;</span><span class="p">))</span>
-    <span class="n">day_end_hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">day_end_hour</span> <span class="o">-</span> <span class="p">(</span><span class="n">time_offset</span><span class="o">.</span><span class="n">seconds</span> <span class="o">//</span> <span class="mi">3600</span><span class="p">))</span> <span class="o">%</span> <span class="mi">24</span>
-    <span class="c"># divide 24 hours of UTC day into day and night</span>
-    <span class="n">daytime</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
-        <span class="n">daytime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">night_hour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">21</span> <span class="o">-</span> <span class="p">(</span><span class="n">time_offset</span><span class="o">.</span><span class="n">seconds</span> <span class="o">//</span> <span class="mi">3600</span><span class="p">))</span> <span class="o">%</span> <span class="mi">24</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
-        <span class="n">daytime</span><span class="p">[</span><span class="n">night_hour</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="n">night_hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">night_hour</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">24</span>
+    <span class="c"># get daytime end hour (in local time)</span>
+    <span class="n">day_end_hour</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;day end hour&#39;</span><span class="p">,</span> <span class="s">&#39;21&#39;</span><span class="p">))</span> <span class="o">%</span> <span class="mi">24</span>
     <span class="c"># get other config</span>
     <span class="n">rain_day_threshold</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;rain day threshold&#39;</span><span class="p">,</span> <span class="s">&#39;0.2&#39;</span><span class="p">))</span>
     <span class="c"># calibrate raw data</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">calibrate_data</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">calibrate_data</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">)</span>
     <span class="c"># generate hourly data</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">generate_hourly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
     <span class="c"># generate daily data</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">generate_daily</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">daytime</span><span class="p">,</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">generate_daily</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span>
                            <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">daily_data</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
     <span class="c"># generate monthly data</span>
-    <span class="n">generate_monthly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">rain_day_threshold</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">time_offset</span><span class="p">,</span>
+    <span class="n">generate_monthly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">rain_day_threshold</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span>
                      <span class="n">daily_data</span><span class="p">,</span> <span class="n">monthly_data</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">0</span>
 </div>
@@ -815,7 +803,6 @@
     <span class="n">logger</span> <span class="o">=</span> <span class="n">ApplicationLogger</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
     <span class="n">data_dir</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">Process</span><span class="p">(</span><span class="n">DataStore</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">data_dir</span><span class="p">),</span>
-                   <span class="n">DataStore</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">data_dir</span><span class="p">),</span>
                    <span class="n">DataStore</span><span class="o">.</span><span class="n">data_store</span><span class="p">(</span><span class="n">data_dir</span><span class="p">),</span>
                    <span class="n">DataStore</span><span class="o">.</span><span class="n">calib_store</span><span class="p">(</span><span class="n">data_dir</span><span class="p">),</span>
                    <span class="n">DataStore</span><span class="o">.</span><span class="n">hourly_store</span><span class="p">(</span><span class="n">data_dir</span><span class="p">),</span>
@@ -860,13 +847,13 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1120 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Process &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>pywws.Process &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +25,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../../index.html" />
+    <link rel="up" title="Codice del modulo" href="../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,10 +36,10 @@
           <a href="../../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Codice del modulo</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for pywws.Process</h1><div class="highlight"><pre>
+  <h1>Codice sorgente per pywws.Process</h1><div class="highlight"><pre>
 <span class="c">#!/usr/bin/env python</span>
 <span class="c"># -*- coding: utf-8 -*-</span>
 
@@ -146,51 +144,51 @@
 <span class="n">DAY</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">WEEK</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Average"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Average">[docs]</a><span class="k">class</span> <span class="nc">Average</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Average"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Average">[documenti]</a><span class="k">class</span> <span class="nc">Average</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute average of multiple data values.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acc</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="Average.add"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Average.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="Average.add"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Average.add">[documenti]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acc</span> <span class="o">+=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 </div>
-<div class="viewcode-block" id="Average.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Average.result">[docs]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Average.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Average.result">[documenti]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">acc</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
 </div></div>
-<div class="viewcode-block" id="Minimum"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Minimum">[docs]</a><span class="k">class</span> <span class="nc">Minimum</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Minimum"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Minimum">[documenti]</a><span class="k">class</span> <span class="nc">Minimum</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute minimum value and timestamp of multiple data values.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="bp">None</span>
 
-<div class="viewcode-block" id="Minimum.add"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Minimum.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<div class="viewcode-block" id="Minimum.add"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Minimum.add">[documenti]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="ow">or</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time</span>
 </div>
-<div class="viewcode-block" id="Minimum.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Minimum.result">[docs]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Minimum.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Minimum.result">[documenti]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span>
         <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
 </div></div>
-<div class="viewcode-block" id="Maximum"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Maximum">[docs]</a><span class="k">class</span> <span class="nc">Maximum</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Maximum"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Maximum">[documenti]</a><span class="k">class</span> <span class="nc">Maximum</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute maximum value and timestamp of multiple data values.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="bp">None</span>
 
-<div class="viewcode-block" id="Maximum.add"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Maximum.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<div class="viewcode-block" id="Maximum.add"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Maximum.add">[documenti]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="ow">or</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time</span>
 </div>
-<div class="viewcode-block" id="Maximum.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Maximum.result">[docs]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Maximum.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Maximum.result">[documenti]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span>
         <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
@@ -200,7 +198,7 @@
 <span class="n">cos_LUT</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">360</span><span class="p">)</span> <span class="o">/</span> <span class="mf">16.0</span><span class="p">)),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 
-<div class="viewcode-block" id="HourAcc"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc">[docs]</a><span class="k">class</span> <span class="nc">HourAcc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="HourAcc"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc">[documenti]</a><span class="k">class</span> <span class="nc">HourAcc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;&#39;Accumulate&#39; raw weather data to produce hourly summary.</span>
 
 <span class="sd">    Compute average wind speed and maximum wind gust, find dominant</span>
@@ -217,7 +215,7 @@
                           <span class="s">&#39;abs_pressure&#39;</span><span class="p">,</span> <span class="s">&#39;rel_pressure&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-<div class="viewcode-block" id="HourAcc.reset"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="HourAcc.reset"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc.reset">[documenti]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">wind_dir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wind_acc</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -226,7 +224,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">wind_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">retval</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 </div>
-<div class="viewcode-block" id="HourAcc.add_raw"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc.add_raw">[docs]</a>    <span class="k">def</span> <span class="nf">add_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="HourAcc.add_raw"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc.add_raw">[documenti]</a>    <span class="k">def</span> <span class="nf">add_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span>
         <span class="n">wind_ave</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;wind_ave&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">wind_ave</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -261,7 +259,7 @@
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy_keys</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">retval</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 </div>
-<div class="viewcode-block" id="HourAcc.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc.result">[docs]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="HourAcc.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.HourAcc.result">[documenti]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">retval</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wind_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -287,7 +285,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">retval</span><span class="p">[</span><span class="s">&#39;rain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rain</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">retval</span>
 </div></div>
-<div class="viewcode-block" id="DayAcc"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc">[docs]</a><span class="k">class</span> <span class="nc">DayAcc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="DayAcc"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc">[documenti]</a><span class="k">class</span> <span class="nc">DayAcc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;&#39;Accumulate&#39; weather data to produce daily summary.</span>
 
 <span class="sd">    Compute average wind speed, maximum wind gust and daytime max &amp;</span>
@@ -311,7 +309,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">min</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-<div class="viewcode-block" id="DayAcc.reset"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DayAcc.reset"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.reset">[documenti]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">wind_dir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wind_acc</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -328,7 +326,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Maximum</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">retval</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 </div>
-<div class="viewcode-block" id="DayAcc.add_raw"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.add_raw">[docs]</a>    <span class="k">def</span> <span class="nf">add_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="DayAcc.add_raw"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.add_raw">[documenti]</a>    <span class="k">def</span> <span class="nf">add_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span>
         <span class="n">wind_gust</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;wind_gust&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">wind_gust</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">wind_gust</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">wind_gust</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
@@ -357,7 +355,7 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">ave</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="DayAcc.add_hourly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.add_hourly">[docs]</a>    <span class="k">def</span> <span class="nf">add_hourly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="DayAcc.add_hourly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.add_hourly">[documenti]</a>    <span class="k">def</span> <span class="nf">add_hourly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">wind_ave</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;wind_ave&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">wind_ave</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">wind_dir</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span>
@@ -370,7 +368,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">rain</span> <span class="o">+=</span> <span class="n">rain</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">retval</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span>
 </div>
-<div class="viewcode-block" id="DayAcc.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.result">[docs]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DayAcc.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.DayAcc.result">[documenti]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">retval</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wind_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -409,7 +407,7 @@
                  <span class="bp">self</span><span class="o">.</span><span class="n">retval</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">_max_t&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">retval</span>
 </div></div>
-<div class="viewcode-block" id="MonthAcc"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc">[docs]</a><span class="k">class</span> <span class="nc">MonthAcc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="MonthAcc"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc">[documenti]</a><span class="k">class</span> <span class="nc">MonthAcc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;&#39;Accumulate&#39; daily weather data to produce monthly summary.</span>
 
 <span class="sd">    Compute daytime max &amp; nighttime min temperatures.</span>
@@ -432,7 +430,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">wind_dir</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-<div class="viewcode-block" id="MonthAcc.reset"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MonthAcc.reset"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc.reset">[documenti]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;temp_in&#39;</span><span class="p">,</span> <span class="s">&#39;temp_out&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ave</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Average</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_lo</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Minimum</span><span class="p">()</span>
@@ -459,7 +457,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">rain_days</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="bp">False</span>
 </div>
-<div class="viewcode-block" id="MonthAcc.add_daily"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc.add_daily">[docs]</a>    <span class="k">def</span> <span class="nf">add_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="MonthAcc.add_daily"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc.add_daily">[documenti]</a>    <span class="k">def</span> <span class="nf">add_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;temp_in&#39;</span><span class="p">,</span> <span class="s">&#39;temp_out&#39;</span><span class="p">):</span>
             <span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">_ave&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">]</span>
@@ -511,7 +509,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">rain_days</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="bp">True</span>
 </div>
-<div class="viewcode-block" id="MonthAcc.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc.result">[docs]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="MonthAcc.result"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.MonthAcc.result">[documenti]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
@@ -567,7 +565,7 @@
                  <span class="n">result</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">_max_hi_t&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_hi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
 </div></div>
-<div class="viewcode-block" id="calibrate_data"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.calibrate_data">[docs]</a><span class="k">def</span> <span class="nf">calibrate_data</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">):</span>
+<div class="viewcode-block" id="calibrate_data"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.calibrate_data">[documenti]</a><span class="k">def</span> <span class="nf">calibrate_data</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;&#39;Calibrate&#39; raw data, using a user-supplied function.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">calib_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -588,7 +586,7 @@
         <span class="n">calib_data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">calibrator</span><span class="o">.</span><span class="n">calib</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="generate_hourly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_hourly">[docs]</a><span class="k">def</span> <span class="nf">generate_hourly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">process_from</span><span class="p">):</span>
+<div class="viewcode-block" id="generate_hourly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_hourly">[documenti]</a><span class="k">def</span> <span class="nf">generate_hourly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">process_from</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate hourly summaries from calibrated data.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">hourly_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -655,7 +653,7 @@
         <span class="n">hour_start</span> <span class="o">=</span> <span class="n">hour_end</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="generate_daily"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_daily">[docs]</a><span class="k">def</span> <span class="nf">generate_daily</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">daytime</span><span class="p">,</span>
+<div class="viewcode-block" id="generate_daily"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_daily">[documenti]</a><span class="k">def</span> <span class="nf">generate_daily</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">daytime</span><span class="p">,</span>
                    <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">daily_data</span><span class="p">,</span> <span class="n">process_from</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate daily summaries from calibrated and hourly data.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">daily_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
@@ -697,7 +695,7 @@
         <span class="n">day_start</span> <span class="o">=</span> <span class="n">day_end</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="generate_monthly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_monthly">[docs]</a><span class="k">def</span> <span class="nf">generate_monthly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">rain_day_threshold</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">time_offset</span><span class="p">,</span>
+<div class="viewcode-block" id="generate_monthly"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.generate_monthly">[documenti]</a><span class="k">def</span> <span class="nf">generate_monthly</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">rain_day_threshold</span><span class="p">,</span> <span class="n">day_end_hour</span><span class="p">,</span> <span class="n">time_offset</span><span class="p">,</span>
                      <span class="n">daily_data</span><span class="p">,</span> <span class="n">monthly_data</span><span class="p">,</span> <span class="n">process_from</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate monthly summaries from daily data.&quot;&quot;&quot;</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
@@ -748,7 +746,7 @@
         <span class="n">month_start</span> <span class="o">=</span> <span class="n">month_end</span>
     <span class="k">return</span> <span class="n">start</span>
 </div>
-<div class="viewcode-block" id="Process"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Process">[docs]</a><span class="k">def</span> <span class="nf">Process</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
+<div class="viewcode-block" id="Process"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.Process">[documenti]</a><span class="k">def</span> <span class="nf">Process</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
             <span class="n">raw_data</span><span class="p">,</span> <span class="n">calib_data</span><span class="p">,</span> <span class="n">hourly_data</span><span class="p">,</span> <span class="n">daily_data</span><span class="p">,</span> <span class="n">monthly_data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate summaries from raw weather station data.</span>
 
@@ -791,7 +789,7 @@
                      <span class="n">daily_data</span><span class="p">,</span> <span class="n">monthly_data</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">0</span>
 </div>
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../api/pywws.Process.html#pywws.Process.main">[documenti]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">argv</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">argv</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
     <span class="k">try</span><span class="p">:</span>
@@ -858,15 +856,15 @@
           <a href="../../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+          <li><a href="../index.html" >Codice del modulo</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>
