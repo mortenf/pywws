@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Come impostare ‘hourly’ per la registrazione oraria con pywws &mdash; pywws 13.12.dev1118 documentazione</title>
+    <title>Come impostare ‘hourly’ per la registrazione oraria con pywws &mdash; pywws 13.12.dev1118 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -25,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../index.html" />
+    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../index.html" />
     <link rel="up" title="Guide per gli utenti" href="index.html" />
     <link rel="next" title="Come impostare una registrazione ‘live’ con pywws" href="livelogging.html" />
     <link rel="prev" title="Come iniziare con pywws" href="getstarted.html" /> 
@@ -38,7 +40,7 @@
           <a href="../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Indice del modulo Python"
+          <a href="../py-modindex.html" title="Python Module Index"
              >moduli</a> |</li>
         <li class="right" >
           <a href="livelogging.html" title="Come impostare una registrazione ‘live’ con pywws"
@@ -46,7 +48,7 @@
         <li class="right" >
           <a href="getstarted.html" title="Come iniziare con pywws"
              accesskey="P">precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>  
@@ -121,12 +123,12 @@ text = [('forecast.txt', 'T'), 'allmonths.txt']</pre>
 <p>È possibile verificare che tutti questi stiano lavorando rimuovendo tutte le linee <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> da status.ini, quindi eseguire nuovamente <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a>:</p>
 <div class="highlight-python"><pre>python -m pywws.Hourly -v ~/weather/data</pre>
 </div>
-<div class="versionchanged">
-<p><span>Cambiato nella versione 13.06_r1015: </span>Aggiunto il flag <tt class="docutils literal"><span class="pre">'T'</span></tt>. Precedentemente i modelli Twitter sono stati indicati separatamente in voci <tt class="docutils literal"><span class="pre">twitter</span></tt> in <tt class="docutils literal"><span class="pre">[hourly]</span></tt> e di altre sezioni. La sintassi precedente funziona ancora, ma è obsoleta.</p>
-</div>
-<div class="versionchanged">
-<p><span>Cambiato nella versione 13.05_r1009: </span>L&#8217;ultimo aggiornamento delle informazioni è era memorizzato in precedenza in weather.ini, con <tt class="docutils literal"><span class="pre">ultimo</span> <span class="pre">aggiornamento</span></tt> le voci sono in sezioni diverse.</p>
-</div>
+<p class="versionchanged">
+<span class="versionmodified">Cambiato nella versione 13.06_r1015: </span>added the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag.
+Previously Twitter templates were listed separately in <tt class="docutils literal"><span class="pre">twitter</span></tt> entries in the <tt class="docutils literal"><span class="pre">[hourly]</span></tt> and other sections.
+The older syntax still works, but is deprecated.</p>
+<p class="versionchanged">
+<span class="versionmodified">Cambiato nella versione 13.05_r1009: </span>The last update information was previously stored in weather.ini, with <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> entries in several sections.</p>
 </div>
 <div class="section" id="using-a-utility-script">
 <h2>Utilizzare gli script di utilità<a class="headerlink" href="#using-a-utility-script" title="link permanente per questa intestazione">¶</a></h2>
@@ -213,7 +215,7 @@ pywws-hourly.py -v /data/weather &gt;$log 2&gt;&amp;1
           <a href="../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Indice del modulo Python"
+          <a href="../py-modindex.html" title="Python Module Index"
              >moduli</a> |</li>
         <li class="right" >
           <a href="livelogging.html" title="Come impostare una registrazione ‘live’ con pywws"
@@ -221,13 +223,13 @@ pywws-hourly.py -v /data/weather &gt;$log 2&gt;&amp;1
         <li class="right" >
           <a href="getstarted.html" title="Come iniziare con pywws"
              >precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
           <li><a href="index.html" >Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

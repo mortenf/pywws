@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WeatherStation &mdash; pywws 14.01.dev1137 documentation</title>
+    <title>pywws.WeatherStation &mdash; pywws 14.02.dev1157 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.01.dev1137',
+        VERSION:     '14.02.dev1157',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.02.dev1157 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.device_ctypes_hidapi" href="pywws.device_ctypes_hidapi.html" />
     <link rel="prev" title="pywws.YoWindow" href="pywws.YoWindow.html" /> 
@@ -45,7 +47,7 @@
         <li class="right" >
           <a href="pywws.YoWindow.html" title="pywws.YoWindow"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -75,10 +77,10 @@ each weather reading is 16 or 20 bytes, a small cache is used to
 reduce USB traffic. The caching behaviour can be over-ridden with the
 <tt class="docutils literal"><span class="pre">unbuffered</span></tt> parameter to <tt class="docutils literal"><span class="pre">get_data</span></tt> and <tt class="docutils literal"><span class="pre">get_raw_data</span></tt>.</p>
 <p>Decoding the data is controlled by the static dictionaries
-<tt class="docutils literal"><span class="pre">reading_format</span></tt>, <tt class="docutils literal"><span class="pre">lo_fix_format</span></tt> and <tt class="docutils literal"><span class="pre">fixed_format</span></tt>. The keys
+<tt class="docutils literal"><span class="pre">_reading_format</span></tt>, <tt class="docutils literal"><span class="pre">lo_fix_format</span></tt> and <tt class="docutils literal"><span class="pre">fixed_format</span></tt>. The keys
 are names of data items and the values can be an <tt class="docutils literal"><span class="pre">(offset,</span> <span class="pre">type,</span>
 <span class="pre">multiplier)</span></tt> tuple or another dictionary. So, for example, the
-reading_format dictionary entry <tt class="docutils literal"><span class="pre">'rain'</span> <span class="pre">:</span> <span class="pre">(13,</span> <span class="pre">'us',</span> <span class="pre">0.3)</span></tt> means
+_reading_format dictionary entry <tt class="docutils literal"><span class="pre">'rain'</span> <span class="pre">:</span> <span class="pre">(13,</span> <span class="pre">'us',</span> <span class="pre">0.3)</span></tt> means
 that the rain value is an unsigned short (two bytes), 13 bytes from
 the start of the block, and should be multiplied by 0.3 to get a
 useful value.</p>
@@ -291,11 +293,6 @@ array of (ptr, value) pairs.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pywws.WeatherStation.weather_station.reading_format">
-<tt class="descname">reading_format</tt><em class="property"> = {'3080': {'status': (15, 'pb', None), 'hum_out': (4, 'ub', None), 'wind_gust': (10, 'wg', 0.1), 'uv': (19, 'ub', None), 'wind_ave': (9, 'wa', 0.1), 'rain': (13, 'us', 0.3), 'temp_in': (2, 'ss', 0.1), 'illuminance': (16, 'u3', 0.1), 'abs_pressure': (7, 'us', 0.1), 'delay': (0, 'ub', None), 'hum_in': (1, 'ub', None), 'temp_out': (5, 'ss', 0.1), 'wind_dir': (12, 'ub', None)}, '1080': {'status': (15, 'pb', None), 'wind_ave': (9, 'wa', 0.1), 'rain': (13, 'us', 0.3), 'hum_in': (1, 'ub', None), 'temp_out': (5, 'ss', 0.1), 'wind_dir': (12, 'ub', None), 'hum_out': (4, 'ub', None), 'wind_gust': (10, 'wg', 0.1), 'temp_in': (2, 'ss', 0.1), 'delay': (0, 'ub', None), 'abs_pressure': (7, 'us', 0.1)}}</em><a class="headerlink" href="#pywws.WeatherStation.weather_station.reading_format" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="pywws.WeatherStation.weather_station.lo_fix_format">
 <tt class="descname">lo_fix_format</tt><em class="property"> = {'alarm_1': (21, 'bf', ('bit0', 'time', 'wind_dir', 'bit3', 'hum_in_lo', 'hum_in_hi', 'hum_out_lo', 'hum_out_hi')), 'alarm_3': (23, 'bf', ('temp_in_lo', 'temp_in_hi', 'temp_out_lo', 'temp_out_hi', 'wind_chill_lo', 'wind_chill_hi', 'dew_point_lo', 'dew_point_hi')), 'alarm_2': (22, 'bf', ('wind_ave', 'wind_gust', 'rain_hour', 'rain_day', 'pressure_abs_lo', 'pressure_abs_hi', 'pressure_rel_lo', 'pressure_rel_hi')), 'data_changed': (26, 'ub', None), 'settings_1': (17, 'bf', ('temp_in_F', 'temp_out_F', 'rain_in', 'bit3', 'bit4', 'pressure_hPa', 'pressure_inHg', 'pressure_mmHg')), 'settings_2': (18, 'bf', ('wind_mps', 'wind_kmph', 'wind_knot', 'wind_mph', 'wind_bft', 'bit5', 'bit6', 'bit7')), 'read_period': (16, 'ub', None), 'unknown_01': (25, 'pb', None), 'timezone': (24, 'sb', None), 'data_count': (27, 'us', None), 'current_pos': (30, 'us', None), 'display_2': (20, 'bf', ('temp_out_temp', 'temp_out_chill', 'temp_out_dew', 'rain_hour', 'rain_day', 'rain_week', 'rain_month', 'rain_total')), 'display_3': (29, 'bf', ('illuminance_fc', 'bit1', 'bit2', 'bit3', 'bit4', 'bit5', 'bit6', 'bit7')), 'display_1': (19, 'bf', ('pressure_rel', 'wind_gust', 'clock_12hr', 'date_mdy', 'time_scale_24', 'show_year', 'show_day_name', 'alarm_time'))}</em><a class="headerlink" href="#pywws.WeatherStation.weather_station.lo_fix_format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -376,13 +373,13 @@ array of (ptr, value) pairs.</p>
         <li class="right" >
           <a href="pywws.YoWindow.html" title="pywws.YoWindow"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

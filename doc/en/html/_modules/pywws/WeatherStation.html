@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WeatherStation &mdash; pywws 14.01.dev1137 documentation</title>
+    <title>pywws.WeatherStation &mdash; pywws 14.02.dev1157 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.01.dev1137',
+        VERSION:     '14.02.dev1157',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.02.dev1157 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -423,18 +425,15 @@
         <span class="n">data_time</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">last_status</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c"># sleep until just before next reading is due</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span><span class="p">:</span>
                 <span class="n">next_live</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">:</span>
                 <span class="n">next_log</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-            <span class="c"># wake up just before next reading is due</span>
             <span class="n">advance</span> <span class="o">=</span> <span class="n">now</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">avoid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pause</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pause</span>
             <span class="k">if</span> <span class="n">next_live</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">logged_only</span><span class="p">:</span>
-                    <span class="n">pause</span> <span class="o">=</span> <span class="mf">600.0</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">pause</span> <span class="o">=</span> <span class="n">next_live</span> <span class="o">-</span> <span class="n">advance</span>
+                <span class="n">pause</span> <span class="o">=</span> <span class="n">next_live</span> <span class="o">-</span> <span class="n">advance</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">pause</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pause</span>
             <span class="k">if</span> <span class="n">next_log</span><span class="p">:</span>
@@ -449,84 +448,37 @@
             <span class="n">last_ptr_time</span> <span class="o">=</span> <span class="n">ptr_time</span>
             <span class="n">new_ptr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_pos</span><span class="p">()</span>
             <span class="n">ptr_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-            <span class="n">valid_time</span> <span class="o">=</span> <span class="n">ptr_time</span> <span class="o">-</span> <span class="n">last_ptr_time</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span>
-            <span class="k">if</span> <span class="n">new_ptr</span> <span class="o">!=</span> <span class="n">old_ptr</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;live_data new ptr: </span><span class="si">%06x</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">new_ptr</span><span class="p">)</span>
-                <span class="n">last_log</span> <span class="o">=</span> <span class="n">ptr_time</span>
-                <span class="c"># re-read data, to be absolutely sure it&#39;s the last</span>
-                <span class="c"># logged data before the pointer was updated</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">old_ptr</span><span class="p">,</span> <span class="n">unbuffered</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">valid_time</span><span class="p">:</span>
-                    <span class="c"># pointer has just changed, so definitely at a logging time</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">:</span>
-                        <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">ptr_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">)</span> <span class="o">%</span> <span class="mi">60</span>
-                        <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="mi">58</span><span class="p">:</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;unexpected station clock change&#39;</span><span class="p">)</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="bp">None</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="n">ptr_time</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                            <span class="s">&#39;setting station clock </span><span class="si">%g</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">ptr_time</span> <span class="o">%</span> <span class="mf">60.0</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-                                <span class="s">&#39;clock&#39;</span><span class="p">,</span> <span class="s">&#39;station&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">))</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">next_log</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;live_data log synchronised&#39;</span><span class="p">)</span>
-                    <span class="n">next_log</span> <span class="o">=</span> <span class="n">ptr_time</span>
-                <span class="k">elif</span> <span class="n">next_log</span> <span class="ow">and</span> <span class="n">ptr_time</span> <span class="o">&lt;</span> <span class="n">next_log</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                        <span class="s">&#39;live_data lost log sync </span><span class="si">%g</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">ptr_time</span> <span class="o">-</span> <span class="n">next_log</span><span class="p">)</span>
-                    <span class="n">next_log</span> <span class="o">=</span> <span class="bp">None</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="bp">None</span>
-                <span class="k">if</span> <span class="n">next_log</span><span class="p">:</span>
-                    <span class="n">result</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">next_log</span><span class="p">))</span>
-                    <span class="n">next_log</span> <span class="o">+=</span> <span class="n">log_interval</span>
-                    <span class="k">yield</span> <span class="n">result</span><span class="p">,</span> <span class="n">old_ptr</span><span class="p">,</span> <span class="bp">True</span>
-                <span class="n">old_ptr</span> <span class="o">=</span> <span class="n">new_ptr</span>
-                <span class="n">old_data</span><span class="p">[</span><span class="s">&#39;delay&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">data_time</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">elif</span> <span class="n">ptr_time</span> <span class="o">&gt;</span> <span class="n">last_log</span> <span class="o">+</span> <span class="n">log_interval</span> <span class="o">+</span> <span class="mi">180</span><span class="p">:</span>
-                <span class="c"># if station stops logging data, don&#39;t keep reading</span>
-                <span class="c"># USB until it locks up</span>
-                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;station is not logging data&#39;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">next_log</span> <span class="ow">and</span> <span class="n">ptr_time</span> <span class="o">&gt;</span> <span class="n">next_log</span> <span class="o">+</span> <span class="mf">6.0</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;live_data log extended&#39;</span><span class="p">)</span>
-                <span class="n">next_log</span> <span class="o">+=</span> <span class="mf">60.0</span>
             <span class="c"># get new data</span>
-            <span class="k">if</span> <span class="n">logged_only</span> <span class="ow">and</span> <span class="n">next_live</span><span class="p">:</span>
-                <span class="k">continue</span>
             <span class="n">last_data_time</span> <span class="o">=</span> <span class="n">data_time</span>
             <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">old_ptr</span><span class="p">,</span> <span class="n">unbuffered</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
             <span class="n">data_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="c"># when ptr changes, internal sensor data gets updated</span>
+            <span class="k">if</span> <span class="n">new_ptr</span> <span class="o">!=</span> <span class="n">old_ptr</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;hum_in&#39;</span><span class="p">,</span> <span class="s">&#39;temp_in&#39;</span><span class="p">,</span> <span class="s">&#39;abs_pressure&#39;</span><span class="p">):</span>
+                    <span class="n">old_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="c"># log any change of status</span>
             <span class="k">if</span> <span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">last_status</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="s">&#39;status </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">decode_status</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])))</span>
             <span class="n">last_status</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span>
-            <span class="c"># &#39;good&#39; time stamp if we haven&#39;t just woken up from long</span>
-            <span class="c"># pause and data read wasn&#39;t delayed</span>
-            <span class="n">valid_time</span> <span class="o">=</span> <span class="n">data_time</span> <span class="o">-</span> <span class="n">last_data_time</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span>
-            <span class="c"># some stations lose sync when they lose contact</span>
-            <span class="k">if</span> <span class="n">next_live</span> <span class="ow">and</span> <span class="p">(</span>
-                    <span class="n">decode_status</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]</span> <span class="ow">or</span>
-                    <span class="n">decode_status</span><span class="p">(</span><span class="n">old_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]):</span>
-                <span class="n">valid_time</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="n">changed</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;hum_in&#39;</span><span class="p">,</span> <span class="s">&#39;temp_in&#39;</span><span class="p">,</span> <span class="s">&#39;hum_out&#39;</span><span class="p">,</span> <span class="s">&#39;temp_out&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;abs_pressure&#39;</span><span class="p">,</span> <span class="s">&#39;wind_ave&#39;</span><span class="p">,</span> <span class="s">&#39;wind_gust&#39;</span><span class="p">,</span> <span class="s">&#39;wind_dir&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;rain&#39;</span><span class="p">,</span> <span class="s">&#39;status&#39;</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">new_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">!=</span> <span class="n">old_data</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-                    <span class="n">changed</span> <span class="o">=</span> <span class="bp">True</span>
-                    <span class="k">break</span>
-            <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">decode_status</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span>
+                <span class="n">decode_status</span><span class="p">(</span><span class="n">old_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]):</span>
+                <span class="c"># &#39;lost connection&#39; decision can happen at any time</span>
+                <span class="n">old_data</span> <span class="o">=</span> <span class="n">new_data</span>
+            <span class="c"># has data changed?</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">!=</span> <span class="n">old_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span>
+                    <span class="s">&#39;hum_in&#39;</span><span class="p">,</span> <span class="s">&#39;temp_in&#39;</span><span class="p">,</span> <span class="s">&#39;hum_out&#39;</span><span class="p">,</span> <span class="s">&#39;temp_out&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;abs_pressure&#39;</span><span class="p">,</span> <span class="s">&#39;wind_ave&#39;</span><span class="p">,</span> <span class="s">&#39;wind_gust&#39;</span><span class="p">,</span> <span class="s">&#39;wind_dir&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;rain&#39;</span><span class="p">,</span> <span class="s">&#39;status&#39;</span><span class="p">)):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;live_data new data&#39;</span><span class="p">)</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">valid_time</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">data_time</span> <span class="o">-</span> <span class="n">last_data_time</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">:</span>
                     <span class="c"># data has just changed, so definitely at a 48s update time</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span><span class="p">:</span>
                         <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span><span class="p">)</span> <span class="o">%</span> <span class="n">live_interval</span>
                         <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mf">2.0</span> <span class="ow">and</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">live_interval</span> <span class="o">-</span> <span class="mf">2.0</span><span class="p">):</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;unexpected sensor clock change&#39;</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;old data </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">old_data</span><span class="p">))</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;new data </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_data</span><span class="p">))</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span> <span class="o">=</span> <span class="bp">None</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span> <span class="o">=</span> <span class="n">data_time</span>
@@ -547,13 +499,55 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span> <span class="o">=</span> <span class="bp">None</span>
                 <span class="k">if</span> <span class="n">next_live</span><span class="p">:</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="n">logged_only</span><span class="p">:</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
                         <span class="n">result</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">next_live</span><span class="p">))</span>
                         <span class="k">yield</span> <span class="n">result</span><span class="p">,</span> <span class="n">old_ptr</span><span class="p">,</span> <span class="bp">False</span>
                     <span class="n">next_live</span> <span class="o">+=</span> <span class="n">live_interval</span>
                 <span class="n">old_data</span> <span class="o">=</span> <span class="n">new_data</span>
             <span class="k">elif</span> <span class="n">next_live</span> <span class="ow">and</span> <span class="n">data_time</span> <span class="o">&gt;</span> <span class="n">next_live</span> <span class="o">+</span> <span class="mf">6.0</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;live_data missed&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;live_data missed&#39;</span><span class="p">)</span>
                 <span class="n">next_live</span> <span class="o">+=</span> <span class="n">live_interval</span>
+            <span class="c"># has ptr changed?</span>
+            <span class="k">if</span> <span class="n">new_ptr</span> <span class="o">!=</span> <span class="n">old_ptr</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;live_data new ptr: </span><span class="si">%06x</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">new_ptr</span><span class="p">)</span>
+                <span class="n">last_log</span> <span class="o">=</span> <span class="n">ptr_time</span>
+                <span class="k">if</span> <span class="n">ptr_time</span> <span class="o">-</span> <span class="n">last_ptr_time</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">:</span>
+                    <span class="c"># pointer has just changed, so definitely at a logging time</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">:</span>
+                        <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">ptr_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">)</span> <span class="o">%</span> <span class="mi">60</span>
+                        <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mf">2.0</span> <span class="ow">and</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="mf">58.0</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;unexpected station clock change&#39;</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="bp">None</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="n">ptr_time</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                            <span class="s">&#39;setting station clock </span><span class="si">%g</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">ptr_time</span> <span class="o">%</span> <span class="mf">60.0</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                                <span class="s">&#39;clock&#39;</span><span class="p">,</span> <span class="s">&#39;station&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">next_log</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;live_data log synchronised&#39;</span><span class="p">)</span>
+                    <span class="n">next_log</span> <span class="o">=</span> <span class="n">ptr_time</span>
+                <span class="k">elif</span> <span class="n">next_log</span> <span class="ow">and</span> <span class="n">ptr_time</span> <span class="o">&lt;</span> <span class="n">next_log</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="s">&#39;live_data lost log sync </span><span class="si">%g</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">ptr_time</span> <span class="o">-</span> <span class="n">next_log</span><span class="p">)</span>
+                    <span class="n">next_log</span> <span class="o">=</span> <span class="bp">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="k">if</span> <span class="n">next_log</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+                    <span class="n">result</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">next_log</span><span class="p">))</span>
+                    <span class="n">next_log</span> <span class="o">+=</span> <span class="n">log_interval</span>
+                    <span class="k">yield</span> <span class="n">result</span><span class="p">,</span> <span class="n">old_ptr</span><span class="p">,</span> <span class="bp">True</span>
+                <span class="n">old_ptr</span> <span class="o">=</span> <span class="n">new_ptr</span>
+                <span class="n">old_data</span><span class="p">[</span><span class="s">&#39;delay&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">data_time</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">ptr_time</span> <span class="o">&gt;</span> <span class="n">last_log</span> <span class="o">+</span> <span class="n">log_interval</span> <span class="o">+</span> <span class="mi">180</span><span class="p">:</span>
+                <span class="c"># if station stops logging data, don&#39;t keep reading</span>
+                <span class="c"># USB until it locks up</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;station is not logging data&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">next_log</span> <span class="ow">and</span> <span class="n">ptr_time</span> <span class="o">&gt;</span> <span class="n">next_log</span> <span class="o">+</span> <span class="mf">6.0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;live_data log extended&#39;</span><span class="p">)</span>
+                <span class="n">next_log</span> <span class="o">+=</span> <span class="mf">60.0</span>
 </div>
 <div class="viewcode-block" id="weather_station.inc_ptr"><a class="viewcode-back" href="../../api/pywws.WeatherStation.html#pywws.WeatherStation.weather_station.inc_ptr">[docs]</a>    <span class="k">def</span> <span class="nf">inc_ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get next circular buffer data pointer.&quot;&quot;&quot;</span>
@@ -870,13 +864,13 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

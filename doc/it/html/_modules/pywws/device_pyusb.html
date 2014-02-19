@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.device_pyusb &mdash; pywws 13.12.dev1118 documentazione</title>
+    <title>pywws.device_pyusb &mdash; pywws 13.12.dev1118 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -25,8 +27,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../../index.html" />
-    <link rel="up" title="Codice del modulo" href="../index.html" /> 
+    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,10 +38,10 @@
           <a href="../../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Indice del modulo Python"
+          <a href="../../py-modindex.html" title="Python Module Index"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Codice del modulo</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,7 +50,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Codice sorgente per pywws.device_pyusb</h1><div class="highlight"><pre>
+  <h1>Source code for pywws.device_pyusb</h1><div class="highlight"><pre>
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
 <span class="c"># http://github.com/jim-easterbrook/pywws</span>
 <span class="c"># Copyright (C) 2008-13  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
@@ -132,7 +134,7 @@
 <span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">import</span> <span class="nn">usb</span>
 
-<div class="viewcode-block" id="USBDevice"><a class="viewcode-back" href="../../api/pywws.device_pyusb.html#pywws.device_pyusb.USBDevice">[documenti]</a><span class="k">class</span> <span class="nc">USBDevice</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="USBDevice"><a class="viewcode-back" href="../../api/pywws.device_pyusb.html#pywws.device_pyusb.USBDevice">[docs]</a><span class="k">class</span> <span class="nc">USBDevice</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idVendor</span><span class="p">,</span> <span class="n">idProduct</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Low level USB device access via PyUSB library.</span>
 
@@ -189,7 +191,7 @@
                     <span class="k">return</span> <span class="n">device</span>
         <span class="k">return</span> <span class="bp">None</span>
 
-<div class="viewcode-block" id="USBDevice.read_data"><a class="viewcode-back" href="../../api/pywws.device_pyusb.html#pywws.device_pyusb.USBDevice.read_data">[documenti]</a>    <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<div class="viewcode-block" id="USBDevice.read_data"><a class="viewcode-back" href="../../api/pywws.device_pyusb.html#pywws.device_pyusb.USBDevice.read_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Receive data from the device.</span>
 
 <span class="sd">        If the read fails for any reason, an :obj:`IOError` exception</span>
@@ -209,7 +211,7 @@
             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;pywws.device_libusb.USBDevice.read_data failed&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="USBDevice.write_data"><a class="viewcode-back" href="../../api/pywws.device_pyusb.html#pywws.device_pyusb.USBDevice.write_data">[documenti]</a>    <span class="k">def</span> <span class="nf">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
+<div class="viewcode-block" id="USBDevice.write_data"><a class="viewcode-back" href="../../api/pywws.device_pyusb.html#pywws.device_pyusb.USBDevice.write_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Send data to the device.</span>
 
 <span class="sd">        If the write fails for any reason, an :obj:`IOError` exception</span>
@@ -264,15 +266,15 @@
           <a href="../../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Indice del modulo Python"
+          <a href="../../py-modindex.html" title="Python Module Index"
              >moduli</a> |</li>
-        <li><a href="../../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
-          <li><a href="../index.html" >Codice del modulo</a> &raquo;</li> 
+        <li><a href="../../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

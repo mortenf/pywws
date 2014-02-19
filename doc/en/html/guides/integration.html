@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to integrate pywws with various weather services &mdash; pywws 14.01.dev1137 documentation</title>
+    <title>How to integrate pywws with various weather services &mdash; pywws 14.02.dev1157 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.01.dev1137',
+        VERSION:     '14.02.dev1157',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.02.dev1157 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to configure pywws to post messages to Twitter" href="twitter.html" />
     <link rel="prev" title="How to set up ‘live’ logging with pywws" href="livelogging.html" /> 
@@ -45,7 +47,7 @@
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -90,14 +92,43 @@ See <a class="reference external" href="http://yowindow.com/pws_setup.php">http:
 <h2>Twitter<a class="headerlink" href="#twitter" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="twitter.html"><em>How to configure pywws to post messages to Twitter</em></a> for full instructions.</p>
 </div>
-<div class="section" id="uk-met-office">
-<h2>UK Met Office<a class="headerlink" href="#uk-met-office" title="Permalink to this headline">¶</a></h2>
-<p>Handled by the <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module.
-See <a class="reference internal" href="#weather-underground"><em>Weather Underground</em></a> for general setup instructions.</p>
+<div class="section" id="other-services">
+<span id="guides-integration-other"></span><h2>Other &#8220;services&#8221;<a class="headerlink" href="#other-services" title="Permalink to this headline">¶</a></h2>
+<p>The remaining weather service uploads are handled by the <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module.
+See the module&#8217;s documentation for general configuration options.
+The following subsections give further information about some of the available services.</p>
+<div class="section" id="citizen-weather-observer-program">
+<h3>Citizen Weather Observer Program<a class="headerlink" href="#citizen-weather-observer-program" title="Permalink to this headline">¶</a></h3>
 <ul>
+<li><p class="first">Web site: <a class="reference external" href="http://www.wxqa.com/">http://www.wxqa.com/</a></p>
+</li>
+<li><p class="first">Create account: <a class="reference external" href="http://www.wxqa.com/SIGN-UP.html">http://www.wxqa.com/SIGN-UP.html</a></p>
+</li>
+<li><p class="first">API: <a class="reference external" href="http://www.wxqa.com/faq.html">http://www.wxqa.com/faq.html</a></p>
+</li>
+<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<div class="highlight-python"><pre>[cwop]
+designator = EW9999
+latitude = 5130.06N
+longitude = 00008.52E</pre>
+</div>
+</li>
+</ul>
+<p>Note that the latitude and longitude must be in &#8220;LORAN&#8221; format and leading zeros are required.
+See question 3 in the <a class="reference external" href="http://www.wxqa.com/faq.html">CWOP FAQ</a> for more information.</p>
+<p>CWOP uploads are rate-limited by pywws, so you can safely add it to both the <tt class="docutils literal"><span class="pre">[live]</span></tt> and <tt class="docutils literal"><span class="pre">[logged]</span></tt> sections in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>.</p>
+<p>The CWOP/APRS uploader is based on code by Marco Trevisan &lt;<a class="reference external" href="mailto:mail&#37;&#52;&#48;3v1n0&#46;net">mail<span>&#64;</span>3v1n0<span>&#46;</span>net</a>&gt;.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 14.02.dev1156.</span></p>
+</div>
+<div class="section" id="uk-met-office">
+<h3>UK Met Office<a class="headerlink" href="#uk-met-office" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Web site: <a class="reference external" href="http://wow.metoffice.gov.uk/">http://wow.metoffice.gov.uk/</a></p>
+</li>
 <li><div class="first line-block">
 <div class="line">Create account:</div>
-<div class="line"><a class="reference external" href="https://register.metoffice.gov.uk/WaveRegistrationClient/public/register.do?service=weatherobservations">https://register.metoffice.gov.uk/WaveRegistrationClient/public/register.do?service=weatherobservations</a></div>
+<div class="line"><a class="reference external" href="https://register.metoffice.gov.uk/WaveRegistrationClient/public/newaccount.do?service=weatherobservations">https://register.metoffice.gov.uk/WaveRegistrationClient/public/newaccount.do?service=weatherobservations</a></div>
 </div>
 </li>
 <li><p class="first">API: <a class="reference external" href="http://wow.metoffice.gov.uk/support/dataformats#automatic">http://wow.metoffice.gov.uk/support/dataformats#automatic</a></p>
@@ -111,10 +142,10 @@ aws pin = 987654</pre>
 </ul>
 </div>
 <div class="section" id="open-weather-map">
-<h2>Open Weather Map<a class="headerlink" href="#open-weather-map" title="Permalink to this headline">¶</a></h2>
-<p>Handled by the <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module.
-See <a class="reference internal" href="#weather-underground"><em>Weather Underground</em></a> for general setup instructions.</p>
+<h3>Open Weather Map<a class="headerlink" href="#open-weather-map" title="Permalink to this headline">¶</a></h3>
 <ul>
+<li><p class="first">Web site: <a class="reference external" href="http://openweathermap.org/">http://openweathermap.org/</a></p>
+</li>
 <li><p class="first">Create account: <a class="reference external" href="http://openweathermap.org/login">http://openweathermap.org/login</a></p>
 </li>
 <li><p class="first">API: <a class="reference external" href="http://openweathermap.org/API">http://openweathermap.org/API</a></p>
@@ -136,10 +167,10 @@ This appears as <tt class="docutils literal"><span class="pre">id</span></tt> in
 Make sure you don&#8217;t choose a name that is already in use.</p>
 </div>
 <div class="section" id="pws-weather">
-<h2>PWS Weather<a class="headerlink" href="#pws-weather" title="Permalink to this headline">¶</a></h2>
-<p>Handled by the <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module.
-See <a class="reference internal" href="#weather-underground"><em>Weather Underground</em></a> for general setup instructions.</p>
+<h3>PWS Weather<a class="headerlink" href="#pws-weather" title="Permalink to this headline">¶</a></h3>
 <ul>
+<li><p class="first">Web site: <a class="reference external" href="http://www.pwsweather.com/">http://www.pwsweather.com/</a></p>
+</li>
 <li><p class="first">Create account: <a class="reference external" href="http://www.pwsweather.com/register.php">http://www.pwsweather.com/register.php</a></p>
 </li>
 <li><p class="first">API based on WU protocol: <a class="reference external" href="http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol">http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol</a></p>
@@ -153,8 +184,21 @@ See <a class="reference internal" href="#weather-underground"><em>Weather Underg
 </li>
 </ul>
 </div>
+<div class="section" id="temperatur-nu">
+<h3>temperatur.nu<a class="headerlink" href="#temperatur-nu" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Web site: <a class="reference external" href="http://www.temperatur.nu/">http://www.temperatur.nu/</a></p>
+</li>
+<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<div class="highlight-python"><pre>[temperaturnu]
+id = ???
+town = ???</pre>
+</div>
+</li>
+</ul>
+</div>
 <div class="section" id="weather-underground">
-<span id="id2"></span><h2>Weather Underground<a class="headerlink" href="#weather-underground" title="Permalink to this headline">¶</a></h2>
+<h3>Weather Underground<a class="headerlink" href="#weather-underground" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Create account: <a class="reference external" href="http://www.wunderground.com/members/signup.asp">http://www.wunderground.com/members/signup.asp</a></p>
 </li>
@@ -168,37 +212,9 @@ See <a class="reference internal" href="#weather-underground"><em>Weather Underg
 </div>
 </li>
 </ul>
-<p><a class="reference external" href="http://www.wunderground.com/">Weather Underground</a> (or Wunderground) is one of the longest established weather websites in the world.
-The <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module handles this communication for a range of online services.</p>
-<p>The first step is to set up a Weather Underground account, then use the &#8220;Add A Station&#8221; form to provide details of your station such as its location and type.
-You should then get a station ID and password &#8211; make a note of these.</p>
-<p>Now stop any pywws software that&#8217;s running, then try using <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> directly:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice ~/weather/data underground</pre>
 </div>
-<p>This should fail, as you haven&#8217;t set the station ID or password yet, but it creates entries in <tt class="docutils literal"><span class="pre">weather.ini</span></tt> for you to edit.
-Edit <tt class="docutils literal"><span class="pre">weather.ini</span></tt> and find the <tt class="docutils literal"><span class="pre">[underground]</span></tt> section:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">underground</span><span class="p">]</span>
-<span class="n">station</span> <span class="o">=</span> <span class="n">unknown</span>
-<span class="n">password</span> <span class="o">=</span> <span class="n">unknown</span>
-</pre></div>
-</div>
-<p>Replace the <tt class="docutils literal"><span class="pre">unknown</span></tt> values with your station ID and password.</p>
-<p>Now try <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> again:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice ~/weather/data underground</pre>
-</div>
-<p>If this worked then you can upload your last 7 days worth of data.
-Note that this might take quite a long time, especially if you have a short &#8216;logging interval&#8217;.
-First edit <tt class="docutils literal"><span class="pre">status.ini</span></tt> and remove the <tt class="docutils literal"><span class="pre">underground</span></tt> entry from the <tt class="docutils literal"><span class="pre">[last</span> <span class="pre">update]</span></tt> section.
-Then run <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> with the &#8216;catchup&#8217; option, and high verbosity so you can see it working:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice -vvc ~/weather/data underground</pre>
-</div>
-<p>Once everything is working, you can add &#8216;underground&#8217; to the <tt class="docutils literal"><span class="pre">[logged]</span></tt> tasks section in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">logged</span><span class="p">]</span>
-<span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="section" id="rapidfire-updates">
-<h3>&#8220;RapidFire&#8221; updates<a class="headerlink" href="#rapidfire-updates" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="weather-underground-rapidfire-updates">
+<h3>Weather Underground &#8220;RapidFire&#8221; updates<a class="headerlink" href="#weather-underground-rapidfire-updates" title="Permalink to this headline">¶</a></h3>
 <p>Weather Underground has a second upload URL for real time updates as little as 2.5 seconds apart.
 If you run pywws in &#8216;live logging&#8217; mode (see <a class="reference internal" href="livelogging.html"><em>How to set up &#8216;live&#8217; logging with pywws</em></a>) you can use this to send updates every 48 seconds, by adding &#8216;underground_rf&#8217; to the <tt class="docutils literal"><span class="pre">[live]</span></tt> tasks section in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">live</span><span class="p">]</span>
@@ -210,6 +226,19 @@ If you run pywws in &#8216;live logging&#8217; mode (see <a class="reference int
 </div>
 <p>Make sure you still have an &#8216;underground&#8217; service in <tt class="docutils literal"><span class="pre">[logged]</span></tt> or <tt class="docutils literal"><span class="pre">[hourly]</span></tt>.
 This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps if your station goes offline for some reason.</p>
+</div>
+<div class="section" id="wetter-com">
+<h3>wetter.com<a class="headerlink" href="#wetter-com" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Web site: <a class="reference external" href="http://www.wetter.com/wetter_aktuell/wetternetzwerk/">http://www.wetter.com/wetter_aktuell/wetternetzwerk/</a></p>
+</li>
+<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<div class="highlight-python"><pre>[wetterarchivde]
+benutzername = ???
+passwort = ???</pre>
+</div>
+</li>
+</ul>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
 </div>
@@ -230,11 +259,15 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
 <li><a class="reference internal" href="#">How to integrate pywws with various weather services</a><ul>
 <li><a class="reference internal" href="#yowindow">YoWindow</a></li>
 <li><a class="reference internal" href="#twitter">Twitter</a></li>
+<li><a class="reference internal" href="#other-services">Other &#8220;services&#8221;</a><ul>
+<li><a class="reference internal" href="#citizen-weather-observer-program">Citizen Weather Observer Program</a></li>
 <li><a class="reference internal" href="#uk-met-office">UK Met Office</a></li>
 <li><a class="reference internal" href="#open-weather-map">Open Weather Map</a></li>
 <li><a class="reference internal" href="#pws-weather">PWS Weather</a></li>
-<li><a class="reference internal" href="#weather-underground">Weather Underground</a><ul>
-<li><a class="reference internal" href="#rapidfire-updates">&#8220;RapidFire&#8221; updates</a></li>
+<li><a class="reference internal" href="#temperatur-nu">temperatur.nu</a></li>
+<li><a class="reference internal" href="#weather-underground">Weather Underground</a></li>
+<li><a class="reference internal" href="#weather-underground-rapidfire-updates">Weather Underground &#8220;RapidFire&#8221; updates</a></li>
+<li><a class="reference internal" href="#wetter-com">wetter.com</a></li>
 </ul>
 </li>
 </ul>
@@ -279,13 +312,13 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

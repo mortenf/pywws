@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 14.01.dev1137 documentation</title>
+    <title>pywws.toservice &mdash; pywws 14.02.dev1157 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.01.dev1137',
+        VERSION:     '14.02.dev1157',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.01.dev1137 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.02.dev1157 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.YoWindow" href="pywws.YoWindow.html" />
     <link rel="prev" title="pywws.ToTwitter" href="pywws.ToTwitter.html" /> 
@@ -45,7 +47,7 @@
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -68,60 +70,16 @@ service_name is the service to upload to, e.g. underground</pre>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Several organisations allow weather stations to upload data using a
-simple HTTP &#8216;POST&#8217; or &#8216;GET&#8217; request, with the data encoded as a
-sequence of <tt class="docutils literal"><span class="pre">key=value</span></tt> pairs separated by <tt class="docutils literal"><span class="pre">&amp;</span></tt> characters.</p>
+<p>There are an increasing number of web sites around the world that
+encourage amateur weather station owners to upload data over the
+internet.</p>
 <p>This module enables pywws to upload readings to these organisations.
 It is highly customisable using configuration files. Each &#8216;service&#8217;
-requires a configuration file and two templates in <tt class="docutils literal"><span class="pre">pywws/services</span></tt>
-(that should not need to be edited by the user) and a section in
-<tt class="docutils literal"><span class="pre">weather.ini</span></tt> containing user specific data such as your site ID and
-password.</p>
-<p>There are currently six services for which configuration files have
-been written.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="48%" />
-<col width="15%" />
-<col width="37%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">organisation</th>
-<th class="head">service name</th>
-<th class="head">config file</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="http://wow.metoffice.gov.uk/">UK Met Office</a></td>
-<td><tt class="docutils literal"><span class="pre">metoffice</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/metoffice.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/metoffice.ini</span></tt></a></td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="http://openweathermap.org/">Open Weather Map</a></td>
-<td><tt class="docutils literal"><span class="pre">openweathermap</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/openweathermap.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/openweathermap.ini</span></tt></a></td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="www.pwsweather.com">PWS Weather</a></td>
-<td><tt class="docutils literal"><span class="pre">pwsweather</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/pwsweather.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/pwsweather.ini</span></tt></a></td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="http://stacjapogody.waw.pl/index.php?id=mapastacji">Stacja Pogody</a></td>
-<td><tt class="docutils literal"><span class="pre">stacjapogodywawpl</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/stacjapogodywawpl.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/stacjapogodywawpl.ini</span></tt></a></td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="http://www.temperatur.nu/">temperatur.nu</a></td>
-<td><tt class="docutils literal"><span class="pre">temperaturnu</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/temperaturnu.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/temperaturnu.ini</span></tt></a></td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="http://www.wunderground.com/">Weather Underground</a></td>
-<td><tt class="docutils literal"><span class="pre">underground</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/underground.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/underground.ini</span></tt></a></td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="http://www.wetter.com/community/">wetter.com</a></td>
-<td><tt class="docutils literal"><span class="pre">wetterarchivde</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/wetterarchivde.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/wetterarchivde.ini</span></tt></a></td>
-</tr>
-</tbody>
-</table>
+requires a configuration file and one or two templates in
+<tt class="docutils literal"><span class="pre">pywws/services</span></tt> (that should not need to be edited by the user) and
+a section in <tt class="docutils literal"><span class="pre">weather.ini</span></tt> containing user specific data such as
+your site ID and password.</p>
+<p>See <a class="reference internal" href="../guides/integration.html#guides-integration-other"><em>How to integrate pywws with various weather services</em></a> for details of the available services.</p>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
@@ -132,8 +90,9 @@ and password details you are given.</p>
 create a section in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
 <div class="highlight-python"><pre>python -m pywws.toservice data_dir service_name</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">service_name</span></tt> is a single word service name, such as <tt class="docutils literal"><span class="pre">metoffice</span></tt>,
-<tt class="docutils literal"><span class="pre">data_dir</span></tt> is your weather data directory, as usual.</p>
+<p><tt class="docutils literal"><span class="pre">service_name</span></tt> is the single word service name used by pywws, such
+as <tt class="docutils literal"><span class="pre">metoffice</span></tt>, <tt class="docutils literal"><span class="pre">data_dir</span></tt> is your weather data directory, as
+usual.</p>
 <p>Edit <tt class="docutils literal"><span class="pre">weather.ini</span></tt> and find the section corresponding to the service
 name, e.g. <tt class="docutils literal"><span class="pre">[underground]</span></tt>. Copy your site details into this
 section, for example:</p>
@@ -167,13 +126,13 @@ section, depending on how often you want to send data. For example:</p>
 <span class="n">twitter</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">text</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground_rf&#39;</span><span class="p">]</span>
+<span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground_rf&#39;</span><span class="p">,</span> <span class="s">&#39;cwop&#39;</span><span class="p">]</span>
 
 <span class="p">[</span><span class="n">logged</span><span class="p">]</span>
 <span class="n">twitter</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">text</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;metoffice&#39;</span><span class="p">,</span> <span class="s">&#39;stacjapogodywawpl&#39;</span><span class="p">]</span>
+<span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;metoffice&#39;</span><span class="p">,</span> <span class="s">&#39;cwop&#39;</span><span class="p">]</span>
 
 <span class="p">[</span><span class="n">hourly</span><span class="p">]</span>
 <span class="n">twitter</span> <span class="o">=</span> <span class="p">[]</span>
@@ -248,19 +207,26 @@ Underground.</p>
 </tbody>
 </table>
 <dl class="method">
-<dt id="pywws.toservice.ToService.encode_data">
-<tt class="descname">encode_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.encode_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.encode_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Encode a weather data record.</p>
+<dt id="pywws.toservice.ToService.get_last_update">
+<tt class="descname">get_last_update</tt><big>(</big><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.get_last_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywws.toservice.ToService.prepare_data">
+<tt class="descname">prepare_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.prepare_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare a weather data record.</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">data</span></tt> parameter contains the data to be encoded. It
 should be a &#8216;calibrated&#8217; data record, as stored in
-<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.calib_store" title="pywws.DataStore.calib_store"><tt class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.calib_store</span></tt></a>.</p>
+<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.calib_store" title="pywws.DataStore.calib_store"><tt class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.calib_store</span></tt></a>. The relevant data items
+are extracted and converted to strings using a template, then
+merged with the station&#8217;s &#8220;fixed&#8221; data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) &#8211; the weather data record.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">urlencoded data.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
 </tr>
@@ -269,20 +235,52 @@ should be a &#8216;calibrated&#8217; data record, as stored in
 </dd></dl>
 
 <dl class="method">
-<dt id="pywws.toservice.ToService.send_data">
-<tt class="descname">send_data</tt><big>(</big><em>coded_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.send_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Upload a weather data record.</p>
-<p>The <tt class="xref py py-obj docutils literal"><span class="pre">coded_data</span></tt> parameter contains the data to be uploaded.
-It should be a urlencoded string.</p>
+<dt id="pywws.toservice.ToService.aprs_send_data">
+<tt class="descname">aprs_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.aprs_send_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload a weather data record using APRS.</p>
+<p>The <tt class="xref py py-obj docutils literal"><span class="pre">prepared_data</span></tt> parameter contains the data to be uploaded.
+It should be a dictionary of string keys and string values.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>coded_data</strong> &#8211; the data to upload.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>timestamp</strong> (<em>datetime</em>) &#8211; the timestamp of the data to upload.</li>
+<li><strong>prepared_data</strong> (<em>dict</em>) &#8211; the data to upload.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success status</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success status</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywws.toservice.ToService.http_send_data">
+<tt class="descname">http_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.http_send_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload a weather data record using HTTP.</p>
+<p>The <tt class="xref py py-obj docutils literal"><span class="pre">prepared_data</span></tt> parameter contains the data to be uploaded.
+It should be a dictionary of string keys and string values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>timestamp</strong> (<em>datetime</em>) &#8211; the timestamp of the data to upload.</li>
+<li><strong>prepared_data</strong> (<em>dict</em>) &#8211; the data to upload.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success status</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -290,19 +288,19 @@ It should be a urlencoded string.</p>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.next_data">
-<tt class="descname">next_data</tt><big>(</big><em>start</em>, <em>live_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.next_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.next_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_data</tt><big>(</big><em>catchup</em>, <em>live_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.next_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.next_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get weather data records to upload.</p>
 <p>This method returns either the most recent weather data
-record, or all records since a given datetime, according to
-the value of <tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt>.</p>
+record, or all records since the last upload, according to
+the value of <tt class="xref py py-obj docutils literal"><span class="pre">catchup</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> (<em>datetime</em>) &#8211; datetime of first record to get, or None to get
-most recent data only.</li>
-<li><strong>live_data</strong> (<em>dict</em>) &#8211; a current &#8216;live&#8217; data record, or None.</li>
+<li><strong>catchup</strong> (<em>boolean</em>) &#8211; <tt class="docutils literal"><span class="pre">True</span></tt> to get all records since last upload,
+or <tt class="docutils literal"><span class="pre">False</span></tt> to get most recent data only.</li>
+<li><strong>live_data</strong> (<em>dict</em>) &#8211; a current &#8216;live&#8217; data record, or <tt class="docutils literal"><span class="pre">None</span></tt>.</li>
 </ul>
 </td>
 </tr>
@@ -317,23 +315,9 @@ most recent data only.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pywws.toservice.ToService.set_status">
-<tt class="descname">set_status</tt><big>(</big><em>timestamp</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.set_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.set_status" title="Permalink to this definition">¶</a></dt>
+<dt id="pywws.toservice.ToService.set_last_update">
+<tt class="descname">set_last_update</tt><big>(</big><em>timestamp</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.set_last_update" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="pywws.toservice.ToService.catchup_start">
-<tt class="descname">catchup_start</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.catchup_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.catchup_start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get datetime of first &#8216;catchup&#8217; record to send.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">datetime</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.Upload">
@@ -427,13 +411,13 @@ stamp of the most recent record successfully uploaded.</p>
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.01.dev1137 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.02.dev1157 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
