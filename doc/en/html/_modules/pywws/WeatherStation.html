@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WeatherStation &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>pywws.WeatherStation &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -91,10 +91,10 @@
 <span class="sd">``unbuffered`` parameter to ``get_data`` and ``get_raw_data``.</span>
 
 <span class="sd">Decoding the data is controlled by the static dictionaries</span>
-<span class="sd">``reading_format``, ``lo_fix_format`` and ``fixed_format``. The keys</span>
+<span class="sd">``_reading_format``, ``lo_fix_format`` and ``fixed_format``. The keys</span>
 <span class="sd">are names of data items and the values can be an ``(offset, type,</span>
 <span class="sd">multiplier)`` tuple or another dictionary. So, for example, the</span>
-<span class="sd">reading_format dictionary entry ``&#39;rain&#39; : (13, &#39;us&#39;, 0.3)`` means</span>
+<span class="sd">_reading_format dictionary entry ``&#39;rain&#39; : (13, &#39;us&#39;, 0.3)`` means</span>
 <span class="sd">that the rain value is an unsigned short (two bytes), 13 bytes from</span>
 <span class="sd">the start of the block, and should be multiplied by 0.3 to get a</span>
 <span class="sd">useful value.</span>
@@ -158,77 +158,114 @@
 <span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&#39;No USB library found&#39;</span><span class="p">)</span>
 
-<span class="c"># get meaning for status integer</span>
-<span class="n">rain_overflow</span>   <span class="o">=</span> <span class="mh">0x80</span>
-<span class="n">lost_connection</span> <span class="o">=</span> <span class="mh">0x40</span>
-<span class="n">unknown</span>         <span class="o">=</span> <span class="mh">0x20</span>
-<span class="n">unknown</span>         <span class="o">=</span> <span class="mh">0x10</span>
-<span class="n">unknown</span>         <span class="o">=</span> <span class="mh">0x08</span>
-<span class="n">unknown</span>         <span class="o">=</span> <span class="mh">0x04</span>
-<span class="n">unknown</span>         <span class="o">=</span> <span class="mh">0x02</span>
-<span class="n">unknown</span>         <span class="o">=</span> <span class="mh">0x01</span>
-
 <div class="viewcode-block" id="decode_status"><a class="viewcode-back" href="../../api/pywws.WeatherStation.html#pywws.WeatherStation.decode_status">[docs]</a><span class="k">def</span> <span class="nf">decode_status</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="p">((</span><span class="s">&#39;rain_overflow&#39;</span><span class="p">,</span>   <span class="mh">0x80</span><span class="p">),</span>
-                      <span class="p">(</span><span class="s">&#39;lost_connection&#39;</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">),</span>
-                      <span class="p">(</span><span class="s">&#39;unknown&#39;</span><span class="p">,</span>         <span class="mh">0x3f</span><span class="p">),</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="p">((</span><span class="s">&#39;invalid_wind_dir&#39;</span><span class="p">,</span> <span class="mh">0x800</span><span class="p">),</span>
+                      <span class="p">(</span><span class="s">&#39;rain_overflow&#39;</span><span class="p">,</span>    <span class="mh">0x080</span><span class="p">),</span>
+                      <span class="p">(</span><span class="s">&#39;lost_connection&#39;</span><span class="p">,</span>  <span class="mh">0x040</span><span class="p">),</span>
+                      <span class="p">(</span><span class="s">&#39;unknown&#39;</span><span class="p">,</span>          <span class="mh">0x73f</span><span class="p">),</span>
                       <span class="p">):</span>
         <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">status</span> <span class="o">&amp;</span> <span class="n">mask</span>
     <span class="k">return</span> <span class="n">result</span>
 
 <span class="c"># decode weather station raw data formats</span></div>
+<span class="k">def</span> <span class="nf">_plain_byte</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">_unsigned_byte</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">_signed_byte</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">res</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">128</span> <span class="o">-</span> <span class="n">res</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">_unsigned_short</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lo</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">hi</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
+
+<span class="k">def</span> <span class="nf">_signed_short</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lo</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">hi</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">hi</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">((</span><span class="mi">128</span> <span class="o">-</span> <span class="n">hi</span><span class="p">)</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">-</span> <span class="n">lo</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
+
+<span class="k">def</span> <span class="nf">_unsigned_int3</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+    <span class="n">md</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lo</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">md</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">hi</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">md</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
+
+<span class="k">def</span> <span class="nf">_bcd_decode</span><span class="p">(</span><span class="n">byte</span><span class="p">):</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span> <span class="o">//</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x0F</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x0F</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
+
+<span class="k">def</span> <span class="nf">_date_time</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">])</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">4</span><span class="p">])</span>
+    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%4d</span><span class="s">-</span><span class="si">%02d</span><span class="s">-</span><span class="si">%02d</span><span class="s"> </span><span class="si">%02d</span><span class="s">:</span><span class="si">%02d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_time</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">])</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%02d</span><span class="s">:</span><span class="si">%02d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_wind_ave</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="c"># wind average - 12 bits split across a byte and a nibble</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span> <span class="o">+</span> <span class="p">((</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mh">0xFFF</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">_wind_gust</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="c"># wind gust - 12 bits split across a byte and a nibble</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span> <span class="o">+</span> <span class="p">((</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xF0</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mh">0xFFF</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">_bit_field</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="c"># convert byte to list of 8 booleans</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">mask</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">_decoders</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;pb&#39;</span> <span class="p">:</span> <span class="n">_plain_byte</span><span class="p">,</span>
+    <span class="s">&#39;ub&#39;</span> <span class="p">:</span> <span class="n">_unsigned_byte</span><span class="p">,</span>
+    <span class="s">&#39;sb&#39;</span> <span class="p">:</span> <span class="n">_signed_byte</span><span class="p">,</span>
+    <span class="s">&#39;us&#39;</span> <span class="p">:</span> <span class="n">_unsigned_short</span><span class="p">,</span>
+    <span class="s">&#39;ss&#39;</span> <span class="p">:</span> <span class="n">_signed_short</span><span class="p">,</span>
+    <span class="s">&#39;u3&#39;</span> <span class="p">:</span> <span class="n">_unsigned_int3</span><span class="p">,</span>
+    <span class="s">&#39;dt&#39;</span> <span class="p">:</span> <span class="n">_date_time</span><span class="p">,</span>
+    <span class="s">&#39;tt&#39;</span> <span class="p">:</span> <span class="n">_time</span><span class="p">,</span>
+    <span class="s">&#39;wa&#39;</span> <span class="p">:</span> <span class="n">_wind_ave</span><span class="p">,</span>
+    <span class="s">&#39;wg&#39;</span> <span class="p">:</span> <span class="n">_wind_gust</span><span class="p">,</span>
+    <span class="s">&#39;bf&#39;</span> <span class="p">:</span> <span class="n">_bit_field</span><span class="p">,</span>
+    <span class="p">}</span>
+
 <span class="k">def</span> <span class="nf">_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">format</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">_signed_byte</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">res</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">:</span>
-            <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">-</span> <span class="mi">128</span>
-        <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">res</span>
-    <span class="k">def</span> <span class="nf">_signed_short</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">lo</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
-        <span class="n">hi</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">lo</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">hi</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">hi</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">:</span>
-            <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="n">hi</span> <span class="o">=</span> <span class="n">hi</span> <span class="o">-</span> <span class="mi">128</span>
-        <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="p">((</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_unsigned_short</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">lo</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
-        <span class="n">hi</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">lo</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">hi</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
-    <span class="k">def</span> <span class="nf">_unsigned_int3</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">lo</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
-        <span class="n">md</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">hi</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">lo</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">md</span> <span class="o">==</span> <span class="mh">0xFF</span> <span class="ow">and</span> <span class="n">hi</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">md</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
-    <span class="k">def</span> <span class="nf">_bcd_decode</span><span class="p">(</span><span class="n">byte</span><span class="p">):</span>
-        <span class="n">hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span> <span class="o">//</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x0F</span>
-        <span class="n">lo</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x0F</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">lo</span>
-    <span class="k">def</span> <span class="nf">_date_time</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">])</span>
-        <span class="n">month</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">day</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">hour</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">3</span><span class="p">])</span>
-        <span class="n">minute</span> <span class="o">=</span> <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="mi">4</span><span class="p">])</span>
-        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%4d</span><span class="s">-</span><span class="si">%02d</span><span class="s">-</span><span class="si">%02d</span><span class="s"> </span><span class="si">%02d</span><span class="s">:</span><span class="si">%02d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_bit_field</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">mask</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">result</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">raw</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">None</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -237,44 +274,11 @@
             <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pos</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">format</span>
-        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;ub&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mh">0xFF</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;sb&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">_signed_byte</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;us&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">_unsigned_short</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;u3&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">_unsigned_int3</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;ss&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">_signed_short</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;dt&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">_date_time</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;tt&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%02d</span><span class="s">:</span><span class="si">%02d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="p">]),</span>
-                                    <span class="n">_bcd_decode</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;pb&#39;</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;wa&#39;</span><span class="p">:</span>
-            <span class="c"># wind average - 12 bits split across a byte and a nibble</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="p">((</span><span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mh">0xFFF</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;wg&#39;</span><span class="p">:</span>
-            <span class="c"># wind gust - 12 bits split across a byte and a nibble</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="p">((</span><span class="n">raw</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xF0</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mh">0xFFF</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;bf&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_decoders</span><span class="p">[</span><span class="nb">type</span><span class="p">](</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s">&#39;bf&#39;</span><span class="p">:</span>
             <span class="c"># bit field - &#39;scale&#39; is a list of bit names</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">_bit_field</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">pos</span><span class="p">)):</span>
-                <span class="n">result</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
-            <span class="k">return</span> <span class="n">result</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;unknown type </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">scale</span> <span class="ow">and</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">scale</span> <span class="ow">and</span> <span class="n">result</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
     <span class="k">return</span> <span class="n">result</span>
 
@@ -423,7 +427,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">ptr_time</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">data_time</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">last_status</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">last_status</span> <span class="o">=</span> <span class="n">decode_status</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="c"># sleep until just before next reading is due</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensor_clock</span><span class="p">:</span>
@@ -456,12 +460,13 @@
             <span class="k">if</span> <span class="n">new_ptr</span> <span class="o">!=</span> <span class="n">old_ptr</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;hum_in&#39;</span><span class="p">,</span> <span class="s">&#39;temp_in&#39;</span><span class="p">,</span> <span class="s">&#39;abs_pressure&#39;</span><span class="p">):</span>
                     <span class="n">old_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="c"># log any change of status</span>
-            <span class="k">if</span> <span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">last_status</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="s">&#39;status </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">decode_status</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])))</span>
-            <span class="n">last_status</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">decode_status</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span>
+            <span class="c"># log any change of status except &#39;invalid_wind_dir&#39;</span>
+            <span class="n">new_status</span> <span class="o">=</span> <span class="n">decode_status</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])</span>
+            <span class="n">last_status</span><span class="p">[</span><span class="s">&#39;invalid_wind_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_status</span><span class="p">[</span><span class="s">&#39;invalid_wind_dir&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">new_status</span> <span class="o">!=</span> <span class="n">last_status</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;status </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_status</span><span class="p">))</span>
+            <span class="n">last_status</span> <span class="o">=</span> <span class="n">new_status</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">new_status</span><span class="p">[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span>
                 <span class="n">decode_status</span><span class="p">(</span><span class="n">old_data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">])[</span><span class="s">&#39;lost_connection&#39;</span><span class="p">]):</span>
                 <span class="c"># &#39;lost connection&#39; decision can happen at any time</span>
                 <span class="n">old_data</span> <span class="o">=</span> <span class="n">new_data</span>
@@ -600,8 +605,16 @@
 
 <span class="sd">        If unbuffered is false then a cached value that was obtained</span>
 <span class="sd">        earlier may be returned.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_raw_data</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="n">unbuffered</span><span class="p">),</span>
-                       <span class="bp">self</span><span class="o">.</span><span class="n">reading_format</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ws_type</span><span class="p">])</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_raw_data</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="n">unbuffered</span><span class="p">),</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_reading_format</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ws_type</span><span class="p">])</span>
+        <span class="c"># split up &#39;wind_dir&#39; byte</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xF0</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x80</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="mh">0x0F</span>
+        <span class="k">return</span> <span class="n">result</span>
 </div>
 <div class="viewcode-block" id="weather_station.current_pos"><a class="viewcode-back" href="../../api/pywws.WeatherStation.html#pywws.WeatherStation.weather_station.current_pos">[docs]</a>    <span class="k">def</span> <span class="nf">current_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get circular buffer location where current data is being written.&quot;&quot;&quot;</span>
@@ -713,8 +726,8 @@
     <span class="c"># specifies an (offset, type, multiplier) tuple that is understood</span>
     <span class="c"># by _decode.</span>
     <span class="c"># depends on weather station type</span></div>
-    <span class="n">reading_format</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">reading_format</span><span class="p">[</span><span class="s">&#39;1080&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">_reading_format</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_reading_format</span><span class="p">[</span><span class="s">&#39;1080&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">&#39;delay&#39;</span>        <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;ub&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
         <span class="s">&#39;hum_in&#39;</span>       <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;ub&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
         <span class="s">&#39;temp_in&#39;</span>      <span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;ss&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
@@ -727,11 +740,11 @@
         <span class="s">&#39;rain&#39;</span>         <span class="p">:</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="s">&#39;us&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
         <span class="s">&#39;status&#39;</span>       <span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s">&#39;pb&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
         <span class="p">}</span>
-    <span class="n">reading_format</span><span class="p">[</span><span class="s">&#39;3080&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">_reading_format</span><span class="p">[</span><span class="s">&#39;3080&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">&#39;illuminance&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="s">&#39;u3&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
         <span class="s">&#39;uv&#39;</span>          <span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="s">&#39;ub&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
         <span class="p">}</span>
-    <span class="n">reading_format</span><span class="p">[</span><span class="s">&#39;3080&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">reading_format</span><span class="p">[</span><span class="s">&#39;1080&#39;</span><span class="p">])</span>
+    <span class="n">_reading_format</span><span class="p">[</span><span class="s">&#39;3080&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_reading_format</span><span class="p">[</span><span class="s">&#39;1080&#39;</span><span class="p">])</span>
     <span class="n">lo_fix_format</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">&#39;read_period&#39;</span>   <span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="s">&#39;ub&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
         <span class="s">&#39;settings_1&#39;</span>    <span class="p">:</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="s">&#39;bf&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;temp_in_F&#39;</span><span class="p">,</span> <span class="s">&#39;temp_out_F&#39;</span><span class="p">,</span> <span class="s">&#39;rain_in&#39;</span><span class="p">,</span>
@@ -864,12 +877,12 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

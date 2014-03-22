@@ -9,6 +9,7 @@ pywws.WindRose
 
    .. autosummary::
    
+      ApplicationLogger
       apparent_temp
       cadhumidex
       dew_point

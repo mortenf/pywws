@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.USBQualityTest &mdash; pywws 14.03.dev1178 documentation</title>
+    <title>pywws-reprocess &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
     <link rel="top" title="pywws 14.03.dev1178 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
-    <link rel="next" title="pywws.EWtoPy" href="pywws.EWtoPy.html" />
-    <link rel="prev" title="pywws.TestWeatherStation" href="pywws.TestWeatherStation.html" /> 
+    <link rel="next" title="pywws.TwitterAuth" href="../api/pywws.TwitterAuth.html" />
+    <link rel="prev" title="pywws-livelog-daemon" href="pywws-livelog-daemon.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,10 +42,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pywws.EWtoPy.html" title="pywws.EWtoPy"
+          <a href="../api/pywws.TwitterAuth.html" title="pywws.TwitterAuth"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="pywws.TestWeatherStation.html" title="pywws.TestWeatherStation"
+          <a href="pywws-livelog-daemon.html" title="pywws-livelog-daemon"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
@@ -57,55 +57,25 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-pywws.USBQualityTest">
-<span id="pywws-usbqualitytest"></span><h1>pywws.USBQualityTest<a class="headerlink" href="#module-pywws.USBQualityTest" title="Permalink to this headline">¶</a></h1>
-<p>Test quality of USB connection to weather station</p>
-<div class="highlight-python"><pre>usage: python -m pywws.USBQualityTest [options]
+  <div class="section" id="module-pywws_reprocess">
+<span id="pywws-reprocess"></span><h1>pywws-reprocess<a class="headerlink" href="#module-pywws_reprocess" title="Permalink to this headline">¶</a></h1>
+<p>Regenerate hourly and daily summary data</p>
+<div class="highlight-python"><pre>usage: pywws-reprocess.py [options] data_dir
 options are:
- -h | --help           display this help
- -v | --verbose        increase amount of reassuring messages
-                       (repeat for even more messages e.g. -vvv)</pre>
+ -h | --help     display this help
+ -u | --update   update status on old data to include bits from wind_dir byte
+ -v | --verbose  increase number of informative messages
+data_dir is the root directory of the weather data</pre>
 </div>
-<p>The USB link to my weather station is not 100% reliable. The data
-read from the station by the computer is occasionally corrupted,
-perhaps by interference. I&#8217;ve been trying to solve this by putting
-ferrite beads around the USB cable and relocating possible
-interference sources such as external hard drives. All without any
-success so far.</p>
-<p>This program tests the USB connection for errors by continuously
-reading the entire weather station memory (except for those parts that
-may be changing) looking for errors. Each 32-byte block is read twice,
-and if the two readings differ a warning message is displayed. Also
-displayed are the number of blocks read, and the number of errors
-found.</p>
-<p>I typically get one or two errors per hour, so the test needs to be
-run for several hours to produce a useful measurement. Note that other
-software that accesses the weather station (such as
-<a class="reference internal" href="../scripts/pywws-hourly.html"><em>pywws-hourly</em></a> or <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a>)
-must not be run while the test is in progress.</p>
-<p>If you run this test and get no errors at all, please let me know.
-There is something good about your setup and I&#8217;d love to know what it
-is!</p>
-<p class="rubric">Functions</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
-<td></td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.USBQualityTest.main" title="pywws.USBQualityTest.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="function">
-<dt id="pywws.USBQualityTest.main">
-<tt class="descclassname">pywws.USBQualityTest.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/USBQualityTest.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.USBQualityTest.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<p>This program recreates the calibrated, hourly, daily and monthly
+summary data that is created by the <a class="reference internal" href="../api/pywws.Process.html#module-pywws.Process" title="pywws.Process"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Process</span></tt></a> module. It
+should be run whenever you upgrade to a newer version of pywws (if the
+summary data format has changed), change your calibration module or
+alter your pressure offset.</p>
+<p>The <tt class="docutils literal"><span class="pre">-u</span></tt> (or <tt class="docutils literal"><span class="pre">--update</span></tt>) option is a special case. It should be
+used when upgrading from any pywws version earlier than 14.02.dev1143.
+Unlike normal reprocessing, the <tt class="docutils literal"><span class="pre">-u</span></tt> option changes your raw data.
+You are advised to backup your data before using the <tt class="docutils literal"><span class="pre">-u</span></tt> option.</p>
 </div>
 
 
@@ -118,11 +88,11 @@ is!</p>
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="pywws.TestWeatherStation.html"
-                        title="previous chapter">pywws.TestWeatherStation</a></p>
+  <p class="topless"><a href="pywws-livelog-daemon.html"
+                        title="previous chapter">pywws-livelog-daemon</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="pywws.EWtoPy.html"
-                        title="next chapter">pywws.EWtoPy</a></p>
+  <p class="topless"><a href="../api/pywws.TwitterAuth.html"
+                        title="next chapter">pywws.TwitterAuth</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -150,10 +120,10 @@ is!</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pywws.EWtoPy.html" title="pywws.EWtoPy"
+          <a href="../api/pywws.TwitterAuth.html" title="pywws.TwitterAuth"
              >next</a> |</li>
         <li class="right" >
-          <a href="pywws.TestWeatherStation.html" title="pywws.TestWeatherStation"
+          <a href="pywws-livelog-daemon.html" title="pywws-livelog-daemon"
              >previous</a> |</li>
         <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 

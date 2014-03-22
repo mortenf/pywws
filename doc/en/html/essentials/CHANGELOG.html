@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Change Log &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>Change Log &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../index.html" />
     <link rel="next" title="User guides" href="../guides/index.html" />
     <link rel="prev" title="Dependencies" href="dependencies.html" /> 
   </head>
@@ -46,7 +46,7 @@
         <li class="right" >
           <a href="dependencies.html" title="Dependencies"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -74,6 +74,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Changes in v14.03:
+    1/ Extracts additional status from 'wind_dir' byte. You must run
+       pywws-reprocess.py with the -u option after upgrading from any previous
+       version.
+    2/ Added Citizen Weather Observer Program to available 'services'.
+    3/ Improved asynchronous upload task queuing.
+    4/ Various bug fixes and minor improvements.
 
 Changes in v14.02:
     1/ Improved time zone handling, including non whole hour time zones.
@@ -316,11 +324,11 @@ Changes in v0.2:
         <li class="right" >
           <a href="dependencies.html" title="Dependencies"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

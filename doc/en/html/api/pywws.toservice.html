@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>pywws.toservice &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.YoWindow" href="pywws.YoWindow.html" />
     <link rel="prev" title="pywws.ToTwitter" href="pywws.ToTwitter.html" /> 
@@ -47,7 +47,7 @@
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -142,12 +142,12 @@ section, depending on how often you want to send data. For example:</p>
 </pre></div>
 </div>
 <p>Note that the <tt class="docutils literal"><span class="pre">[live]</span></tt> section is only used when running
-<a class="reference internal" href="pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a>. It is a good idea to repeat any service
-selected in <tt class="docutils literal"><span class="pre">[live]</span></tt> in the <tt class="docutils literal"><span class="pre">[logged]</span></tt> or <tt class="docutils literal"><span class="pre">[hourly]</span></tt> section in
-case you switch to running <a class="reference internal" href="pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a>.</p>
-<p>Restart your regular pywws program (<a class="reference internal" href="pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> or
-<a class="reference internal" href="pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a>) and visit the appropriate web site to see
-regular updates from your weather station.</p>
+<a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a>. It is a good idea to repeat any
+service selected in <tt class="docutils literal"><span class="pre">[live]</span></tt> in the <tt class="docutils literal"><span class="pre">[logged]</span></tt> or <tt class="docutils literal"><span class="pre">[hourly]</span></tt>
+section in case you switch to running <a class="reference internal" href="../scripts/pywws-hourly.html"><em>pywws-hourly</em></a>.</p>
+<p>Restart your regular pywws program (<a class="reference internal" href="../scripts/pywws-hourly.html"><em>pywws-hourly</em></a> or
+<a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a>) and visit the appropriate web site to
+see regular updates from your weather station.</p>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
@@ -208,7 +208,7 @@ Underground.</p>
 </table>
 <dl class="method">
 <dt id="pywws.toservice.ToService.prepare_data">
-<tt class="descname">prepare_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.prepare_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">prepare_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.prepare_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.prepare_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare a weather data record.</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">data</span></tt> parameter contains the data to be encoded. It
 should be a &#8216;calibrated&#8217; data record, as stored in
@@ -231,7 +231,7 @@ merged with the station&#8217;s &#8220;fixed&#8221; data.</p>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.aprs_send_data">
-<tt class="descname">aprs_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.aprs_send_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">aprs_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.aprs_send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.aprs_send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upload a weather data record using APRS.</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">prepared_data</span></tt> parameter contains the data to be uploaded.
 It should be a dictionary of string keys and string values.</p>
@@ -257,7 +257,7 @@ It should be a dictionary of string keys and string values.</p>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.http_send_data">
-<tt class="descname">http_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.http_send_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">http_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.http_send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.http_send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upload a weather data record using HTTP.</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">prepared_data</span></tt> parameter contains the data to be uploaded.
 It should be a dictionary of string keys and string values.</p>
@@ -311,7 +311,7 @@ or <tt class="docutils literal"><span class="pre">False</span></tt> to get most 
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.set_last_update">
-<tt class="descname">set_last_update</tt><big>(</big><em>timestamp</em><big>)</big><a class="headerlink" href="#pywws.toservice.ToService.set_last_update" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_last_update</tt><big>(</big><em>timestamp</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.set_last_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.set_last_update" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -406,12 +406,12 @@ stamp of the most recent record successfully uploaded.</p>
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

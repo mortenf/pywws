@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to get started with pywws &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>How to get started with pywws &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to set up ‘hourly’ logging with pywws" href="hourlylogging.html" />
     <link rel="prev" title="User guides" href="index.html" /> 
@@ -47,7 +47,7 @@
         <li class="right" >
           <a href="index.html" title="User guides"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -239,7 +239,7 @@ pressure offset = 9.4
 day end hour = 9</pre>
 </div>
 <p>You can also edit the <tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> value to adjust how pywws calculates the relative (sea level) air pressure from the absolute value that the station measures.
-If you change the pressure offset or day end hour in future, you must update all your stored data by running <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a>.</p>
+If you change the pressure offset or day end hour in future, you must update all your stored data by running <tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt>.</p>
 <p>For more detail on the configuration file options, see <a class="reference internal" href="weather_ini.html"><em>weather.ini - configuration file format</em></a>.</p>
 <p class="versionchanged">
 <span class="versionmodified">Changed in version 13.10_r1082: </span>made <tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> a config item.
@@ -256,7 +256,7 @@ These are created by <a class="reference internal" href="../api/pywws.Process.ht
 <div class="highlight-python"><pre>more ~/weather/data/weather/daily/2012/2012-12-16.txt</pre>
 </div>
 <p>If you ever change your <tt class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></tt> configuration setting, you will need to reprocess all your weather data.
-You can do this by running <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a>:</p>
+You can do this by running <tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt>:</p>
 <div class="highlight-python"><pre>python -m pywws.Reprocess ~/weather/data</pre>
 </div>
 <p>You are now ready to set up regular or continuous logging, as described in <a class="reference internal" href="hourlylogging.html"><em>How to set up &#8216;hourly&#8217; logging with pywws</em></a> or <a class="reference internal" href="livelogging.html"><em>How to set up &#8216;live&#8217; logging with pywws</em></a>.</p>
@@ -340,12 +340,12 @@ Start with the index (<a class="reference internal" href="../index.html"><em>pyw
         <li class="right" >
           <a href="index.html" title="User guides"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

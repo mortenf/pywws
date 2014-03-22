@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WindRose &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>pywws.WindRose &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -54,7 +54,7 @@
 
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
 <span class="c"># http://github.com/jim-easterbrook/pywws</span>
-<span class="c"># Copyright (C) 2008-13  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
+<span class="c"># Copyright (C) 2008-14  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
 
 <span class="c"># This program is free software; you can redistribute it and/or</span>
 <span class="c"># modify it under the terms of the GNU General Public License</span>
@@ -302,12 +302,11 @@
 <span class="kn">from</span> <span class="nn">pywws.conversions</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">DataStore</span>
 <span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">Localisation</span>
+<span class="kn">from</span> <span class="nn">pywws.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
 <span class="kn">from</span> <span class="nn">pywws.Plot</span> <span class="kn">import</span> <span class="n">BasePlotter</span>
 
 <div class="viewcode-block" id="RosePlotter"><a class="viewcode-back" href="../../api/pywws.WindRose.html#pywws.WindRose.RosePlotter">[docs]</a><span class="k">class</span> <span class="nc">RosePlotter</span><span class="p">(</span><span class="n">BasePlotter</span><span class="p">):</span>
-<div class="viewcode-block" id="RosePlotter.GetPlotList"><a class="viewcode-back" href="../../api/pywws.WindRose.html#pywws.WindRose.RosePlotter.GetPlotList">[docs]</a>    <span class="k">def</span> <span class="nf">GetPlotList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;windrose&#39;</span><span class="p">)</span>
-</div>
+    <span class="n">plot_name</span> <span class="o">=</span> <span class="s">&#39;windrose&#39;</span>
 <div class="viewcode-block" id="RosePlotter.GetDefaultRows"><a class="viewcode-back" href="../../api/pywws.WindRose.html#pywws.WindRose.RosePlotter.GetDefaultRows">[docs]</a>    <span class="k">def</span> <span class="nf">GetDefaultRows</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_count</span><span class="p">))</span>
 </div>
@@ -330,26 +329,26 @@
 <span class="s">&quot;&quot;&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set xtics axis nomirror</span><span class="se">\n</span><span class="s">&#39;</span>
-        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;lmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
+        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;lmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set lmargin </span><span class="si">%g</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lmargin</span><span class="p">)</span>
-        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;rmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
+        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;rmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set rmargin </span><span class="si">%g</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lmargin</span><span class="p">)</span>
-        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;tmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
+        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;tmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set tmargin </span><span class="si">%g</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lmargin</span><span class="p">)</span>
-        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s">&#39;bmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
+        <span class="n">lmargin</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;bmargin&#39;</span><span class="p">,</span> <span class="s">&#39;-1&#39;</span><span class="p">))</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set bmargin </span><span class="si">%g</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lmargin</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
 </div>
 <div class="viewcode-block" id="RosePlotter.PlotData"><a class="viewcode-back" href="../../api/pywws.WindRose.html#pywws.WindRose.RosePlotter.PlotData">[docs]</a>    <span class="k">def</span> <span class="nf">PlotData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_no</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">Localisation</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">ugettext</span>
         <span class="c"># get statistics</span>
-        <span class="n">thresh</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span>
-            <span class="n">plot</span><span class="p">,</span> <span class="s">&#39;threshold&#39;</span><span class="p">,</span> <span class="s">&#39;0.0, 1.54, 3.09, 5.14, 8.23, 10.8, 15.5&#39;</span><span class="p">))</span>
+        <span class="n">thresh</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span>
+            <span class="s">&#39;threshold&#39;</span><span class="p">,</span> <span class="s">&#39;0.0, 1.54, 3.09, 5.14, 8.23, 10.8, 15.5&#39;</span><span class="p">))</span>
         <span class="n">thresh</span> <span class="o">=</span> <span class="n">thresh</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1000.0</span><span class="p">,)</span>
-        <span class="n">colour</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s">&#39;colour&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thresh</span><span class="p">)))))</span>
-        <span class="n">xcalc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s">&#39;xcalc&#39;</span><span class="p">,</span> <span class="s">&#39;True&#39;</span><span class="p">)</span>
+        <span class="n">colour</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;colour&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thresh</span><span class="p">)))))</span>
+        <span class="n">xcalc</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;xcalc&#39;</span><span class="p">,</span> <span class="s">&#39;True&#39;</span><span class="p">)</span>
         <span class="n">xcalc</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">xcalc</span><span class="p">,</span> <span class="s">&#39;&lt;string&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;eval&#39;</span><span class="p">)</span>
-        <span class="n">ycalc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s">&#39;ycalc&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">ycalc</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;ycalc&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="n">ycalc</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">ycalc</span><span class="p">,</span> <span class="s">&#39;&lt;string&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;eval&#39;</span><span class="p">)</span>
         <span class="n">histograms</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thresh</span><span class="p">)):</span>
@@ -388,7 +387,7 @@
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
             <span class="n">total</span> <span class="o">+=</span> <span class="n">histograms</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
         <span class="n">result</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-        <span class="n">yrange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s">&#39;yrange&#39;</span><span class="p">,</span> <span class="s">&#39;31&#39;</span><span class="p">)</span>
+        <span class="n">yrange</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;yrange&#39;</span><span class="p">,</span> <span class="s">&#39;31&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">yrange</span> <span class="o">==</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
             <span class="c"># auto-ranging</span>
             <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -409,7 +408,7 @@
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set xrange [-</span><span class="si">%d</span><span class="s">:</span><span class="si">%d</span><span class="s">]</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">yrange</span><span class="p">,</span> <span class="n">yrange</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set yrange [-</span><span class="si">%d</span><span class="s">:</span><span class="si">%d</span><span class="s">]</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">yrange</span><span class="p">,</span> <span class="n">yrange</span><span class="p">)</span>
         <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">(</span><span class="s">&#39;N&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s">&#39;S&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s">&#39;E&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s">&#39;W&#39;</span><span class="p">)]</span>
-        <span class="n">points</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s">&#39;points&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s">&#39;points&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set label 1000 &quot;</span><span class="si">%s</span><span class="s">&quot; at 0, </span><span class="si">%d</span><span class="s"> center front</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yrange</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set label 1001 &quot;</span><span class="si">%s</span><span class="s">&quot; at 0, -</span><span class="si">%d</span><span class="s"> center front</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">yrange</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="s">&#39;set label 1002 &quot;</span><span class="si">%s</span><span class="s">&quot; at </span><span class="si">%d</span><span class="s">, 0 center front</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">yrange</span><span class="p">)</span>
@@ -480,6 +479,7 @@
         <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#39;Error: 4 arguments required</span><span class="se">\n</span><span class="s">&#39;</span>
         <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">__usage__</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">return</span> <span class="mi">2</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">ApplicationLogger</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">params</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">Localisation</span><span class="o">.</span><span class="n">SetApplicationLanguage</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">RosePlotter</span><span class="p">(</span>
@@ -527,12 +527,12 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

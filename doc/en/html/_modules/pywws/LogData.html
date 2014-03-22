@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.LogData &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>pywws.LogData &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -123,6 +123,7 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
+<span class="kn">from</span> <span class="nn">pywws.constants</span> <span class="kn">import</span> <span class="n">SECOND</span>
 <span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">DataStore</span>
 <span class="kn">from</span> <span class="nn">pywws.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
 <span class="kn">from</span> <span class="nn">pywws.TimeZone</span> <span class="kn">import</span> <span class="n">HOUR</span>
@@ -196,7 +197,7 @@
             <span class="n">saved_date</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">safestrptime</span><span class="p">(</span><span class="n">saved_date</span><span class="p">)</span>
             <span class="n">saved_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">nearest</span><span class="p">(</span><span class="n">saved_date</span><span class="p">)</span>
             <span class="k">while</span> <span class="n">saved_date</span> <span class="o">&lt;</span> <span class="n">last_stored</span><span class="p">:</span>
-                <span class="n">saved_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">saved_date</span><span class="p">)</span>
+                <span class="n">saved_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">saved_date</span> <span class="o">+</span> <span class="n">SECOND</span><span class="p">)</span>
                 <span class="n">saved_ptr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">inc_ptr</span><span class="p">(</span><span class="n">saved_ptr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">saved_ptr</span> <span class="o">=</span> <span class="bp">None</span>
@@ -241,7 +242,7 @@
                 <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
             <span class="n">count</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">duplicates</span><span class="p">)</span>
         <span class="n">last_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">nearest</span><span class="p">(</span><span class="n">last_date</span><span class="p">)</span>
-        <span class="n">next_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">last_date</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">next_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">last_date</span> <span class="o">+</span> <span class="n">SECOND</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">next_date</span><span class="p">:</span>
             <span class="n">gap</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_date</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span> <span class="o">//</span> <span class="mi">60</span>
             <span class="n">gap</span> <span class="o">-=</span> <span class="n">fixed_block</span><span class="p">[</span><span class="s">&#39;read_period&#39;</span><span class="p">]</span>
@@ -401,12 +402,12 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

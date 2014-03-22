@@ -5,6 +5,12 @@ pywws.TimeZone
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      main
+   
    
 
    

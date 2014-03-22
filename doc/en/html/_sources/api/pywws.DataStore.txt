@@ -9,6 +9,7 @@ pywws.DataStore
 
    .. autosummary::
    
+      Lock
       safestrptime
    
    

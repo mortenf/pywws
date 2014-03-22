@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Plot &mdash; pywws 14.03.dev1168 documentation</title>
+    <title>pywws.Plot &mdash; pywws 14.03.dev1178 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.03.dev1168',
+        VERSION:     '14.03.dev1178',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1168 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.WindRose" href="pywws.WindRose.html" />
     <link rel="prev" title="pywws.calib" href="pywws.calib.html" /> 
@@ -47,7 +47,7 @@
         <li class="right" >
           <a href="pywws.calib.html" title="pywws.calib"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -497,6 +497,12 @@ subplot.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#pywws.Plot.BasePlotter" title="pywws.Plot.BasePlotter"><tt class="xref py py-obj docutils literal"><span class="pre">BasePlotter</span></tt></a>(params,&nbsp;status,&nbsp;raw_data,&nbsp;...)</td>
 <td></td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.Plot.GraphFileReader" title="pywws.Plot.GraphFileReader"><tt class="xref py py-obj docutils literal"><span class="pre">GraphFileReader</span></tt></a>(input_file)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.Plot.GraphNode" title="pywws.Plot.GraphNode"><tt class="xref py py-obj docutils literal"><span class="pre">GraphNode</span></tt></a>(node)</td>
+<td></td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#pywws.Plot.GraphPlotter" title="pywws.Plot.GraphPlotter"><tt class="xref py py-obj docutils literal"><span class="pre">GraphPlotter</span></tt></a>(params,&nbsp;status,&nbsp;raw_data,&nbsp;...)</td>
 <td></td>
 </tr>
@@ -513,25 +519,25 @@ subplot.</p>
 </table>
 <dl class="class">
 <dt id="pywws.Plot.GraphNode">
-<em class="property">class </em><tt class="descclassname">pywws.Plot.</tt><tt class="descname">GraphNode</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#pywws.Plot.GraphNode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pywws.Plot.</tt><tt class="descname">GraphNode</tt><big>(</big><em>node</em><big>)</big><a class="reference internal" href="../_modules/pywws/Plot.html#GraphNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Plot.GraphNode" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.Plot.GraphNode.get_children">
-<tt class="descname">get_children</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#pywws.Plot.GraphNode.get_children" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_children</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/pywws/Plot.html#GraphNode.get_children"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Plot.GraphNode.get_children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Plot.GraphNode.get_value">
-<tt class="descname">get_value</tt><big>(</big><em>name</em>, <em>default</em><big>)</big><a class="headerlink" href="#pywws.Plot.GraphNode.get_value" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_value</tt><big>(</big><em>name</em>, <em>default</em><big>)</big><a class="reference internal" href="../_modules/pywws/Plot.html#GraphNode.get_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Plot.GraphNode.get_value" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pywws.Plot.GraphFileReader">
-<em class="property">class </em><tt class="descclassname">pywws.Plot.</tt><tt class="descname">GraphFileReader</tt><big>(</big><em>input_file</em><big>)</big><a class="headerlink" href="#pywws.Plot.GraphFileReader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pywws.Plot.</tt><tt class="descname">GraphFileReader</tt><big>(</big><em>input_file</em><big>)</big><a class="reference internal" href="../_modules/pywws/Plot.html#GraphFileReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Plot.GraphFileReader" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.Plot.GraphFileReader.close">
-<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#pywws.Plot.GraphFileReader.close" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/Plot.html#GraphFileReader.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Plot.GraphFileReader.close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -685,12 +691,12 @@ subplot.</p>
         <li class="right" >
           <a href="pywws.calib.html" title="pywws.calib"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1168 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-13, Jim Easterbrook.
+        &copy; Copyright 2008-14, Jim Easterbrook.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

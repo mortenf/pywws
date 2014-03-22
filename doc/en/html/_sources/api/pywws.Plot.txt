@@ -37,6 +37,8 @@ pywws.Plot
    .. autosummary::
    
       BasePlotter
+      GraphFileReader
+      GraphNode
       GraphPlotter
       Record
       datetime
