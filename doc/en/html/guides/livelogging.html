@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to set up ‘live’ logging with pywws &mdash; pywws 14.03.dev1178 documentation</title>
+    <title>How to set up ‘live’ logging with pywws &mdash; pywws 14.05.dev1208 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.03.dev1178',
+        VERSION:     '14.05.dev1208',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to integrate pywws with various weather services" href="integration.html" />
     <link rel="prev" title="How to set up ‘hourly’ logging with pywws" href="hourlylogging.html" /> 
@@ -47,7 +47,7 @@
         <li class="right" >
           <a href="hourlylogging.html" title="How to set up ‘hourly’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -62,26 +62,24 @@
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>There are two quite different modes of operation with pywws.
-Traditionally <a class="reference internal" href="../scripts/pywws-hourly.html"><em>pywws-hourly</em></a> would be run at regular intervals (usually an hour) from cron.
+Traditionally <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> would be run at regular intervals (usually an hour) from cron.
 This is suitable for fairly static websites, but more frequent updates can be useful for sites such as Weather Underground (<a class="reference external" href="http://www.wunderground.com/">http://www.wunderground.com/</a>).
-The newer <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> program runs continuously and can upload data every 48 seconds.</p>
+The newer <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a> program runs continuously and can upload data every 48 seconds.</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>First of all, you need to install pywws and make sure it can get data from your weather station.
 See <a class="reference internal" href="getstarted.html"><em>How to get started with pywws</em></a> for details.</p>
-<p>If you have previously been using <a class="reference internal" href="../scripts/pywws-hourly.html"><em>pywws-hourly</em></a> then disable your &#8216;cron&#8217; job (or whatever else you use to run it) so it no longer runs.
-You should not run <a class="reference internal" href="../scripts/pywws-hourly.html"><em>pywws-hourly</em></a> and <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> at the same time.</p>
-<p>Try running <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> from the command line, with a high level of verbosity so you can see what&#8217;s happening.
-If you have installed pywws using <tt class="docutils literal"><span class="pre">pip</span></tt> or <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> then you should be able to use the pywws scripts directly:</p>
-<div class="highlight-python"><pre>pywws-livelog.py -vvv ~/weather/data</pre>
-</div>
-<p>Otherwise you need to change to the pywws directory first:</p>
-<div class="highlight-python"><pre>cd ~/weather/pywws
-scripts/pywws-livelog.py -vvv ~/weather/data</pre>
+<p>If you have previously been using <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> then disable your &#8216;cron&#8217; job (or whatever else you use to run it) so it no longer runs.
+You should not run <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> and <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a> at the same time.</p>
+<p>Try running <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a> from the command line, with a high level of verbosity so you can see what&#8217;s happening.
+Use the <tt class="docutils literal"><span class="pre">pywws-livelog</span></tt> command to run <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a>:</p>
+<div class="highlight-python"><pre>pywws-livelog -vvv ~/weather/data</pre>
 </div>
 <p>Within five minutes (assuming you have set a 5 minute logging interval) you should see a &#8216;live_data new ptr&#8217; message, followed by fetching any new data from the weather station and processing it.
-Let <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> run for a minute or two longer, then kill the process by typing &#8216;&lt;Ctrl&gt;C&#8217;.</p>
+Let <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a> run for a minute or two longer, then kill the process by typing &#8216;&lt;Ctrl&gt;C&#8217;.</p>
+<p class="versionchanged">
+<span class="versionmodified">Changed in version 14.04.dev1194: </span>the <tt class="docutils literal"><span class="pre">pywws-livelog</span></tt> command replaced <tt class="docutils literal"><span class="pre">scripts/pywws-livelog.py</span></tt>.</p>
 </div>
 <div class="section" id="configuring-file-locations">
 <h2>Configuring file locations<a class="headerlink" href="#configuring-file-locations" title="Permalink to this headline">¶</a></h2>
@@ -98,7 +96,9 @@ local_files = /home/xxx/weather/results/</pre>
 Don&#8217;t use the pywws example directories for your templates, as they will get over-written when you upgrade pywws.</p>
 <p>Copy your text and graph templates to the appropriate directories.
 You may find some of the examples provided with pywws useful to get started.
-If you installed pywws with <tt class="docutils literal"><span class="pre">pip</span></tt> the examples should be in <tt class="docutils literal"><span class="pre">/usr/share/pywws</span></tt> or <tt class="docutils literal"><span class="pre">/usr/local/share/pywws</span></tt> or similar.</p>
+The <tt class="docutils literal"><span class="pre">pywws-version</span> <span class="pre">-v</span></tt> command should show you where the examples are on your computer.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 14.04.dev1194: </span>the <tt class="docutils literal"><span class="pre">pywws-version</span></tt> command.</p>
 </div>
 <div class="section" id="configuring-periodic-tasks">
 <h2>Configuring periodic tasks<a class="headerlink" href="#configuring-periodic-tasks" title="Permalink to this headline">¶</a></h2>
@@ -161,28 +161,20 @@ This older syntax still works, but is deprecated.</p>
 <p>Uploading data to web sites or &#8216;services&#8217; can sometimes take a long time, particularly if a site has gone off line and the upload times out.
 In normal operation pywws waits until all uploads have been processed before fetching any more data from the weather station.
 This can lead to data sometimes being missed.</p>
-<p>The <tt class="docutils literal"><span class="pre">asynchronous</span></tt> item in the <tt class="docutils literal"><span class="pre">[config]</span></tt> section of weather.ini can be set to <tt class="docutils literal"><span class="pre">True</span></tt> to tell <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> to do these uploads in a separate thread.
-This feature is still a bit experimental &#8211; try it at your own risk.</p>
+<p>The <tt class="docutils literal"><span class="pre">asynchronous</span></tt> item in the <tt class="docutils literal"><span class="pre">[config]</span></tt> section of weather.ini can be set to <tt class="docutils literal"><span class="pre">True</span></tt> to tell <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a> to do these uploads in a separate thread.</p>
 </div>
 <div class="section" id="run-in-the-background">
 <h2>Run in the background<a class="headerlink" href="#run-in-the-background" title="Permalink to this headline">¶</a></h2>
-<p>In order to have <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> carry on running after you finish using your computer it needs to be run as a &#8216;background job&#8217;.
-On most Linux / UNIX systems you can do this by putting an ampersand (&#8216;&amp;&#8217;) at the end of the command line.
-For example:</p>
-<div class="highlight-python"><pre>pywws-livelog.py ~/weather/data &amp;</pre>
-</div>
-<p>However, it would be useful to know what went wrong if the program crashes for any reason. <a class="reference internal" href="../scripts/pywws-livelog.html"><em>pywws-livelog</em></a> can store its messages in a log file, specified with the <tt class="docutils literal"><span class="pre">-l</span></tt> option:</p>
-<div class="highlight-python"><pre>pywws-livelog.py -v -l ~/weather/data/pywws.log ~/weather/data &amp;</pre>
-</div>
 <p class="versionadded">
 <span class="versionmodified">New in version 13.12.dev1118.</span></p>
-<p>Running a job in the background like this doesn&#8217;t always work correctly.
-On some systems the job may suspend when you log out.
-It&#8217;s much better to run as a proper UNIX &#8216;daemon&#8217; process.
-The <a class="reference internal" href="../scripts/pywws-livelog-daemon.html"><em>pywws-livelog-daemon</em></a> program does this, if you have the <a class="reference external" href="https://pypi.python.org/pypi/python-daemon/">python-daemon</a> library installed:</p>
-<div class="highlight-python"><pre>pywws-livelog-daemon.py -v ~/weather/data ~/weather/data/pywws.log start</pre>
+<p>In order to have <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a> carry on running after you finish using your computer it needs to be run as a &#8220;background job&#8221;.
+On most Linux / UNIX systems you can do this by putting an ampersand (&#8216;&amp;&#8217;) at the end of the command line.
+Running a job in the background like this doesn&#8217;t always work as expected: the job may suspend when you log out.
+It&#8217;s much better to run as a proper UNIX &#8216;daemon&#8217; process.</p>
+<p>The <a class="reference internal" href="../api/pywws.livelogdaemon.html#module-pywws.livelogdaemon" title="pywws.livelogdaemon"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.livelogdaemon</span></tt></a> program does this, if you have the <a class="reference external" href="https://pypi.python.org/pypi/python-daemon/">python-daemon</a> library installed:</p>
+<div class="highlight-python"><pre>pywws-livelog-daemon -v ~/weather/data ~/weather/data/pywws.log start</pre>
 </div>
-<p>Note that the log file is now a required parameter, not an option.</p>
+<p>Note that the log file is a required parameter, not an option.</p>
 </div>
 <div class="section" id="automatic-restarting">
 <h2>Automatic restarting<a class="headerlink" href="#automatic-restarting" title="Permalink to this headline">¶</a></h2>
@@ -191,6 +183,8 @@ Typically these involve putting a file in <tt class="docutils literal"><span cla
 A slightly harder problem is ensuring a program restarts if it crashes.
 My solution to both problems is to run the following script from cron, several times an hour.</p>
 <div class="highlight-python"><pre>#!/bin/sh
+
+export PATH=$PATH:/usr/local/bin
 
 # exit if NTP hasn't set computer clock
 [ `ntpdc -c sysinfo | awk '/stratum:/ {print $2}'` -ge 10 ] &amp;&amp; exit
@@ -211,14 +205,15 @@ if [ -f $logfile ]; then
   fi
 
 # restart process
-pywws-livelog-daemon.py -v -p $pidfile $datadir $logfile start</pre>
+pywws-livelog-daemon -v -p $pidfile $datadir $logfile start</pre>
 </div>
 <p>The process id of the daemon is stored in <tt class="docutils literal"><span class="pre">pidfile</span></tt>.
 If the process is running, the script does nothing.
-If the process has crashed, it emails the last 40 lines of the log file to me (using a script that creates a message and passes it to sendmail) and then restarts <a class="reference internal" href="../scripts/pywws-livelog-daemon.html"><em>pywws-livelog-daemon</em></a>.
+If the process has crashed, it emails the last 40 lines of the log file to me (using a script that creates a message and passes it to sendmail) and then restarts <a class="reference internal" href="../api/pywws.livelogdaemon.html#module-pywws.livelogdaemon" title="pywws.livelogdaemon"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.livelogdaemon</span></tt></a>.
 You&#8217;ll need to edit this quite a lot to suit your file locations and so on, but it gives some idea of what to do.</p>
 <hr class="docutils" />
-<p>Comments or questions? Please subscribe to the pywws mailing list <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
+<p>Comments or questions? Please subscribe to the pywws mailing list
+<a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
 </div>
 </div>
 
@@ -283,7 +278,7 @@ You&#8217;ll need to edit this quite a lot to suit your file locations and so on
         <li class="right" >
           <a href="hourlylogging.html" title="How to set up ‘hourly’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>

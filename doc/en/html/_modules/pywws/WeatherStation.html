@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WeatherStation &mdash; pywws 14.03.dev1178 documentation</title>
+    <title>pywws.WeatherStation &mdash; pywws 14.05.dev1208 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.03.dev1178',
+        VERSION:     '14.05.dev1208',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -126,6 +126,8 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+
 <span class="n">__docformat__</span> <span class="o">=</span> <span class="s">&quot;restructuredtext en&quot;</span>
 
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -133,26 +135,26 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">Localisation</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Localisation</span>
 <span class="n">USBDevice</span> <span class="o">=</span> <span class="bp">None</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pywws.device_pyusb1</span> <span class="kn">import</span> <span class="n">USBDevice</span>
+        <span class="kn">from</span> <span class="nn">.device_pyusb1</span> <span class="kn">import</span> <span class="n">USBDevice</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">pass</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pywws.device_pyusb</span> <span class="kn">import</span> <span class="n">USBDevice</span>
+        <span class="kn">from</span> <span class="nn">.device_pyusb</span> <span class="kn">import</span> <span class="n">USBDevice</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">pass</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pywws.device_ctypes_hidapi</span> <span class="kn">import</span> <span class="n">USBDevice</span>
+        <span class="kn">from</span> <span class="nn">.device_ctypes_hidapi</span> <span class="kn">import</span> <span class="n">USBDevice</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">pass</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pywws.device_cython_hidapi</span> <span class="kn">import</span> <span class="n">USBDevice</span>
+        <span class="kn">from</span> <span class="nn">.device_cython_hidapi</span> <span class="kn">import</span> <span class="n">USBDevice</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">pass</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
@@ -371,7 +373,7 @@
     <span class="n">min_pause</span> <span class="o">=</span> <span class="mf">0.5</span>
     <span class="c"># margin of error for various decisions</span>
     <span class="n">margin</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_pause</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_type</span><span class="o">=</span><span class="s">&#39;1080&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">avoid</span><span class="o">=</span><span class="mf">3.0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_type</span><span class="o">=</span><span class="s">&#39;1080&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">avoid</span><span class="o">=</span><span class="mf">3.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Connect to weather station and prepare to read data.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&#39;pywws.weather_station&#39;</span><span class="p">)</span>
         <span class="c"># create basic IO object</span>
@@ -383,9 +385,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data_pos</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="n">params</span><span class="p">:</span>
-            <span class="n">params</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;station clock&#39;</span><span class="p">)</span>
-            <span class="n">params</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;sensor clock&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_station_clock</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;clock&#39;</span><span class="p">,</span> <span class="s">&#39;station&#39;</span><span class="p">,</span> <span class="s">&#39;None&#39;</span><span class="p">))</span>
@@ -625,11 +624,6 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span> <span class="ow">and</span> <span class="n">new_ptr</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inc_ptr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
                 <span class="s">&#39;unexpected ptr change </span><span class="si">%06x</span><span class="s"> -&gt; </span><span class="si">%06x</span><span class="s">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span><span class="p">,</span> <span class="n">new_ptr</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reading_len</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">new_ptr</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">reading_len</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;type change </span><span class="si">%s</span><span class="s"> -&gt; </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws_type</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">ws_type</span> <span class="o">=</span> <span class="n">k</span>
-                    <span class="k">break</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span> <span class="o">=</span> <span class="n">new_ptr</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_ptr</span>
 </div>
@@ -877,7 +871,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

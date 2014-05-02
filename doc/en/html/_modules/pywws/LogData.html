@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.LogData &mdash; pywws 14.03.dev1178 documentation</title>
+    <title>pywws.LogData &mdash; pywws 14.05.dev1208 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.03.dev1178',
+        VERSION:     '14.05.dev1208',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -103,6 +103,8 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+
 <span class="n">__docformat__</span> <span class="o">=</span> <span class="s">&quot;restructuredtext en&quot;</span>
 <span class="n">__usage__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s"> usage: python -m pywws.LogData [options] data_dir</span>
@@ -123,11 +125,11 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">pywws.constants</span> <span class="kn">import</span> <span class="n">SECOND</span>
-<span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">DataStore</span>
-<span class="kn">from</span> <span class="nn">pywws.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
-<span class="kn">from</span> <span class="nn">pywws.TimeZone</span> <span class="kn">import</span> <span class="n">HOUR</span>
-<span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">WeatherStation</span>
+<span class="kn">from</span> <span class="nn">.constants</span> <span class="kn">import</span> <span class="n">SECOND</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">DataStore</span>
+<span class="kn">from</span> <span class="nn">.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
+<span class="kn">from</span> <span class="nn">.TimeZone</span> <span class="kn">import</span> <span class="n">HOUR</span>
+<span class="kn">from</span> <span class="nn">.WeatherStation</span> <span class="kn">import</span> <span class="n">weather_station</span>
 
 <div class="viewcode-block" id="DataLogger"><a class="viewcode-back" href="../../api/pywws.LogData.html#pywws.LogData.DataLogger">[docs]</a><span class="k">class</span> <span class="nc">DataLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">):</span>
@@ -142,9 +144,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;ws type&#39;</span><span class="p">,</span> <span class="n">ws_type</span><span class="p">)</span>
         <span class="n">ws_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;ws type&#39;</span><span class="p">,</span> <span class="s">&#39;Unknown&#39;</span><span class="p">)</span>
         <span class="n">avoid</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;usb activity margin&#39;</span><span class="p">,</span> <span class="s">&#39;3.0&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">WeatherStation</span><span class="o">.</span><span class="n">weather_station</span><span class="p">(</span>
-            <span class="n">ws_type</span><span class="o">=</span><span class="n">ws_type</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
-            <span class="n">avoid</span><span class="o">=</span><span class="n">avoid</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">weather_station</span><span class="p">(</span>
+            <span class="n">ws_type</span><span class="o">=</span><span class="n">ws_type</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="n">avoid</span><span class="o">=</span><span class="n">avoid</span><span class="p">)</span>
         <span class="c"># check for valid weather station type</span>
         <span class="n">fixed_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_fixed_block</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">ws_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;1080&#39;</span><span class="p">,</span> <span class="s">&#39;3080&#39;</span><span class="p">):</span>
@@ -174,8 +175,6 @@
             <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="s">&quot;Computer and weather station clocks disagree by </span><span class="si">%s</span><span class="s"> (H:M:S).&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">diff</span><span class="p">))</span>
-        <span class="c"># store weather station type</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;ws type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">ws_type</span><span class="p">)</span>
         <span class="c"># store info from fixed block</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;pressure offset&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;pressure offset&#39;</span><span class="p">):</span>
@@ -183,6 +182,9 @@
                 <span class="n">fixed_block</span><span class="p">[</span><span class="s">&#39;rel_pressure&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">fixed_block</span><span class="p">[</span><span class="s">&#39;abs_pressure&#39;</span><span class="p">]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;fixed block&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;fixed block&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">fixed_block</span><span class="p">))</span>
+        <span class="c"># check ws type</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">fixed_block</span><span class="p">[</span><span class="s">&#39;lux_wm2_coeff&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">ws_type</span> <span class="o">==</span> <span class="s">&#39;1080&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;weather station type appears to be incorrect&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">fixed_block</span>
 </div>
 <div class="viewcode-block" id="DataLogger.catchup"><a class="viewcode-back" href="../../api/pywws.LogData.html#pywws.LogData.DataLogger.catchup">[docs]</a>    <span class="k">def</span> <span class="nf">catchup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">last_date</span><span class="p">,</span> <span class="n">last_ptr</span><span class="p">):</span>
@@ -402,7 +404,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

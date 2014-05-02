@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Template &mdash; pywws 14.03.dev1178 documentation</title>
+    <title>pywws.Template &mdash; pywws 14.05.dev1208 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.03.dev1178',
+        VERSION:     '14.05.dev1208',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.03.dev1178 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -304,6 +304,8 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+
 <span class="n">__docformat__</span> <span class="o">=</span> <span class="s">&quot;restructuredtext en&quot;</span>
 <span class="n">__usage__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s"> usage: python -m pywws.Template [options] data_dir template_file output_file</span>
@@ -325,13 +327,13 @@
 <span class="kn">import</span> <span class="nn">shlex</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">conversions</span>
-<span class="kn">from</span> <span class="nn">conversions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">DataStore</span>
-<span class="kn">from</span> <span class="nn">pywws.Forecast</span> <span class="kn">import</span> <span class="n">Zambretti</span><span class="p">,</span> <span class="n">ZambrettiCode</span>
-<span class="kn">from</span> <span class="nn">pywws</span> <span class="kn">import</span> <span class="n">Localisation</span>
-<span class="kn">from</span> <span class="nn">pywws.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
-<span class="kn">from</span> <span class="nn">pywws.TimeZone</span> <span class="kn">import</span> <span class="n">Local</span><span class="p">,</span> <span class="n">utc</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">conversions</span>
+<span class="kn">from</span> <span class="nn">.conversions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">DataStore</span>
+<span class="kn">from</span> <span class="nn">.Forecast</span> <span class="kn">import</span> <span class="n">Zambretti</span><span class="p">,</span> <span class="n">ZambrettiCode</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Localisation</span>
+<span class="kn">from</span> <span class="nn">.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
+<span class="kn">from</span> <span class="nn">.TimeZone</span> <span class="kn">import</span> <span class="n">Local</span><span class="p">,</span> <span class="n">utc</span>
 
 <span class="n">SECOND</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">HOUR</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -400,8 +402,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;No summary data - run Process.py first&quot;</span><span class="p">)</span>
             <span class="k">return</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">data_set</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="c"># open template file file</span>
-        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c"># open template file, if not already a file(like) object</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">template_file</span><span class="p">,</span> <span class="s">&#39;readline&#39;</span><span class="p">):</span>
+            <span class="n">tmplt</span> <span class="o">=</span> <span class="n">template_file</span>
+        <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
             <span class="n">tmplt</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_file</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">tmplt</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_file</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
@@ -527,8 +531,6 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
                         <span class="s">&quot;Unknown processing directive: #</span><span class="si">%s</span><span class="s">#&quot;</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
                     <span class="k">return</span>
-        <span class="n">tmplt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span>
 </div>
 <div class="viewcode-block" id="Template.make_text"><a class="viewcode-back" href="../../api/pywws.Template.html#pywws.Template.Template.make_text">[docs]</a>    <span class="k">def</span> <span class="nf">make_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template_file</span><span class="p">,</span> <span class="n">live_data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
@@ -641,7 +643,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.03.dev1178 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

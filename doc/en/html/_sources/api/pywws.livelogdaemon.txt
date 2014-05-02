@@ -1,7 +1,7 @@
-pywws.LogData
-=============
+pywws.livelogdaemon
+===================
 
-.. automodule:: pywws.LogData
+.. automodule:: pywws.livelogdaemon
 
    
    
@@ -10,6 +10,7 @@ pywws.LogData
    .. autosummary::
    
       ApplicationLogger
+      LiveLog
       main
    
    
@@ -20,10 +21,8 @@ pywws.LogData
 
    .. autosummary::
    
-      DataLogger
-      datetime
-      timedelta
-      weather_station
+      DaemonRunner
+      Runner
    
    
 

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.LiveLog &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>pywws.livelogdaemon &mdash; pywws 14.05.dev1208 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
     <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
-    <link rel="next" title="pywws.livelogdaemon" href="pywws.livelogdaemon.html" />
-    <link rel="prev" title="pywws.Hourly" href="pywws.Hourly.html" /> 
+    <link rel="next" title="pywws.Tasks" href="pywws.Tasks.html" />
+    <link rel="prev" title="pywws.LiveLog" href="pywws.LiveLog.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,10 +42,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pywws.livelogdaemon.html" title="pywws.livelogdaemon"
+          <a href="pywws.Tasks.html" title="pywws.Tasks"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="pywws.Hourly.html" title="pywws.Hourly"
+          <a href="pywws.LiveLog.html" title="pywws.LiveLog"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
@@ -57,20 +57,22 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-pywws.LiveLog">
-<span id="pywws-livelog"></span><h1>pywws.LiveLog<a class="headerlink" href="#module-pywws.LiveLog" title="Permalink to this headline">¶</a></h1>
-<p>Get weather data, store it, and process it.</p>
-<p>Run this continuously, having set what tasks are to be done. This
-script can also be run with the <tt class="docutils literal"><span class="pre">pywws-livelog</span></tt> command.</p>
-<div class="highlight-python"><pre>usage: python -m pywws.LiveLog [options] data_dir
+  <div class="section" id="module-pywws.livelogdaemon">
+<span id="pywws-livelogdaemon"></span><h1>pywws.livelogdaemon<a class="headerlink" href="#module-pywws.livelogdaemon" title="Permalink to this headline">¶</a></h1>
+<p>Run &#8216;live logging&#8217; as a UNIX daemon.</p>
+<p>This script can also be run with the <tt class="docutils literal"><span class="pre">pywws-livelog-daemon</span></tt> command.</p>
+<div class="highlight-python"><pre>usage: python -m pywws.livelogdaemon [options] data_dir log_file start|stop|restart
 options are:
- -h      or --help      display this help
- -l file or --log file  write log information to file
- -v      or --verbose   increase amount of reassuring messages
-data_dir is the root directory of the weather data (e.g. ~/weather/data)</pre>
+ -h      or --help        display this help
+ -p file or --pid file    store pid in 'file' (default /run/lock/pywws.pid)
+ -v      or --verbose     increase amount of logging messages
+data_dir is the root directory of the weather data (e.g. ~/weather/data)
+log_file is a file to write logging to, e.g. /var/log/pywws.log</pre>
 </div>
-<p>For more information on using <tt class="docutils literal"><span class="pre">LiveLog.py</span></tt>, see
-<a class="reference internal" href="../guides/livelogging.html"><em>How to set up &#8216;live&#8217; logging with pywws</em></a>.</p>
+<p>Requires the python-daemon library.</p>
+<p>If you get a &#8220;function() argument 1 must be code, not str&#8221; error, try
+installing python-daemon from PyPI instead of your Linux repos.</p>
+<p>For more information on &#8216;live logging&#8217; see <a class="reference internal" href="../guides/livelogging.html"><em>How to set up &#8216;live&#8217; logging with pywws</em></a>.</p>
 <p class="rubric">Functions</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -81,10 +83,10 @@ data_dir is the root directory of the weather data (e.g. ~/weather/data)</pre>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.LiveLog.LiveLog" title="pywws.LiveLog.LiveLog"><tt class="xref py py-obj docutils literal"><span class="pre">LiveLog</span></tt></a>(data_dir)</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">LiveLog</span></tt>(data_dir)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.LiveLog.main" title="pywws.LiveLog.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.livelogdaemon.main" title="pywws.livelogdaemon.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -96,25 +98,32 @@ data_dir is the root directory of the weather data (e.g. ~/weather/data)</pre>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DataLogger</span></tt>(params,&nbsp;status,&nbsp;raw_data)</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DaemonRunner</span></tt></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</td>
-</tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
-<td>Difference between two datetime values.</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.livelogdaemon.Runner" title="pywws.livelogdaemon.Runner"><tt class="xref py py-obj docutils literal"><span class="pre">Runner</span></tt></a>(data_dir,&nbsp;action,&nbsp;files_preserve,&nbsp;...)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<dl class="function">
-<dt id="pywws.LiveLog.LiveLog">
-<tt class="descclassname">pywws.LiveLog.</tt><tt class="descname">LiveLog</tt><big>(</big><em>data_dir</em><big>)</big><a class="reference internal" href="../_modules/pywws/LiveLog.html#LiveLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.LiveLog.LiveLog" title="Permalink to this definition">¶</a></dt>
+<dl class="class">
+<dt id="pywws.livelogdaemon.Runner">
+<em class="property">class </em><tt class="descclassname">pywws.livelogdaemon.</tt><tt class="descname">Runner</tt><big>(</big><em>data_dir</em>, <em>action</em>, <em>files_preserve</em>, <em>pid_file</em><big>)</big><a class="reference internal" href="../_modules/pywws/livelogdaemon.html#Runner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.livelogdaemon.Runner" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="pywws.livelogdaemon.Runner.parse_args">
+<tt class="descname">parse_args</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/livelogdaemon.html#Runner.parse_args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.livelogdaemon.Runner.parse_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="pywws.livelogdaemon.Runner.run">
+<tt class="descname">run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/livelogdaemon.html#Runner.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.livelogdaemon.Runner.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="function">
-<dt id="pywws.LiveLog.main">
-<tt class="descclassname">pywws.LiveLog.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/LiveLog.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.LiveLog.main" title="Permalink to this definition">¶</a></dt>
+<dt id="pywws.livelogdaemon.main">
+<tt class="descclassname">pywws.livelogdaemon.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/livelogdaemon.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.livelogdaemon.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr class="docutils" />
@@ -132,11 +141,11 @@ data_dir is the root directory of the weather data (e.g. ~/weather/data)</pre>
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="pywws.Hourly.html"
-                        title="previous chapter">pywws.Hourly</a></p>
+  <p class="topless"><a href="pywws.LiveLog.html"
+                        title="previous chapter">pywws.LiveLog</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="pywws.livelogdaemon.html"
-                        title="next chapter">pywws.livelogdaemon</a></p>
+  <p class="topless"><a href="pywws.Tasks.html"
+                        title="next chapter">pywws.Tasks</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -164,10 +173,10 @@ data_dir is the root directory of the weather data (e.g. ~/weather/data)</pre>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pywws.livelogdaemon.html" title="pywws.livelogdaemon"
+          <a href="pywws.Tasks.html" title="pywws.Tasks"
              >next</a> |</li>
         <li class="right" >
-          <a href="pywws.Hourly.html" title="pywws.Hourly"
+          <a href="pywws.LiveLog.html" title="pywws.LiveLog"
              >previous</a> |</li>
         <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
