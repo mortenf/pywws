@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Come impostare una registrazione ‘live’ con pywws &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>Come impostare una registrazione ‘live’ con pywws &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../index.html" />
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../index.html" />
     <link rel="up" title="Guide per gli utenti" href="index.html" />
     <link rel="next" title="Come integrare pywws con vari servizi meteorologici" href="integration.html" />
     <link rel="prev" title="Come impostare ‘hourly’ per la registrazione oraria con pywws" href="hourlylogging.html" /> 
@@ -40,7 +38,7 @@
           <a href="../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="integration.html" title="Come integrare pywws con vari servizi meteorologici"
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="hourlylogging.html" title="Come impostare ‘hourly’ per la registrazione oraria con pywws"
              accesskey="P">precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>  
@@ -68,18 +66,20 @@
 <h2>Guida introduttiva<a class="headerlink" href="#getting-started" title="link permanente per questa intestazione">¶</a></h2>
 <p>Prima di tutto, è necessario installare pywws e assicurarsi che si possono ottenere i dati dalla tua stazione meteo. Vedere <a class="reference internal" href="getstarted.html"><em>Come iniziare con pywws</em></a> per i dettagli.</p>
 <p>Esecuzione di prova <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> dalla riga di comando, con un alto livello di verbosità in modo da poter vedere ciò che sta accadendo:</p>
-<div class="highlight-python"><pre>python -m pywws.LiveLog -vvv ~/weather/data</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.LiveLog -vvv ~/weather/data
+</pre></div>
 </div>
 <p>Entro cinque minuti (supponendo di aver impostato un intervallo di registrazione di 5 minuti) si dovrebbe vedere un messaggio &#8216;live_data new ptr&#8217;, seguita dal recupero di eventuali nuovi dati dalla stazione meteo ed elaborarli. Lasciate che <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> funzionare per un minuto o due o più, poi fermare il processo digitando &#8216;&lt;Ctrl&gt;C&#8217;.</p>
 </div>
 <div class="section" id="configuring-file-locations">
 <h2>Percorsi dei file di configurazione<a class="headerlink" href="#configuring-file-locations" title="link permanente per questa intestazione">¶</a></h2>
 <p>Aprire il file weather.ini con un editor di testo. Si dovrebbe avere una sezione di <tt class="docutils literal"><span class="pre">[paths]</span></tt> simile al seguente (dove <tt class="docutils literal"><span class="pre">xxx</span></tt> è il tuo nome utente):</p>
-<div class="highlight-python"><pre>[paths]
+<div class="highlight-python"><div class="highlight"><pre>[paths]
 work = /tmp/weather
 templates = /home/xxx/weather/templates/
 graph_templates = /home/xxx/weather/graph_templates/
-local_files = /home/xxx/weather/results/</pre>
+local_files = /home/xxx/weather/results/
+</pre></div>
 </div>
 <p>Modificare queste per soddisfare le vostre preferenze di installazione. <tt class="docutils literal"><span class="pre">work</span></tt> è una directory temporanea utilizzata per archiviare i file intermedi, <tt class="docutils literal"><span class="pre">templates</span></tt> è la directory per i tuoi file modello di testo e <tt class="docutils literal"><span class="pre">graph_templates</span></tt> è la directory per i tuoi file grafici di modello e <tt class="docutils literal"><span class="pre">local_files</span></tt> è una directory dove viene messo l&#8217;output del modello che non è stato caricato in un sito web. Non usare le directory di esempio pywws per questi, perchè saranno sovrascritti quando si aggiorna pywws.</p>
 <p>Copiare i modelli di testo e grafico nelle directory appropriate. Si possono trovare alcuni esempi forniti con pywws utili per iniziare. Se hai installato pywws con <tt class="docutils literal"><span class="pre">pip</span></tt> gli esempi dovrebbero essere in <tt class="docutils literal"><span class="pre">/usr/share/pywws</span></tt> o <tt class="docutils literal"><span class="pre">/usr/local/share/pywws</span></tt> o simili.</p>
@@ -103,15 +103,15 @@ local_files = /home/xxx/weather/results/</pre>
 </div>
 <p>Si noti l&#8217;uso del flag <tt class="docutils literal"><span class="pre">'L'</span></tt> &#8211; questo dice a pywws si inviare il risultato alla directory &#8220;local files&#8221; invece di caricarlo sul tuo sito ftp.</p>
 <p>Se non li hai già, create quattro altre sezioni nel file weather.ini: <tt class="docutils literal"><span class="pre">[logged]</span></tt>, <tt class="docutils literal"><span class="pre">[hourly]</span></tt>, <tt class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></tt> e <tt class="docutils literal"><span class="pre">[daily]</span></tt>. Queste sezioni dovrebbero avere voci simili alla sezione <tt class="docutils literal"><span class="pre">[live]</span></tt> e specificare cosa fare ogni volta i dati vengono registrati (5-30 minuti, a seconda l&#8217;intervallo di registrazione), ogni ora, due volte al giorno e una volta al giorno. Aggiungere i nomi dei file di modello alle voci appropriate, ad esempio:</p>
-<div class="highlight-python"><pre>[logged]
-services = ['underground', 'metoffice']
+<div class="highlight-python"><div class="highlight"><pre>[logged]
+services = [&#39;underground&#39;, &#39;metoffice&#39;]
 plot = []
 text = []
 
 [hourly]
 services = []
-plot = ['7days.png.xml', '24hrs.png.xml', 'rose_24hrs.png.xml']
-text = [('tweet.txt', 'T'), '24hrs.txt', '6hrs.txt', '7days.txt']
+plot = [&#39;7days.png.xml&#39;, &#39;24hrs.png.xml&#39;, &#39;rose_24hrs.png.xml&#39;]
+text = [(&#39;tweet.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs.txt&#39;, &#39;7days.txt&#39;]
 
 [12 hourly]
 services = []
@@ -120,45 +120,48 @@ text = []
 
 [daily]
 services = []
-plot = ['28days.png.xml']
-text = [('forecast.txt', 'T'), 'allmonths.txt']</pre>
+plot = [&#39;28days.png.xml&#39;]
+text = [(&#39;forecast.txt&#39;, &#39;T&#39;), &#39;allmonths.txt&#39;]
+</pre></div>
 </div>
 <p>Si noti l&#8217;uso del flag <tt class="docutils literal"><span class="pre">'T'</span></tt> &#8211; questo dice a pywws si inviare il risultato a Twitter invece di caricarlo sul proprio sito ftp.</p>
-<p class="versionchanged">
-<span class="versionmodified">Cambiato nella versione 13.06_r1015: </span>added the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag.
-Previously Twitter templates were listed separately in <tt class="docutils literal"><span class="pre">twitter</span></tt> entries in the <tt class="docutils literal"><span class="pre">[hourly]</span></tt> and other sections.
-The older syntax still works, but is deprecated.</p>
-<p class="versionchanged">
-<span class="versionmodified">Cambiato nella versione 13.05_r1013: </span>added a <tt class="docutils literal"><span class="pre">'yowindow.xml'</span></tt> template.
-Previously yowindow files were generated by a separate module, invoked by a <tt class="docutils literal"><span class="pre">yowindow</span></tt> entry in the <tt class="docutils literal"><span class="pre">[live]</span></tt> section.
-This older syntax still works, but is deprecated.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Cambiato nella versione 13.06_r1015: </span>Aggiunto il flag <tt class="docutils literal"><span class="pre">'T'</span></tt>. Precedentemente i modelli Twitter sono stati indicati separatamente in voci <tt class="docutils literal"><span class="pre">twitter</span></tt> in <tt class="docutils literal"><span class="pre">[hourly]</span></tt> e di altre sezioni. La sintassi precedente funziona ancora, ma è obsoleta.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Cambiato nella versione 13.05_r1013: </span>aggiunto il modello  <tt class="docutils literal"><span class="pre">'yowindow.xml'</span></tt>. Precedentemente il file yowindow era generato da un modulo separato, richiamato dalla voce <tt class="docutils literal"><span class="pre">yowindow</span></tt> nella sezione <tt class="docutils literal"><span class="pre">[live]</span></tt>. La sintassi precedente funziona ancora, ma è obsoleta.</p>
+</div>
 </div>
 <div class="section" id="asynchronous-uploads">
 <h2>Upload asincrono<a class="headerlink" href="#asynchronous-uploads" title="link permanente per questa intestazione">¶</a></h2>
-<p class="versionadded">
-<span class="versionmodified">Nuovo nella versione 13.09_r1057.</span></p>
+<div class="versionadded">
+<p><span class="versionmodified">Nuovo nella versione 13.09_r1057.</span></p>
+</div>
 <p>Il caricamento dei dati in siti web o &#8216;services&#8217; a volte può richiedere del tempo, in particolare se un sito è andato off line e i tempi di caricamento sono lunghi. In condizioni di normale funzionamento pywws attende che tutti i caricamenti siano elaborati prima di scaricare ulteriori dati dalla stazione meteo. Questo può portare alcune volte a dati di essere mancanti.</p>
 <p>L&#8217;elemento <tt class="docutils literal"><span class="pre">asynchronous</span></tt> nella sezione <tt class="docutils literal"><span class="pre">[config]</span></tt> di weather.ini può essere impostato su <tt class="docutils literal"><span class="pre">True</span></tt> per dire a <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> per fare questi caricamenti in un processo separato. Questa funzionalità è ancora un po&#8217; sperimentale &#8211; provatelo a vostro rischio.</p>
 </div>
 <div class="section" id="using-a-utility-script">
 <h2>Utilizzare gli script di utilità<a class="headerlink" href="#using-a-utility-script" title="link permanente per questa intestazione">¶</a></h2>
 <p>L&#8217;installazione di pywws include un breve script <tt class="docutils literal"><span class="pre">pywws-livelog.py</span></tt> che viene installato in <tt class="docutils literal"><span class="pre">/usr/bin</span></tt> o <tt class="docutils literal"><span class="pre">/usr/local/bin</span></tt> o simili. Si dovrebbe essere in grado di utilizzare questo script per eseguire <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a>:</p>
-<div class="highlight-python"><pre>pywws-livelog.py -v ~/weather/data</pre>
+<div class="highlight-python"><div class="highlight"><pre>pywws-livelog.py -v ~/weather/data
+</pre></div>
 </div>
 </div>
 <div class="section" id="run-in-the-background">
 <h2>Esecuzione in background<a class="headerlink" href="#run-in-the-background" title="link permanente per questa intestazione">¶</a></h2>
 <p>Al fine di avere :py:mod: <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> in esecuzione dopo aver terminato di utilizzare il computer deve essere eseguito come un processo in background.  Nella maggior parte dei sistemi Linux/UNIX è possibile farlo mettendo una e commerciale (&#8216;&amp;&#8217;) alla fine della riga di comando. Per esempio:</p>
-<div class="highlight-python"><pre>pywws-livelog.py ~/weather/data &amp;</pre>
+<div class="highlight-python"><div class="highlight"><pre>pywws-livelog.py ~/weather/data &amp;
+</pre></div>
 </div>
 <p>Tuttavia, sarebbe utile sapere cosa è andato storto se il programma si blocca per qualsiasi motivo. Con <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> è possibile memorizzare i messaggi in un file di log specificato con il opzione <tt class="docutils literal"><span class="pre">-l</span></tt>:</p>
-<div class="highlight-python"><pre>pywws-livelog.py -v -l ~/weather/data/pywws.log ~/weather/data &amp;</pre>
+<div class="highlight-python"><div class="highlight"><pre>pywws-livelog.py -v -l ~/weather/data/pywws.log ~/weather/data &amp;
+</pre></div>
 </div>
 </div>
 <div class="section" id="automatic-restarting">
 <h2>Riavvio automatico<a class="headerlink" href="#automatic-restarting" title="link permanente per questa intestazione">¶</a></h2>
 <p>Ci sono diversi modi per configurare un sistema Linux per avviare un programma quando la macchina si avvia. In genere, questi comportano di mettere un file in <tt class="docutils literal"><span class="pre">/etc/init.d/</span></tt>, che richiede i privilegi di root. Il problema è leggermente più difficile da garantire se un programma si riavvia quando si blocca. La mia soluzione per entrambi i problemi è quello di eseguire il seguente script da cron, ogni ora.</p>
-<div class="highlight-python"><pre>#!/bin/sh
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/sh
 
 pidfile=/var/run/pywws.pid
 datadir=/data/weather
@@ -171,13 +174,14 @@ logfile=$datadir/live_logger.log
 if [ -f $logfile ]; then
   log=/var/log/log-weather
   tail -40 $logfile &gt;$log
-  /home/jim/scripts/email-log.sh $log "weather log"
+  /home/jim/scripts/email-log.sh $log &quot;weather log&quot;
   rm $log
   fi
 
 # restart process
 pywws-livelog.py -v -l $logfile $datadir &amp;
-echo $! &gt;$pidfile</pre>
+echo $! &gt;$pidfile
+</pre></div>
 </div>
 <p>Questo memorizza l&#8217;id di processo del <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> del pidfile. Se il processo è in esecuzione, lo script non serve a nulla. Se il processo si è bloccato, mi invia un e-mail con le ultime 40 righe del file di log (usando uno script che crea un messaggio e lo passa al sendmail) e poi si riavvia <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a>. Avrete bisogno di modificare molto questo per soddisfare le posizioni dei file e così via, ma dà un&#8217;idea di cosa fare.</p>
 <hr class="docutils" />
@@ -239,7 +243,7 @@ echo $! &gt;$pidfile</pre>
           <a href="../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="integration.html" title="Come integrare pywws con vari servizi meteorologici"
@@ -247,13 +251,13 @@ echo $! &gt;$pidfile</pre>
         <li class="right" >
           <a href="hourlylogging.html" title="Come impostare ‘hourly’ per la registrazione oraria con pywws"
              >precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="index.html" >Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

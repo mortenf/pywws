@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Template &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>pywws.Template &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../index.html" />
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../index.html" />
     <link rel="up" title="Programmi Python e moduli" href="../api_index.html" />
     <link rel="next" title="pywws.Forecast" href="pywws.Forecast.html" />
     <link rel="prev" title="pywws.WindRose" href="pywws.WindRose.html" /> 
@@ -40,7 +38,7 @@
           <a href="../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="pywws.Forecast.html" title="pywws.Forecast"
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="pywws.WindRose.html" title="pywws.WindRose"
              accesskey="P">precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>  
@@ -61,12 +59,13 @@
   <div class="section" id="module-pywws.Template">
 <span id="pywws-template"></span><h1>pywws.Template<a class="headerlink" href="#module-pywws.Template" title="link permanente per questa intestazione">¶</a></h1>
 <p>Creare file di dati di testo basato su un modello</p>
-<div class="highlight-python"><pre>usage: python -m pywws.Template [options] data_dir template_file output_file
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.Template [options] data_dir template_file output_file
 options are:
  --help    display this help
 data_dir is the root directory of the weather data
 template_file is the template text source file
-output_file is the name of the text file to be created</pre>
+output_file is the name of the text file to be created
+</pre></div>
 </div>
 <div class="section" id="introduction">
 <h2>Introduzione<a class="headerlink" href="#introduction" title="link permanente per questa intestazione">¶</a></h2>
@@ -105,9 +104,10 @@ instruction, put a blank line immediately after it.</p>
 <div class="section" id="raw">
 <h3><tt class="docutils literal"><span class="pre">#raw#</span></tt><a class="headerlink" href="#raw" title="link permanente per questa intestazione">¶</a></h3>
 <p>ritorna i dati &#8220;raw&#8221; di riepilogo. L&#8217;indice viene reimpostato sul valore più recente.</p>
-<p class="versionchanged">
-<span class="versionmodified">Cambiato nella versione 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
+<div class="versionchanged">
+<p><span class="versionmodified">Cambiato nella versione 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
 unchanged for backwards compatibility.</p>
+</div>
 </div>
 <div class="section" id="timezone-name">
 <h3><tt class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></tt><a class="headerlink" href="#timezone-name" title="link permanente per questa intestazione">¶</a></h3>
@@ -155,22 +155,23 @@ instead of a point, depending on your localisation settings. Use
 <div class="section" id="example">
 <h2>Esempio<a class="headerlink" href="#example" title="link permanente per questa intestazione">¶</a></h2>
 <p>Ecco un esempio di base e utilizzo avanzato del modello. E&#8217; parte della 6hrs.txt del file di esempio del modello, che genera una tabella HTML di 7 letture orarie (che deve coprire 6 ore).</p>
-<div class="highlight-python"><pre>#hourly#
+<div class="highlight-python"><div class="highlight"><pre>#hourly#
 #jump -6#
 #loop 7#
   &lt;tr&gt;
-    &lt;td&gt;#idx "%Y/%m/%d" "" "[None, x][x.hour == 0 or loop_count == 7]"#&lt;/td&gt;
-    &lt;td&gt;#idx "%H%M %Z"#&lt;/td&gt;
-    &lt;td&gt;#temp_out "%.1f °C"#&lt;/td&gt;
-    &lt;td&gt;#hum_out "%d%%"#&lt;/td&gt;
-    &lt;td&gt;#wind_dir "%s" "-" "winddir_text(x)"#&lt;/td&gt;
-    &lt;td&gt;#wind_ave "%.0f mph" "" "wind_mph(x)"#&lt;/td&gt;
-    &lt;td&gt;#wind_gust "%.0f mph" "" "wind_mph(x)"#&lt;/td&gt;
-    &lt;td&gt;#rain "%0.1f mm"#&lt;/td&gt;
-    &lt;td&gt;#rel_pressure "%.0f hPa"#, #pressure_trend "%s" "" "pressure_trend_text(x)"#&lt;/td&gt;
+    &lt;td&gt;#idx &quot;%Y/%m/%d&quot; &quot;&quot; &quot;[None, x][x.hour == 0 or loop_count == 7]&quot;#&lt;/td&gt;
+    &lt;td&gt;#idx &quot;%H%M %Z&quot;#&lt;/td&gt;
+    &lt;td&gt;#temp_out &quot;%.1f °C&quot;#&lt;/td&gt;
+    &lt;td&gt;#hum_out &quot;%d%%&quot;#&lt;/td&gt;
+    &lt;td&gt;#wind_dir &quot;%s&quot; &quot;-&quot; &quot;winddir_text(x)&quot;#&lt;/td&gt;
+    &lt;td&gt;#wind_ave &quot;%.0f mph&quot; &quot;&quot; &quot;wind_mph(x)&quot;#&lt;/td&gt;
+    &lt;td&gt;#wind_gust &quot;%.0f mph&quot; &quot;&quot; &quot;wind_mph(x)&quot;#&lt;/td&gt;
+    &lt;td&gt;#rain &quot;%0.1f mm&quot;#&lt;/td&gt;
+    &lt;td&gt;#rel_pressure &quot;%.0f hPa&quot;#, #pressure_trend &quot;%s&quot; &quot;&quot; &quot;pressure_trend_text(x)&quot;#&lt;/td&gt;
   &lt;/tr&gt;
 #jump 1#
-#endloop#</pre>
+#endloop#
+</pre></div>
 </div>
 <p>Le prime tre righe di questo frammento: seleziona i dati orari, salta indietro di 6 ore, avvia un loop con un conteggio di 7. un salto in avanti di un&#8217;ora appare poco prima della fine del segmento ripetuto. A quest&#8217;ultimo salto (di un&#8217;ora) accade ogni volta nel ciclo, una sequenza di 7 letture dei dati sarà il risultato. L&#8217;ultima riga indica la fine del ciclo - tutto tra le linee <tt class="docutils literal"><span class="pre">#loop</span> <span class="pre">7#</span></tt> e <tt class="docutils literal"><span class="pre">#endloop#</span></tt> è ripetuta 7 volte.</p>
 <p>Le istruzioni <tt class="docutils literal"><span class="pre">#temp_out</span> <span class="pre">...#</span></tt>, <tt class="docutils literal"><span class="pre">#hum_out</span> <span class="pre">...#</span></tt>, <tt class="docutils literal"><span class="pre">#rain</span> <span class="pre">...#</span></tt> e <tt class="docutils literal"><span class="pre">#rel_pressure</span> <span class="pre">...#</span></tt> mostrano dati di base. Ognuno di essi con un <tt class="docutils literal"><span class="pre">fmt_string</span></tt> per formattare i dati in modo appropriato. Le istruzioni <tt class="docutils literal"><span class="pre">#wind_ave</span> <span class="pre">...#</span></tt> e <tt class="docutils literal"><span class="pre">#wind_gust</span> <span class="pre">...#</span></tt> mostra come utilizzare un&#8217;espressione di conversione per convertire m/s a mph.</p>
@@ -196,55 +197,71 @@ instead of a point, depending on your localisation settings. Use
 <td></td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></tt>(temp,&nbsp;rh,&nbsp;wind)</td>
-<td>Calcola la temperatura apparente (sensazione reale), con formula da</td>
+<td><p class="first last">Calcola la temperatura apparente (sensazione reale), con formula da</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">cadhumidex</span></tt>(temp,&nbsp;humidity)</td>
-<td>Calcolo Indice di umidità come per gli standard Canadian Weather Standards</td>
+<td><p class="first last">Calcolo Indice di umidità come per gli standard Canadian Weather Standards</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">dew_point</span></tt>(temp,&nbsp;hum)</td>
-<td>Calcola il punto di rugiada, usando la formula da</td>
+<td><p class="first last">Calcola il punto di rugiada, usando la formula da <a class="reference external" href="http://en.wikipedia.org/wiki/Dew_point">http://en.wikipedia.org/wiki/Dew_point</a>.</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></tt>(lux)</td>
-<td>Conversione approssimativa di illuminazione in lux a radiazione solare in W/m2</td>
+<td><p class="first last">Conversione approssimativa di illuminazione in lux a radiazione solare in W/m2</p>
+</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#pywws.Template.main" title="pywws.Template.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_inhg</span></tt>(hPa)</td>
-<td>Converte la pressione da ettopascal/millibar in pollici di mercurio</td>
+<td><p class="first last">Converte la pressione da ettopascal/millibar in pollici di mercurio</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></tt>(trend)</td>
-<td>Convertire in una stringa carattere l&#8217;andamento della pressione, come utilizzata dal UK met office.</td>
+<td><p class="first last">Converte in una stringa, la tendenza barometrica sono usati per la UK met office.</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></tt>(mm)</td>
-<td>Converte le precipitazioni da millimetri a pollici</td>
+<td><p class="first last">Converte le precipitazioni da millimetri a pollici</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">temp_f</span></tt>(c)</td>
-<td>Converte la temperatura da gradi Celsius a Fahrenheit</td>
+<td><p class="first last">Converte la temperatura da gradi Celsius a Fahrenheit</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">usaheatindex</span></tt>(temp,&nbsp;humidity,&nbsp;dew)</td>
-<td>Calcolare l&#8217;indice di calore secondo Standards USA National Weather Service</td>
+<td><p class="first last">Calcolare l&#8217;indice di calore secondo Standards USA National Weather Service</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_bft</span></tt>(ms)</td>
-<td>Converte i metri al secondo del vento in scala Beaufort</td>
+<td><p class="first last">Converte i metri al secondo del vento in scala Beaufort</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_chill</span></tt>(temp,&nbsp;wind)</td>
-<td>Calcola il vento gelido, usando la formula di</td>
+<td><p class="first last">Calcola il vento gelido, usando la formula di</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_kmph</span></tt>(ms)</td>
-<td>Converte il vento da metri al secondo a chilometri orari</td>
+<td><p class="first last">Converte il vento da metri al secondo a chilometri orari</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_kn</span></tt>(ms)</td>
-<td>Converte il vento da metri al secondo a nodi</td>
+<td><p class="first last">Converte il vento da metri al secondo a nodi</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_mph</span></tt>(ms)</td>
-<td>Converte il vento da metri al secondo a miglia all&#8217;ora</td>
+<td><p class="first last">Converte il vento da metri al secondo a miglia all&#8217;ora</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">winddir_degrees</span></tt>(pts)</td>
-<td>Convertire la direzione del vento a 0..15 in gradi</td>
+<td><p class="first last">Convertire la direzione del vento a 0..15 in gradi</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">winddir_text</span></tt>(pts)</td>
-<td>Convertire direzione del vento da 0 .. 15 per i punti della bussola</td>
+<td><p class="first last">Convertire direzione del vento da 0 .. 15 per i punti della bussola</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -262,33 +279,34 @@ instead of a point, depending on your localisation settings. Use
 <td>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
-<td>Differenza tra due valori datetime.</td>
+<td><p class="first last">Differenza tra due valori datetime.</p>
+</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="pywws.Template.Template">
-<em class="property">class </em><tt class="descclassname">pywws.Template.</tt><tt class="descname">Template</tt><big>(</big><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>use_locale=True</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Template.Template" title="link permanente per questa definizione">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pywws.Template.</tt><tt class="descname">Template</tt><big>(</big><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>use_locale=True</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template" title="link permanente per questa definizione">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.Template.Template.process">
-<tt class="descname">process</tt><big>(</big><em>live_data</em>, <em>template_file</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Template.Template.process" title="link permanente per questa definizione">¶</a></dt>
+<tt class="descname">process</tt><big>(</big><em>live_data</em>, <em>template_file</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.process"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.process" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Template.Template.make_text">
-<tt class="descname">make_text</tt><big>(</big><em>template_file</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Template.Template.make_text" title="link permanente per questa definizione">¶</a></dt>
+<tt class="descname">make_text</tt><big>(</big><em>template_file</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_text"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.make_text" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Template.Template.make_file">
-<tt class="descname">make_file</tt><big>(</big><em>template_file</em>, <em>output_file</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Template.Template.make_file" title="link permanente per questa definizione">¶</a></dt>
+<tt class="descname">make_file</tt><big>(</big><em>template_file</em>, <em>output_file</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_file"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.make_file" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pywws.Template.main">
-<tt class="descclassname">pywws.Template.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Template.main" title="link permanente per questa definizione">¶</a></dt>
+<tt class="descclassname">pywws.Template.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.main" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -361,7 +379,7 @@ instead of a point, depending on your localisation settings. Use
           <a href="../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="pywws.Forecast.html" title="pywws.Forecast"
@@ -369,13 +387,13 @@ instead of a point, depending on your localisation settings. Use
         <li class="right" >
           <a href="pywws.WindRose.html" title="pywws.WindRose"
              >precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="../api_index.html" >Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

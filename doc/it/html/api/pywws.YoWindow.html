@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.YoWindow &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>pywws.YoWindow &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../index.html" />
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../index.html" />
     <link rel="up" title="Programmi Python e moduli" href="../api_index.html" />
     <link rel="next" title="pywws.WeatherStation" href="pywws.WeatherStation.html" />
     <link rel="prev" title="pywws.toservice" href="pywws.toservice.html" /> 
@@ -40,7 +38,7 @@
           <a href="../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="pywws.WeatherStation.html" title="pywws.WeatherStation"
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="pywws.toservice.html" title="pywws.toservice"
              accesskey="P">precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>  
@@ -61,12 +59,13 @@
   <div class="section" id="module-pywws.YoWindow">
 <span id="pywws-yowindow"></span><h1>pywws.YoWindow<a class="headerlink" href="#module-pywws.YoWindow" title="link permanente per questa intestazione">¶</a></h1>
 <p>Generare file XML YoWindow</p>
-<div class="highlight-python"><pre>usage: python -m pywws.YoWindow [options] data_dir output_file
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.YoWindow [options] data_dir output_file
 options are:
  -h or --help     display this help
  -v or --verbose  increase amount of reassuring messages
 data_dir is the root directory of the weather data
-output_file is the YoWindow XML file to be written</pre>
+output_file is the YoWindow XML file to be written
+</pre></div>
 </div>
 <p class="rubric">Funzioni</p>
 <table border="1" class="longtable docutils">
@@ -79,7 +78,8 @@ output_file is the YoWindow XML file to be written</pre>
 <td></td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></tt>(temp,&nbsp;rh,&nbsp;wind)</td>
-<td>Calcola la temperatura apparente (sensazione reale), con formula da</td>
+<td><p class="first last">Calcola la temperatura apparente (sensazione reale), con formula da</p>
+</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#pywws.YoWindow.main" title="pywws.YoWindow.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
 <td></td>
@@ -94,30 +94,32 @@ output_file is the YoWindow XML file to be written</pre>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#pywws.YoWindow.YoWindow" title="pywws.YoWindow.YoWindow"><tt class="xref py py-obj docutils literal"><span class="pre">YoWindow</span></tt></a>(calib_data)</td>
-<td>Classe YoWindow per scrivere il file XML</td>
+<td><p class="first last">Classe YoWindow per scrivere il file XML</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
 <td>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
-<td>Differenza tra due valori datetime.</td>
+<td><p class="first last">Differenza tra due valori datetime.</p>
+</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="pywws.YoWindow.YoWindow">
-<em class="property">class </em><tt class="descclassname">pywws.YoWindow.</tt><tt class="descname">YoWindow</tt><big>(</big><em>calib_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow" title="link permanente per questa definizione">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pywws.YoWindow.</tt><tt class="descname">YoWindow</tt><big>(</big><em>calib_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow" title="link permanente per questa definizione">¶</a></dt>
 <dd><p>Classe YoWindow per scrivere il file XML. Specifiche per il file per vedere <a class="reference external" href="http://yowindow.com/doc/yowindow_pws_format.xml">http://yowindow.com/doc/yowindow_pws_format.xml</a></p>
 <dl class="method">
 <dt id="pywws.YoWindow.YoWindow.write_file">
-<tt class="descname">write_file</tt><big>(</big><em>file_name</em>, <em>data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow.write_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow.write_file" title="link permanente per questa definizione">¶</a></dt>
+<tt class="descname">write_file</tt><big>(</big><em>file_name</em>, <em>data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow.write_file"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow.write_file" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pywws.YoWindow.main">
-<tt class="descclassname">pywws.YoWindow.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.main" title="link permanente per questa definizione">¶</a></dt>
+<tt class="descclassname">pywws.YoWindow.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.YoWindow.main" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -161,7 +163,7 @@ output_file is the YoWindow XML file to be written</pre>
           <a href="../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="pywws.WeatherStation.html" title="pywws.WeatherStation"
@@ -169,13 +171,13 @@ output_file is the YoWindow XML file to be written</pre>
         <li class="right" >
           <a href="pywws.toservice.html" title="pywws.toservice"
              >precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="../api_index.html" >Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

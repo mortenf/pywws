@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Plot &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>pywws.Plot &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.WindRose" href="pywws.WindRose.html" />
     <link rel="prev" title="pywws.calib" href="pywws.calib.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="pywws.calib.html" title="pywws.calib"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -60,13 +58,14 @@
   <div class="section" id="module-pywws.Plot">
 <span id="pywws-plot"></span><h1>pywws.Plot<a class="headerlink" href="#module-pywws.Plot" title="Permalink to this headline">¶</a></h1>
 <p>Plot graphs of weather data according to an XML recipe</p>
-<div class="highlight-python"><pre>usage: python -m pywws.Plot [options] data_dir temp_dir xml_file output_file
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.Plot [options] data_dir temp_dir xml_file output_file
 options are:
  -h or --help    display this help
 data_dir is the root directory of the weather data
 temp_dir is a workspace for temporary files e.g. /tmp
 xml_file is the name of the source file that describes the plot
-output_file is the name of the image file to be created e.g. 24hrs.png</pre>
+output_file is the name of the image file to be created e.g. 24hrs.png
+</pre></div>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
@@ -84,15 +83,16 @@ Schools XML tutorial.</p>
 <h3>XML graph file syntax<a class="headerlink" href="#xml-graph-file-syntax" title="Permalink to this headline">¶</a></h3>
 <p>Here is the simplest useful graph template. It plots the external
 temperature for the last 24 hours.</p>
-<div class="highlight-python"><pre>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
 &lt;graph&gt;
   &lt;plot&gt;
     &lt;subplot&gt;
       &lt;title&gt;Temperature (°C)&lt;/title&gt;
-      &lt;ycalc&gt;data['temp_out']&lt;/ycalc&gt;
+      &lt;ycalc&gt;data[&#39;temp_out&#39;]&lt;/ycalc&gt;
     &lt;/subplot&gt;
   &lt;/plot&gt;
-&lt;/graph&gt;</pre>
+&lt;/graph&gt;
+</pre></div>
 </div>
 <p>In this example, the root element graph has one plot element, which
 has one subplot element. The subplot element contains a title element
@@ -102,7 +102,7 @@ To plot more than one set of axes (for example wind speed is measured
 in different units from temperature) in the same file we can add more
 plot elements.</p>
 <p>The complete element hierarchy is shown below.</p>
-<div class="highlight-python"><pre>graph
+<div class="highlight-python"><div class="highlight"><pre>graph
     plot
         subplot
             xcalc
@@ -138,7 +138,8 @@ plot elements.</p>
     xlabel
     dateformat
     xtics
-    title</pre>
+    title
+</pre></div>
 </div>
 </div>
 <div class="section" id="graph">
@@ -441,7 +442,7 @@ subplot.</p>
 <td>Calculate Humidity Index as per Canadian Weather Standards</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">dew_point</span></tt>(temp,&nbsp;hum)</td>
-<td>Compute dew point, using formula from</td>
+<td>Compute dew point, using formula from <a class="reference external" href="http://en.wikipedia.org/wiki/Dew_point">http://en.wikipedia.org/wiki/Dew_point</a>.</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></tt>(lux)</td>
 <td>Approximate conversion of illuminance in lux to solar radiation in W/m2</td>
@@ -453,7 +454,7 @@ subplot.</p>
 <td>Convert pressure from hectopascals/millibar to inches of mercury</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></tt>(trend)</td>
-<td>Convert pressure trend to a string, as used by the UK met</td>
+<td>Convert pressure trend to a string, as used by the UK met office.</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></tt>(mm)</td>
 <td>Convert rainfall from millimetres to inches</td>
@@ -694,13 +695,13 @@ subplot.</p>
         <li class="right" >
           <a href="pywws.calib.html" title="pywws.calib"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

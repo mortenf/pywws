@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dependencies &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>Dependencies &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="next" title="Change Log" href="CHANGELOG.html" />
     <link rel="prev" title="GNU General Public License" href="LICENCE.html" /> 
   </head>
@@ -46,7 +44,7 @@
         <li class="right" >
           <a href="LICENCE.html" title="GNU General Public License"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -81,7 +79,8 @@ If you find a problem with Python 3, please send a message to the <a class="refe
 <p>You will probably be able to install pip with your system&#8217;s package manager, where it may be called python-pip.
 If not, download and run the <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> file from the pip web site.
 In either case you should immediately use pip to install the latest version of itself:</p>
-<div class="highlight-python"><pre>sudo pip install --upgrade pip</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install --upgrade pip
+</pre></div>
 </div>
 <div class="section" id="usb-library">
 <h3>USB library<a class="headerlink" href="#usb-library" title="Permalink to this headline">¶</a></h3>
@@ -108,7 +107,8 @@ Unfortunately, you will need to download and compile hidapi yourself.</p>
 <li><a class="reference external" href="http://www.libusb.org/">libusb</a> version 0.1 or version 1.0 (should be available from the package manager)</li>
 <li><a class="reference external" href="http://sourceforge.net/apps/trac/pyusb/">PyUSB</a> version 1.0</li>
 </ul>
-<div class="highlight-python"><pre>pip install pyusb==1.0.0b1</pre>
+<div class="highlight-python"><div class="highlight"><pre>pip install pyusb==1.0.0b1
+</pre></div>
 </div>
 <p>If you have problems with version 1 of PyUSB then version 0.4 can be used, provided you install version 0.1 of libusb.
 Your system package manager should have both libraries.
@@ -123,7 +123,8 @@ It requires the python-daemon library:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://pypi.python.org/pypi/python-daemon/">python-daemon</a></li>
 </ul>
-<div class="highlight-python"><pre>pip install python-daemon</pre>
+<div class="highlight-python"><div class="highlight"><pre>pip install python-daemon
+</pre></div>
 </div>
 </div>
 <div class="section" id="graph-drawing">
@@ -142,7 +143,8 @@ Normal uploading just uses Python&#8217;s standard modules, but if you want to u
 <li><a class="reference external" href="https://github.com/paramiko/paramiko">paramiko</a></li>
 <li><a class="reference external" href="http://www.dlitz.net/software/pycrypto/">pycrypto</a></li>
 </ul>
-<div class="highlight-python"><pre>sudo pip install pycrypto paramiko</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install pycrypto paramiko
+</pre></div>
 </div>
 </div>
 <div class="section" id="twitter-updates">
@@ -153,29 +155,39 @@ Posting to Twitter requires these modules:</p>
 <li><a class="reference external" href="https://github.com/bear/python-twitter">python-twitter</a> v1.0 or higher</li>
 <li><a class="reference external" href="https://github.com/simplegeo/python-oauth2">python-oauth2</a></li>
 </ul>
-<div class="highlight-python"><pre>sudo pip install python-twitter oauth2</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install python-twitter oauth2
+</pre></div>
 </div>
 <p><strong>or</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/tweepy/tweepy">tweepy</a> v2.0 or higher</li>
 <li><a class="reference external" href="https://github.com/simplegeo/python-oauth2">python-oauth2</a></li>
 </ul>
-<div class="highlight-python"><pre>sudo pip install tweepy oauth2</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install tweepy oauth2
+</pre></div>
 </div>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 13.10_r1086: </span>reenabled use of <tt class="docutils literal"><span class="pre">tweepy</span></tt> library as an alternative to <tt class="docutils literal"><span class="pre">python-twitter</span></tt>.
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 13.10_r1086: </span>reenabled use of <tt class="docutils literal"><span class="pre">tweepy</span></tt> library as an alternative to <tt class="docutils literal"><span class="pre">python-twitter</span></tt>.
 <tt class="docutils literal"><span class="pre">python-oauth2</span></tt> is still required by <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.TwitterAuth</span></tt></a>.</p>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 13.06_r1023: </span>pywws previously used the <tt class="docutils literal"><span class="pre">tweepy</span></tt> library instead of <tt class="docutils literal"><span class="pre">python-twitter</span></tt> and <tt class="docutils literal"><span class="pre">python-oauth2</span></tt>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 13.06_r1023: </span>pywws previously used the <tt class="docutils literal"><span class="pre">tweepy</span></tt> library instead of <tt class="docutils literal"><span class="pre">python-twitter</span></tt> and <tt class="docutils literal"><span class="pre">python-oauth2</span></tt>.</p>
+</div>
 </div>
 <div class="section" id="to-create-new-language-translations">
 <h2>To create new language translations<a class="headerlink" href="#to-create-new-language-translations" title="Permalink to this headline">¶</a></h2>
 <p>pywws can be configured to use languages other than English, and the documentation can also be translated into other languages.
 See <a class="reference internal" href="../guides/language.html"><em>How to use pywws in another language</em></a> for more information.
-The gettext package is required to extract the strings to be translated and compile the translation files.</p>
+The babel package is required to extract the strings to be translated and compile the translation files.</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.gnu.org/s/gettext/">gettext</a> (should be available from the package manager)</li>
+<li><a class="reference external" href="http://babel.pocoo.org/">babel</a></li>
 </ul>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install babel
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 14.05.dev1209: </span>pywws previously used the gettext package.</p>
+</div>
 </div>
 <div class="section" id="to-compile-the-documentation">
 <h2>To &#8216;compile&#8217; the documentation<a class="headerlink" href="#to-compile-the-documentation" title="Permalink to this headline">¶</a></h2>
@@ -185,7 +197,8 @@ If you&#8217;d like to create a local copy of the documentation (so you don&#821
 <ul class="simple">
 <li><a class="reference external" href="http://sphinx-doc.org/">Sphinx</a></li>
 </ul>
-<div class="highlight-python"><pre>sudo pip install sphinx</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install sphinx
+</pre></div>
 </div>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
@@ -261,12 +274,12 @@ If you&#8217;d like to create a local copy of the documentation (so you don&#821
         <li class="right" >
           <a href="LICENCE.html" title="GNU General Public License"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

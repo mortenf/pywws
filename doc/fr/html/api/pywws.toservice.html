@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 13.09_r1069 documentation</title>
+    <title>pywws.toservice &mdash; documentation pywws 13.09_r1069</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.09_r1069 documentation" href="../index.html" />
+    <link rel="top" title="documentation pywws 13.09_r1069" href="../index.html" />
     <link rel="up" title="Programmes et des modules Python" href="index.html" />
     <link rel="next" title="pywws.YoWindow" href="pywws.YoWindow.html" />
     <link rel="prev" title="pywws.ToTwitter" href="pywws.ToTwitter.html" /> 
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              accesskey="P">précédent</a> |</li>
-        <li><a href="../index.html">pywws 13.09_r1069 documentation</a> &raquo;</li>
+        <li><a href="../index.html">documentation pywws 13.09_r1069</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>  
@@ -61,13 +59,14 @@
   <div class="section" id="module-pywws.toservice">
 <span id="pywws-toservice"></span><h1>pywws.toservice<a class="headerlink" href="#module-pywws.toservice" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Poster des mise à jour météo pour des services tels que Weather Underground</p>
-<div class="highlight-python"><pre>usage: python -m pywws.toservice [options] data_dir service_name
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.toservice [options] data_dir service_name
 options are:
  -h or --help     display this help
  -c or --catchup  upload all data since last upload
  -v or --verbose  increase amount of reassuring messages
 data_dir is the root directory of the weather data
-service_name is the service to upload to, e.g. underground</pre>
+service_name is the service to upload to, e.g. underground
+</pre></div>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
@@ -83,7 +82,8 @@ service_name is the service to upload to, e.g. underground</pre>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">organisation</th>
 <th class="head">service name</th>
-<th class="head">fichier de configuration</th>
+<th class="head"><p class="first last">fichier de configuration</p>
+</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -122,7 +122,8 @@ service_name is the service to upload to, e.g. underground</pre>
 <h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Si vous ne l&#8217;avez pas déjà fait, visitez le site Web de l&#8217;organisation et créez un compte pour votre station météo. Prenez note de tous les détails d&#8217;identification du site et du mot de passe vous ayant été donnés.</p>
 <p>Arrêtez toute instance du logiciel pywws en fonction puis exécutez <tt class="docutils literal"><span class="pre">toservice.py</span></tt> pour créer une section dans le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice data_dir service_name</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice data_dir service_name
+</pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">service_name</span></tt> est le nom de services en un seul mot, tels que <tt class="docutils literal"><span class="pre">metoffice</span></tt>, <tt class="docutils literal"><span class="pre">data_dir</span></tt> est votre répertoire de données météo, comme d&#8217;habitude.</p>
 <p>Editer le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt> et trouver la section correspondant au nom du service, par exemple, <tt class="docutils literal"><span class="pre">[underground]</span></tt>. Copier les détails de votre site dans cette section, par exemple:</p>
@@ -132,14 +133,16 @@ service_name is the service to upload to, e.g. underground</pre>
 </pre></div>
 </div>
 <p>Maintenant, vous pouvez tester votre configuration:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice -vvv data_dir service_name</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -vvv data_dir service_name
+</pre></div>
 </div>
 <p>Celà devrait vous afficher la chaîne de données qui est téléversé. Tout manquement devrait générer un message d&#8217;erreur.</p>
 </div>
 <div class="section" id="upload-old-data">
 <h2>Téléverser les anciennes données<a class="headerlink" href="#upload-old-data" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Maintenant, vous pouvez téléverser les données de vos 7 derniers jours, si le service le prend en charge. Modifier votre fichier <tt class="docutils literal"><span class="pre">status.ini</span></tt> et supprimer la ligne <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> de la section appropriée, puis exécutez <tt class="docutils literal"><span class="pre">toservice.py</span></tt> avec l&#8217;option de rattrapage &#8216;catchup&#8217;:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice -cvv data_dir service_name</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -cvv data_dir service_name
+</pre></div>
 </div>
 <p>Cela peut prendre 20 minutes ou plus, en fonction de la quantité de données que vous avez.</p>
 </div>
@@ -178,9 +181,10 @@ service_name is the service to upload to, e.g. underground</pre>
 <li><p class="first">API: <a class="reference external" href="http://wow.metoffice.gov.uk/support?category=dataformats#automatic">http://wow.metoffice.gov.uk/support?category=dataformats#automatic</a></p>
 </li>
 <li><p class="first">Exemple <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[metoffice]
+<div class="highlight-python"><div class="highlight"><pre>[metoffice]
 site id = 12345678
-aws pin = 987654</pre>
+aws pin = 987654
+</pre></div>
 </div>
 </li>
 </ul>
@@ -193,13 +197,14 @@ aws pin = 987654</pre>
 <li><p class="first">API: <a class="reference external" href="http://openweathermap.org/API">http://openweathermap.org/API</a></p>
 </li>
 <li><p class="first">Exemple <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[openweathermap]
+<div class="highlight-python"><div class="highlight"><pre>[openweathermap]
 lat = 51.501
 long = -0.142
 alt = 10
 user = Elizabeth Windsor
 password = corgi
-id = Buck House</pre>
+id = Buck House
+</pre></div>
 </div>
 </li>
 </ul>
@@ -266,13 +271,16 @@ id = Buck House</pre>
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#pywws.toservice.ToService" title="pywws.toservice.ToService"><tt class="xref py py-obj docutils literal"><span class="pre">ToService</span></tt></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
-<td>Téléverse les données météo pour les services météorologiques tels que Weather</td>
+<td><p class="first last">Téléverse les données météo pour les services météorologiques tels que Weather Underground.</p>
+</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td>datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</td>
+<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
+</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
-<td>Différence entre deux valeurs de datetime.</td>
+<td><p class="first last">Différence entre deux valeurs de datetime.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -413,7 +421,7 @@ id = Buck House</pre>
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table des matières</a></h3>
+  <h3><a href="../index.html">Table des Matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">pywws.toservice</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -470,13 +478,13 @@ id = Buck House</pre>
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              >précédent</a> |</li>
-        <li><a href="../index.html">pywws 13.09_r1069 documentation</a> &raquo;</li>
+        <li><a href="../index.html">documentation pywws 13.09_r1069</a> &raquo;</li>
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

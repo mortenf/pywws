@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>pywws.toservice &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.YoWindow" href="pywws.YoWindow.html" />
     <link rel="prev" title="pywws.ToTwitter" href="pywws.ToTwitter.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -60,13 +58,14 @@
   <div class="section" id="module-pywws.toservice">
 <span id="pywws-toservice"></span><h1>pywws.toservice<a class="headerlink" href="#module-pywws.toservice" title="Permalink to this headline">¶</a></h1>
 <p>Post weather update to services such as Weather Underground</p>
-<div class="highlight-python"><pre>usage: python -m pywws.toservice [options] data_dir service_name
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.toservice [options] data_dir service_name
 options are:
  -h or --help     display this help
  -c or --catchup  upload all data since last upload
  -v or --verbose  increase amount of reassuring messages
 data_dir is the root directory of the weather data
-service_name is the service to upload to, e.g. underground</pre>
+service_name is the service to upload to, e.g. underground
+</pre></div>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
@@ -88,7 +87,8 @@ create an account for your weather station. Make a note of any site ID
 and password details you are given.</p>
 <p>Stop any pywws software that is running and then run <tt class="docutils literal"><span class="pre">toservice</span></tt> to
 create a section in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice data_dir service_name</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice data_dir service_name
+</pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">service_name</span></tt> is the single word service name used by pywws, such
 as <tt class="docutils literal"><span class="pre">metoffice</span></tt>, <tt class="docutils literal"><span class="pre">data_dir</span></tt> is your weather data directory, as
@@ -102,7 +102,8 @@ section, for example:</p>
 </pre></div>
 </div>
 <p>Now you can test your configuration:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice -vvv data_dir service_name</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -vvv data_dir service_name
+</pre></div>
 </div>
 <p>This should show you the data string that is uploaded. Any failure
 should generate an error message.</p>
@@ -113,7 +114,8 @@ should generate an error message.</p>
 Edit your <tt class="docutils literal"><span class="pre">status.ini</span></tt> file and remove the appropriate line from the
 <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> section, then run <tt class="docutils literal"><span class="pre">toservice</span></tt> with the catchup
 option:</p>
-<div class="highlight-python"><pre>python -m pywws.toservice -cvv data_dir service_name</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -cvv data_dir service_name
+</pre></div>
 </div>
 <p>This may take 20 minutes or more, depending on how much data you have.</p>
 </div>
@@ -177,7 +179,7 @@ see regular updates from your weather station.</p>
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#pywws.toservice.ToService" title="pywws.toservice.ToService"><tt class="xref py py-obj docutils literal"><span class="pre">ToService</span></tt></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
-<td>Upload weather data to weather services such as Weather</td>
+<td>Upload weather data to weather services such as Weather Underground.</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
 <td>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</td>
@@ -409,13 +411,13 @@ stamp of the most recent record successfully uploaded.</p>
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

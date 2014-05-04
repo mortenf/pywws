@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Come utilizzare pywws in un altra lingua &mdash; pywws 13.12.dev1118 documentation</title>
+    <title>Come utilizzare pywws in un altra lingua &mdash; pywws 13.12.dev1118 documentazione</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.12.dev1118 documentation" href="../index.html" />
+    <link rel="top" title="pywws 13.12.dev1118 documentazione" href="../index.html" />
     <link rel="up" title="Guide per gli utenti" href="index.html" />
     <link rel="next" title="weather.ini - configurazione del formato del file" href="weather_ini.html" />
     <link rel="prev" title="Come configurare pywws per pubblicare messaggi su Twitter" href="twitter.html" /> 
@@ -40,7 +38,7 @@
           <a href="../genindex.html" title="Indice generale"
              accesskey="I">indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="weather_ini.html" title="weather.ini - configurazione del formato del file"
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="twitter.html" title="Come configurare pywws per pubblicare messaggi su Twitter"
              accesskey="P">precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>  
@@ -76,53 +74,61 @@
 <div class="section" id="getting-started">
 <h2>Guida introduttiva<a class="headerlink" href="#getting-started" title="link permanente per questa intestazione">¶</a></h2>
 <p>La directory pywws dovrebbe già avere una sottodirectory denominata traduzioni. Questo contiene l&#8217;insieme dei file di lingua esistente, ad esempio <tt class="docutils literal"><span class="pre">translations/sv/pywws.po</span></tt> contiene le traduzioni svedesi. Se una di queste lingue è quello che ti serve, quindi modificare il file weather.ini e aggiungere una voce <tt class="docutils literal"><span class="pre">language</span></tt> alla sezione <tt class="docutils literal"><span class="pre">[config]</span></tt>, ad esempio:</p>
-<div class="highlight-python"><pre>[config]
+<div class="highlight-python"><div class="highlight"><pre>[config]
 day end hour = 21
 gnuplot encoding = iso_8859_1
-language = sv</pre>
+language = sv
+</pre></div>
 </div>
 <p>Potrebbe essere ancora necessario compilare e installare il file della lingua scelta. Questo viene fatto con <tt class="docutils literal"><span class="pre">setup.py</span></tt>:</p>
-<div class="highlight-python"><pre>python setup.py msgfmt</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py msgfmt
+</pre></div>
 </div>
 <p>Se non c&#8217;è già un file per la lingua, il resto di questo documento spiega come crearne uno.</p>
 </div>
 <div class="section" id="create-a-language-file">
 <h2>Creare un file di lingua<a class="headerlink" href="#create-a-language-file" title="link permanente per questa intestazione">¶</a></h2>
 <p>Il primo passo è quello di creare un file contenente le stringhe che hai bisogno di tradurre. Ad esempio, per creare un file di origine per la lingua francese (codice <tt class="docutils literal"><span class="pre">fr</span></tt>):</p>
-<div class="highlight-python"><pre>python setup.py xgettext
-python setup.py msgmerge --lang=fr</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py xgettext
+python setup.py msgmerge --lang=fr
+</pre></div>
 </div>
 <p>Questo ti chiederà di confermare il tuo indirizzo email, quindi creare un file <tt class="docutils literal"><span class="pre">pywws.po</span></tt> nella directory <tt class="docutils literal"><span class="pre">translations/fr</span></tt>. Ora si dovrebbe modificare <tt class="docutils literal"><span class="pre">pywws.po</span></tt>, riempiendo in ogni linea di <tt class="docutils literal"><span class="pre">msgstr</span></tt> con una traduzione della linea <tt class="docutils literal"><span class="pre">msgid</span></tt> immediatamente di sopra di esso. Il motivo di includere l&#8217;indirizzo e-mail è di consentire a chiunque abbia domande circa la vostra traduzione di mettersi in contatto con voi. Sentitevi liberi di mettere in un indirizzo non valido, se siete preoccupati per la privacy.</p>
 <p>Dopo avere modificato i file di lingua devono essere compilati in modo che pywws possa usarli. Questo viene fatto con il comando <tt class="docutils literal"><span class="pre">msgfmt</span></tt>:</p>
-<div class="highlight-python"><pre>python setup.py msgfmt</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py msgfmt
+</pre></div>
 </div>
 <p>Non dimenticate di fare questo ogni volta che si modifica un file di lingua.</p>
 </div>
 <div class="section" id="test-the-pywws-translation">
 <h2>Controllare la traduzione pywws<a class="headerlink" href="#test-the-pywws-translation" title="link permanente per questa intestazione">¶</a></h2>
 <p>Il modulo <a class="reference internal" href="../api/pywws.Localisation.html#module-pywws.Localisation" title="pywws.Localisation"><tt class="xref py py-mod docutils literal"><span class="pre">Localisation</span></tt></a> può essere utilizzato per fare un test rapido della lingua del file di installazione:</p>
-<div class="highlight-python"><pre>python -m pywws.Localisation -t fr</pre>
+<div class="highlight-python"><div class="highlight"><pre>python -m pywws.Localisation -t fr
+</pre></div>
 </div>
 <p>Questo dovrebbe produrre output con qualcosa di simile a questo:</p>
-<div class="highlight-python"><pre>Locale changed from (None, None) to ('fr_FR', 'UTF-8')
+<div class="highlight-python"><div class="highlight"><pre>Locale changed from (None, None) to (&#39;fr_FR&#39;, &#39;UTF-8&#39;)
 Translation set OK
 Locale
   decimal point: 23,2
   date &amp; time: lundi, 17 décembre (17/12/2012 16:00:48)
 Translations
-  'NNW' =&gt; 'NNO'
-  'rising very rapidly' =&gt; 'en hausse très rapide'
-  'Rain at times, very unsettled' =&gt; 'Quelques précipitations, très perturbé'</pre>
+  &#39;NNW&#39; =&gt; &#39;NNO&#39;
+  &#39;rising very rapidly&#39; =&gt; &#39;en hausse très rapide&#39;
+  &#39;Rain at times, very unsettled&#39; =&gt; &#39;Quelques précipitations, très perturbé&#39;
+</pre></div>
 </div>
 <p>Modificare la voce lingua nel file <tt class="docutils literal"><span class="pre">weather.ini</span></tt> per utilizzare il tuo codice lingua (per esempio <tt class="docutils literal"><span class="pre">it</span></tt>), quindi provare a utilizzare  <a class="reference internal" href="../api/pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><tt class="xref py py-mod docutils literal"><span class="pre">Plot</span></tt></a> e tracciate un grafico. L&#8217;asse x del grafico dovrebbe ora essere tradotto nella tua lingua, utilizzando la traduzione che hai fornito per &#8216;Time&#8217;, &#8216;Day&#8217; or &#8216;Date&#8217;.</p>
 </div>
 <div class="section" id="translating-the-documentation">
 <h2>Tradurre la documentazione<a class="headerlink" href="#translating-the-documentation" title="link permanente per questa intestazione">¶</a></h2>
 <p>Il sistema utilizzato per tradurre le stringhe utilizzate in pywws è utilizzabile anche per tradurre la documentazione. Il comando per estrarre le stringhe dalla documentazione è molto simile:</p>
-<div class="highlight-python"><pre>python setup.py xgettext_doc</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py xgettext_doc
+</pre></div>
 </div>
 <p>Si noti che questo richiede il pacchetto <a class="reference external" href="http://sphinx-doc.org/">sphinx</a> utilizzato per la &#8216;compilazione&#8217; della documentazione. Dopo l&#8217;estrazione delle stringhe, creare i file di origine per la tua lingua. In questo esempio la lingua è l&#8217;italiano, con il codice di due lettere <tt class="docutils literal"><span class="pre">it</span></tt>:</p>
-<div class="highlight-python"><pre>python setup.py msgmerge --lang=fr</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py msgmerge --lang=fr
+</pre></div>
 </div>
 <p>Questo crea quattro file (<tt class="docutils literal"><span class="pre">index.po</span></tt>, <tt class="docutils literal"><span class="pre">essential.po</span></tt>, <tt class="docutils literal"><span class="pre">guides.po</span></tt> e <tt class="docutils literal"><span class="pre">api.po</span></tt>) che contengono stringhe di testo (spesso interi paragrafi) estratti da diverse parti della documentazione.</p>
 <p>Questi file possono essere modificati in modo simile a <tt class="docutils literal"><span class="pre">pywws.po</span></tt>.  Riempire ogni <tt class="docutils literal"><span class="pre">msgstr</span></tt> con una traduzione di <tt class="docutils literal"><span class="pre">msgid</span></tt> di sopra di esso. Si noti che alcune stringhe (ad esempio gli URL e i collegamenti ad altre parti della documentazione) non dovrebbero essere tradotti. In questi casi, lasciare vuoto il <tt class="docutils literal"><span class="pre">msgstr</span></tt>.</p>
@@ -131,11 +137,13 @@ Translations
 <div class="section" id="viewing-your-translated-documentation">
 <h2>Visualizzazione della documentazione tradotta<a class="headerlink" href="#viewing-your-translated-documentation" title="link permanente per questa intestazione">¶</a></h2>
 <p>Prima convertire il file appena modificato della lingua:</p>
-<div class="highlight-python"><pre>python setup.py msgfmt</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py msgfmt
+</pre></div>
 </div>
 <p>Quindi eliminare la vecchia documentazione (se esiste)e ricostruire utilizzando il tuo linguaggio:</p>
-<div class="highlight-python"><pre>rm -Rf doc/html/fr
-LANG=fr python setup.py build_sphinx</pre>
+<div class="highlight-python"><div class="highlight"><pre>rm -Rf doc/html/fr
+LANG=fr python setup.py build_sphinx
+</pre></div>
 </div>
 <p>Si noti che il comando <tt class="docutils literal"><span class="pre">build_sphinx</span></tt> non ha un opzione <tt class="docutils literal"><span class="pre">--lang</span></tt>, per la lingua è impostata una variabile temporanea di ambiente.</p>
 <p>Infine è possibile visualizzare la documentazione tradotta tramite un browser web per leggere il file <tt class="docutils literal"><span class="pre">doc/html/it/index.html</span></tt>.</p>
@@ -143,9 +151,10 @@ LANG=fr python setup.py build_sphinx</pre>
 <div class="section" id="update-the-language-files">
 <h2>Aggiornare i file di lingua<a class="headerlink" href="#update-the-language-files" title="link permanente per questa intestazione">¶</a></h2>
 <p>Siccome pywws è in sviluppo, possono essere aggiunte nuove stringhe che richiederà i file di traduzione per essere anche sviluppato. Questo è abbastanza facile da fare. Innanzitutto è necessario ri-estrarre le stringhe per essere tradotte, quindi unirle nei file lingua esistenti. Questo è fatto ripetendo i comandi utilizzati per creare i file:</p>
-<div class="highlight-python"><pre>python setup.py xgettext
+<div class="highlight-python"><div class="highlight"><pre>python setup.py xgettext
 python setup.py xgettext_doc
-python setup.py msgmerge --lang=fr</pre>
+python setup.py msgmerge --lang=fr
+</pre></div>
 </div>
 <p>Ciò dovrebbe aggiungere le nuove stringhe nel file di lingua, senza modificare le stringhe già tradotte.</p>
 <p>Se l&#8217;origine della lingua inglese è cambiato dall&#8217;ultima traduzione, alcune stringhe possono essere contrassegnate da gettext come &#8216;#, fuzzy &#8216;. È necessario controllare che la traduzione è ancora corretta per queste stringhe &#8211; il cambiamento può essere banale (per esempio una correzione ortografica) ma potrebbe essere abbastanza significativo. Quando hai controllato (e corretti se necessario) la traduzione, rimuovere la riga &#8216;#, fuzzy &#8216;.</p>
@@ -213,7 +222,7 @@ python setup.py msgmerge --lang=fr</pre>
           <a href="../genindex.html" title="Indice generale"
              >indice</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Indice del modulo Python"
              >moduli</a> |</li>
         <li class="right" >
           <a href="weather_ini.html" title="weather.ini - configurazione del formato del file"
@@ -221,13 +230,13 @@ python setup.py msgmerge --lang=fr</pre>
         <li class="right" >
           <a href="twitter.html" title="Come configurare pywws per pubblicare messaggi su Twitter"
              >precedente</a> |</li>
-        <li><a href="../index.html">pywws 13.12.dev1118 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li>
           <li><a href="index.html" >Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Change Log &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>Change Log &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="next" title="User guides" href="../guides/index.html" />
     <link rel="prev" title="Dependencies" href="dependencies.html" /> 
   </head>
@@ -46,7 +44,7 @@
         <li class="right" >
           <a href="dependencies.html" title="Dependencies"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +55,7 @@
             
   <div class="section" id="change-log">
 <h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><pre>pywws - Python software for USB Wireless Weather Stations
+<div class="highlight-python"><div class="highlight"><pre>pywws - Python software for USB Wireless Weather Stations
 http://github.com/jim-easterbrook/pywws
 Copyright (C) 2008-14  Jim Easterbrook  jim@jim-easterbrook.me.uk
 
@@ -77,22 +75,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Changes in v14.05:
     1/ Rearranged package layout, moving examples and documentation.
-    2/ Added 'entry point' auto-generated commands for some modules.
+    2/ Added &#39;entry point&#39; auto-generated commands for some modules.
     3/ Added verbose output option to pywws-version command.
     4/ Various bug fixes and minor improvements.
 
 Changes in v14.03:
-    1/ Extracts additional status from 'wind_dir' byte. You must run
+    1/ Extracts additional status from &#39;wind_dir&#39; byte. You must run
        pywws-reprocess.py with the -u option after upgrading from any previous
        version.
-    2/ Added Citizen Weather Observer Program to available 'services'.
+    2/ Added Citizen Weather Observer Program to available &#39;services&#39;.
     3/ Improved asynchronous upload task queuing.
     4/ Various bug fixes and minor improvements.
 
 Changes in v14.02:
     1/ Improved time zone handling, including non whole hour time zones.
-    2/ New 'frequent writes' config option.
-    3/ Improved 'live log' sync, particularly with 3080 type stations.
+    2/ New &#39;frequent writes&#39; config option.
+    3/ Improved &#39;live log&#39; sync, particularly with 3080 type stations.
     4/ Record recent memory pointer to improve detection of gaps in data.
     5/ Various bug fixes and minor improvements.
 
@@ -110,19 +108,19 @@ Changes in v13.10:
     4/ Various bug fixes and minor improvements.
 
 Changes in v13.06:
-    1/ Substantially rearranged directories, getting rid of 'code' and 'code3'.
-    2/ Removed 'makefile' - everything is now done via 'setup.py'.
-    3/ Removed 'RunModule.py' - use 'python -m pywws.module' now.
+    1/ Substantially rearranged directories, getting rid of &#39;code&#39; and &#39;code3&#39;.
+    2/ Removed &#39;makefile&#39; - everything is now done via &#39;setup.py&#39;.
+    3/ Removed &#39;RunModule.py&#39; - use &#39;python -m pywws.module&#39; now.
     4/ Separated storage of config (weather.ini) and status (status.ini).
-    5/ Replaced toservice.py "rapid fire" mode with a separate config file for
+    5/ Replaced toservice.py &quot;rapid fire&quot; mode with a separate config file for
        Weather Underground rapid fire.
     6/ Added 2 more low-level USB access modules.
     7/ Various bug fixes and minor improvements.
 
 Changes in v13.03:
-    1/ Added 'rain days' to monthly data. (Reprocess required when upgrading.)
+    1/ Added &#39;rain days&#39; to monthly data. (Reprocess required when upgrading.)
     2/ Extended template syntax to include comments.
-    3/ Added 'humidity index' function.
+    3/ Added &#39;humidity index&#39; function.
     4/ Added French translation of documentation.
     5/ Reduced frequency of saving data files.
     6/ Various bug fixes.
@@ -130,17 +128,17 @@ Changes in v13.03:
 Changes in v12.12:
     1/ Added support for Python 3.
     2/ Added French documentation translation.
-    3/ Used 'binary search' to speed up data access.
+    3/ Used &#39;binary search&#39; to speed up data access.
     4/ Various bug fixes.
 
 Changes in v12.11:
     1/ Moved development from Google code to GitHub.
     2/ Made software attempt to avoid USB activity at times when it is assumed
        the weather station might be writing to its memory. This might solve
-       the USB lockup problem, but it's too early to tell.
+       the USB lockup problem, but it&#39;s too early to tell.
 
 Changes in v12.10:
-    1/ Added a 'winddir_text' function for use in templates.
+    1/ Added a &#39;winddir_text&#39; function for use in templates.
     2/ Added &lt;ytics&gt; and &lt;y2tics&gt; options to graph plots.
     3/ Various bug fixes.
 
@@ -150,7 +148,7 @@ Changes in v12.07:
     3/ Various bug fixes and software structure improvements.
 
 Changes in v12.05:
-    1/ Made 'fixed block' data available to template calculations.
+    1/ Made &#39;fixed block&#39; data available to template calculations.
     2/ Fixed buggy auto-detection of 3080 weather stations.
     3/ Added a function to generate the Zambretti forecast code letter.
     4/ Added a program to test USB communication reliablility.
@@ -161,21 +159,21 @@ Changes in v12.02:
        libraries. Now works on recent versions of Mac OS.
     2/ Added humidity, pressure &amp; wind data to summary data.
     3/ Merged Weather Underground and UK Met Office uploaders into one combined
-       module. Added more 'service' uploaders.
+       module. Added more &#39;service&#39; uploaders.
     4/ Various bug fixes and software structure improvements.
 
 Changes in v11.10:
     1/ Complete restructuring of documentation.
-    2/ Added a user defined 'calibration' process.
-    3/ Sets 'locale' according to language setting.
-    4/ Added ability to upload to UK Met Office 'WOW'.
+    2/ Added a user defined &#39;calibration&#39; process.
+    3/ Sets &#39;locale&#39; according to language setting.
+    4/ Added ability to upload to UK Met Office &#39;WOW&#39;.
     5/ Various bug fixes and software structure improvements.
     6/ New language files: French, Danish.
 
 Changes in v11.05:
-    1/ Added support for '3080' family stations that have illuminance and
+    1/ Added support for &#39;3080&#39; family stations that have illuminance and
        UV sensors.
-    2/ Broadened the range of tasks that can be done with 'live' data.
+    2/ Broadened the range of tasks that can be done with &#39;live&#39; data.
     3/ Various bug fixes and software structure improvements.
 
 Changes in v11.02:
@@ -187,32 +185,32 @@ Changes in v11.02:
 
 Changes in v10.12:
     1/ Various bug fixes and software structure improvements.
-    2/ Added a 'goto' instruction to Template.py.
-    3/ Added a 'Zambretti' forecast function to Template.py. This should
+    2/ Added a &#39;goto&#39; instruction to Template.py.
+    3/ Added a &#39;Zambretti&#39; forecast function to Template.py. This should
        be treated as an experiment, and not relied upon for accuracy.
 
 Changes in v10.10:
-    1/ Added 'catchup' mode to ToUnderground.py.
-    2/ Created 'Tasks.py' to handle common tasks.
-    3/ Made better use of Python's logger for info and error
+    1/ Added &#39;catchup&#39; mode to ToUnderground.py.
+    2/ Created &#39;Tasks.py&#39; to handle common tasks.
+    3/ Made better use of Python&#39;s logger for info and error
        messages.
-    4/ Changed over from 'python-twitter' to 'tweepy' for Twitter
+    4/ Changed over from &#39;python-twitter&#39; to &#39;tweepy&#39; for Twitter
        access. Twitter authorisation using OAuth now works.
-    5/ Added 'LiveLog.py' live logging program.
-    6/ Added 'SetWeatherStation.py' to do some configuration of weather
+    5/ Added &#39;LiveLog.py&#39; live logging program.
+    6/ Added &#39;SetWeatherStation.py&#39; to do some configuration of weather
        station. No longer need EasyWeather to set logging interval!
-    7/ Added 'Rapid Fire' ability to ToUnderground.py.
+    7/ Added &#39;Rapid Fire&#39; ability to ToUnderground.py.
     8/ Added plain text versions of HTML documentation.
     9/ Many bug fixes and minor improvements.
 
 Changes in v10.08:
     1/ Added internal temperature to daily and monthly summaries.
        Run Reprocess.py when upgrading from earlier versions.
-    2/ Added 'prevdata' to Template.py. Allows calculations that
+    2/ Added &#39;prevdata&#39; to Template.py. Allows calculations that
        compare values from different times.
-    3/ Made 'pressure_offset' available to calculations in Plot.py
-       and Template.py. This is only useful when using 'raw' data.
-    4/ Improved synchronisation to weather station's clock when
+    3/ Made &#39;pressure_offset&#39; available to calculations in Plot.py
+       and Template.py. This is only useful when using &#39;raw&#39; data.
+    4/ Improved synchronisation to weather station&#39;s clock when
        fetching stored data.
 
 Changes in v10.06:
@@ -222,11 +220,11 @@ Changes in v10.06:
 
 Changes in v10.04:
     1/ Changed version numbering to year.month.
-    2/ Allowed "upload" to a local directory instead of ftp site.
-    3/ Added "calc" option to text templates (Template.py).
+    2/ Allowed &quot;upload&quot; to a local directory instead of ftp site.
+    3/ Added &quot;calc&quot; option to text templates (Template.py).
     4/ Added -v / --verbose option to Hourly.py to allow silent operation.
     5/ Added internationalisation / localisation of some strings.
-    6/ Made 'raw' data available to text templates.
+    6/ Made &#39;raw&#39; data available to text templates.
     7/ Added ability to upload to Weather Underground.
     8/ Added dual axis and cumulative graph capability.
 
@@ -234,9 +232,9 @@ Changes in v0.9:
     1/ Added lowest daytime max and highest nighttime min temperatures
        to monthly data.
     2/ Added average temperature to daily and monthly data.
-    3/ Added 'terminal' element to Plot.py templates for greater control
+    3/ Added &#39;terminal&#39; element to Plot.py templates for greater control
        over output appearance.
-    4/ Added 'command' element to Plot.py templates for even more
+    4/ Added &#39;command&#39; element to Plot.py templates for even more
        control, for advanced users.
     5/ Added secure upload option.
     6/ Minor speed improvements.
@@ -256,12 +254,12 @@ Changes in v0.7:
 
 Changes in v0.6:
     1/ Added monthly data
-    2/ Changed 'pressure' to 'abs_pressure' or 'rel_pressure'
+    2/ Changed &#39;pressure&#39; to &#39;abs_pressure&#39; or &#39;rel_pressure&#39;
 
 Changes in v0.5:
     1/ Small bug fixes.
     2/ Added start time to daily data
-    3/ Replaced individual plot programs with XML "recipe" system
+    3/ Replaced individual plot programs with XML &quot;recipe&quot; system
 
 Changes in v0.4:
     1/ Can post brief messages to Twitter.
@@ -278,8 +276,7 @@ Changes in v0.2:
     1/ Now uses Python csv library to read and write data
     2/ Creates hourly and daily summary files
     3/ Includes rain data in graphs
-
-</pre>
+</pre></div>
 </div>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
@@ -333,12 +330,12 @@ Changes in v0.2:
         <li class="right" >
           <a href="dependencies.html" title="Dependencies"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

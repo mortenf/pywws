@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Template &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>pywws.Template &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.Forecast" href="pywws.Forecast.html" />
     <link rel="prev" title="pywws.WindRose" href="pywws.WindRose.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="pywws.WindRose.html" title="pywws.WindRose"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -60,12 +58,13 @@
   <div class="section" id="module-pywws.Template">
 <span id="pywws-template"></span><h1>pywws.Template<a class="headerlink" href="#module-pywws.Template" title="Permalink to this headline">¶</a></h1>
 <p>Create text data file based on a template</p>
-<div class="highlight-python"><pre>usage: python -m pywws.Template [options] data_dir template_file output_file
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.Template [options] data_dir template_file output_file
 options are:
  --help    display this help
 data_dir is the root directory of the weather data
 template_file is the template text source file
-output_file is the name of the text file to be created</pre>
+output_file is the name of the text file to be created
+</pre></div>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
@@ -119,9 +118,10 @@ value.</p>
 <div class="section" id="raw">
 <h3><tt class="docutils literal"><span class="pre">#raw#</span></tt><a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h3>
 <p>switch to &#8220;raw&#8221; data. The index is reset to the most recent value.</p>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
 unchanged for backwards compatibility.</p>
+</div>
 </div>
 <div class="section" id="live">
 <h3><tt class="docutils literal"><span class="pre">#live#</span></tt><a class="headerlink" href="#live" title="Permalink to this headline">¶</a></h3>
@@ -219,22 +219,23 @@ returns the change in data item <tt class="docutils literal"><span class="pre">k
 template features. It is part of the 6hrs.txt example template file,
 which generates an HTML table of 7 hourly readings (which should span
 6 hours).</p>
-<div class="highlight-python"><pre>#hourly#
+<div class="highlight-python"><div class="highlight"><pre>#hourly#
 #jump -6#
 #loop 7#
   &lt;tr&gt;
-    &lt;td&gt;#idx "%Y/%m/%d" "" "[None, x][x.hour == 0 or loop_count == 7]"#&lt;/td&gt;
-    &lt;td&gt;#idx "%H%M %Z"#&lt;/td&gt;
-    &lt;td&gt;#temp_out "%.1f °C"#&lt;/td&gt;
-    &lt;td&gt;#hum_out "%d%%"#&lt;/td&gt;
-    &lt;td&gt;#wind_dir "%s" "-" "winddir_text(x)"#&lt;/td&gt;
-    &lt;td&gt;#wind_ave "%.0f mph" "" "wind_mph(x)"#&lt;/td&gt;
-    &lt;td&gt;#wind_gust "%.0f mph" "" "wind_mph(x)"#&lt;/td&gt;
-    &lt;td&gt;#rain "%0.1f mm"#&lt;/td&gt;
-    &lt;td&gt;#rel_pressure "%.0f hPa"#, #pressure_trend "%s" "" "pressure_trend_text(x)"#&lt;/td&gt;
+    &lt;td&gt;#idx &quot;%Y/%m/%d&quot; &quot;&quot; &quot;[None, x][x.hour == 0 or loop_count == 7]&quot;#&lt;/td&gt;
+    &lt;td&gt;#idx &quot;%H%M %Z&quot;#&lt;/td&gt;
+    &lt;td&gt;#temp_out &quot;%.1f °C&quot;#&lt;/td&gt;
+    &lt;td&gt;#hum_out &quot;%d%%&quot;#&lt;/td&gt;
+    &lt;td&gt;#wind_dir &quot;%s&quot; &quot;-&quot; &quot;winddir_text(x)&quot;#&lt;/td&gt;
+    &lt;td&gt;#wind_ave &quot;%.0f mph&quot; &quot;&quot; &quot;wind_mph(x)&quot;#&lt;/td&gt;
+    &lt;td&gt;#wind_gust &quot;%.0f mph&quot; &quot;&quot; &quot;wind_mph(x)&quot;#&lt;/td&gt;
+    &lt;td&gt;#rain &quot;%0.1f mm&quot;#&lt;/td&gt;
+    &lt;td&gt;#rel_pressure &quot;%.0f hPa&quot;#, #pressure_trend &quot;%s&quot; &quot;&quot; &quot;pressure_trend_text(x)&quot;#&lt;/td&gt;
   &lt;/tr&gt;
 #jump 1#
-#endloop#</pre>
+#endloop#
+</pre></div>
 </div>
 <p>The first three lines of this snippet do the following: select hourly
 data, jump back 6 hours, start a loop with a count of 7. A jump
@@ -285,7 +286,7 @@ the array <tt class="docutils literal"><span class="pre">[None,</span> <span cla
 <td>Calculate Humidity Index as per Canadian Weather Standards</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">dew_point</span></tt>(temp,&nbsp;hum)</td>
-<td>Compute dew point, using formula from</td>
+<td>Compute dew point, using formula from <a class="reference external" href="http://en.wikipedia.org/wiki/Dew_point">http://en.wikipedia.org/wiki/Dew_point</a>.</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></tt>(lux)</td>
 <td>Approximate conversion of illuminance in lux to solar radiation in W/m2</td>
@@ -297,7 +298,7 @@ the array <tt class="docutils literal"><span class="pre">[None,</span> <span cla
 <td>Convert pressure from hectopascals/millibar to inches of mercury</td>
 </tr>
 <tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></tt>(trend)</td>
-<td>Convert pressure trend to a string, as used by the UK met</td>
+<td>Convert pressure trend to a string, as used by the UK met office.</td>
 </tr>
 <tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></tt>(mm)</td>
 <td>Convert rainfall from millimetres to inches</td>
@@ -456,13 +457,13 @@ the array <tt class="docutils literal"><span class="pre">[None,</span> <span cla
         <li class="right" >
           <a href="pywws.WindRose.html" title="pywws.WindRose"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

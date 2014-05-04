@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Humidity Index (Humidex) &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>Humidity Index (Humidex) &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="Python programs and modules" href="../api_index.html" />
     <link rel="prev" title="weather.ini - configuration file format" href="weather_ini.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="weather_ini.html" title="weather.ini - configuration file format"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -101,10 +99,11 @@
 <div class="section" id="how-to-use">
 <h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
 <p>The function is descriptively named <tt class="docutils literal"><span class="pre">cadhumidex</span></tt> and has the parameters temperature and humidity, essentially the function operates as a conversion and can be used in a straightforward manner:</p>
-<div class="highlight-python"><pre>&lt;ycalc&gt;cadhumidex(data['temp_out'],data['hum_out'])&lt;/ycalc&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>&lt;ycalc&gt;cadhumidex(data[&#39;temp_out&#39;],data[&#39;hum_out&#39;])&lt;/ycalc&gt;
+</pre></div>
 </div>
 <p>Putting it together, I have added colours that follow basic warning colors and the different brackets to produce a decent graph:</p>
-<div class="highlight-python"><pre>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
 &lt;graph&gt;
   &lt;title&gt;Humidity Index, Bands indicate apparent discomfort in standard on-site working conditions&lt;/title&gt;
   &lt;size&gt;1820, 1024&lt;/size&gt;
@@ -120,7 +119,7 @@
     &lt;source&gt;raw&lt;/source&gt;
     &lt;subplot&gt;
       &lt;title&gt;Humidex&lt;/title&gt;
-      &lt;ycalc&gt;cadhumidex(data['temp_out'],data['hum_out'])&lt;/ycalc&gt;
+      &lt;ycalc&gt;cadhumidex(data[&#39;temp_out&#39;],data[&#39;hum_out&#39;])&lt;/ycalc&gt;
       &lt;colour&gt;4&lt;/colour&gt;
       &lt;axes&gt;x1y2&lt;/axes&gt;
     &lt;/subplot&gt;
@@ -155,13 +154,15 @@
       &lt;colour&gt;3&lt;/colour&gt;
     &lt;/subplot&gt;
   &lt;/plot&gt;
-&lt;/graph&gt;</pre>
+&lt;/graph&gt;
+</pre></div>
 </div>
 </div>
 <div class="section" id="not-running-the-latest-update">
 <h2>Not running the latest update?<a class="headerlink" href="#not-running-the-latest-update" title="Permalink to this headline">¶</a></h2>
 <p>If you are not running the latest update / do not want to, then this can be implemented using a longer &lt;ycalc&gt; as follows:</p>
-<div class="highlight-python"><pre>&lt;ycalc&gt;data['temp_out']+0.555*(6.112*10**(7.5*data['temp_out']/(237.7+data['temp_out']))*data['hum_out']/100-10)&lt;/ycalc&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>&lt;ycalc&gt;data[&#39;temp_out&#39;]+0.555*(6.112*10**(7.5*data[&#39;temp_out&#39;]/(237.7+data[&#39;temp_out&#39;]))*data[&#39;hum_out&#39;]/100-10)&lt;/ycalc&gt;
+</pre></div>
 </div>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
@@ -229,13 +230,13 @@
         <li class="right" >
           <a href="weather_ini.html" title="weather.ini - configuration file format"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to integrate pywws with various weather services &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>How to integrate pywws with various weather services &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to configure pywws to post messages to Twitter" href="twitter.html" />
     <link rel="prev" title="How to set up ‘live’ logging with pywws" href="livelogging.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -107,17 +105,19 @@ The following subsections give further information about some of the available s
 <li><p class="first">API: <a class="reference external" href="http://www.wxqa.com/faq.html">http://www.wxqa.com/faq.html</a></p>
 </li>
 <li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[cwop]
+<div class="highlight-python"><div class="highlight"><pre>[cwop]
 designator = EW9999
 latitude = 5130.06N
-longitude = 00008.52E</pre>
+longitude = 00008.52E
+</pre></div>
 </div>
 <p>or, for radio hams:</p>
-<div class="highlight-python"><pre>[cwop]
+<div class="highlight-python"><div class="highlight"><pre>[cwop]
 designator = G4XXX
 passcode = xxxxxx
 latitude = 5130.06N
-longitude = 00008.52E</pre>
+longitude = 00008.52E
+</pre></div>
 </div>
 </li>
 </ul>
@@ -127,8 +127,9 @@ See question 3 in the <a class="reference external" href="http://www.wxqa.com/fa
 They should use the service name <tt class="docutils literal"><span class="pre">cwop_ham</span></tt> instead of <tt class="docutils literal"><span class="pre">cwop</span></tt>.</p>
 <p>CWOP uploads are rate-limited by pywws, so you can safely add it to both the <tt class="docutils literal"><span class="pre">[live]</span></tt> and <tt class="docutils literal"><span class="pre">[logged]</span></tt> sections in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>.</p>
 <p>The CWOP/APRS uploader is based on code by Marco Trevisan &lt;<a class="reference external" href="mailto:mail&#37;&#52;&#48;3v1n0&#46;net">mail<span>&#64;</span>3v1n0<span>&#46;</span>net</a>&gt;.</p>
-<p class="versionadded">
-<span class="versionmodified">New in version 14.02.dev1156.</span></p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.02.dev1156.</span></p>
+</div>
 </div>
 <div class="section" id="uk-met-office">
 <h3>UK Met Office<a class="headerlink" href="#uk-met-office" title="Permalink to this headline">¶</a></h3>
@@ -143,9 +144,10 @@ They should use the service name <tt class="docutils literal"><span class="pre">
 <li><p class="first">API: <a class="reference external" href="http://wow.metoffice.gov.uk/support/dataformats#automatic">http://wow.metoffice.gov.uk/support/dataformats#automatic</a></p>
 </li>
 <li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[metoffice]
+<div class="highlight-python"><div class="highlight"><pre>[metoffice]
 site id = 12345678
-aws pin = 987654</pre>
+aws pin = 987654
+</pre></div>
 </div>
 </li>
 </ul>
@@ -160,13 +162,14 @@ aws pin = 987654</pre>
 <li><p class="first">API: <a class="reference external" href="http://openweathermap.org/API">http://openweathermap.org/API</a></p>
 </li>
 <li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[openweathermap]
+<div class="highlight-python"><div class="highlight"><pre>[openweathermap]
 lat = 51.501
 long = -0.142
 alt = 10
 user = Elizabeth Windsor
 password = corgi
-id = Buck House</pre>
+id = Buck House
+</pre></div>
 </div>
 </li>
 </ul>
@@ -199,9 +202,10 @@ Make sure you don&#8217;t choose a name that is already in use.</p>
 <li><p class="first">Web site: <a class="reference external" href="http://www.temperatur.nu/">http://www.temperatur.nu/</a></p>
 </li>
 <li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[temperaturnu]
+<div class="highlight-python"><div class="highlight"><pre>[temperaturnu]
 id = ???
-town = ???</pre>
+town = ???
+</pre></div>
 </div>
 </li>
 </ul>
@@ -242,9 +246,10 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
 <li><p class="first">Web site: <a class="reference external" href="http://www.wetter.com/wetter_aktuell/wetternetzwerk/">http://www.wetter.com/wetter_aktuell/wetternetzwerk/</a></p>
 </li>
 <li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
-<div class="highlight-python"><pre>[wetterarchivde]
+<div class="highlight-python"><div class="highlight"><pre>[wetterarchivde]
 benutzername = ???
-passwort = ???</pre>
+passwort = ???
+</pre></div>
 </div>
 </li>
 </ul>
@@ -324,13 +329,13 @@ passwort = ???</pre>
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

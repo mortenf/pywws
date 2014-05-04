@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.USBQualityTest &mdash; pywws 13.09_r1069 documentation</title>
+    <title>pywws.USBQualityTest &mdash; documentation pywws 13.09_r1069</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 13.09_r1069 documentation" href="../index.html" />
+    <link rel="top" title="documentation pywws 13.09_r1069" href="../index.html" />
     <link rel="up" title="Programmes et des modules Python" href="index.html" />
     <link rel="next" title="pywws.EWtoPy" href="pywws.EWtoPy.html" />
     <link rel="prev" title="pywws.TestWeatherStation" href="pywws.TestWeatherStation.html" /> 
@@ -48,7 +46,7 @@
         <li class="right" >
           <a href="pywws.TestWeatherStation.html" title="pywws.TestWeatherStation"
              accesskey="P">précédent</a> |</li>
-        <li><a href="../index.html">pywws 13.09_r1069 documentation</a> &raquo;</li>
+        <li><a href="../index.html">documentation pywws 13.09_r1069</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>  
@@ -61,11 +59,12 @@
   <div class="section" id="module-pywws.USBQualityTest">
 <span id="pywws-usbqualitytest"></span><h1>pywws.USBQualityTest<a class="headerlink" href="#module-pywws.USBQualityTest" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Teste la qualité de la connexion USB avec votre station météo</p>
-<div class="highlight-python"><pre>usage: python -m pywws.USBQualityTest [options]
+<div class="highlight-python"><div class="highlight"><pre>usage: python -m pywws.USBQualityTest [options]
 options are:
  -h | --help           display this help
  -v | --verbose        increase amount of reassuring messages
-                       (repeat for even more messages e.g. -vvv)</pre>
+                       (repeat for even more messages e.g. -vvv)
+</pre></div>
 </div>
 <p>La liaison USB à ma station n&#8217;est pas fiable à 100%. Les données lues à partir de la station par l&#8217;ordinateur sont occasionnellement corrompues, peut-être par une interférence. J&#8217;ai essayé de résoudre ce problème en mettant une perle de ferrite autour du câble USB et le déplaçant des sources d&#8217;interférences possibles, tels que les disques durs externes. Le tout sans succès jusqu&#8217;à présent.</p>
 <p>Ce programme teste la connexion USB en lisant de manière continue toute la mémoire de la station météo (sauf les parties qui peuvent être changeantes) à la recherche d&#8217;erreurs. Chaque bloc de 32 octets est lu deux fois, et si les deux lectures diffèrent, un message d&#8217;avertissement s&#8217;affiche. Sont également affichés le nombre de blocs lus, et le nombre d&#8217;erreurs rencontrées.</p>
@@ -140,13 +139,13 @@ options are:
         <li class="right" >
           <a href="pywws.TestWeatherStation.html" title="pywws.TestWeatherStation"
              >précédent</a> |</li>
-        <li><a href="../index.html">pywws 13.09_r1069 documentation</a> &raquo;</li>
+        <li><a href="../index.html">documentation pywws 13.09_r1069</a> &raquo;</li>
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

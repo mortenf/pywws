@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to set up ‘hourly’ logging with pywws &mdash; pywws 14.05.dev1208 documentation</title>
+    <title>How to set up ‘hourly’ logging with pywws &mdash; pywws 14.05.dev1209 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1208',
+        VERSION:     '14.05.dev1209',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1208 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1209 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to set up ‘live’ logging with pywws" href="livelogging.html" />
     <link rel="prev" title="How to get started with pywws" href="getstarted.html" /> 
@@ -47,7 +45,7 @@
         <li class="right" >
           <a href="getstarted.html" title="How to get started with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -74,21 +72,24 @@ For example, if your logging interval is 10 minutes, don&#8217;t run <a class="r
 See <a class="reference internal" href="getstarted.html"><em>How to get started with pywws</em></a> for details.</p>
 <p>Try running <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> from the command line, with a high level of verbosity so you can see what&#8217;s happening.
 Use the <tt class="docutils literal"><span class="pre">pywws-hourly</span></tt> command to run <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a>:</p>
-<div class="highlight-python"><pre>pywws-hourly -vvv ~/weather/data</pre>
+<div class="highlight-python"><div class="highlight"><pre>pywws-hourly -vvv ~/weather/data
+</pre></div>
 </div>
 <p>Within five minutes (assuming you have set a 5 minute logging interval) you should see a &#8216;live_data new ptr&#8217; message, followed by fetching any new data from the weather station and processing it.</p>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 14.04.dev1194: </span>the <tt class="docutils literal"><span class="pre">pywws-hourly</span></tt> command replaced <tt class="docutils literal"><span class="pre">scripts/pywws-hourly.py</span></tt>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 14.04.dev1194: </span>the <tt class="docutils literal"><span class="pre">pywws-hourly</span></tt> command replaced <tt class="docutils literal"><span class="pre">scripts/pywws-hourly.py</span></tt>.</p>
+</div>
 </div>
 <div class="section" id="configuring-file-locations">
 <h2>Configuring file locations<a class="headerlink" href="#configuring-file-locations" title="Permalink to this headline">¶</a></h2>
 <p>Open your weather.ini file with a text editor.
 You should have a <tt class="docutils literal"><span class="pre">[paths]</span></tt> section similar to the following (where <tt class="docutils literal"><span class="pre">xxx</span></tt> is your user name):</p>
-<div class="highlight-python"><pre>[paths]
+<div class="highlight-python"><div class="highlight"><pre>[paths]
 work = /tmp/weather
 templates = /home/xxx/weather/templates/
 graph_templates = /home/xxx/weather/graph_templates/
-local_files = /home/xxx/weather/results/</pre>
+local_files = /home/xxx/weather/results/
+</pre></div>
 </div>
 <p>Edit these to suit your installation and preferences.
 <tt class="docutils literal"><span class="pre">work</span></tt> is a temporary directory used to store intermediate files, <tt class="docutils literal"><span class="pre">templates</span></tt> is the directory where you keep your text template files, <tt class="docutils literal"><span class="pre">graph_templates</span></tt> is the directory where you keep your graph template files and <tt class="docutils literal"><span class="pre">local_files</span></tt> is a directory where template output that is not uploaded to your web site is put.
@@ -96,8 +97,9 @@ Don&#8217;t use the pywws example directories for your templates, as they will g
 <p>Copy your text and graph templates to the appropriate directories.
 You may find some of the examples provided with pywws useful to get started.
 The <tt class="docutils literal"><span class="pre">pywws-version</span> <span class="pre">-v</span></tt> command should show you where the examples are on your computer.</p>
-<p class="versionadded">
-<span class="versionmodified">New in version 14.04.dev1194: </span>the <tt class="docutils literal"><span class="pre">pywws-version</span></tt> command.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.04.dev1194: </span>the <tt class="docutils literal"><span class="pre">pywws-version</span></tt> command.</p>
+</div>
 </div>
 <div class="section" id="configuring-periodic-tasks">
 <h2>Configuring periodic tasks<a class="headerlink" href="#configuring-periodic-tasks" title="Permalink to this headline">¶</a></h2>
@@ -116,15 +118,15 @@ Tasks in the <tt class="docutils literal"><span class="pre">[logged]</span></tt>
 <p>The <tt class="docutils literal"><span class="pre">services</span></tt> entry is a list of online weather services to upload data to.
 The <tt class="docutils literal"><span class="pre">plot</span></tt> and <tt class="docutils literal"><span class="pre">text</span></tt> entries are lists of template files for plots and text files to be processed and, optionally, uploaded to your web site.
 Add the names of your template files and weather services to the appropriate entries, for example:</p>
-<div class="highlight-python"><pre>[logged]
-services = ['underground', 'metoffice']
+<div class="highlight-python"><div class="highlight"><pre>[logged]
+services = [&#39;underground&#39;, &#39;metoffice&#39;]
 plot = []
 text = []
 
 [hourly]
 services = []
-plot = ['7days.png.xml', '24hrs.png.xml', 'rose_24hrs.png.xml']
-text = [('tweet.txt', 'T'), '24hrs.txt', '6hrs.txt', '7days.txt']
+plot = [&#39;7days.png.xml&#39;, &#39;24hrs.png.xml&#39;, &#39;rose_24hrs.png.xml&#39;]
+text = [(&#39;tweet.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs.txt&#39;, &#39;7days.txt&#39;]
 
 [12 hourly]
 services = []
@@ -133,31 +135,36 @@ text = []
 
 [daily]
 services = []
-plot = ['28days.png.xml']
-text = [('forecast.txt', 'T'), 'allmonths.txt']</pre>
+plot = [&#39;28days.png.xml&#39;]
+text = [(&#39;forecast.txt&#39;, &#39;T&#39;), &#39;allmonths.txt&#39;]
+</pre></div>
 </div>
 <p>Note the use of the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag &#8211; this tells pywws to send the template result to Twitter instead of uploading it to your ftp site.</p>
 <p>You can test that all these are working by removing the <tt class="docutils literal"><span class="pre">[last</span> <span class="pre">update]</span></tt> section from status.ini, then running <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> again:</p>
-<div class="highlight-python"><pre>pywws-hourly -v ~/weather/data</pre>
+<div class="highlight-python"><div class="highlight"><pre>pywws-hourly -v ~/weather/data
+</pre></div>
 </div>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 13.06_r1015: </span>added the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag.
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 13.06_r1015: </span>added the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag.
 Previously Twitter templates were listed separately in <tt class="docutils literal"><span class="pre">twitter</span></tt> entries in the <tt class="docutils literal"><span class="pre">[hourly]</span></tt> and other sections.
 The older syntax still works, but is deprecated.</p>
-<p class="versionchanged">
-<span class="versionmodified">Changed in version 13.05_r1009: </span>the last update information was previously stored in weather.ini, with <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> entries in several sections.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 13.05_r1009: </span>the last update information was previously stored in weather.ini, with <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> entries in several sections.</p>
+</div>
 </div>
 <div class="section" id="run-as-a-cron-job">
 <h2>Run as a cron job<a class="headerlink" href="#run-as-a-cron-job" title="Permalink to this headline">¶</a></h2>
 <p>Most UNIX/Linux systems have a &#8216;cron&#8217; daemon that can run programs at certain times, even if you are not logged in to the computer.
 You edit a &#8216;crontab&#8217; file to specify what to run and when to run  it.
 For example, to run <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> every hour, at zero minutes past the hour:</p>
-<div class="highlight-python"><pre>0 * * * *       pywws-hourly /home/xxx/weather/data</pre>
+<div class="highlight-python"><div class="highlight"><pre>0 * * * *       pywws-hourly /home/xxx/weather/data
+</pre></div>
 </div>
 <p>This might work, but if it didn&#8217;t you probably won&#8217;t get any error messages to tell you what went wrong.
 It&#8217;s much better to run a script that runs <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Hourly</span></tt></a> and then emails you any output it produces.
 Here&#8217;s the script I use:</p>
-<div class="highlight-python"><pre>#!/bin/sh
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/sh
 #
 # weather station logger calling script
 
@@ -172,7 +179,8 @@ log=/var/log/log-weather
 pywws-hourly -v ~/weather/data &gt;$log 2&gt;&amp;1
 
 # mail the log file
-/home/jim/scripts/email-log.sh $log "weather log"</pre>
+/home/jim/scripts/email-log.sh $log &quot;weather log&quot;
+</pre></div>
 </div>
 <p>You’ll need to edit this quite a lot to suit your file locations and so on, but it gives some idea of what to do.</p>
 <hr class="docutils" />
@@ -240,13 +248,13 @@ pywws-hourly -v ~/weather/data &gt;$log 2&gt;&amp;1
         <li class="right" >
           <a href="getstarted.html" title="How to get started with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1208 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1209 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2008-14, Jim Easterbrook.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
