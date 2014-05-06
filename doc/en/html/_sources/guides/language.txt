@@ -35,7 +35,7 @@ Using an existing language file
 There may already be a pywws translation for your preferred language.
 First you need to choose the appropriate two-letter code from the list at http://www.w3schools.com/tags/ref_language_codes.asp.
 For example, ``fr`` is the code for French.
-Now use the :py:mod:`~pywws.Localisation` module to do a quick test::
+Now use the :py:mod:`pywws.Localisation` module to do a quick test::
 
    python -m pywws.Localisation -t fr
 
@@ -63,6 +63,7 @@ As well as the pywws software you need to install the Babel python library (see 
 This is used to convert the language file you create into code that is used when the pywws software is run.
 You also need to download and extract the pywws software instead of installing it with pip.
 See :doc:`getstarted`.
+It's probably better to use the most recent "snapshot" release rather than the ever changing GitHub repository.
 
 Translating the easy way - the Transifex web site
 -------------------------------------------------
@@ -109,11 +110,11 @@ This can be done manually, but the `gettext package <http://www.gnu.org/software
 
 This will ask for your email address, then generate a "portable object" file.
 
-If a .po file for your language already exists, but needs updating with new source strings, you should use the ``msgmerge`` command::
+If a .po file for your language already exists, but needs updating with new source strings, you should use the ``msgmerge`` command instead::
 
    msgmerge --no-wrap --update pywws/lang/fr/LC_MESSAGES/pywws.po build/gettext/pywws.pot
 
-Now you can open the .po file in your favourite text editor and start filling in the empty ``msgstr`` strings with your translation of the corresponding``msgid`` string.
+Now you can open the .po file in your favourite text editor and start filling in the empty ``msgstr`` strings with your translation of the corresponding ``msgid`` string.
 Please read :ref:`translator-notes` before you start.
 
 Test the pywws translation
@@ -125,6 +126,22 @@ This is done with setup.py::
    python setup.py compile_catalog --locale=fr
 
 Don't forget to do this every time you edit a language file.
+
+Viewing your translated documentation
+-------------------------------------
+
+First convert your newly edited language files::
+
+   python setup.py compile_catalog --locale=fr
+
+Then delete the old documentation (if it exists) and rebuild using your language::
+
+   rm -rf pywws/doc/fr
+   LANG=fr python setup.py build_sphinx
+
+Note that the ``build_sphinx`` command doesn't have a ``--locale`` option, so the language is set by a temporary environment variable.
+
+Finally you can view the translated documentation by using a web browser to read the file ``pywws/doc/fr/html/index.html``.
 
 .. _translator-notes:
 
@@ -150,22 +167,6 @@ Do not translate program source, computer instructions and cross-references like
 Translating all of the pywws documentation is a lot of work.
 However, when the documentation is "compiled" any untranslated strings revert to their English original.
 This means that a partial translation could still be useful -- I suggest starting with the documentation front page, ``index.po``.
-
-Viewing your translated documentation
--------------------------------------
-
-First convert your newly edited language files::
-
-   python setup.py compile_catalog --locale=fr
-
-Then delete the old documentation (if it exists) and rebuild using your language::
-
-   rm -rf pywws/doc/fr
-   LANG=fr python setup.py build_sphinx
-
-Note that the ``build_sphinx`` command doesn't have a ``--locale`` option, so the language is set by a temporary environment variable.
-
-Finally you can view the translated documentation by using a web browser to read the file ``pywws/doc/fr/html/index.html``.
 
 Send Jim the translation
 ------------------------
