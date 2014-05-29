@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>weather.ini - configuration file format &mdash; pywws 14.05.dev1211 documentation</title>
+    <title>weather.ini - configuration file format &mdash; pywws 14.05.dev1217 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1211',
+        VERSION:     '14.05.dev1217',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1211 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1217 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="Humidity Index (Humidex)" href="humidex.html" />
     <link rel="prev" title="How to use pywws in another language" href="language.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="language.html" title="How to use pywws in another language"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -75,6 +75,7 @@ In normal use you should not need to edit it.</p>
 <li>paths: directories in which templates etc. are stored.</li>
 <li>live: tasks to be done every 48 seconds.</li>
 <li>logged: tasks to be done every time the station logs a data record.</li>
+<li>cron: tasks to be done at a particular time or date.</li>
 <li>hourly: tasks to be done every hour.</li>
 <li>12 hourly: tasks to be done every 12 hours.</li>
 <li>daily: tasks to be done every day.</li>
@@ -156,8 +157,9 @@ local_files = /home/$USER/weather/results/
 <span class="n">plot</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
-<p>This section specifies tasks that are to be carried out for every data sample during &#8216;live logging&#8217;, i.e. every 48 seconds. It is unlikely that you&#8217;d want to do anything other than upload to Weather Underground or update your YoWindow file this often.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> is a list of &#8216;services&#8217; to upload data to. Each one listed must have a configuration file in <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> for more detail.</p>
+<p>This section specifies tasks that are to be carried out for every data sample during &#8216;live logging&#8217;, i.e. every 48 seconds.</p>
+<p><tt class="docutils literal"><span class="pre">services</span></tt> is a list of &#8216;services&#8217; to upload data to. Each one listed must have a configuration file in <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> for more detail.
+pywws will automatically limit the frequency of service uploads according to each service&#8217;s specification.</p>
 <p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> are lists of text and plot templates to be processed and, optionally, uploaded to your website.</p>
 <div class="versionchanged">
 <p><span class="versionmodified">Changed in version 13.05_r1013: </span>added a <tt class="docutils literal"><span class="pre">'yowindow.xml'</span></tt> template.
@@ -176,6 +178,51 @@ This older syntax still works, but is deprecated.</p>
 <p>This section specifies tasks that are to be carried out every time a data record is logged when &#8216;live logging&#8217; or every time an hourly cron job is run.</p>
 <p><tt class="docutils literal"><span class="pre">services</span></tt> is a list of &#8216;services&#8217; to upload data to. Each one listed must have a configuration file in <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> for more detail.</p>
 <p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> are lists of text and plot templates to be processed and, optionally, uploaded to your website.</p>
+</div>
+<div class="section" id="cron-tasks-to-be-done-at-a-particular-time-or-date">
+<h2>cron: tasks to be done at a particular time or date<a class="headerlink" href="#cron-tasks-to-be-done-at-a-particular-time-or-date" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.05.dev1211.</span></p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>[cron prehourly]
+format = 59 * * * *
+plot = [(&#39;tweet.png.xml&#39;, &#39;L&#39;)]
+services = []
+text = []
+
+[cron hourly]
+format = 0 * * * *
+plot = [&#39;7days.png.xml&#39;, &#39;2014.png.xml&#39;, &#39;24hrs.png.xml&#39;, &#39;rose_12hrs.png.xml&#39;]
+text = [(&#39;tweet.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs.txt&#39;, &#39;7days.txt&#39;, &#39;2014.txt&#39;]
+services = []
+
+[cron daily 9]
+format = 0 9 * * *
+plot = [&#39;28days.png.xml&#39;]
+text = [(&#39;forecast.txt&#39;, &#39;T&#39;), &#39;forecast_9am.txt&#39;, &#39;forecast_week.txt&#39;]
+services = []
+
+[cron daily 21]
+format = 0 21 * * *
+text = [&#39;forecast_9am.txt&#39;]
+services = []
+plot = []
+
+[cron weekly]
+format = 0 9 * * 6
+plot = [&#39;2008.png.xml&#39;, &#39;2009.png.xml&#39;, &#39;2010.png.xml&#39;, &#39;2011.png.xml&#39;,
+        &#39;2012.png.xml&#39;, &#39;2013.png.xml&#39;]
+text = [&#39;2008.txt&#39;, &#39;2009.txt&#39;, &#39;2010.txt&#39;, &#39;2011.txt&#39;, &#39;2012.txt&#39;, &#39;2013.txt&#39;]
+services = []
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">[cron</span> <span class="pre">name]</span></tt> sections provide a very flexible way to specify tasks to be done at a particular time and/or date.
+<tt class="docutils literal"><span class="pre">name</span></tt> can be anything you like, but each <tt class="docutils literal"><span class="pre">[cron</span> <span class="pre">name]</span></tt> section must have a unique name.</p>
+<p>To use <tt class="docutils literal"><span class="pre">[cron</span> <span class="pre">name]</span></tt> sections you need to install the &#8220;croniter&#8221; package.
+See <a class="reference internal" href="../essentials/dependencies.html"><em>Dependencies</em></a> for more detail.</p>
+<p><tt class="docutils literal"><span class="pre">format</span></tt> specifies when the tasks should be done (in local time), in the usual crontab format.
+(See <tt class="docutils literal"><span class="pre">man</span> <span class="pre">5</span> <span class="pre">crontab</span></tt> on any Linux computer.)
+Processing is not done exactly on the minute, but when the next live or logged data arrives.</p>
 </div>
 <div class="section" id="hourly-tasks-to-be-done-every-hour">
 <h2>hourly: tasks to be done every hour<a class="headerlink" href="#hourly-tasks-to-be-done-every-hour" title="Permalink to this headline">¶</a></h2>
@@ -202,7 +249,8 @@ text = []
 plot = []
 </pre></div>
 </div>
-<p>This section specifies tasks that are to be carried out every 12 hours when &#8216;live logging&#8217; or running an hourly cron job. Use it for things that don&#8217;t change very often, such as monthly graphs.</p>
+<p>This section specifies tasks that are to be carried out every 12 hours when &#8216;live logging&#8217; or running an hourly cron job. Use it for things that don&#8217;t change very often, such as monthly graphs.
+The tasks are done at your day end hour, and 12 hours later.</p>
 <p><tt class="docutils literal"><span class="pre">services</span></tt> is a list of &#8216;services&#8217; to upload data to. Each one listed must have a configuration file in <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> for more detail.</p>
 <p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> are lists of text and plot templates to be processed and, optionally, uploaded to your website.</p>
 </div>
@@ -214,7 +262,8 @@ plot = []
 <span class="n">plot</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;2008.png.xml&#39;</span><span class="p">,</span> <span class="s">&#39;2009.png.xml&#39;</span><span class="p">,</span> <span class="s">&#39;2010.png.xml&#39;</span><span class="p">,</span> <span class="s">&#39;28days.png.xml&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>This section specifies tasks that are to be carried out every day when &#8216;live logging&#8217; or running an hourly cron job. Use it for things that don&#8217;t change very often, such as monthly or yearly graphs.</p>
+<p>This section specifies tasks that are to be carried out every day when &#8216;live logging&#8217; or running an hourly cron job. Use it for things that don&#8217;t change very often, such as monthly or yearly graphs.
+The tasks are done at your day end hour.</p>
 <p><tt class="docutils literal"><span class="pre">services</span></tt> is a list of &#8216;services&#8217; to upload data to. Each one listed must have a configuration file in <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> for more detail.</p>
 <p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> are lists of text and plot templates to be processed and, optionally, uploaded to your website.</p>
 </div>
@@ -336,6 +385,7 @@ They are used to allow unsuccessful tasks (e.g. network failure preventing uploa
 <li><a class="reference internal" href="#paths-directories-in-which-templates-etc-are-stored">paths: directories in which templates etc. are stored</a></li>
 <li><a class="reference internal" href="#live-tasks-to-be-done-every-48-seconds">live: tasks to be done every 48 seconds</a></li>
 <li><a class="reference internal" href="#logged-tasks-to-be-done-every-time-the-station-logs-a-data-record">logged: tasks to be done every time the station logs a data record</a></li>
+<li><a class="reference internal" href="#cron-tasks-to-be-done-at-a-particular-time-or-date">cron: tasks to be done at a particular time or date</a></li>
 <li><a class="reference internal" href="#hourly-tasks-to-be-done-every-hour">hourly: tasks to be done every hour</a></li>
 <li><a class="reference internal" href="#hourly-tasks-to-be-done-every-12-hours">12 hourly: tasks to be done every 12 hours</a></li>
 <li><a class="reference internal" href="#daily-tasks-to-be-done-every-24-hours">daily: tasks to be done every 24 hours</a></li>
@@ -390,7 +440,7 @@ They are used to allow unsuccessful tasks (e.g. network failure preventing uploa
         <li class="right" >
           <a href="language.html" title="How to use pywws in another language"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>

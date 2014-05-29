@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WeatherStation &mdash; pywws 14.05.dev1211 documentation</title>
+    <title>pywws.WeatherStation &mdash; pywws 14.05.dev1217 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1211',
+        VERSION:     '14.05.dev1217',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1211 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1217 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.device_pyusb1" href="pywws.device_pyusb1.html" />
     <link rel="prev" title="pywws.YoWindow" href="pywws.YoWindow.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.YoWindow.html" title="pywws.YoWindow"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -217,6 +217,36 @@ have come from the manufacturer.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="pywws.WeatherStation.DriftingClock">
+<em class="property">class </em><tt class="descclassname">pywws.WeatherStation.</tt><tt class="descname">DriftingClock</tt><big>(</big><em>logger</em>, <em>name</em>, <em>status</em>, <em>period</em>, <em>margin</em><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#DriftingClock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.DriftingClock" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="pywws.WeatherStation.DriftingClock.before">
+<tt class="descname">before</tt><big>(</big><em>now</em><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#DriftingClock.before"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.DriftingClock.before" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywws.WeatherStation.DriftingClock.nearest">
+<tt class="descname">nearest</tt><big>(</big><em>now</em><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#DriftingClock.nearest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.DriftingClock.nearest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywws.WeatherStation.DriftingClock.avoid">
+<tt class="descname">avoid</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#DriftingClock.avoid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.DriftingClock.avoid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywws.WeatherStation.DriftingClock.set_clock">
+<tt class="descname">set_clock</tt><big>(</big><em>now</em><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#DriftingClock.set_clock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.DriftingClock.set_clock" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywws.WeatherStation.DriftingClock.invalidate">
+<tt class="descname">invalidate</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#DriftingClock.invalidate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.DriftingClock.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="pywws.WeatherStation.weather_station">
 <em class="property">class </em><tt class="descclassname">pywws.WeatherStation.</tt><tt class="descname">weather_station</tt><big>(</big><em>ws_type='1080'</em>, <em>status=None</em>, <em>avoid=3.0</em><big>)</big><a class="reference internal" href="../_modules/pywws/WeatherStation.html#weather_station"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WeatherStation.weather_station" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that represents the weather station to user program.</p>
@@ -374,7 +404,7 @@ array of (ptr, value) pairs.</p>
         <li class="right" >
           <a href="pywws.YoWindow.html" title="pywws.YoWindow"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>

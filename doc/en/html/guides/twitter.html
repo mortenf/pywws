@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to configure pywws to post messages to Twitter &mdash; pywws 14.05.dev1211 documentation</title>
+    <title>How to configure pywws to post messages to Twitter &mdash; pywws 14.05.dev1217 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1211',
+        VERSION:     '14.05.dev1217',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1211 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1217 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to use pywws in another language" href="language.html" />
     <link rel="prev" title="How to integrate pywws with various weather services" href="integration.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="integration.html" title="How to integrate pywws with various weather services"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -130,7 +130,31 @@ For example:</p>
 Previously Twitter templates were listed separately in <tt class="docutils literal"><span class="pre">twitter</span></tt> entries in the <tt class="docutils literal"><span class="pre">[hourly]</span></tt> and other sections.
 The older syntax still works, but is deprecated.</p>
 </div>
-<p>Comments or questions? Please subscribe to the pywws mailing list <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
+</div>
+<div class="section" id="include-an-image-in-your-tweet">
+<h2>Include an image in your tweet<a class="headerlink" href="#include-an-image-in-your-tweet" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.05.dev1216.</span></p>
+</div>
+<p>You can add an image to your tweets by specifying an image file location in the tweet template.
+Make the first line of the tweet <tt class="docutils literal"><span class="pre">media</span> <span class="pre">path</span></tt> where <tt class="docutils literal"><span class="pre">path</span></tt> is the absolute location of the file.
+The &#8220;tweet_media.txt&#8221; example template shows how to do this.</p>
+<p>The image could be from a web cam, or for a weather forecast it could be an icon representing the forecast.
+To add a weather graph you need to make sure the graph is drawn before the tweet is sent.
+I do this by using two <tt class="docutils literal"><span class="pre">[cron</span> <span class="pre">xxx]</span></tt> sections in weather.ini:</p>
+<div class="highlight-python"><div class="highlight"><pre>[cron prehourly]
+format = 59 * * * *
+services = []
+plot = [(&#39;tweet.png.xml&#39;, &#39;L&#39;)]
+text = []
+
+[cron hourly]
+format = 0 * * * *
+services = []
+plot = [&#39;7days.png.xml&#39;, &#39;24hrs.png.xml&#39;, &#39;rose_12hrs.png.xml&#39;]
+text = [(&#39;tweet_media.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs.txt&#39;, &#39;7days.txt&#39;]
+</pre></div>
+</div>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
 <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
@@ -156,6 +180,7 @@ The older syntax still works, but is deprecated.</p>
 <li><a class="reference internal" href="#create-a-template">Create a template</a></li>
 <li><a class="reference internal" href="#post-your-first-weather-tweet">Post your first weather Tweet</a></li>
 <li><a class="reference internal" href="#add-twitter-updates-to-your-hourly-tasks">Add Twitter updates to your hourly tasks</a></li>
+<li><a class="reference internal" href="#include-an-image-in-your-tweet">Include an image in your tweet</a></li>
 </ul>
 </li>
 </ul>
@@ -198,7 +223,7 @@ The older syntax still works, but is deprecated.</p>
         <li class="right" >
           <a href="integration.html" title="How to integrate pywws with various weather services"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>

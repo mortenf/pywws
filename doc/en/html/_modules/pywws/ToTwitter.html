@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.ToTwitter &mdash; pywws 14.05.dev1211 documentation</title>
+    <title>pywws.ToTwitter &mdash; pywws 14.05.dev1217 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.05.dev1211',
+        VERSION:     '14.05.dev1217',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1211 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.05.dev1217 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -111,6 +111,39 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Localisation</span>
 <span class="kn">from</span> <span class="nn">.Logger</span> <span class="kn">import</span> <span class="n">ApplicationLogger</span>
 
+<div class="viewcode-block" id="TweepyHandler"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.TweepyHandler">[docs]</a><span class="k">class</span> <span class="nc">TweepyHandler</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">):</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">pct</span><span class="o">.</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">pct</span><span class="o">.</span><span class="n">consumer_secret</span><span class="p">)</span>
+        <span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">latitude</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">longitude</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;lat&#39;</span> <span class="p">:</span> <span class="n">latitude</span><span class="p">,</span> <span class="s">&#39;long&#39;</span> <span class="p">:</span> <span class="n">longitude</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="TweepyHandler.post"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.TweepyHandler.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">media</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">media</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">update_with_media</span><span class="p">(</span><span class="n">media</span><span class="p">,</span> <span class="n">status</span><span class="p">[:</span><span class="mi">117</span><span class="p">],</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span><span class="n">status</span><span class="p">[:</span><span class="mi">140</span><span class="p">],</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+</div></div>
+<div class="viewcode-block" id="PythonTwitterHandler"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.PythonTwitterHandler">[docs]</a><span class="k">class</span> <span class="nc">PythonTwitterHandler</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span>
+            <span class="n">consumer_key</span><span class="o">=</span><span class="n">pct</span><span class="o">.</span><span class="n">consumer_key</span><span class="p">,</span>
+            <span class="n">consumer_secret</span><span class="o">=</span><span class="n">pct</span><span class="o">.</span><span class="n">consumer_secret</span><span class="p">,</span>
+            <span class="n">access_token_key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">access_token_secret</span><span class="o">=</span><span class="n">secret</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">latitude</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">longitude</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;latitude&#39;</span> <span class="p">:</span> <span class="n">latitude</span><span class="p">,</span> <span class="s">&#39;longitude&#39;</span> <span class="p">:</span> <span class="n">longitude</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="PythonTwitterHandler.post"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.PythonTwitterHandler.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">media</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">media</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">PostMedia</span><span class="p">(</span><span class="n">status</span><span class="p">[:</span><span class="mi">117</span><span class="p">],</span> <span class="n">media</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">PostUpdate</span><span class="p">(</span><span class="n">status</span><span class="p">[:</span><span class="mi">140</span><span class="p">],</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+</div></div>
 <div class="viewcode-block" id="ToTwitter"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.ToTwitter">[docs]</a><span class="k">class</span> <span class="nc">ToTwitter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&#39;pywws.ToTwitter&#39;</span><span class="p">)</span>
@@ -126,26 +159,22 @@
         <span class="n">longitude</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;twitter&#39;</span><span class="p">,</span> <span class="s">&#39;longitude&#39;</span><span class="p">)</span>
         <span class="c"># open API</span>
         <span class="k">if</span> <span class="n">twitter</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span>
-                <span class="n">consumer_key</span><span class="o">=</span><span class="n">pct</span><span class="o">.</span><span class="n">consumer_key</span><span class="p">,</span>
-                <span class="n">consumer_secret</span><span class="o">=</span><span class="n">pct</span><span class="o">.</span><span class="n">consumer_secret</span><span class="p">,</span>
-                <span class="n">access_token_key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">access_token_secret</span><span class="o">=</span><span class="n">secret</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">post</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">PostUpdate</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">post_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;latitude&#39;</span> <span class="p">:</span> <span class="n">latitude</span><span class="p">,</span> <span class="s">&#39;longitude&#39;</span> <span class="p">:</span> <span class="n">longitude</span><span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">PythonTwitterHandler</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">pct</span><span class="o">.</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">pct</span><span class="o">.</span><span class="n">consumer_secret</span><span class="p">)</span>
-            <span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">post</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">update_status</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">post_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;lat&#39;</span> <span class="p">:</span> <span class="n">latitude</span><span class="p">,</span> <span class="s">&#39;long&#39;</span> <span class="p">:</span> <span class="n">longitude</span><span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">TweepyHandler</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ToTwitter.Upload"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.ToTwitter.Upload">[docs]</a>    <span class="k">def</span> <span class="nf">Upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tweet</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">tweet</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;media&#39;</span><span class="p">):</span>
+            <span class="n">media</span><span class="p">,</span> <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">media</span> <span class="o">=</span> <span class="n">media</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">media</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">):</span>
             <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">post_kw</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">media</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">True</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">ex</span><span class="p">:</span>
             <span class="n">e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
@@ -158,7 +187,7 @@
 </div>
 <div class="viewcode-block" id="ToTwitter.UploadFile"><a class="viewcode-back" href="../../api/pywws.ToTwitter.html#pywws.ToTwitter.ToTwitter.UploadFile">[docs]</a>    <span class="k">def</span> <span class="nf">UploadFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
         <span class="n">tweet_file</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
-        <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet_file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span>
+        <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">tweet_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Upload</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
 </div></div>
@@ -226,7 +255,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.05.dev1211 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
