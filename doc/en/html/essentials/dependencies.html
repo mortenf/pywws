@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dependencies &mdash; pywws 14.05.dev1217 documentation</title>
+    <title>Dependencies &mdash; pywws 14.05.dev1221 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.05.dev1217',
+        VERSION:     '14.05.dev1221',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.05.dev1217 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.05.dev1221 documentation" href="../index.html" />
     <link rel="next" title="Change Log" href="CHANGELOG.html" />
     <link rel="prev" title="GNU General Public License" href="LICENCE.html" /> 
   </head>
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="LICENCE.html" title="GNU General Public License"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.05.dev1221 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -186,9 +186,8 @@ Posting to Twitter requires these modules:</p>
 </div>
 </div>
 <div class="section" id="to-create-new-language-translations">
-<h2>To create new language translations<a class="headerlink" href="#to-create-new-language-translations" title="Permalink to this headline">¶</a></h2>
-<p>pywws can be configured to use languages other than English, and the documentation can also be translated into other languages.
-See <a class="reference internal" href="../guides/language.html"><em>How to use pywws in another language</em></a> for more information.
+<span id="dependencies-translations"></span><h2>To create new language translations<a class="headerlink" href="#to-create-new-language-translations" title="Permalink to this headline">¶</a></h2>
+<p>pywws can be configured to use languages other than English, as described in <a class="reference internal" href="../guides/language.html"><em>How to use pywws in another language</em></a>.
 The babel package is required to extract the strings to be translated and compile the translation files.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://babel.pocoo.org/">babel</a></li>
@@ -196,12 +195,19 @@ The babel package is required to extract the strings to be translated and compil
 <div class="highlight-python"><div class="highlight"><pre>sudo pip install babel
 </pre></div>
 </div>
+<p>Translating the documentation also needs the sphinx-intl package.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.python.org/pypi/sphinx-intl">sphinx-intl</a></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install sphinx-intl
+</pre></div>
+</div>
 <div class="versionchanged">
 <p><span class="versionmodified">Changed in version 14.05.dev1209: </span>pywws previously used the gettext package.</p>
 </div>
 </div>
 <div class="section" id="to-compile-the-documentation">
-<h2>To &#8216;compile&#8217; the documentation<a class="headerlink" href="#to-compile-the-documentation" title="Permalink to this headline">¶</a></h2>
+<span id="dependencies-compile-documentation"></span><h2>To &#8216;compile&#8217; the documentation<a class="headerlink" href="#to-compile-the-documentation" title="Permalink to this headline">¶</a></h2>
 <p>The documentation of pywws is written in &#8220;ReStructured text&#8221;.
 A program called Sphinx is used to convert this easy to write format into HTML for use with a web browser.
 If you&#8217;d like to create a local copy of the documentation (so you don&#8217;t have to rely on the online version, or to test a translation you&#8217;re working on) you need to install Sphinx.</p>
@@ -286,7 +292,7 @@ If you&#8217;d like to create a local copy of the documentation (so you don&#821
         <li class="right" >
           <a href="LICENCE.html" title="GNU General Public License"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.05.dev1217 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 14.05.dev1221 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
