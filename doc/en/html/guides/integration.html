@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to integrate pywws with various weather services &mdash; pywws 14.06.dev1228 documentation</title>
+    <title>How to integrate pywws with various weather services &mdash; pywws 14.06.dev1229 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.06.dev1228',
+        VERSION:     '14.06.dev1229',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1228 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.06.dev1229 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to configure pywws to post messages to Twitter" href="twitter.html" />
     <link rel="prev" title="How to set up ‘live’ logging with pywws" href="livelogging.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.dev1228 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -97,6 +97,9 @@ See the module&#8217;s documentation for general configuration options.
 The following subsections give further information about some of the available services.</p>
 <div class="section" id="citizen-weather-observer-program">
 <h3>Citizen Weather Observer Program<a class="headerlink" href="#citizen-weather-observer-program" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.02.dev1156.</span></p>
+</div>
 <ul>
 <li><p class="first">Web site: <a class="reference external" href="http://www.wxqa.com/">http://www.wxqa.com/</a></p>
 </li>
@@ -124,12 +127,10 @@ longitude = 00008.52E
 <p>Note that the latitude and longitude must be in &#8220;LORAN&#8221; format and leading zeros are required.
 See question 3 in the <a class="reference external" href="http://www.wxqa.com/faq.html">CWOP FAQ</a> for more information.</p>
 <p>Licensed radio hams use their callsign as the designator and need a passcode.
-They should use the service name <tt class="docutils literal"><span class="pre">cwop_ham</span></tt> instead of <tt class="docutils literal"><span class="pre">cwop</span></tt>.</p>
+They should use the service name <tt class="docutils literal"><span class="pre">cwop_ham</span></tt> instead of <tt class="docutils literal"><span class="pre">cwop</span></tt> when running <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> directly and in the <tt class="docutils literal"><span class="pre">weather.ini</span></tt> <tt class="docutils literal"><span class="pre">services</span></tt> entries.
+(The same <tt class="docutils literal"><span class="pre">[cwop]</span></tt> config section is used for both.)</p>
 <p>CWOP uploads are rate-limited by pywws, so you can safely add it to both the <tt class="docutils literal"><span class="pre">[live]</span></tt> and <tt class="docutils literal"><span class="pre">[logged]</span></tt> sections in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>.</p>
 <p>The CWOP/APRS uploader is based on code by Marco Trevisan &lt;<a class="reference external" href="mailto:mail&#37;&#52;&#48;3v1n0&#46;net">mail<span>&#64;</span>3v1n0<span>&#46;</span>net</a>&gt;.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 14.02.dev1156.</span></p>
-</div>
 </div>
 <div class="section" id="uk-met-office">
 <h3>UK Met Office<a class="headerlink" href="#uk-met-office" title="Permalink to this headline">¶</a></h3>
@@ -254,8 +255,6 @@ passwort = ???
 </li>
 </ul>
 <hr class="docutils" />
-<p>Comments or questions? Please subscribe to the pywws mailing list <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
-<hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
 <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
 </div>
@@ -329,7 +328,7 @@ passwort = ???
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.dev1228 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
