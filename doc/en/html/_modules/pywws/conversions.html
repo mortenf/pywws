@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.conversions &mdash; pywws 14.06.dev1229 documentation</title>
+    <title>pywws.conversions &mdash; pywws 14.06.dev1238 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.06.dev1229',
+        VERSION:     '14.06.dev1238',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1229 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.06.dev1238 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -75,11 +75,14 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
+<span class="n">__docformat__</span> <span class="o">=</span> <span class="s">&quot;restructuredtext en&quot;</span>
+
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="c"># rename imports to prevent them being imported when</span>
 <span class="c"># doing &#39;from pywws.conversions import *&#39;</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Localisation</span> <span class="k">as</span> <span class="n">_Localisation</span>
+<span class="kn">from</span> <span class="nn">.Process</span> <span class="kn">import</span> <span class="n">WindFilter</span> <span class="k">as</span> <span class="n">_WindFilter</span>
 
 <div class="viewcode-block" id="illuminance_wm2"><a class="viewcode-back" href="../../api/pywws.conversions.html#pywws.conversions.illuminance_wm2">[docs]</a><span class="k">def</span> <span class="nf">illuminance_wm2</span><span class="p">(</span><span class="n">lux</span><span class="p">):</span>
     <span class="s">&quot;Approximate conversion of illuminance in lux to solar radiation in W/m2&quot;</span>
@@ -129,6 +132,65 @@
         <span class="k">return</span> <span class="bp">None</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="mf">9.0</span> <span class="o">/</span> <span class="mf">5.0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">32.0</span>
 </div>
+<div class="viewcode-block" id="winddir_average"><a class="viewcode-back" href="../../api/pywws.conversions.html#pywws.conversions.winddir_average">[docs]</a><span class="k">def</span> <span class="nf">winddir_average</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">min_count</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute average wind direction (in degrees) for a slice of data.</span>
+
+<span class="sd">    The wind speed and direction of each data item is converted to a</span>
+<span class="sd">    vector before averaging, so the result reflects the dominant wind</span>
+<span class="sd">    direction during the time period covered by the data.</span>
+
+<span class="sd">    Setting the ``decay`` parameter converts the filter from a simple</span>
+<span class="sd">    averager to one where the most recent sample carries the highest</span>
+<span class="sd">    weight, and earlier samples have a lower weight according to how</span>
+<span class="sd">    long ago they were.</span>
+
+<span class="sd">    This process is an approximation of &quot;exponential smoothing&quot;. See</span>
+<span class="sd">    `Wikipedia &lt;http://en.wikipedia.org/wiki/Exponential_smoothing&gt;`_</span>
+<span class="sd">    for a detailed discussion.</span>
+
+<span class="sd">    The parameter ``decay`` corresponds to the value ``(1 - alpha)``</span>
+<span class="sd">    in the Wikipedia description. Because the weather data being</span>
+<span class="sd">    smoothed may not be at regular intervals this parameter is the</span>
+<span class="sd">    decay over 5 minutes. Weather data at other intervals will have</span>
+<span class="sd">    its weight scaled accordingly.</span>
+
+<span class="sd">    :note: The return value is in degrees, not the 0..15 range used</span>
+<span class="sd">        elsewhere in pywws.</span>
+
+<span class="sd">    :param data: a slice of pywws raw/calib or hourly data.</span>
+
+<span class="sd">    :type data: pywws.DataStore.core_store</span>
+
+<span class="sd">    :param threshold: minimum average windspeed for there to be a</span>
+<span class="sd">        valid wind direction.</span>
+
+<span class="sd">    :type threshold: float</span>
+
+<span class="sd">    :param min_count: minimum number of data items for there to be a</span>
+<span class="sd">        valid wind direction.</span>
+
+<span class="sd">    :type min_count: int</span>
+
+<span class="sd">    :param decay: filter coefficient decay rate.</span>
+
+<span class="sd">    :type decay: float</span>
+
+<span class="sd">    :rtype: float</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">wind_filter</span> <span class="o">=</span> <span class="n">_WindFilter</span><span class="p">()</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">wind_filter</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;wind_dir&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">min_count</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="n">speed</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="n">wind_filter</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">speed</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">direction</span> <span class="o">*</span> <span class="mf">22.5</span>
+    </div>
 <div class="viewcode-block" id="winddir_degrees"><a class="viewcode-back" href="../../api/pywws.conversions.html#pywws.conversions.winddir_degrees">[docs]</a><span class="k">def</span> <span class="nf">winddir_degrees</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
     <span class="s">&quot;Convert wind direction from 0..15 to degrees&quot;</span>
     <span class="k">if</span> <span class="n">pts</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -142,6 +204,8 @@
     <span class="k">global</span> <span class="n">_winddir_text_array</span>
     <span class="k">if</span> <span class="n">pts</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pts</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">_winddir_text_array</span><span class="p">:</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">_Localisation</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">gettext</span>
         <span class="n">_winddir_text_array</span> <span class="o">=</span> <span class="p">(</span>
@@ -312,7 +376,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

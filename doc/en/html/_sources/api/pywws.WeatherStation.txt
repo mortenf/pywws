@@ -20,6 +20,7 @@ pywws.WeatherStation
    .. autosummary::
    
       CUSBDrive
+      DriftingClock
       USBDevice
       datetime
       weather_station

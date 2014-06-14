@@ -25,6 +25,7 @@ pywws.WindRose
       wind_kmph
       wind_kn
       wind_mph
+      winddir_average
       winddir_degrees
       winddir_text
    

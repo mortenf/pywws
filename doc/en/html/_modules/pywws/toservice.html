@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 14.06.dev1229 documentation</title>
+    <title>pywws.toservice &mdash; pywws 14.06.dev1238 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.06.dev1229',
+        VERSION:     '14.06.dev1238',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1229 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.06.dev1238 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -125,9 +125,7 @@
 <span class="sd">---------------</span>
 
 <span class="sd">Now you can upload your last 7 days&#39; data, if the service supports it.</span>
-<span class="sd">Edit your ``status.ini`` file and remove the appropriate line from the</span>
-<span class="sd">``last update`` section, then run ``toservice`` with the catchup</span>
-<span class="sd">option::</span>
+<span class="sd">Run ``toservice`` with the catchup option::</span>
 
 <span class="sd">    python -m pywws.toservice -cvv data_dir service_name</span>
 
@@ -298,7 +296,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
                 <span class="s">&#39;last update&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_name</span><span class="p">,</span> <span class="n">last_update</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">))</span>
         <span class="c"># set timestamp of first data to upload</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">next_update</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">catchup</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next_update</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span>
+            <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">catchup</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ToService.prepare_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.prepare_data">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Prepare a weather data record.</span>
@@ -327,7 +326,7 @@
         <span class="n">prepared_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fixed_data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">prepared_data</span>
 </div>
-<div class="viewcode-block" id="ToService.aprs_send_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.aprs_send_data">[docs]</a>    <span class="k">def</span> <span class="nf">aprs_send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">):</span>
+<div class="viewcode-block" id="ToService.aprs_send_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.aprs_send_data">[docs]</a>    <span class="k">def</span> <span class="nf">aprs_send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Upload a weather data record using APRS.</span>
 
 <span class="sd">        The :obj:`prepared_data` parameter contains the data to be uploaded.</span>
@@ -340,6 +339,11 @@
 <span class="sd">        :param prepared_data: the data to upload.</span>
 
 <span class="sd">        :type prepared_data: dict</span>
+
+<span class="sd">        :param ignore_last_update: don&#39;t get or set the &#39;last update&#39;</span>
+<span class="sd">            status.ini entry.</span>
+
+<span class="sd">        :type ignore_last_update: bool</span>
 
 <span class="sd">        :return: success status</span>
 
@@ -378,10 +382,11 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">old_ex</span> <span class="o">=</span> <span class="n">e</span>
             <span class="k">return</span> <span class="bp">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_last_update</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ignore_last_update</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_last_update</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">True</span>
 </div>
-<div class="viewcode-block" id="ToService.http_send_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.http_send_data">[docs]</a>    <span class="k">def</span> <span class="nf">http_send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">):</span>
+<div class="viewcode-block" id="ToService.http_send_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.http_send_data">[docs]</a>    <span class="k">def</span> <span class="nf">http_send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Upload a weather data record using HTTP.</span>
 
 <span class="sd">        The :obj:`prepared_data` parameter contains the data to be uploaded.</span>
@@ -394,6 +399,11 @@
 <span class="sd">        :param prepared_data: the data to upload.</span>
 
 <span class="sd">        :type prepared_data: dict</span>
+
+<span class="sd">        :param ignore_last_update: don&#39;t get or set the &#39;last update&#39;</span>
+<span class="sd">            status.ini entry.</span>
+
+<span class="sd">        :type ignore_last_update: bool</span>
 
 <span class="sd">        :return: success status</span>
 
@@ -425,7 +435,8 @@
                         <span class="k">break</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">old_response</span> <span class="o">=</span> <span class="n">response</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">set_last_update</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">ignore_last_update</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">set_last_update</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
                     <span class="k">return</span> <span class="bp">True</span>
             <span class="k">if</span> <span class="n">response</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">old_response</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
@@ -450,7 +461,7 @@
                 <span class="n">log</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">False</span>
 </div>
-<div class="viewcode-block" id="ToService.next_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.next_data">[docs]</a>    <span class="k">def</span> <span class="nf">next_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catchup</span><span class="p">,</span> <span class="n">live_data</span><span class="p">):</span>
+<div class="viewcode-block" id="ToService.next_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.next_data">[docs]</a>    <span class="k">def</span> <span class="nf">next_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catchup</span><span class="p">,</span> <span class="n">live_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get weather data records to upload.</span>
 
 <span class="sd">        This method returns either the most recent weather data</span>
@@ -466,12 +477,21 @@
 
 <span class="sd">        :type live_data: dict</span>
 
+<span class="sd">        :param ignore_last_update: don&#39;t get the &#39;last update&#39;</span>
+<span class="sd">            status.ini entry.</span>
+
+<span class="sd">        :type ignore_last_update: bool</span>
+
 <span class="sd">        :return: yields weather data records.</span>
 
 <span class="sd">        :rtype: dict</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">last_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="s">&#39;last update&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ignore_last_update</span><span class="p">:</span>
+            <span class="n">last_update</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">last_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span>
+                <span class="s">&#39;last update&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">last_update</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">next_update</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_update</span><span class="p">,</span>
                                    <span class="n">last_update</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
@@ -500,7 +520,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;last update&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span>
                                 <span class="p">(</span><span class="n">timestamp</span> <span class="o">+</span> <span class="n">PARENT_MARGIN</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="ToService.Upload"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.Upload">[docs]</a>    <span class="k">def</span> <span class="nf">Upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">live_data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ToService.Upload"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.Upload">[docs]</a>    <span class="k">def</span> <span class="nf">Upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">live_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Upload one or more weather data records.</span>
 
 <span class="sd">        This method uploads either the most recent weather data</span>
@@ -514,17 +534,27 @@
 
 <span class="sd">        :type catchup: bool</span>
 
+<span class="sd">        :param live_data: current &#39;live&#39; data. If not present the most</span>
+<span class="sd">            recent logged data is uploaded.</span>
+
+<span class="sd">        :type live_data: dict</span>
+
+<span class="sd">        :param ignore_last_update: don&#39;t get or set the &#39;last update&#39;</span>
+<span class="sd">            status.ini entry.</span>
+
+<span class="sd">        :type ignore_last_update: bool</span>
+
 <span class="sd">        :return: success status</span>
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_data</span><span class="p">(</span><span class="n">catchup</span><span class="p">,</span> <span class="n">live_data</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_data</span><span class="p">(</span><span class="n">catchup</span><span class="p">,</span> <span class="n">live_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="p">):</span>
             <span class="n">prepared_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">prepared_data</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">],</span> <span class="n">prepared_data</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;idx&#39;</span><span class="p">],</span> <span class="n">prepared_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">False</span>
             <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -560,7 +590,8 @@
     <span class="n">logger</span> <span class="o">=</span> <span class="n">ApplicationLogger</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ToService</span><span class="p">(</span>
         <span class="n">DataStore</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-        <span class="n">DataStore</span><span class="o">.</span><span class="n">calib_store</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">Upload</span><span class="p">(</span><span class="n">catchup</span><span class="o">=</span><span class="n">catchup</span><span class="p">)</span>
+        <span class="n">DataStore</span><span class="o">.</span><span class="n">calib_store</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">Upload</span><span class="p">(</span>
+            <span class="n">catchup</span><span class="o">=</span><span class="n">catchup</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="ow">not</span> <span class="n">catchup</span><span class="p">)</span>
 </div>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -600,7 +631,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

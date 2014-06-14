@@ -32,6 +32,7 @@ pywws.Process
       Maximum
       Minimum
       MonthAcc
+      WindFilter
       date
       datetime
       deque

@@ -20,7 +20,9 @@ pywws.ToTwitter
 
    .. autosummary::
    
+      PythonTwitterHandler
       ToTwitter
+      TweepyHandler
       pct
    
    

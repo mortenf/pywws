@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 14.06.dev1229 documentation</title>
+    <title>pywws.toservice &mdash; pywws 14.06.dev1238 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.06.dev1229',
+        VERSION:     '14.06.dev1238',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1229 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.06.dev1238 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.YoWindow" href="pywws.YoWindow.html" />
     <link rel="prev" title="pywws.ToTwitter" href="pywws.ToTwitter.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -111,9 +111,7 @@ should generate an error message.</p>
 <div class="section" id="upload-old-data">
 <h2>Upload old data<a class="headerlink" href="#upload-old-data" title="Permalink to this headline">¶</a></h2>
 <p>Now you can upload your last 7 days&#8217; data, if the service supports it.
-Edit your <tt class="docutils literal"><span class="pre">status.ini</span></tt> file and remove the appropriate line from the
-<tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> section, then run <tt class="docutils literal"><span class="pre">toservice</span></tt> with the catchup
-option:</p>
+Run <tt class="docutils literal"><span class="pre">toservice</span></tt> with the catchup option:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -cvv data_dir service_name
 </pre></div>
 </div>
@@ -233,7 +231,7 @@ merged with the station&#8217;s &#8220;fixed&#8221; data.</p>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.aprs_send_data">
-<tt class="descname">aprs_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.aprs_send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.aprs_send_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">aprs_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em>, <em>ignore_last_update=False</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.aprs_send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.aprs_send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upload a weather data record using APRS.</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">prepared_data</span></tt> parameter contains the data to be uploaded.
 It should be a dictionary of string keys and string values.</p>
@@ -244,6 +242,8 @@ It should be a dictionary of string keys and string values.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>timestamp</strong> (<em>datetime</em>) &#8211; the timestamp of the data to upload.</li>
 <li><strong>prepared_data</strong> (<em>dict</em>) &#8211; the data to upload.</li>
+<li><strong>ignore_last_update</strong> (<em>bool</em>) &#8211; don&#8217;t get or set the &#8216;last update&#8217;
+status.ini entry.</li>
 </ul>
 </td>
 </tr>
@@ -259,7 +259,7 @@ It should be a dictionary of string keys and string values.</p>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.http_send_data">
-<tt class="descname">http_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.http_send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.http_send_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">http_send_data</tt><big>(</big><em>timestamp</em>, <em>prepared_data</em>, <em>ignore_last_update=False</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.http_send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.http_send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upload a weather data record using HTTP.</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">prepared_data</span></tt> parameter contains the data to be uploaded.
 It should be a dictionary of string keys and string values.</p>
@@ -270,6 +270,8 @@ It should be a dictionary of string keys and string values.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>timestamp</strong> (<em>datetime</em>) &#8211; the timestamp of the data to upload.</li>
 <li><strong>prepared_data</strong> (<em>dict</em>) &#8211; the data to upload.</li>
+<li><strong>ignore_last_update</strong> (<em>bool</em>) &#8211; don&#8217;t get or set the &#8216;last update&#8217;
+status.ini entry.</li>
 </ul>
 </td>
 </tr>
@@ -285,7 +287,7 @@ It should be a dictionary of string keys and string values.</p>
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.next_data">
-<tt class="descname">next_data</tt><big>(</big><em>catchup</em>, <em>live_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.next_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.next_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_data</tt><big>(</big><em>catchup</em>, <em>live_data</em>, <em>ignore_last_update=False</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.next_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.next_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get weather data records to upload.</p>
 <p>This method returns either the most recent weather data
 record, or all records since the last upload, according to
@@ -298,6 +300,8 @@ the value of <tt class="xref py py-obj docutils literal"><span class="pre">catch
 <li><strong>catchup</strong> (<em>boolean</em>) &#8211; <tt class="docutils literal"><span class="pre">True</span></tt> to get all records since last upload,
 or <tt class="docutils literal"><span class="pre">False</span></tt> to get most recent data only.</li>
 <li><strong>live_data</strong> (<em>dict</em>) &#8211; a current &#8216;live&#8217; data record, or <tt class="docutils literal"><span class="pre">None</span></tt>.</li>
+<li><strong>ignore_last_update</strong> (<em>bool</em>) &#8211; don&#8217;t get the &#8216;last update&#8217;
+status.ini entry.</li>
 </ul>
 </td>
 </tr>
@@ -318,7 +322,7 @@ or <tt class="docutils literal"><span class="pre">False</span></tt> to get most 
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.Upload">
-<tt class="descname">Upload</tt><big>(</big><em>catchup=True</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.Upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.Upload" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">Upload</tt><big>(</big><em>catchup=True</em>, <em>live_data=None</em>, <em>ignore_last_update=False</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.Upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.Upload" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upload one or more weather data records.</p>
 <p>This method uploads either the most recent weather data
 record, or all records since the last upload (up to 7 days),
@@ -329,11 +333,20 @@ stamp of the most recent record successfully uploaded.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>catchup</strong> (<em>bool</em>) &#8211; upload all data since last upload.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>catchup</strong> (<em>bool</em>) &#8211; upload all data since last upload.</li>
+<li><strong>live_data</strong> (<em>dict</em>) &#8211; current &#8216;live&#8217; data. If not present the most
+recent logged data is uploaded.</li>
+<li><strong>ignore_last_update</strong> (<em>bool</em>) &#8211; don&#8217;t get or set the &#8216;last update&#8217;
+status.ini entry.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success status</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success status</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -411,7 +424,7 @@ stamp of the most recent record successfully uploaded.</p>
         <li class="right" >
           <a href="pywws.ToTwitter.html" title="pywws.ToTwitter"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>

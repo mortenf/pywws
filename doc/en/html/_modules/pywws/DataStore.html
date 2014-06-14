@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.DataStore &mdash; pywws 14.06.dev1229 documentation</title>
+    <title>pywws.DataStore &mdash; pywws 14.06.dev1238 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.06.dev1229',
+        VERSION:     '14.06.dev1238',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1229 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.06.dev1238 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -596,7 +596,7 @@
         <span class="s">&#39;rel_pressure&#39;</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_ave&#39;</span>     <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_gust&#39;</span>    <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-        <span class="s">&#39;wind_dir&#39;</span>     <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s">&#39;wind_dir&#39;</span>     <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;rain&#39;</span>         <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;status&#39;</span>       <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="s">&#39;illuminance&#39;</span>  <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -624,7 +624,7 @@
         <span class="s">&#39;pressure_trend&#39;</span>    <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_ave&#39;</span>          <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_gust&#39;</span>         <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-        <span class="s">&#39;wind_dir&#39;</span>          <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s">&#39;wind_dir&#39;</span>          <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;rain&#39;</span>              <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;illuminance&#39;</span>       <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;uv&#39;</span>                <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -692,7 +692,7 @@
         <span class="s">&#39;wind_ave&#39;</span>           <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_gust&#39;</span>          <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_gust_t&#39;</span>        <span class="p">:</span> <span class="n">safestrptime</span><span class="p">,</span>
-        <span class="s">&#39;wind_dir&#39;</span>           <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s">&#39;wind_dir&#39;</span>           <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;rain&#39;</span>               <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;illuminance_ave&#39;</span>    <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;illuminance_max&#39;</span>    <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -800,7 +800,7 @@
         <span class="s">&#39;wind_ave&#39;</span>             <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_gust&#39;</span>            <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;wind_gust_t&#39;</span>          <span class="p">:</span> <span class="n">safestrptime</span><span class="p">,</span>
-        <span class="s">&#39;wind_dir&#39;</span>             <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s">&#39;wind_dir&#39;</span>             <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;rain&#39;</span>                 <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="s">&#39;rain_days&#39;</span>            <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="s">&#39;illuminance_ave&#39;</span>      <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -864,7 +864,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1229 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
