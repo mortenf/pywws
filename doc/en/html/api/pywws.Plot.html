@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Plot &mdash; pywws 14.06.dev1238 documentation</title>
+    <title>pywws.Plot &mdash; pywws 14.06.dev1241 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.06.dev1238',
+        VERSION:     '14.06.dev1241',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1238 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.06.dev1241 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.WindRose" href="pywws.WindRose.html" />
     <link rel="prev" title="pywws.calib" href="pywws.calib.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.calib.html" title="pywws.calib"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.dev1241 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -156,19 +156,25 @@ X axis.</p>
 <div class="section" id="start">
 <h3>start<a class="headerlink" href="#start" title="Permalink to this headline">¶</a></h3>
 <p>This element sets the date &amp; time of the start of the X axis. It is
-used in the constructor of a Python datetime object. For example, to
-start the graph at noon (local time) on Christmas day 2008:
-<tt class="docutils literal"><span class="pre">&lt;start&gt;year=2008,</span> <span class="pre">month=12,</span> <span class="pre">day=25,</span> <span class="pre">hour=12&lt;/start&gt;</span></tt>. The default
-value is (stop - duration).</p>
+used in the <tt class="docutils literal"><span class="pre">replace</span></tt> method of a Python datetime object that is
+initialised to 00:00 hours on the date of the latest weather station
+hourly reading. For example, to start the graph at noon (local time)
+on Christmas day 2008: <tt class="docutils literal"><span class="pre">&lt;start&gt;year=2008,</span> <span class="pre">month=12,</span> <span class="pre">day=25,</span>
+<span class="pre">hour=12&lt;/start&gt;</span></tt> or to start the graph at 2am (local time) today:
+<tt class="docutils literal"><span class="pre">&lt;start&gt;hour=2&lt;/start&gt;</span></tt>. The default value is (stop - duration).</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.06.dev1238: </span>previously the <tt class="docutils literal"><span class="pre">&lt;start&gt;</span></tt> and <tt class="docutils literal"><span class="pre">&lt;stop&gt;</span></tt> elements were used in a
+datetime constructor, so <tt class="docutils literal"><span class="pre">year</span></tt>, <tt class="docutils literal"><span class="pre">month</span></tt> and <tt class="docutils literal"><span class="pre">day</span></tt> values
+were required.</p>
+</div>
 </div>
 <div class="section" id="stop">
 <h3>stop<a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h3>
 <p>This element sets the date &amp; time of the end of the X axis. It is used
-in the constructor of a Python datetime object. For example, to end
-the graph at 10 am (local time) on new year&#8217;s day: <tt class="docutils literal"><span class="pre">&lt;stop&gt;year=2009,</span>
-<span class="pre">month=1,</span> <span class="pre">day=1,</span> <span class="pre">hour=10&lt;/stop&gt;</span></tt>. The default value is (start +
-duration), unless start is not defined in which case the timestamp of
-the latest weather station hourly reading is used.</p>
+in the <tt class="docutils literal"><span class="pre">replace</span></tt> method of a Python datetime object, just like
+<tt class="docutils literal"><span class="pre">&lt;start&gt;</span></tt>. The default value is (start + duration), unless start is
+not defined, in which case the timestamp of the latest weather station
+hourly reading is used.</p>
 </div>
 <div class="section" id="duration">
 <h3>duration<a class="headerlink" href="#duration" title="Permalink to this headline">¶</a></h3>
@@ -698,7 +704,7 @@ subplot.</p>
         <li class="right" >
           <a href="pywws.calib.html" title="pywws.calib"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.dev1241 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>

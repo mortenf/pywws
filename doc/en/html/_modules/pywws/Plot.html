@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Plot &mdash; pywws 14.06.dev1238 documentation</title>
+    <title>pywws.Plot &mdash; pywws 14.06.dev1241 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.06.dev1238',
+        VERSION:     '14.06.dev1241',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.dev1238 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 14.06.dev1241 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1241 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -170,20 +170,26 @@
 <span class="sd">^^^^^</span>
 
 <span class="sd">This element sets the date &amp; time of the start of the X axis. It is</span>
-<span class="sd">used in the constructor of a Python datetime object. For example, to</span>
-<span class="sd">start the graph at noon (local time) on Christmas day 2008:</span>
-<span class="sd">``&lt;start&gt;year=2008, month=12, day=25, hour=12&lt;/start&gt;``. The default</span>
-<span class="sd">value is (stop - duration).</span>
+<span class="sd">used in the ``replace`` method of a Python datetime object that is</span>
+<span class="sd">initialised to 00:00 hours on the date of the latest weather station</span>
+<span class="sd">hourly reading. For example, to start the graph at noon (local time)</span>
+<span class="sd">on Christmas day 2008: ``&lt;start&gt;year=2008, month=12, day=25,</span>
+<span class="sd">hour=12&lt;/start&gt;`` or to start the graph at 2am (local time) today:</span>
+<span class="sd">``&lt;start&gt;hour=2&lt;/start&gt;``. The default value is (stop - duration).</span>
+
+<span class="sd">.. versionadded:: 14.06.dev1238</span>
+<span class="sd">   previously the ``&lt;start&gt;`` and ``&lt;stop&gt;`` elements were used in a</span>
+<span class="sd">   datetime constructor, so ``year``, ``month`` and ``day`` values</span>
+<span class="sd">   were required.</span>
 
 <span class="sd">stop</span>
 <span class="sd">^^^^</span>
 
 <span class="sd">This element sets the date &amp; time of the end of the X axis. It is used</span>
-<span class="sd">in the constructor of a Python datetime object. For example, to end</span>
-<span class="sd">the graph at 10 am (local time) on new year&#39;s day: ``&lt;stop&gt;year=2009,</span>
-<span class="sd">month=1, day=1, hour=10&lt;/stop&gt;``. The default value is (start +</span>
-<span class="sd">duration), unless start is not defined in which case the timestamp of</span>
-<span class="sd">the latest weather station hourly reading is used.</span>
+<span class="sd">in the ``replace`` method of a Python datetime object, just like</span>
+<span class="sd">``&lt;start&gt;``. The default value is (start + duration), unless start is</span>
+<span class="sd">not defined, in which case the timestamp of the latest weather station</span>
+<span class="sd">hourly reading is used.</span>
 
 <span class="sd">duration</span>
 <span class="sd">^^^^^^^^</span>
@@ -559,6 +565,17 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">_eval_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_str</span><span class="p">):</span>
+        <span class="c"># get timestamp of last data item</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hourly_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>    <span class="c"># only if no hourly data</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">Local</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="c"># set to start of the day</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c"># apply time string</span>
+        <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;result.replace(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">time_str</span><span class="p">)</span>
+
 <div class="viewcode-block" id="BasePlotter.DoPlot"><a class="viewcode-back" href="../../api/pywws.Plot.html#pywws.Plot.BasePlotter.DoPlot">[docs]</a>    <span class="k">def</span> <span class="nf">DoPlot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">GraphFileReader</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">input_file</span>
@@ -582,14 +599,14 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;datetime(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;datetime(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s">&#39;datetime(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_hi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hourly_data</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
@@ -962,7 +979,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.06.dev1238 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 14.06.dev1241 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
