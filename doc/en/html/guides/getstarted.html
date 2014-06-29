@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to get started with pywws &mdash; pywws 14.06.1.dev1250 documentation</title>
+    <title>How to get started with pywws &mdash; pywws 14.06.2.dev1253 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.06.1.dev1250',
+        VERSION:     '14.06.2.dev1253',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.1.dev1250 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.06.2.dev1253 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to set up ‘hourly’ logging with pywws" href="hourlylogging.html" />
     <link rel="prev" title="User guides" href="index.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="index.html" title="User guides"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.1.dev1250 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.2.dev1253 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -111,12 +111,6 @@ Install git and use it to clone the repos:</p>
 git clone https://github.com/jim-easterbrook/pywws.git
 </pre></div>
 </div>
-<p>After cloning you may want to use setup.py to compile the language files and documentation, if you have installed the gettext and sphinx packages:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd ~/weather/pywws
-python setup.py msgfmt
-python setup.py build_sphinx
-</pre></div>
-</div>
 <p>To upgrade you use git to pull any changes:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd ~/weather/pywws
 git pull
@@ -127,12 +121,30 @@ git pull
 <h3>Install scripts<a class="headerlink" href="#install-scripts" title="Permalink to this headline">¶</a></h3>
 <p>If you have not installed pywws with pip, you need to use setup.py to generate the &#8220;entry point&#8221; scripts for common pywws tasks:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd ~/weather/pywws
+python setup.py build
 sudo python setup.py develop
 </pre></div>
 </div>
-<p>Note to Python 3 users: this will generate and use Python 3 versions of the pywws software in <tt class="docutils literal"><span class="pre">~/weather/pywws/build/lib</span></tt>.
-Because your pywws directory (<tt class="docutils literal"><span class="pre">~/weather/pywws</span></tt>) contains the Python 2 pywws package you will need to change to a different directory before running any of the <tt class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pywws.xxx</span></tt> commands referred to elsewhere in the documentation.</p>
+<p>Note to Python 3 users: this will generate and use Python 3 versions of the pywws software in <tt class="docutils literal"><span class="pre">~/weather/pywws/build/lib</span></tt>.</p>
 </div>
+</div>
+<div class="section" id="compile-documentation-optional">
+<h2>Compile documentation (optional)<a class="headerlink" href="#compile-documentation-optional" title="Permalink to this headline">¶</a></h2>
+<p>If you&#8217;d like to have a local copy of the pywws documentation (and have downloaded the source or cloned the repo) you can &#8220;compile&#8221; the English documentation.
+This requires the sphinx package:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd ~/weather/pywws
+python setup.py build_sphinx
+</pre></div>
+</div>
+<p>Compiling the documentation in another language requires the additional step of compiling the translation files, which requires the sphinx-intl package.
+For example, to compile the French documentation:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd ~/weather/pywws
+sphinx-intl build --locale-dir src/pywws/lang -l fr
+LANG=fr python setup.py build_sphinx
+</pre></div>
+</div>
+<p>The compiled documentation should then be found at <tt class="docutils literal"><span class="pre">~/weather/pywws/doc/fr/html/index.html</span></tt>.
+See <a class="reference internal" href="language.html"><em>How to use pywws in another language</em></a> for more detail.</p>
 </div>
 <div class="section" id="test-the-weather-station-connection">
 <span id="test-weather-station"></span><h2>Test the weather station connection<a class="headerlink" href="#test-the-weather-station-connection" title="Permalink to this headline">¶</a></h2>
@@ -271,8 +283,8 @@ You can do this by running <a class="reference internal" href="../api/pywws.Repr
 </div>
 <div class="section" id="read-the-documentation">
 <h2>Read the documentation<a class="headerlink" href="#read-the-documentation" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">pywws-version</span> <span class="pre">-v</span></tt> command will show you the location of the pywws documentation.
-These HTML files can be read with any web browser.</p>
+<p>You&#8217;re looking at it right now!
+The <a class="reference internal" href="index.html"><em>User guides</em></a> section is probably the most useful bit to read first, but the <a class="reference internal" href="../api_index.html"><em>Python programs and modules</em></a> section has a lot more detail on the various pywws modules and commands.</p>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
 <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a> and let us know.</p>
@@ -298,6 +310,7 @@ These HTML files can be read with any web browser.</p>
 <li><a class="reference internal" href="#install-scripts">Install scripts</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#compile-documentation-optional">Compile documentation (optional)</a></li>
 <li><a class="reference internal" href="#test-the-weather-station-connection">Test the weather station connection</a></li>
 <li><a class="reference internal" href="#set-up-your-weather-station">Set up your weather station</a></li>
 <li><a class="reference internal" href="#set-the-weather-station-logging-interval">Set the weather station logging interval</a></li>
@@ -348,7 +361,7 @@ These HTML files can be read with any web browser.</p>
         <li class="right" >
           <a href="index.html" title="User guides"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.1.dev1250 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.2.dev1253 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>

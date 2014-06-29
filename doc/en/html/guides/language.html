@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to use pywws in another language &mdash; pywws 14.06.1.dev1250 documentation</title>
+    <title>How to use pywws in another language &mdash; pywws 14.06.2.dev1253 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.06.1.dev1250',
+        VERSION:     '14.06.2.dev1253',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.06.1.dev1250 documentation" href="../index.html" />
+    <link rel="top" title="pywws 14.06.2.dev1253 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="weather.ini - configuration file format" href="weather_ini.html" />
     <link rel="prev" title="How to configure pywws to post messages to Twitter" href="twitter.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="twitter.html" title="How to configure pywws to post messages to Twitter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.1.dev1250 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.2.dev1253 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -144,7 +144,7 @@ This can be done manually, but the Babel library has an <tt class="docutils lite
 <div class="highlight-python"><div class="highlight"><pre>python setup.py update_catalog --locale fr
 </pre></div>
 </div>
-<p>Now you can open the <tt class="docutils literal"><span class="pre">pywws/lang/fr/LC_MESSAGES/pywws.po</span></tt> file in your favourite text editor and start filling in the empty <tt class="docutils literal"><span class="pre">msgstr</span></tt> strings with your translation of the corresponding <tt class="docutils literal"><span class="pre">msgid</span></tt> string.
+<p>Now you can open the <tt class="docutils literal"><span class="pre">src/pywws/lang/fr/LC_MESSAGES/pywws.po</span></tt> file in your favourite text editor and start filling in the empty <tt class="docutils literal"><span class="pre">msgstr</span></tt> strings with your translation of the corresponding <tt class="docutils literal"><span class="pre">msgid</span></tt> string.
 Please read <a class="reference internal" href="#translator-notes"><em>Notes for translators</em></a> before you start.</p>
 </div>
 </div>
@@ -209,23 +209,23 @@ Just let me know when you&#8217;ve done enough to be worth publishing.</p>
 <div class="section" id="id2">
 <h3>Create language files<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The sphinx-intl command is used to create or update the .po files:</p>
-<div class="highlight-python"><div class="highlight"><pre>sphinx-intl update --locale-dir pywws/lang -p build/gettext -l fr
+<div class="highlight-python"><div class="highlight"><pre>sphinx-intl update --locale-dir src/pywws/lang -p build/gettext -l fr
 </pre></div>
 </div>
 </div>
 <div class="section" id="viewing-your-translated-documentation">
 <h3>Viewing your translated documentation<a class="headerlink" href="#viewing-your-translated-documentation" title="Permalink to this headline">¶</a></h3>
 <p>First compile your newly edited language file(s):</p>
-<div class="highlight-python"><div class="highlight"><pre>sphinx-intl build --locale-dir pywws/lang -l fr
+<div class="highlight-python"><div class="highlight"><pre>sphinx-intl build --locale-dir src/pywws/lang -l fr
 </pre></div>
 </div>
 <p>Then delete the old documentation (if it exists) and rebuild using your language:</p>
-<div class="highlight-python"><div class="highlight"><pre>rm -rf pywws/doc/fr
+<div class="highlight-python"><div class="highlight"><pre>rm -rf doc/fr
 LANG=fr python setup.py build_sphinx
 </pre></div>
 </div>
 <p>Note that the <tt class="docutils literal"><span class="pre">build_sphinx</span></tt> command doesn&#8217;t have a <tt class="docutils literal"><span class="pre">--locale</span></tt> (or <tt class="docutils literal"><span class="pre">-l</span></tt>) option, so the language is set by a temporary environment variable.</p>
-<p>Finally you can view the translated documentation by using a web browser to read the file <tt class="docutils literal"><span class="pre">pywws/doc/fr/html/index.html</span></tt>.</p>
+<p>Finally you can view the translated documentation by using a web browser to read the file <tt class="docutils literal"><span class="pre">doc/fr/html/index.html</span></tt>.</p>
 <p>As before, please make sure you send your translation to <a class="reference external" href="mailto:jim&#37;&#52;&#48;jim-easterbrook&#46;me&#46;uk">jim<span>&#64;</span>jim-easterbrook<span>&#46;</span>me<span>&#46;</span>uk</a> so other pywws users can benefit from your work.</p>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
@@ -306,7 +306,7 @@ LANG=fr python setup.py build_sphinx
         <li class="right" >
           <a href="twitter.html" title="How to configure pywws to post messages to Twitter"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.06.1.dev1250 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 14.06.2.dev1253 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
