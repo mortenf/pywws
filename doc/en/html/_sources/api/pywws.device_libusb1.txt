@@ -1,0 +1,22 @@
+pywws.device_libusb1
+====================
+
+.. automodule:: pywws.device_libusb1
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      USBDevice
+   
+   
+
+   
+   
+   

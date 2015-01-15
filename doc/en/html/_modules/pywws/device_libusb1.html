@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.device_pyusb1 &mdash; pywws 15.01.0.dev1273 documentation</title>
+    <title>pywws.device_libusb1 &mdash; pywws 15.01.0.dev1273 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -47,7 +47,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for pywws.device_pyusb1</h1><div class="highlight"><pre>
+  <h1>Source code for pywws.device_libusb1</h1><div class="highlight"><pre>
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
 <span class="c"># http://github.com/jim-easterbrook/pywws</span>
 <span class="c"># Copyright (C) 2008-15  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
@@ -66,33 +66,37 @@
 <span class="c"># along with this program; if not, write to the Free Software</span>
 <span class="c"># Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
 
-<span class="sd">&quot;&quot;&quot;Low level USB interface to weather station, using PyUSB v1.0.</span>
+<span class="sd">&quot;&quot;&quot;Low level USB interface to weather station, using python-libusb1.</span>
 
 <span class="sd">Introduction</span>
 <span class="sd">============</span>
 
 <span class="sd">This module handles low level communication with the weather station</span>
-<span class="sd">via the `PyUSB &lt;http://sourceforge.net/apps/trac/pyusb/&gt;`_ library</span>
-<span class="sd">(version 1.0). It is one of several USB device modules, each of which</span>
-<span class="sd">uses a different USB library interface. See :ref:`Installation - USB</span>
-<span class="sd">library&lt;dependencies-usb&gt;` for details.</span>
+<span class="sd">via the `python-libusb1</span>
+<span class="sd">&lt;https://github.com/vpelletier/python-libusb1&gt;`_ library. It is one of</span>
+<span class="sd">several USB device modules, each of which uses a different USB library</span>
+<span class="sd">interface. See :ref:`Installation - USB library&lt;dependencies-usb&gt;` for</span>
+<span class="sd">details.</span>
 
 <span class="sd">Testing</span>
 <span class="sd">=======</span>
 
-<span class="sd">Run :py:mod:`pywws.TestWeatherStation` with increased verbosity so it</span>
-<span class="sd">reports which USB device access module is being used::</span>
+<span class="sd">Run :py:mod:`pywws-testweatherstation &lt;pywws.TestWeatherStation&gt;` with</span>
+<span class="sd">increased verbosity so it reports which USB device access module is</span>
+<span class="sd">being used::</span>
 
-<span class="sd">    python -m pywws.TestWeatherStation -vv</span>
-<span class="sd">    18:28:09:pywws.WeatherStation.CUSBDrive:using pywws.device_pyusb1</span>
-<span class="sd">    0000 55 aa ff ff ff ff ff ff ff ff ff ff ff ff ff ff 05 20 01 41 11 00 00 00 81 00 00 0f 05 00 e0 51</span>
-<span class="sd">    0020 03 27 ce 27 00 00 00 00 00 00 00 12 02 14 18 27 41 23 c8 00 00 00 46 2d 2c 01 64 80 c8 00 00 00</span>
+<span class="sd">    pywws-testweatherstation -vv</span>
+<span class="sd">    11:30:35:pywws.Logger:pywws version 15.01.0</span>
+<span class="sd">    11:30:35:pywws.Logger:Python version 3.3.5 (default, Mar 27 2014, 17:16:46) [GCC]</span>
+<span class="sd">    11:30:35:pywws.WeatherStation.CUSBDrive:using pywws.device_libusb1</span>
+<span class="sd">    0000 55 aa ff ff ff ff ff ff ff ff ff ff ff ff ff ff 05 20 01 41 11 00 00 00 81 7f 00 f0 0f 00 50 04</span>
+<span class="sd">    0020 f9 25 74 26 00 00 00 00 00 00 00 15 01 15 11 31 41 23 c8 00 00 00 46 2d 2c 01 64 80 c8 00 00 00</span>
 <span class="sd">    0040 64 00 64 80 a0 28 80 25 a0 28 80 25 03 36 00 05 6b 00 00 0a 00 f4 01 12 00 00 00 00 00 00 00 00</span>
-<span class="sd">    0060 00 00 49 0a 63 12 05 01 7f 00 36 01 60 80 36 01 60 80 bc 00 7b 80 95 28 12 26 6c 28 25 26 c8 01</span>
-<span class="sd">    0080 1d 02 d8 00 de 00 ff 00 ff 00 ff 00 00 11 10 06 01 29 12 02 01 19 32 11 09 09 05 18 12 01 22 13</span>
-<span class="sd">    00a0 14 11 11 04 15 04 11 12 17 05 12 11 09 02 15 26 12 02 11 07 05 11 09 02 15 26 12 02 11 07 05 11</span>
-<span class="sd">    00c0 09 10 09 12 12 02 02 12 38 12 02 07 19 00 11 12 16 03 27 12 02 03 11 00 11 12 16 03 27 11 12 26</span>
-<span class="sd">    00e0 21 32 11 12 26 21 32 12 02 06 19 57 12 02 06 19 57 12 02 06 19 57 12 02 06 19 57 12 02 06 19 57</span>
+<span class="sd">    0060 00 00 5a 0a 63 0a 41 01 70 00 dc 01 08 81 dc 01 c5 81 68 01 75 81 95 28 e0 25 24 29 d9 25 fd 02</span>
+<span class="sd">    0080 b9 02 f4 ff fd ff 85 ff 91 ff 6c 09 00 14 10 19 06 29 12 02 01 19 32 11 09 09 05 18 12 03 28 13</span>
+<span class="sd">    00a0 00 13 07 19 18 28 13 01 18 23 21 13 09 24 13 02 13 09 24 13 33 13 09 24 13 02 12 07 28 12 50 13</span>
+<span class="sd">    00c0 09 24 13 02 13 10 14 16 18 12 02 07 19 00 14 02 14 22 39 13 01 04 10 28 15 01 15 03 48 12 03 10</span>
+<span class="sd">    00e0 22 02 13 01 30 21 24 12 07 28 11 59 13 03 06 06 43 12 04 13 00 04 12 04 13 00 04 12 07 31 03 34</span>
 
 <span class="sd">API</span>
 <span class="sd">===</span>
@@ -101,13 +105,13 @@
 
 <span class="n">__docformat__</span> <span class="o">=</span> <span class="s">&quot;restructuredtext en&quot;</span>
 
+<span class="kn">import</span> <span class="nn">libusb1</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">usb.core</span>
-<span class="kn">import</span> <span class="nn">usb.util</span>
+<span class="kn">import</span> <span class="nn">usb1</span>
 
-<div class="viewcode-block" id="USBDevice"><a class="viewcode-back" href="../../api/pywws.device_pyusb1.html#pywws.device_pyusb1.USBDevice">[docs]</a><span class="k">class</span> <span class="nc">USBDevice</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="USBDevice"><a class="viewcode-back" href="../../api/pywws.device_libusb1.html#pywws.device_libusb1.USBDevice">[docs]</a><span class="k">class</span> <span class="nc">USBDevice</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idVendor</span><span class="p">,</span> <span class="n">idProduct</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Low level USB device access via PyUSB 1.0 library.</span>
+        <span class="sd">&quot;&quot;&quot;Low level USB device access via python-libusb1 library.</span>
 
 <span class="sd">        :param idVendor: the USB &quot;vendor ID&quot; number, for example 0x1941.</span>
 
@@ -118,23 +122,16 @@
 <span class="sd">        :type idProduct: int</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span> <span class="o">=</span> <span class="n">usb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">idVendor</span><span class="o">=</span><span class="n">idVendor</span><span class="p">,</span> <span class="n">idProduct</span><span class="o">=</span><span class="n">idProduct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">usb1</span><span class="o">.</span><span class="n">USBContext</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">openByVendorIDAndProductID</span><span class="p">(</span><span class="n">idVendor</span><span class="p">,</span> <span class="n">idProduct</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&quot;Weather station device not found&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;linux&#39;</span><span class="p">):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">detach</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">is_kernel_driver_active</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-                <span class="n">detach</span> <span class="o">=</span> <span class="bp">True</span>
-            <span class="k">if</span> <span class="n">detach</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">detach_kernel_driver</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-                <span class="k">except</span> <span class="n">usb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">USBError</span><span class="p">:</span>
-                    <span class="k">pass</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">set_configuration</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">kernelDriverActive</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">detachKernelDriver</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">resetDevice</span><span class="p">()</span>
 
-<div class="viewcode-block" id="USBDevice.read_data"><a class="viewcode-back" href="../../api/pywws.device_pyusb1.html#pywws.device_pyusb1.USBDevice.read_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<div class="viewcode-block" id="USBDevice.read_data"><a class="viewcode-back" href="../../api/pywws.device_libusb1.html#pywws.device_libusb1.USBDevice.read_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Receive data from the device.</span>
 
 <span class="sd">        If the read fails for any reason, an :obj:`IOError` exception</span>
@@ -149,12 +146,14 @@
 <span class="sd">        :rtype: list(int)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mh">0x81</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">bulkRead</span><span class="p">(</span><span class="mh">0x81</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">ord</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;pywws.device_pyusb1.USBDevice.read_data failed&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;pywws.device_libusb1.USBDevice.read_data failed&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="USBDevice.write_data"><a class="viewcode-back" href="../../api/pywws.device_pyusb1.html#pywws.device_pyusb1.USBDevice.write_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
+<div class="viewcode-block" id="USBDevice.write_data"><a class="viewcode-back" href="../../api/pywws.device_libusb1.html#pywws.device_libusb1.USBDevice.write_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Send data to the device.</span>
 
 <span class="sd">        If the write fails for any reason, an :obj:`IOError` exception</span>
@@ -169,19 +168,17 @@
 <span class="sd">        :rtype: bool</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">bmRequestType</span> <span class="o">=</span> <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">build_request_type</span><span class="p">(</span>
-            <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">ENDPOINT_OUT</span><span class="p">,</span>
-            <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">CTRL_TYPE_CLASS</span><span class="p">,</span>
-            <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">CTRL_RECIPIENT_INTERFACE</span>
-            <span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">ctrl_transfer</span><span class="p">(</span>
-            <span class="n">bmRequestType</span><span class="o">=</span><span class="n">bmRequestType</span><span class="p">,</span>
-            <span class="n">bRequest</span><span class="o">=</span><span class="n">usb</span><span class="o">.</span><span class="n">REQ_SET_CONFIGURATION</span><span class="p">,</span>
-            <span class="n">data_or_wLength</span><span class="o">=</span><span class="n">buf</span><span class="p">,</span>
-            <span class="n">wValue</span><span class="o">=</span><span class="mh">0x200</span><span class="p">,</span>
-            <span class="n">timeout</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">str_buf</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">chr</span><span class="p">,</span> <span class="n">buf</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">str_buf</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">controlWrite</span><span class="p">(</span>
+            <span class="n">libusb1</span><span class="o">.</span><span class="n">LIBUSB_ENDPOINT_OUT</span> <span class="o">|</span> <span class="n">libusb1</span><span class="o">.</span><span class="n">LIBUSB_TYPE_CLASS</span> <span class="o">|</span>
+            <span class="n">libusb1</span><span class="o">.</span><span class="n">LIBUSB_RECIPIENT_INTERFACE</span><span class="p">,</span>
+            <span class="n">libusb1</span><span class="o">.</span><span class="n">LIBUSB_REQUEST_SET_CONFIGURATION</span><span class="p">,</span>
+            <span class="mh">0x200</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">str_buf</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">buf</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;pywws.device_pyusb1.USBDevice.write_data failed&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;pywws.device_libusb1.USBDevice.write_data failed&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">True</span></div></div>
 </pre></div>
 

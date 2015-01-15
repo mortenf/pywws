@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.toservice &mdash; pywws 14.12.0.dev1260 documentation</title>
+    <title>pywws.toservice &mdash; pywws 15.01.0.dev1273 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.12.0.dev1260',
+        VERSION:     '15.01.0.dev1273',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.12.0.dev1260 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 15.01.0.dev1273 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.12.0.dev1260 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -52,7 +52,7 @@
 
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
 <span class="c"># http://github.com/jim-easterbrook/pywws</span>
-<span class="c"># Copyright (C) 2008-14  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
+<span class="c"># Copyright (C) 2008-15  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
 
 <span class="c"># This program is free software; you can redistribute it and/or</span>
 <span class="c"># modify it under the terms of the GNU General Public License</span>
@@ -194,6 +194,7 @@
 <span class="kn">import</span> <span class="nn">pkg_resources</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">StringIO</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">urllib2</span>
@@ -217,11 +218,11 @@
 <span class="sd">        :param params: pywws configuration.</span>
 
 <span class="sd">        :type params: :class:`pywws.DataStore.params`</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param status: pywws status store.</span>
 
 <span class="sd">        :type status: :class:`pywws.DataStore.status`</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param calib_data: &#39;calibrated&#39; data.</span>
 
 <span class="sd">        :type calib_data: :class:`pywws.DataStore.calib_store`</span>
@@ -229,7 +230,7 @@
 <span class="sd">        :param service_name: name of service to upload to.</span>
 
 <span class="sd">        :type service_name: string</span>
-<span class="sd">    </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&#39;pywws.ToService(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">service_name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
@@ -250,8 +251,11 @@
         <span class="c"># open params file</span>
         <span class="n">service_params</span> <span class="o">=</span> <span class="n">SafeConfigParser</span><span class="p">()</span>
         <span class="n">service_params</span><span class="o">.</span><span class="n">optionxform</span> <span class="o">=</span> <span class="nb">str</span>
-        <span class="n">service_params</span><span class="o">.</span><span class="n">readfp</span><span class="p">(</span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_stream</span><span class="p">(</span>
-            <span class="s">&#39;pywws&#39;</span><span class="p">,</span> <span class="s">&#39;services/</span><span class="si">%s</span><span class="s">.ini&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">service_name</span><span class="p">)))</span>
+        <span class="n">param_string</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_string</span><span class="p">(</span>
+            <span class="s">&#39;pywws&#39;</span><span class="p">,</span> <span class="s">&#39;services/</span><span class="si">%s</span><span class="s">.ini&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">service_name</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">param_string</span> <span class="o">=</span> <span class="n">param_string</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="n">service_params</span><span class="o">.</span><span class="n">readfp</span><span class="p">(</span><span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">param_string</span><span class="p">))</span>
         <span class="c"># get URL</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">service_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;url&#39;</span><span class="p">)</span>
         <span class="n">parsed_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlsplit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="p">)</span>
@@ -259,6 +263,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">send_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aprs_send_data</span>
             <span class="n">server</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">netloc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="s">&#39;mqtt&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">send_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mqtt_send_data</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">send_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_send_data</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">use_get</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">service_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;use get&#39;</span><span class="p">))</span>
@@ -283,7 +289,11 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auth_type</span> <span class="o">==</span> <span class="s">&#39;basic&#39;</span><span class="p">:</span>
             <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">config_section</span><span class="p">,</span> <span class="s">&#39;user&#39;</span><span class="p">,</span> <span class="s">&#39;unknown&#39;</span><span class="p">)</span>
             <span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">config_section</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">,</span> <span class="s">&#39;unknown&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="s">&#39;Basic </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
+            <span class="n">details</span> <span class="o">=</span> <span class="n">user</span> <span class="o">+</span> <span class="s">&#39;:&#39;</span> <span class="o">+</span> <span class="n">password</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="s">&#39;Basic &#39;</span> <span class="o">+</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">details</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">elif</span>  <span class="bp">self</span><span class="o">.</span><span class="n">auth_type</span> <span class="o">==</span> <span class="s">&#39;mqtt&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">config_section</span><span class="p">,</span> <span class="s">&#39;user&#39;</span><span class="p">,</span> <span class="s">&#39;unknown&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">config_section</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">,</span> <span class="s">&#39;unknown&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">catchup</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">service_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;catchup&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">expected_result</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">service_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;result&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">service_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">,</span> <span class="s">&#39;interval&#39;</span><span class="p">))</span>
@@ -315,16 +325,72 @@
 <span class="sd">        :return: dict.</span>
 
 <span class="sd">        :rtype: string</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c"># check we have external data</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_out&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="c"># convert data</span>
-        <span class="n">prepared_data</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">templater</span><span class="o">.</span><span class="n">make_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_file</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
+        <span class="n">data_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">templater</span><span class="o">.</span><span class="n">make_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_file</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data_str</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="n">prepared_data</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">data_str</span><span class="p">)</span>
         <span class="n">prepared_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fixed_data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">prepared_data</span>
+</div>
+<div class="viewcode-block" id="ToService.mqtt_send_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.mqtt_send_data">[docs]</a>    <span class="k">def</span> <span class="nf">mqtt_send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="kn">as</span> <span class="nn">mosquitto</span>
+        <span class="kn">import</span> <span class="nn">time</span>
+        <span class="kn">import</span> <span class="nn">json</span>
+
+        <span class="n">topic</span> <span class="o">=</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;topic&#39;</span><span class="p">]</span>
+        <span class="n">hostname</span> <span class="o">=</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;hostname&#39;</span><span class="p">]</span>
+        <span class="n">port</span> <span class="o">=</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">]</span>
+        <span class="n">client_id</span> <span class="o">=</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;client_id&#39;</span><span class="p">]</span>
+        <span class="n">retain</span> <span class="o">=</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;retain&#39;</span><span class="p">]</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;auth&#39;</span><span class="p">]</span>
+
+        <span class="c"># clean up the object</span>
+        <span class="k">del</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;topic&#39;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;hostname&#39;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;client_id&#39;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;retain&#39;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">prepared_data</span><span class="p">[</span><span class="s">&#39;auth&#39;</span><span class="p">]</span>
+
+        <span class="n">retain</span> <span class="o">=</span> <span class="n">retain</span> <span class="o">==</span> <span class="s">&#39;True&#39;</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">auth</span> <span class="o">==</span> <span class="s">&#39;True&#39;</span>
+
+        <span class="n">mosquittoClient</span> <span class="o">=</span> <span class="n">mosquitto</span><span class="o">.</span><span class="n">Mosquitto</span><span class="p">(</span><span class="n">client_id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">auth</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Username and password configured&quot;</span><span class="p">)</span>
+            <span class="n">mosquittoClient</span><span class="o">.</span><span class="n">username_pw_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Username and password unconfigured, ignoring&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s">&quot;timestamp: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;. publishing on topic [&quot;</span> <span class="o">+</span>
+            <span class="n">topic</span> <span class="o">+</span> <span class="s">&quot;] to hostname [&quot;</span> <span class="o">+</span> <span class="n">hostname</span> <span class="o">+</span> <span class="s">&quot;] and port [&quot;</span><span class="o">+</span> <span class="n">port</span> <span class="o">+</span>
+            <span class="s">&quot;] with a client_id [&quot;</span> <span class="o">+</span> <span class="n">client_id</span> <span class="o">+</span> <span class="s">&quot;] and retain is &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">retain</span><span class="p">))</span>
+
+        <span class="n">mosquittoClient</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+
+        <span class="n">mosquittoClient</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">prepared_data</span><span class="p">),</span>
+                                <span class="n">retain</span><span class="o">=</span><span class="n">retain</span><span class="p">)</span>
+
+<span class="c">##        commented out as sending the data as a json object (above)</span>
+<span class="c">##        for item in prepared_data:</span>
+<span class="c">##            if prepared_data[item] == &#39;&#39;:</span>
+<span class="c">##                prepared_data[item] = &#39;None&#39;</span>
+<span class="c">##            mosquittoClient.publish(</span>
+<span class="c">##                topic + &quot;/&quot; + item + &quot;/&quot; + str(timestamp), prepared_data[item])</span>
+<span class="c">##            time.sleep(0.200)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;published data: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">)</span>
+        <span class="n">mosquittoClient</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">True</span>
 </div>
 <div class="viewcode-block" id="ToService.aprs_send_data"><a class="viewcode-back" href="../../api/pywws.toservice.html#pywws.toservice.ToService.aprs_send_data">[docs]</a>    <span class="k">def</span> <span class="nf">aprs_send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prepared_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Upload a weather data record using APRS.</span>
@@ -363,6 +429,8 @@
             <span class="n">__version__</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;packet: &quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span><span class="p">,</span> <span class="n">packet</span><span class="p">)</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">)</span>
+        <span class="n">packet</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">)</span>
         <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="p">)</span>
@@ -408,7 +476,7 @@
 <span class="sd">        :return: success status</span>
 
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">coded_data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">prepared_data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">coded_data</span><span class="p">)</span>
@@ -417,9 +485,9 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_get</span><span class="p">:</span>
-                    <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">?</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="p">,</span> <span class="n">coded_data</span><span class="p">))</span>
+                    <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">+</span> <span class="s">&#39;?&#39;</span> <span class="o">+</span> <span class="n">coded_data</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="p">,</span> <span class="n">coded_data</span><span class="p">)</span>
+                    <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="p">,</span> <span class="n">coded_data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">))</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auth_type</span> <span class="o">==</span> <span class="s">&#39;basic&#39;</span><span class="p">:</span>
                     <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Authorization&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">)</span>
                 <span class="n">wudata</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
@@ -431,6 +499,7 @@
             <span class="n">wudata</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expected_result</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">actual</span><span class="p">,</span> <span class="n">expected</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected_result</span><span class="p">):</span>
+                    <span class="n">actual</span> <span class="o">=</span> <span class="n">actual</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
                         <span class="k">break</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -485,7 +554,7 @@
 <span class="sd">        :return: yields weather data records.</span>
 
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">ignore_last_update</span><span class="p">:</span>
             <span class="n">last_update</span> <span class="o">=</span> <span class="bp">None</span>
@@ -547,7 +616,7 @@
 <span class="sd">        :return: success status</span>
 
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_data</span><span class="p">(</span><span class="n">catchup</span><span class="p">,</span> <span class="n">live_data</span><span class="p">,</span> <span class="n">ignore_last_update</span><span class="p">):</span>
@@ -631,12 +700,12 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.12.0.dev1260 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-14, Jim Easterbrook.
+        &copy; Copyright 2008-15, Jim Easterbrook.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

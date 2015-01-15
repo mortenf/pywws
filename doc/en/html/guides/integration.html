@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to integrate pywws with various weather services &mdash; pywws 14.12.0.dev1260 documentation</title>
+    <title>How to integrate pywws with various weather services &mdash; pywws 15.01.0.dev1273 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.12.0.dev1260',
+        VERSION:     '15.01.0.dev1273',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.12.0.dev1260 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.01.0.dev1273 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to configure pywws to post messages to Twitter" href="twitter.html" />
     <link rel="prev" title="How to set up ‘live’ logging with pywws" href="livelogging.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 14.12.0.dev1260 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -131,6 +131,43 @@ They should use the service name <tt class="docutils literal"><span class="pre">
 (The same <tt class="docutils literal"><span class="pre">[cwop]</span></tt> config section is used for both.)</p>
 <p>CWOP uploads are rate-limited by pywws, so you can safely add it to both the <tt class="docutils literal"><span class="pre">[live]</span></tt> and <tt class="docutils literal"><span class="pre">[logged]</span></tt> sections in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>.</p>
 <p>The CWOP/APRS uploader is based on code by Marco Trevisan &lt;<a class="reference external" href="mailto:mail&#37;&#52;&#48;3v1n0&#46;net">mail<span>&#64;</span>3v1n0<span>&#46;</span>net</a>&gt;.</p>
+</div>
+<div class="section" id="mqtt">
+<h3>MQTT<a class="headerlink" href="#mqtt" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.12.dev1261.</span></p>
+</div>
+<p>MQTT is a &#8220;message broker&#8221; system, typically running on <tt class="docutils literal"><span class="pre">localhost</span></tt> or another computer in your home network.</p>
+<ul>
+<li><p class="first">MQTT: <a class="reference external" href="http://mqtt.org/">http://mqtt.org/</a></p>
+</li>
+<li><p class="first">Mosquitto (a lightweight broker): <a class="reference external" href="http://mosquitto.org/">http://mosquitto.org/</a></p>
+</li>
+<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<div class="highlight-python"><div class="highlight"><pre>[mqtt]
+topic = /weather/pywws
+hostname = localhost
+port = 1883
+client_id = pywws
+retain = True
+</pre></div>
+</div>
+</li>
+</ul>
+<p>pywws will publish a JSON string of the data specified in the <tt class="docutils literal"><span class="pre">mqtt_template_1080.txt</span></tt> file.
+This data will be published to the broker running under the hostname, on the port number specified here.
+Note, an IP address can be used.
+<tt class="docutils literal"><span class="pre">client_id</span></tt> is a note of who published the data to the topic.
+<tt class="docutils literal"><span class="pre">topic</span></tt> can be any string value, this needs to be the topic that a subscriber is aware of.
+If nothing is subscribing to this topic the broker discards the message, otherwise subscribers will pick it up.</p>
+<p><tt class="docutils literal"><span class="pre">retain</span></tt> is a boolean and should be set to <tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt> (or left at the default <tt class="docutils literal"><span class="pre">unknown</span></tt>).
+If set to <tt class="docutils literal"><span class="pre">True</span></tt> this will flag the message sent to the broker to be retained.
+This is useful for clients who subscribe to a topic, who otherwise might have to wait a long time for a message to be published.</p>
+<p>If these aren&#8217;t obvious to you it&#8217;s worth doing a bit of reading around MQTT.
+It&#8217;s a great lightweight messaging system from IBM, recently made more popular when Facebook published information on their use of it.</p>
+<p>This has been tested with the Mosquitto Open Source MQTT broker, running on a Raspberry Pi (Raspian OS).
+TLS (mqtt data encryption) is not yet implemented.</p>
+<p>Thanks to Matt Thompson for writing the MQTT code and to Robin Kearney for adding the retain option.</p>
 </div>
 <div class="section" id="uk-met-office">
 <h3>UK Met Office<a class="headerlink" href="#uk-met-office" title="Permalink to this headline">¶</a></h3>
@@ -279,6 +316,7 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
 <li><a class="reference internal" href="#twitter">Twitter</a></li>
 <li><a class="reference internal" href="#other-services">Other &#8220;services&#8221;</a><ul>
 <li><a class="reference internal" href="#citizen-weather-observer-program">Citizen Weather Observer Program</a></li>
+<li><a class="reference internal" href="#mqtt">MQTT</a></li>
 <li><a class="reference internal" href="#uk-met-office">UK Met Office</a></li>
 <li><a class="reference internal" href="#open-weather-map">Open Weather Map</a></li>
 <li><a class="reference internal" href="#pws-weather">PWS Weather</a></li>
@@ -330,12 +368,12 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 14.12.0.dev1260 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-14, Jim Easterbrook.
+        &copy; Copyright 2008-15, Jim Easterbrook.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

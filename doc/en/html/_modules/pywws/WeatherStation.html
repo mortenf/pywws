@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.WeatherStation &mdash; pywws 14.12.0.dev1260 documentation</title>
+    <title>pywws.WeatherStation &mdash; pywws 15.01.0.dev1273 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.12.0.dev1260',
+        VERSION:     '15.01.0.dev1273',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 14.12.0.dev1260 documentation" href="../../index.html" />
+    <link rel="top" title="pywws 15.01.0.dev1273 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.12.0.dev1260 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -50,7 +50,7 @@
   <h1>Source code for pywws.WeatherStation</h1><div class="highlight"><pre>
 <span class="c"># pywws - Python software for USB Wireless Weather Stations</span>
 <span class="c"># http://github.com/jim-easterbrook/pywws</span>
-<span class="c"># Copyright (C) 2008-14  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
+<span class="c"># Copyright (C) 2008-15  Jim Easterbrook  jim@jim-easterbrook.me.uk</span>
 
 <span class="c"># This program is free software; you can redistribute it and/or</span>
 <span class="c"># modify it under the terms of the GNU General Public License</span>
@@ -134,28 +134,15 @@
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Localisation</span>
-<span class="n">USBDevice</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;device_libusb1&#39;</span><span class="p">,</span> <span class="s">&#39;device_pyusb1&#39;</span><span class="p">,</span> <span class="s">&#39;device_pyusb&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;device_ctypes_hidapi&#39;</span><span class="p">,</span> <span class="s">&#39;device_cython_hidapi&#39;</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">.device_pyusb1</span> <span class="kn">import</span> <span class="n">USBDevice</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span> <span class="nb">locals</span><span class="p">(),</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">USBDevice</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s">&#39;USBDevice&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">pass</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">.device_pyusb</span> <span class="kn">import</span> <span class="n">USBDevice</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">pass</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">.device_ctypes_hidapi</span> <span class="kn">import</span> <span class="n">USBDevice</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">pass</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">.device_cython_hidapi</span> <span class="kn">import</span> <span class="n">USBDevice</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">pass</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">USBDevice</span><span class="p">:</span>
+<span class="k">else</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&#39;No USB library found&#39;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="decode_status"><a class="viewcode-back" href="../../api/pywws.WeatherStation.html#pywws.WeatherStation.decode_status">[docs]</a><span class="k">def</span> <span class="nf">decode_status</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
@@ -886,12 +873,12 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">pywws 14.12.0.dev1260 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2008-14, Jim Easterbrook.
+        &copy; Copyright 2008-15, Jim Easterbrook.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
