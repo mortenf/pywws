@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to integrate pywws with various weather services &mdash; pywws 15.01.0.dev1273 documentation</title>
+    <title>How to integrate pywws with various weather services &mdash; pywws 15.01.0.dev1277 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1273',
+        VERSION:     '15.01.0.dev1277',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1273 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to configure pywws to post messages to Twitter" href="twitter.html" />
     <link rel="prev" title="How to set up ‘live’ logging with pywws" href="livelogging.html" /> 
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -64,8 +64,7 @@ It is not comprehensive, and some services (such as Twitter) are covered in more
 <p><a class="reference external" href="http://yowindow.com/">YoWindow</a> is a weather display widget that can display data from an internet source, or from your weather station.
 To display data from your station pywws needs to write to a local file, typically every 48 seconds when new data is received.
 This is easy to do:</p>
-<blockquote>
-<div><ol class="arabic">
+<ol class="arabic">
 <li><p class="first">Stop all pywws software</p>
 </li>
 <li><p class="first">Copy the <tt class="docutils literal"><span class="pre">yowindow.xml</span></tt> example template to your text template directory.</p>
@@ -81,7 +80,6 @@ This is easy to do:</p>
 <li><p class="first">Restart pywws live logging.</p>
 </li>
 </ol>
-</div></blockquote>
 <p>You can check the file is being updated every 48 seconds by using <tt class="docutils literal"><span class="pre">more</span></tt> or <tt class="docutils literal"><span class="pre">cat</span></tt> to dump it to the screen.</p>
 <p>Finally configure yowindow to use this file.
 See <a class="reference external" href="http://yowindow.com/pws_setup.php">http://yowindow.com/pws_setup.php</a> for instructions on how to do this.</p>
@@ -135,9 +133,11 @@ They should use the service name <tt class="docutils literal"><span class="pre">
 <div class="section" id="mqtt">
 <h3>MQTT<a class="headerlink" href="#mqtt" title="Permalink to this headline">¶</a></h3>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 14.12.dev1261.</span></p>
+<p><span class="versionmodified">New in version 14.12.0.dev1260.</span></p>
 </div>
-<p>MQTT is a &#8220;message broker&#8221; system, typically running on <tt class="docutils literal"><span class="pre">localhost</span></tt> or another computer in your home network.</p>
+<p>MQTT is a &#8220;message broker&#8221; system, typically running on <tt class="docutils literal"><span class="pre">localhost</span></tt> or another computer in your home network.
+Use of MQTT with pywws requires an additional library.
+See <a class="reference internal" href="../essentials/dependencies.html#dependencies-mqtt"><em>Dependencies - MQTT</em></a> for details.</p>
 <ul>
 <li><p class="first">MQTT: <a class="reference external" href="http://mqtt.org/">http://mqtt.org/</a></p>
 </li>
@@ -150,24 +150,28 @@ hostname = localhost
 port = 1883
 client_id = pywws
 retain = True
+auth = False
+user = unknown
+password = unknown
 </pre></div>
 </div>
 </li>
 </ul>
 <p>pywws will publish a JSON string of the data specified in the <tt class="docutils literal"><span class="pre">mqtt_template_1080.txt</span></tt> file.
-This data will be published to the broker running under the hostname, on the port number specified here.
-Note, an IP address can be used.
+This data will be published to the broker running on hostname, with the port number specified.
+(An IP address can be used instead of a host name.)
 <tt class="docutils literal"><span class="pre">client_id</span></tt> is a note of who published the data to the topic.
-<tt class="docutils literal"><span class="pre">topic</span></tt> can be any string value, this needs to be the topic that a subscriber is aware of.
-If nothing is subscribing to this topic the broker discards the message, otherwise subscribers will pick it up.</p>
+<tt class="docutils literal"><span class="pre">topic</span></tt> can be any string value, this needs to be the topic that a subscriber is aware of.</p>
 <p><tt class="docutils literal"><span class="pre">retain</span></tt> is a boolean and should be set to <tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt> (or left at the default <tt class="docutils literal"><span class="pre">unknown</span></tt>).
 If set to <tt class="docutils literal"><span class="pre">True</span></tt> this will flag the message sent to the broker to be retained.
-This is useful for clients who subscribe to a topic, who otherwise might have to wait a long time for a message to be published.</p>
+Otherwise the broker discards the message if no client is subscribing to this topic.
+This allows clients to get an immediate response when they subscribe to a topic, without having to wait until the next message is published.</p>
+<p><tt class="docutils literal"><span class="pre">auth</span></tt>, <tt class="docutils literal"><span class="pre">user</span></tt> and <tt class="docutils literal"><span class="pre">password</span></tt> can be used for MQTT authentication.</p>
 <p>If these aren&#8217;t obvious to you it&#8217;s worth doing a bit of reading around MQTT.
 It&#8217;s a great lightweight messaging system from IBM, recently made more popular when Facebook published information on their use of it.</p>
 <p>This has been tested with the Mosquitto Open Source MQTT broker, running on a Raspberry Pi (Raspian OS).
 TLS (mqtt data encryption) is not yet implemented.</p>
-<p>Thanks to Matt Thompson for writing the MQTT code and to Robin Kearney for adding the retain option.</p>
+<p>Thanks to Matt Thompson for writing the MQTT code and to Robin Kearney for adding the retain and auth options.</p>
 </div>
 <div class="section" id="uk-met-office">
 <h3>UK Met Office<a class="headerlink" href="#uk-met-office" title="Permalink to this headline">¶</a></h3>
@@ -368,7 +372,7 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>

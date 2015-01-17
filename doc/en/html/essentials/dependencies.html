@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dependencies &mdash; pywws 15.01.0.dev1273 documentation</title>
+    <title>Dependencies &mdash; pywws 15.01.0.dev1277 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1273',
+        VERSION:     '15.01.0.dev1277',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1273 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
     <link rel="next" title="Change Log" href="CHANGELOG.html" />
     <link rel="prev" title="GNU General Public License" href="LICENCE.html" /> 
   </head>
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="LICENCE.html" title="GNU General Public License"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -205,6 +205,20 @@ Posting to Twitter requires these modules:</p>
 <p><span class="versionmodified">Changed in version 13.06_r1023: </span>pywws previously used the <tt class="docutils literal"><span class="pre">tweepy</span></tt> library instead of <tt class="docutils literal"><span class="pre">python-twitter</span></tt> and <tt class="docutils literal"><span class="pre">python-oauth2</span></tt>.</p>
 </div>
 </div>
+<div class="section" id="mqtt">
+<span id="dependencies-mqtt"></span><h2>MQTT<a class="headerlink" href="#mqtt" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.12.0.dev1260.</span></p>
+</div>
+<p>The <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module can be used to send weather data to an MQTT broker.
+This requires the paho-mqtt module:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt">paho-mqtt</a></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install paho-mqtt
+</pre></div>
+</div>
+</div>
 <div class="section" id="to-create-new-language-translations">
 <span id="dependencies-translations"></span><h2>To create new language translations<a class="headerlink" href="#to-create-new-language-translations" title="Permalink to this headline">¶</a></h2>
 <p>pywws can be configured to use languages other than English, as described in <a class="reference internal" href="../guides/language.html"><em>How to use pywws in another language</em></a>.
@@ -275,6 +289,7 @@ If you&#8217;d like to create a local copy of the documentation (so you don&#821
 <li><a class="reference internal" href="#graph-drawing">Graph drawing</a></li>
 <li><a class="reference internal" href="#secure-website-uploading-sftp">Secure website uploading (sftp)</a></li>
 <li><a class="reference internal" href="#twitter-updates">Twitter updates</a></li>
+<li><a class="reference internal" href="#mqtt">MQTT</a></li>
 <li><a class="reference internal" href="#to-create-new-language-translations">To create new language translations</a></li>
 <li><a class="reference internal" href="#to-compile-the-documentation">To &#8216;compile&#8217; the documentation</a></li>
 </ul>
@@ -319,7 +334,7 @@ If you&#8217;d like to create a local copy of the documentation (so you don&#821
         <li class="right" >
           <a href="LICENCE.html" title="GNU General Public License"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1273 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
