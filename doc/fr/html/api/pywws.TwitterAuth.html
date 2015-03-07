@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.SetWeatherStation" href="pywws.SetWeatherStation.html" />
     <link rel="prev" title="pywws.Reprocess" href="pywws.Reprocess.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.TwitterAuth">
 <span id="pywws-twitterauth"></span><h1>pywws.TwitterAuth<a class="headerlink" href="#module-pywws.TwitterAuth" title="Lien permanent vers ce titre">¶</a></h1>
@@ -65,7 +65,7 @@ options are:
 data_dir is the root directory of the weather data
 </pre></div>
 </div>
-<p>Ce programme autorise <a class="reference internal" href="pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.ToTwitter</span></tt></a> à poster sur un compte Twitter. Vous devez créer un compte avant de lancer <tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt>. Il ouvre une fenêtre de navigateur Web (ou vous donne une URL à copier dans votre navigateur) où vous vous connectez à votre compte Twitter. Si la connexion est réussie, le navigateur affichera un nombre à 7 chiffres, que vous devrez copier dans <tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt>.</p>
+<p>Ce programme autorise <a class="reference internal" href="pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><code class="xref py py-mod docutils literal"><span class="pre">pywws.ToTwitter</span></code></a> à poster sur un compte Twitter. Vous devez créer un compte avant de lancer <code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code>. Il ouvre une fenêtre de navigateur Web (ou vous donne une URL à copier dans votre navigateur) où vous vous connectez à votre compte Twitter. Si la connexion est réussie, le navigateur affichera un nombre à 7 chiffres, que vous devrez copier dans <code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code>.</p>
 <p>Voir <a class="reference internal" href="../guides/twitter.html"><em>Comment configurer pywws pour poster des messages sur Twitter</em></a> pour plus de détails sur l&#8217;utilisation de Twitter avec pywws.</p>
 <p class="rubric">Fonctions</p>
 <table border="1" class="longtable docutils">
@@ -74,22 +74,22 @@ data_dir is the root directory of the weather data
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.TwitterAuth.TwitterAuth" title="pywws.TwitterAuth.TwitterAuth"><tt class="xref py py-obj docutils literal"><span class="pre">TwitterAuth</span></tt></a>(params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.TwitterAuth.TwitterAuth" title="pywws.TwitterAuth.TwitterAuth"><code class="xref py py-obj docutils literal"><span class="pre">TwitterAuth</span></code></a>(params)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.TwitterAuth.main" title="pywws.TwitterAuth.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.TwitterAuth.main" title="pywws.TwitterAuth.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="pywws.TwitterAuth.TwitterAuth">
-<tt class="descclassname">pywws.TwitterAuth.</tt><tt class="descname">TwitterAuth</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#TwitterAuth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.TwitterAuth" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.TwitterAuth.</code><code class="descname">TwitterAuth</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#TwitterAuth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.TwitterAuth" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pywws.TwitterAuth.main">
-<tt class="descclassname">pywws.TwitterAuth.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.main" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.TwitterAuth.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.main" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -98,7 +98,7 @@ data_dir is the root directory of the weather data
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -109,7 +109,7 @@ data_dir is the root directory of the weather data
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.SetWeatherStation.html"
                         title="Chapitre suivant">pywws.SetWeatherStation</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -126,7 +126,7 @@ data_dir is the root directory of the weather data
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -145,9 +145,9 @@ data_dir is the root directory of the weather data
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

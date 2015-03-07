@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.toservice" href="pywws.toservice.html" />
     <link rel="prev" title="pywws.Upload" href="pywws.Upload.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.ToTwitter">
 <span id="pywws-totwitter"></span><h1>pywws.ToTwitter<a class="headerlink" href="#module-pywws.ToTwitter" title="link permanente per questa intestazione">¶</a></h1>
@@ -66,7 +66,7 @@ data_dir is the root directory of the weather data
 file is the text file to be uploaded
 </pre></div>
 </div>
-<p>Questo modulo invia un breve messaggio a <a class="reference external" href="https://twitter.com/">Twitter</a>. Prima di pubblicare su Twitter è necessario configurare un account e quindi autorizzare pywws eseguendo il programma <tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt>. Vedere <a class="reference internal" href="../guides/twitter.html"><em>Come configurare pywws per pubblicare messaggi su Twitter</em></a> per le istruzioni dettagliate.</p>
+<p>Questo modulo invia un breve messaggio a <a class="reference external" href="https://twitter.com/">Twitter</a>. Prima di pubblicare su Twitter è necessario configurare un account e quindi autorizzare pywws eseguendo il programma <code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code>. Vedere <a class="reference internal" href="../guides/twitter.html"><em>Come configurare pywws per pubblicare messaggi su Twitter</em></a> per le istruzioni dettagliate.</p>
 <p class="rubric">Funzioni</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -74,10 +74,10 @@ file is the text file to be uploaded
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.ToTwitter.main" title="pywws.ToTwitter.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.ToTwitter.main" title="pywws.ToTwitter.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -89,32 +89,32 @@ file is the text file to be uploaded
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.ToTwitter.ToTwitter" title="pywws.ToTwitter.ToTwitter"><tt class="xref py py-obj docutils literal"><span class="pre">ToTwitter</span></tt></a>(params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.ToTwitter.ToTwitter" title="pywws.ToTwitter.ToTwitter"><code class="xref py py-obj docutils literal"><span class="pre">ToTwitter</span></code></a>(params)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">pct</span></tt></td>
-<td></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">pct</span></code></td>
+<td>alias per <code class="xref py py-class docutils literal"><span class="pre">Twitter</span></code></td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="pywws.ToTwitter.ToTwitter">
-<em class="property">class </em><tt class="descclassname">pywws.ToTwitter.</tt><tt class="descname">ToTwitter</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/pywws/ToTwitter.html#ToTwitter"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.ToTwitter" title="link permanente per questa definizione">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.ToTwitter.</code><code class="descname">ToTwitter</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ToTwitter.html#ToTwitter"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.ToTwitter" title="link permanente per questa definizione">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.ToTwitter.ToTwitter.Upload">
-<tt class="descname">Upload</tt><big>(</big><em>tweet</em><big>)</big><a class="reference internal" href="../_modules/pywws/ToTwitter.html#ToTwitter.Upload"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.ToTwitter.Upload" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">Upload</code><span class="sig-paren">(</span><em>tweet</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ToTwitter.html#ToTwitter.Upload"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.ToTwitter.Upload" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.ToTwitter.ToTwitter.UploadFile">
-<tt class="descname">UploadFile</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="../_modules/pywws/ToTwitter.html#ToTwitter.UploadFile"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.ToTwitter.UploadFile" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">UploadFile</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ToTwitter.html#ToTwitter.UploadFile"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.ToTwitter.UploadFile" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pywws.ToTwitter.main">
-<tt class="descclassname">pywws.ToTwitter.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/ToTwitter.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.main" title="link permanente per questa definizione">¶</a></dt>
+<code class="descclassname">pywws.ToTwitter.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ToTwitter.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.ToTwitter.main" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -123,7 +123,7 @@ file is the text file to be uploaded
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -134,7 +134,7 @@ file is the text file to be uploaded
   <h4>Argomento successivo</h4>
   <p class="topless"><a href="pywws.toservice.html"
                         title="capitolo successivo">pywws.toservice</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Ricerca veloce</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -151,7 +151,7 @@ file is the text file to be uploaded
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -170,9 +170,9 @@ file is the text file to be uploaded
           <li><a href="../api_index.html" >Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

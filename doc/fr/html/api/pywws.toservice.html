@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.YoWindow" href="pywws.YoWindow.html" />
     <link rel="prev" title="pywws.ToTwitter" href="pywws.ToTwitter.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.toservice">
 <span id="pywws-toservice"></span><h1>pywws.toservice<a class="headerlink" href="#module-pywws.toservice" title="Lien permanent vers ce titre">¶</a></h1>
@@ -70,8 +70,8 @@ service_name is the service to upload to, e.g. underground
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Plusieurs organisations permettent aux stations météorologiques de télécharger des données en utilisant une simple requête &#8216;POST&#8217; ou &#8216;GET&#8217; HTTP, avec les données codées comme une séquence <tt class="docutils literal"><span class="pre">clé=valeur</span> <span class="pre">``</span> <span class="pre">séparées</span> <span class="pre">par</span> <span class="pre">des</span> <span class="pre">paires</span> <span class="pre">de</span> <span class="pre">caractères</span> <span class="pre">``&amp;</span></tt>.</p>
-<p>Ce module permet à pywws de téléverser les données lues à ces organisations. Il est hautement personnalisable en utilisant les fichiers de configuration. Chaque &#8216;service&#8217; nécessite un fichier de configuration et de deux gabarits dans <tt class="docutils literal"><span class="pre">pywws/services</span></tt> (ne devrait pas avoir besoin d&#8217;être modifié par l&#8217;utilisateur) et une section dans le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt> contenant des données spécifiques sur l&#8217;utilisateur telles que votre identificateur de site et le mot de passe.</p>
+<p>Plusieurs organisations permettent aux stations météorologiques de télécharger des données en utilisant une simple requête &#8216;POST&#8217; ou &#8216;GET&#8217; HTTP, avec les données codées comme une séquence <code class="docutils literal"><span class="pre">clé=valeur</span> <span class="pre">``</span> <span class="pre">séparées</span> <span class="pre">par</span> <span class="pre">des</span> <span class="pre">paires</span> <span class="pre">de</span> <span class="pre">caractères</span> <span class="pre">``&amp;</span></code>.</p>
+<p>Ce module permet à pywws de téléverser les données lues à ces organisations. Il est hautement personnalisable en utilisant les fichiers de configuration. Chaque &#8216;service&#8217; nécessite un fichier de configuration et de deux gabarits dans <code class="docutils literal"><span class="pre">pywws/services</span></code> (ne devrait pas avoir besoin d&#8217;être modifié par l&#8217;utilisateur) et une section dans le fichier <code class="docutils literal"><span class="pre">weather.ini</span></code> contenant des données spécifiques sur l&#8217;utilisateur telles que votre identificateur de site et le mot de passe.</p>
 <p>Il existe actuellement six services pour lesquels des fichiers de configuration ont été créés.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -88,32 +88,32 @@ service_name is the service to upload to, e.g. underground
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><a class="reference external" href="http://wow.metoffice.gov.uk/">UK Met Office</a></td>
-<td><tt class="docutils literal"><span class="pre">metoffice</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/metoffice.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/metoffice.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">metoffice</span></code></td>
+<td><a class="reference download internal" href="../_downloads/metoffice.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/metoffice.ini</span></code></a></td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="http://openweathermap.org/">Open Weather Map</a></td>
-<td><tt class="docutils literal"><span class="pre">openweathermap</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/openweathermap.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/openweathermap.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">openweathermap</span></code></td>
+<td><a class="reference download internal" href="../_downloads/openweathermap.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/openweathermap.ini</span></code></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="www.pwsweather.com">PWS Weather</a></td>
-<td><tt class="docutils literal"><span class="pre">pwsweather</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/pwsweather.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/pwsweather.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">pwsweather</span></code></td>
+<td><a class="reference download internal" href="../_downloads/pwsweather.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/pwsweather.ini</span></code></a></td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="http://stacjapogody.waw.pl/index.php?id=mapastacji">Stacja Pogody</a></td>
-<td><tt class="docutils literal"><span class="pre">stacjapogodywawpl</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/stacjapogodywawpl.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/stacjapogodywawpl.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">stacjapogodywawpl</span></code></td>
+<td><a class="reference download internal" href="../_downloads/stacjapogodywawpl.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/stacjapogodywawpl.ini</span></code></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="http://www.temperatur.nu/">temperatur.nu</a></td>
-<td><tt class="docutils literal"><span class="pre">temperaturnu</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/temperaturnu.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/temperaturnu.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">temperaturnu</span></code></td>
+<td><a class="reference download internal" href="../_downloads/temperaturnu.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/temperaturnu.ini</span></code></a></td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="http://www.wunderground.com/">Weather Underground</a></td>
-<td><tt class="docutils literal"><span class="pre">underground</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/underground.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/underground.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">underground</span></code></td>
+<td><a class="reference download internal" href="../_downloads/underground.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/underground.ini</span></code></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="http://www.wetter.com/community/">wetter.com</a></td>
-<td><tt class="docutils literal"><span class="pre">wetterarchivde</span></tt></td>
-<td><a class="reference download internal" href="../_downloads/wetterarchivde.ini"><tt class="xref download docutils literal"><span class="pre">../../pywws/services/wetterarchivde.ini</span></tt></a></td>
+<td><code class="docutils literal"><span class="pre">wetterarchivde</span></code></td>
+<td><a class="reference download internal" href="../_downloads/wetterarchivde.ini"><code class="xref download docutils literal"><span class="pre">../../pywws/services/wetterarchivde.ini</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -121,12 +121,12 @@ service_name is the service to upload to, e.g. underground
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Si vous ne l&#8217;avez pas déjà fait, visitez le site Web de l&#8217;organisation et créez un compte pour votre station météo. Prenez note de tous les détails d&#8217;identification du site et du mot de passe vous ayant été donnés.</p>
-<p>Arrêtez toute instance du logiciel pywws en fonction puis exécutez <tt class="docutils literal"><span class="pre">toservice.py</span></tt> pour créer une section dans le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
+<p>Arrêtez toute instance du logiciel pywws en fonction puis exécutez <code class="docutils literal"><span class="pre">toservice.py</span></code> pour créer une section dans le fichier <code class="docutils literal"><span class="pre">weather.ini</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice data_dir service_name
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">service_name</span></tt> est le nom de services en un seul mot, tels que <tt class="docutils literal"><span class="pre">metoffice</span></tt>, <tt class="docutils literal"><span class="pre">data_dir</span></tt> est votre répertoire de données météo, comme d&#8217;habitude.</p>
-<p>Editer le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt> et trouver la section correspondant au nom du service, par exemple, <tt class="docutils literal"><span class="pre">[underground]</span></tt>. Copier les détails de votre site dans cette section, par exemple:</p>
+<p><code class="docutils literal"><span class="pre">service_name</span></code> est le nom de services en un seul mot, tels que <code class="docutils literal"><span class="pre">metoffice</span></code>, <code class="docutils literal"><span class="pre">data_dir</span></code> est votre répertoire de données météo, comme d&#8217;habitude.</p>
+<p>Editer le fichier <code class="docutils literal"><span class="pre">weather.ini</span></code> et trouver la section correspondant au nom du service, par exemple, <code class="docutils literal"><span class="pre">[underground]</span></code>. Copier les détails de votre site dans cette section, par exemple:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">underground</span><span class="p">]</span>
 <span class="n">password</span> <span class="o">=</span> <span class="n">secret</span>
 <span class="n">station</span> <span class="o">=</span> <span class="n">ABCDEFG1A</span>
@@ -140,7 +140,7 @@ service_name is the service to upload to, e.g. underground
 </div>
 <div class="section" id="upload-old-data">
 <h2>Téléverser les anciennes données<a class="headerlink" href="#upload-old-data" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Maintenant, vous pouvez téléverser les données de vos 7 derniers jours, si le service le prend en charge. Modifier votre fichier <tt class="docutils literal"><span class="pre">status.ini</span></tt> et supprimer la ligne <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> de la section appropriée, puis exécutez <tt class="docutils literal"><span class="pre">toservice.py</span></tt> avec l&#8217;option de rattrapage &#8216;catchup&#8217;:</p>
+<p>Maintenant, vous pouvez téléverser les données de vos 7 derniers jours, si le service le prend en charge. Modifier votre fichier <code class="docutils literal"><span class="pre">status.ini</span></code> et supprimer la ligne <code class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></code> de la section appropriée, puis exécutez <code class="docutils literal"><span class="pre">toservice.py</span></code> avec l&#8217;option de rattrapage &#8216;catchup&#8217;:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -cvv data_dir service_name
 </pre></div>
 </div>
@@ -148,7 +148,7 @@ service_name is the service to upload to, e.g. underground
 </div>
 <div class="section" id="add-service-s-upload-to-regular-tasks">
 <h2>Ajoutez le(s) téléversement de(s) service(s) aux tâches régulières<a class="headerlink" href="#add-service-s-upload-to-regular-tasks" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Modifiez votre fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt> de nouveau et ajoutez une liste de services dans la section <tt class="docutils literal"><span class="pre">[live]</span></tt>, <tt class="docutils literal"><span class="pre">[logged]</span></tt>, <tt class="docutils literal"><span class="pre">[hourly]</span></tt>, <tt class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></tt> ou <tt class="docutils literal"><span class="pre">[daily]</span></tt>, en fonction de la fréquence à laquelle vous souhaitez envoyer les données. Par exemple:</p>
+<p>Modifiez votre fichier <code class="docutils literal"><span class="pre">weather.ini</span></code> de nouveau et ajoutez une liste de services dans la section <code class="docutils literal"><span class="pre">[live]</span></code>, <code class="docutils literal"><span class="pre">[logged]</span></code>, <code class="docutils literal"><span class="pre">[hourly]</span></code>, <code class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></code> ou <code class="docutils literal"><span class="pre">[daily]</span></code>, en fonction de la fréquence à laquelle vous souhaitez envoyer les données. Par exemple:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">live</span><span class="p">]</span>
 <span class="n">twitter</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="p">[]</span>
@@ -168,8 +168,8 @@ service_name is the service to upload to, e.g. underground
 <span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Notez que la section <tt class="docutils literal"><span class="pre">[live]</span></tt> n&#8217;est utilisée que lors de l&#8217;exécution de <a class="reference internal" href="pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a>. C&#8217;est une bonne idée de répéter tout service sélectionné dans <tt class="docutils literal"><span class="pre">[live]</span></tt> dans la section <tt class="docutils literal"><span class="pre">[logged]</span></tt> ou <tt class="docutils literal"><span class="pre">[hourly]</span></tt> au cas où vous passez au fonctionnement par <a class="reference internal" href="pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a>.</p>
-<p>Redémarrez votre programme pywws régulier  (<a class="reference internal" href="pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> ou <a class="reference internal" href="pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a>) et visitez le site Web approprié pour voir les mises à jour régulières de votre station météo.</p>
+<p>Notez que la section <code class="docutils literal"><span class="pre">[live]</span></code> n&#8217;est utilisée que lors de l&#8217;exécution de <a class="reference internal" href="pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><code class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></code></a>. C&#8217;est une bonne idée de répéter tout service sélectionné dans <code class="docutils literal"><span class="pre">[live]</span></code> dans la section <code class="docutils literal"><span class="pre">[logged]</span></code> ou <code class="docutils literal"><span class="pre">[hourly]</span></code> au cas où vous passez au fonctionnement par <a class="reference internal" href="pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a>.</p>
+<p>Redémarrez votre programme pywws régulier  (<a class="reference internal" href="pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> ou <a class="reference internal" href="pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><code class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></code></a>) et visitez le site Web approprié pour voir les mises à jour régulières de votre station météo.</p>
 </div>
 <div class="section" id="notes-on-the-services">
 <h2>Notes sur les services<a class="headerlink" href="#notes-on-the-services" title="Lien permanent vers ce titre">¶</a></h2>
@@ -180,7 +180,7 @@ service_name is the service to upload to, e.g. underground
 </li>
 <li><p class="first">API: <a class="reference external" href="http://wow.metoffice.gov.uk/support?category=dataformats#automatic">http://wow.metoffice.gov.uk/support?category=dataformats#automatic</a></p>
 </li>
-<li><p class="first">Exemple <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Exemple <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[metoffice]
 site id = 12345678
 aws pin = 987654
@@ -196,7 +196,7 @@ aws pin = 987654
 </li>
 <li><p class="first">API: <a class="reference external" href="http://openweathermap.org/API">http://openweathermap.org/API</a></p>
 </li>
-<li><p class="first">Exemple <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Exemple <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[openweathermap]
 lat = 51.501
 long = -0.142
@@ -208,7 +208,7 @@ id = Buck House
 </div>
 </li>
 </ul>
-<p>Le comportement par défaut est d&#8217;utiliser votre nom d&#8217;utilisateur pour identifier la station météo. Cependant, il est possible pour un utilisateur d&#8217;avoir plus d&#8217;une station météo, il y a donc un paramètre``name`` dans l&#8217;API qui peut être utilisé pour identifier la station. Cela apparaît comme <tt class="docutils literal"><span class="pre">id</span></tt> dans <tt class="docutils literal"><span class="pre">weather.ini</span></tt>. Assurez-vous que vous ne choisissez pas un nom qui est déjà utilisé.</p>
+<p>Le comportement par défaut est d&#8217;utiliser votre nom d&#8217;utilisateur pour identifier la station météo. Cependant, il est possible pour un utilisateur d&#8217;avoir plus d&#8217;une station météo, il y a donc un paramètre``name`` dans l&#8217;API qui peut être utilisé pour identifier la station. Cela apparaît comme <code class="docutils literal"><span class="pre">id</span></code> dans <code class="docutils literal"><span class="pre">weather.ini</span></code>. Assurez-vous que vous ne choisissez pas un nom qui est déjà utilisé.</p>
 </div>
 <div class="section" id="id3">
 <h3>PWS Weather<a class="headerlink" href="#id3" title="Lien permanent vers ce titre">¶</a></h3>
@@ -217,7 +217,7 @@ id = Buck House
 </li>
 <li><p class="first">API basé sur le protocol WU: <a class="reference external" href="http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol">http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol</a></p>
 </li>
-<li><p class="first">Exemple <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Exemple <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">pwsweather</span><span class="p">]</span>
 <span class="n">station</span> <span class="o">=</span> <span class="n">ABCDEFGH1</span>
 <span class="n">password</span> <span class="o">=</span> <span class="n">xxxxxxx</span>
@@ -233,7 +233,7 @@ id = Buck House
 </li>
 <li><p class="first">API: <a class="reference external" href="http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol">http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol</a></p>
 </li>
-<li><p class="first">Exemple <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Exemple <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">underground</span><span class="p">]</span>
 <span class="n">station</span> <span class="o">=</span> <span class="n">ABCDEFGH1</span>
 <span class="n">password</span> <span class="o">=</span> <span class="n">xxxxxxx</span>
@@ -252,10 +252,10 @@ id = Buck House
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.toservice.main" title="pywws.toservice.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.toservice.main" title="pywws.toservice.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -267,18 +267,17 @@ id = Buck House
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">SafeConfigParser</span></tt>([defaults,&nbsp;dict_type,&nbsp;...])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">SafeConfigParser</span></code>([defaults,&nbsp;dict_type,&nbsp;...])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.toservice.ToService" title="pywws.toservice.ToService"><tt class="xref py py-obj docutils literal"><span class="pre">ToService</span></tt></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.toservice.ToService" title="pywws.toservice.ToService"><code class="xref py py-obj docutils literal"><span class="pre">ToService</span></code></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
 <td><p class="first last">Téléverse les données météo pour les services météorologiques tels que Weather Underground.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
-</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Différence entre deux valeurs de datetime.</p>
 </td>
 </tr>
@@ -286,16 +285,16 @@ id = Buck House
 </table>
 <dl class="class">
 <dt id="pywws.toservice.ToService">
-<em class="property">class </em><tt class="descclassname">pywws.toservice.</tt><tt class="descname">ToService</tt><big>(</big><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>service_name</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.toservice.</code><code class="descname">ToService</code><span class="sig-paren">(</span><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>service_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#ToService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Téléverse les données météo pour les services météorologiques tels que Weather Underground.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>params</strong> (<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.params" title="pywws.DataStore.params"><tt class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.params</span></tt></a>) &#8211; pywws configuration.</li>
-<li><strong>status</strong> (<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.status" title="pywws.DataStore.status"><tt class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.status</span></tt></a>) &#8211; pywws status store.</li>
-<li><strong>calib_data</strong> (<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.calib_store" title="pywws.DataStore.calib_store"><tt class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.calib_store</span></tt></a>) &#8211; &#8216;calibrated&#8217; data.</li>
+<li><strong>params</strong> (<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.params" title="pywws.DataStore.params"><code class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.params</span></code></a>) &#8211; pywws configuration.</li>
+<li><strong>status</strong> (<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.status" title="pywws.DataStore.status"><code class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.status</span></code></a>) &#8211; pywws status store.</li>
+<li><strong>calib_data</strong> (<a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.calib_store" title="pywws.DataStore.calib_store"><code class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.calib_store</span></code></a>) &#8211; &#8216;calibrated&#8217; data.</li>
 <li><strong>service_name</strong> (<em>string</em>) &#8211; name of service to upload to.</li>
 </ul>
 </td>
@@ -304,9 +303,9 @@ id = Buck House
 </table>
 <dl class="method">
 <dt id="pywws.toservice.ToService.encode_data">
-<tt class="descname">encode_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.encode_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.encode_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">encode_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.encode_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.encode_data" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Encode un enregistrement de données météo.</p>
-<p>Le paramètre <tt class="xref py py-obj docutils literal"><span class="pre">data</span></tt> contient les données à être encodées. Il devrait y avoir un enregistrement &#8216;calibré&#8217; de données, tels que stockés dans <a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.calib_store" title="pywws.DataStore.calib_store"><tt class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.calib_store</span></tt></a>.</p>
+<p>Le paramètre <code class="xref py py-obj docutils literal"><span class="pre">data</span></code> contient les données à être encodées. Il devrait y avoir un enregistrement &#8216;calibré&#8217; de données, tels que stockés dans <a class="reference internal" href="pywws.DataStore.html#pywws.DataStore.calib_store" title="pywws.DataStore.calib_store"><code class="xref py py-class docutils literal"><span class="pre">pywws.DataStore.calib_store</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -323,9 +322,9 @@ id = Buck House
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.send_data">
-<tt class="descname">send_data</tt><big>(</big><em>coded_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.send_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">send_data</code><span class="sig-paren">(</span><em>coded_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.send_data" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Téléverse un enregistrement de données météo.</p>
-<p>Le paramètre <tt class="xref py py-obj docutils literal"><span class="pre">data</span></tt> contient les données à être téléversées. Il doit être une chaîne urlencodée .</p>
+<p>Le paramètre <code class="xref py py-obj docutils literal"><span class="pre">data</span></code> contient les données à être téléversées. Il doit être une chaîne urlencodée .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -342,9 +341,9 @@ id = Buck House
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.next_data">
-<tt class="descname">next_data</tt><big>(</big><em>start</em>, <em>live_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.next_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.next_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">next_data</code><span class="sig-paren">(</span><em>start</em>, <em>live_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.next_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.next_data" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Obtien les enregistrements de données météorologiques à téléverser.</p>
-<p>Cette méthode téléverse le plus récent enregistrement de données météo ou tous les enregistrements depuis une date fournie, selon la valeur de <tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt>.</p>
+<p>Cette méthode téléverse le plus récent enregistrement de données météo ou tous les enregistrements depuis une date fournie, selon la valeur de <code class="xref py py-obj docutils literal"><span class="pre">start</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -370,7 +369,7 @@ id = Buck House
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.catchup_start">
-<tt class="descname">catchup_start</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.catchup_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.catchup_start" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">catchup_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.catchup_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.catchup_start" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Obtien l&#8217;horodatage du premier enregistrement de rattrapage (catchup) envoyé</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -384,10 +383,10 @@ id = Buck House
 
 <dl class="method">
 <dt id="pywws.toservice.ToService.Upload">
-<tt class="descname">Upload</tt><big>(</big><em>catchup</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.Upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.Upload" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">Upload</code><span class="sig-paren">(</span><em>catchup</em>, <em>live_data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#ToService.Upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.ToService.Upload" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Téléverse un ou plusieurs enregistrement(s) de données météo.</p>
-<p>Cette méthode téléverse le plus récent enregistrement de données météo ou tous les enregistrements depuis le dernier téléchargement (jusqu&#8217;à 7 jours), selon la valeur de <tt class="xref py py-obj docutils literal"><span class="pre">catchup</span></tt>.</p>
-<p>Il définit la valeur de configuration <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> à l&#8217;horodatage de l&#8217;enregistrement le plus récent correctement téléversé.</p>
+<p>Cette méthode téléverse le plus récent enregistrement de données météo ou tous les enregistrements depuis le dernier téléchargement (jusqu&#8217;à 7 jours), selon la valeur de <code class="xref py py-obj docutils literal"><span class="pre">catchup</span></code>.</p>
+<p>Il définit la valeur de configuration <code class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></code> à l&#8217;horodatage de l&#8217;enregistrement le plus récent correctement téléversé.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -406,7 +405,7 @@ id = Buck House
 
 <dl class="function">
 <dt id="pywws.toservice.main">
-<tt class="descclassname">pywws.toservice.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/toservice.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.main" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.toservice.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/toservice.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.toservice.main" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -416,7 +415,7 @@ id = Buck House
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -446,7 +445,7 @@ id = Buck House
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.YoWindow.html"
                         title="Chapitre suivant">pywws.YoWindow</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -463,7 +462,7 @@ id = Buck House
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -482,9 +481,9 @@ id = Buck House
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

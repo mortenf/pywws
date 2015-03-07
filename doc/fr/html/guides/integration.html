@@ -30,8 +30,8 @@
     <link rel="next" title="Comment configurer pywws pour poster des messages sur Twitter" href="twitter.html" />
     <link rel="prev" title="Comment configurer le mode ‘live’ avec pywws" href="livelogging.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-integrate-pywws-with-various-weather-services">
 <h1>Comment intégrer divers services météorologiques à pywws<a class="headerlink" href="#how-to-integrate-pywws-with-various-weather-services" title="Lien permanent vers ce titre">¶</a></h1>
@@ -66,11 +66,11 @@
 <div><ol class="arabic">
 <li><p class="first">Arrêter toute instance de pywws</p>
 </li>
-<li><p class="first">Copier le gabarit exemple <tt class="docutils literal"><span class="pre">yowindow.xml</span></tt> dans votre répertoire de gabarits text.</p>
+<li><p class="first">Copier le gabarit exemple <code class="docutils literal"><span class="pre">yowindow.xml</span></code> dans votre répertoire de gabarits text.</p>
 </li>
-<li><p class="first">Si ce n&#8217;est déjà fait, éditez  le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt> et configurez la clé <tt class="docutils literal"><span class="pre">local_files</span></tt> dans la section <tt class="docutils literal"><span class="pre">[paths]</span></tt> pour un répertoire approprié pour votre fichier yowindow.</p>
+<li><p class="first">Si ce n&#8217;est déjà fait, éditez  le fichier <code class="docutils literal"><span class="pre">weather.ini</span></code> et configurez la clé <code class="docutils literal"><span class="pre">local_files</span></code> dans la section <code class="docutils literal"><span class="pre">[paths]</span></code> pour un répertoire approprié pour votre fichier yowindow.</p>
 </li>
-<li><p class="first">Ajoutez le modèle yowindow dans les tâches <tt class="docutils literal"><span class="pre">[live]</span></tt> de <tt class="docutils literal"><span class="pre">weather.ini</span></tt>. Mettre son paramètre à <tt class="docutils literal"><span class="pre">'L'</span></tt> si le résultat est copié dans votre répertoire local au lieu d&#8217;être téléchargés sur un site ftp:</p>
+<li><p class="first">Ajoutez le modèle yowindow dans les tâches <code class="docutils literal"><span class="pre">[live]</span></code> de <code class="docutils literal"><span class="pre">weather.ini</span></code>. Mettre son paramètre à <code class="docutils literal"><span class="pre">'L'</span></code> si le résultat est copié dans votre répertoire local au lieu d&#8217;être téléchargés sur un site ftp:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">live</span><span class="p">]</span>
 <span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;yowindow.xml&#39;</span><span class="p">,</span> <span class="s">&#39;L&#39;</span><span class="p">)]</span>
 </pre></div>
@@ -80,7 +80,7 @@
 </li>
 </ol>
 </div></blockquote>
-<p>Vous pouvez vérifier que le fichier est mis à jour toutes les 48 secondes en utilisant <tt class="docutils literal"><span class="pre">more</span></tt> ou <tt class="docutils literal"><span class="pre">cat</span></tt> pour afficher à l&#8217;écran.</p>
+<p>Vous pouvez vérifier que le fichier est mis à jour toutes les 48 secondes en utilisant <code class="docutils literal"><span class="pre">more</span></code> ou <code class="docutils literal"><span class="pre">cat</span></code> pour afficher à l&#8217;écran.</p>
 <p>Finallement, configurez yowindow pour l&#8217;utilisation de ce fichier. Voir <a class="reference external" href="http://yowindow.com/pws_setup.php">http://yowindow.com/pws_setup.php</a> pour les instructions pour ce faire.</p>
 </div>
 <div class="section" id="twitter">
@@ -89,35 +89,35 @@
 </div>
 <div class="section" id="weather-underground">
 <h2>Weather Underground<a class="headerlink" href="#weather-underground" title="Lien permanent vers ce titre">¶</a></h2>
-<p><a class="reference external" href="http://www.wunderground.com/">Weather Underground</a> (ou Wunderground) est l&#8217;un des plus anciens sites météorologiques dans le monde. Comme pour beaucoup d&#8217;autres services, pywws peut leur envoyer vos données météo via l&#8217;internet. Le module <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> gère cette communication pour toute une gamme de services en ligne .</p>
+<p><a class="reference external" href="http://www.wunderground.com/">Weather Underground</a> (ou Wunderground) est l&#8217;un des plus anciens sites météorologiques dans le monde. Comme pour beaucoup d&#8217;autres services, pywws peut leur envoyer vos données météo via l&#8217;internet. Le module <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><code class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></code></a> gère cette communication pour toute une gamme de services en ligne .</p>
 <p>La première étape consiste à vous créer un compte Weather Underground à cette adresse <a class="reference external" href="http://www.wunderground.com/members/signup.asp">http://www.wunderground.com/members/signup.asp</a>. Puis utilisez le formulaire &#8220;Add A Station&#8221; pour fournir les détails de votre station tel que la  localisation et son type. Vous devriez par la suite obtenir un identificateur de station (station ID) et un mot de passe &#8211; prenez ces informations en note.</p>
-<p>Assurez vous qu&#8217;aucune autre instance de pywws ne fonctionne, puis exécutez le programme <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> directement:</p>
+<p>Assurez vous qu&#8217;aucune autre instance de pywws ne fonctionne, puis exécutez le programme <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><code class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></code></a> directement:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice ~/weather/data underground
 </pre></div>
 </div>
-<p>Celà devrait échouer, comme vous n&#8217;avez pas encore défini l&#8217;ID de votre station ou le mot de passe, mais ceci crée les entrées nécessaires dans le fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt> pour que vous puissiez l&#8217;éditer. Ouvrez <tt class="docutils literal"><span class="pre">weather.ini</span></tt>  et trouvez la section <tt class="docutils literal"><span class="pre">[underground]</span></tt>:</p>
+<p>Celà devrait échouer, comme vous n&#8217;avez pas encore défini l&#8217;ID de votre station ou le mot de passe, mais ceci crée les entrées nécessaires dans le fichier <code class="docutils literal"><span class="pre">weather.ini</span></code> pour que vous puissiez l&#8217;éditer. Ouvrez <code class="docutils literal"><span class="pre">weather.ini</span></code>  et trouvez la section <code class="docutils literal"><span class="pre">[underground]</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">underground</span><span class="p">]</span>
 <span class="n">station</span> <span class="o">=</span> <span class="n">unknown</span>
 <span class="n">password</span> <span class="o">=</span> <span class="n">unknown</span>
 </pre></div>
 </div>
-<p>Remplacez les valeures <tt class="docutils literal"><span class="pre">unknown</span></tt> par votre Station ID et votre mot de passe.</p>
-<p>Maintenant, essayez <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> de nouveau:</p>
+<p>Remplacez les valeures <code class="docutils literal"><span class="pre">unknown</span></code> par votre Station ID et votre mot de passe.</p>
+<p>Maintenant, essayez <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><code class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></code></a> de nouveau:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice ~/weather/data underground
 </pre></div>
 </div>
-<p>Si cela a fonctionné, vous pouvez télécharger votre dernier 7 jours de données. Notez que cela peut prendre un temps assez long, surtout si vous avez un intervalle d&#8217;enregistrement court.  En premier éditez <tt class="docutils literal"><span class="pre">status.ini</span></tt> et supprimez l&#8217;entrée <tt class="docutils literal"><span class="pre">underground</span></tt> de la section <tt class="docutils literal"><span class="pre">[last</span> <span class="pre">update]</span></tt>. Ensuite, exécutez  <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> avec l&#8217;option  &#8216;catchup&#8217; (rattrapage) et haute verbosité afin que vous puissiez voir le fonctionnement:</p>
+<p>Si cela a fonctionné, vous pouvez télécharger votre dernier 7 jours de données. Notez que cela peut prendre un temps assez long, surtout si vous avez un intervalle d&#8217;enregistrement court.  En premier éditez <code class="docutils literal"><span class="pre">status.ini</span></code> et supprimez l&#8217;entrée <code class="docutils literal"><span class="pre">underground</span></code> de la section <code class="docutils literal"><span class="pre">[last</span> <span class="pre">update]</span></code>. Ensuite, exécutez  <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><code class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></code></a> avec l&#8217;option  &#8216;catchup&#8217; (rattrapage) et haute verbosité afin que vous puissiez voir le fonctionnement:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.toservice -vvc ~/weather/data underground
 </pre></div>
 </div>
-<p>Lorsque tout fonctionne, vous pouvez ajouter &#8216;underground&#8217; à la section des tâches <tt class="docutils literal"><span class="pre">[logged]</span></tt> du fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
+<p>Lorsque tout fonctionne, vous pouvez ajouter &#8216;underground&#8217; à la section des tâches <code class="docutils literal"><span class="pre">[logged]</span></code> du fichier <code class="docutils literal"><span class="pre">weather.ini</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">logged</span><span class="p">]</span>
 <span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="rapidfire-updates">
 <h3>Mise à jour &#8220;RapidFire&#8221;<a class="headerlink" href="#rapidfire-updates" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Weather Underground a une seconde URL de téléversement pour les mises à jour en temps réel à un interval d&#8217;aussi peu que 2.5 secondes. Si vous exécutez pywws en mode &#8216;live logging&#8217; (voir <a class="reference internal" href="livelogging.html"><em>Comment configurer le mode &#8216;live&#8217; avec pywws</em></a>) vous pouvez l&#8217;utiliser pour envoyez des mises à jour aux 48 secondes, en ajoutant &#8216;underground_rf&#8217; à la section des tâches <tt class="docutils literal"><span class="pre">[live]</span></tt> du fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
+<p>Weather Underground a une seconde URL de téléversement pour les mises à jour en temps réel à un interval d&#8217;aussi peu que 2.5 secondes. Si vous exécutez pywws en mode &#8216;live logging&#8217; (voir <a class="reference internal" href="livelogging.html"><em>Comment configurer le mode &#8216;live&#8217; avec pywws</em></a>) vous pouvez l&#8217;utiliser pour envoyez des mises à jour aux 48 secondes, en ajoutant &#8216;underground_rf&#8217; à la section des tâches <code class="docutils literal"><span class="pre">[live]</span></code> du fichier <code class="docutils literal"><span class="pre">weather.ini</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">live</span><span class="p">]</span>
 <span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground_rf&#39;</span><span class="p">]</span>
 </pre></div>
@@ -132,7 +132,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -156,7 +156,7 @@
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="twitter.html"
                         title="Chapitre suivant">Comment configurer pywws pour poster des messages sur Twitter</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -173,7 +173,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -192,9 +192,9 @@
           <li><a href="index.html" >Guides utilisateur</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

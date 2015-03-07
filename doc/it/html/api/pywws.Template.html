@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.Forecast" href="pywws.Forecast.html" />
     <link rel="prev" title="pywws.WindRose" href="pywws.WindRose.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.Template">
 <span id="pywws-template"></span><h1>pywws.Template<a class="headerlink" href="#module-pywws.Template" title="link permanente per questa intestazione">¶</a></h1>
@@ -82,27 +82,27 @@ for each processing instruction and still produce output with no line
 breaks. If you want to output a line break after a processing
 instruction, put a blank line immediately after it.</p>
 <div class="section" id="id1">
-<h3><tt class="docutils literal"><span class="pre">##</span></tt><a class="headerlink" href="#id1" title="link permanente per questa intestazione">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">##</span></code><a class="headerlink" href="#id1" title="link permanente per questa intestazione">¶</a></h3>
 <p>output di un singolo carattere &#8216;#&#8217;.</p>
 </div>
 <div class="section" id="comment-text">
-<h3><tt class="docutils literal"><span class="pre">#!</span> <span class="pre">testo</span> <span class="pre">di</span> <span class="pre">commento#</span></tt><a class="headerlink" href="#comment-text" title="link permanente per questa intestazione">¶</a></h3>
-<p>Il commento, non genera nessun output. <tt class="docutils literal"><span class="pre">testo</span> <span class="pre">di</span> <span class="pre">commento</span></tt> può essere qualsiasi testo senza un&#8217;interruzione di riga.</p>
+<h3><code class="docutils literal"><span class="pre">#!</span> <span class="pre">testo</span> <span class="pre">di</span> <span class="pre">commento#</span></code><a class="headerlink" href="#comment-text" title="link permanente per questa intestazione">¶</a></h3>
+<p>Il commento, non genera nessun output. <code class="docutils literal"><span class="pre">testo</span> <span class="pre">di</span> <span class="pre">commento</span></code> può essere qualsiasi testo senza un&#8217;interruzione di riga.</p>
 </div>
 <div class="section" id="monthly">
-<h3><tt class="docutils literal"><span class="pre">#monthly#</span></tt><a class="headerlink" href="#monthly" title="link permanente per questa intestazione">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">#monthly#</span></code><a class="headerlink" href="#monthly" title="link permanente per questa intestazione">¶</a></h3>
 <p>ritorna i dati &#8220;monthly&#8221; di riepilogo. L&#8217;indice viene reimpostato sul valore più recente.</p>
 </div>
 <div class="section" id="daily">
-<h3><tt class="docutils literal"><span class="pre">#daily#</span></tt><a class="headerlink" href="#daily" title="link permanente per questa intestazione">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">#daily#</span></code><a class="headerlink" href="#daily" title="link permanente per questa intestazione">¶</a></h3>
 <p>ritorna i dati &#8220;daily&#8221; di riepilogo. L&#8217;indice viene reimpostato sul valore più recente.</p>
 </div>
 <div class="section" id="hourly">
-<h3><tt class="docutils literal"><span class="pre">#hourly#</span></tt><a class="headerlink" href="#hourly" title="link permanente per questa intestazione">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">#hourly#</span></code><a class="headerlink" href="#hourly" title="link permanente per questa intestazione">¶</a></h3>
 <p>ritorna i dati &#8220;hourly&#8221; di riepilogo. L&#8217;indice viene reimpostato sul valore più recente.</p>
 </div>
 <div class="section" id="raw">
-<h3><tt class="docutils literal"><span class="pre">#raw#</span></tt><a class="headerlink" href="#raw" title="link permanente per questa intestazione">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">#raw#</span></code><a class="headerlink" href="#raw" title="link permanente per questa intestazione">¶</a></h3>
 <p>ritorna i dati &#8220;raw&#8221; di riepilogo. L&#8217;indice viene reimpostato sul valore più recente.</p>
 <div class="versionchanged">
 <p><span class="versionmodified">Cambiato nella versione 11.09: </span>This now selects &#8220;calibrated&#8221; data. The directive name remains
@@ -110,46 +110,46 @@ unchanged for backwards compatibility.</p>
 </div>
 </div>
 <div class="section" id="timezone-name">
-<h3><tt class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></tt><a class="headerlink" href="#timezone-name" title="link permanente per questa intestazione">¶</a></h3>
-<p>Converte tutti i valori data e ora del fuso orario <tt class="docutils literal"><span class="pre">name</span></tt> prima dell&#8217;output. I valori consentiti per nome sono <tt class="docutils literal"><span class="pre">utc</span></tt> o <tt class="docutils literal"><span class="pre">local</span></tt>.</p>
+<h3><code class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></code><a class="headerlink" href="#timezone-name" title="link permanente per questa intestazione">¶</a></h3>
+<p>Converte tutti i valori data e ora del fuso orario <code class="docutils literal"><span class="pre">name</span></code> prima dell&#8217;output. I valori consentiti per nome sono <code class="docutils literal"><span class="pre">utc</span></code> o <code class="docutils literal"><span class="pre">local</span></code>.</p>
 </div>
 <div class="section" id="locale-expr">
-<h3><tt class="docutils literal"><span class="pre">#locale</span> <span class="pre">expr#</span></tt><a class="headerlink" href="#locale-expr" title="link permanente per questa intestazione">¶</a></h3>
-<p>switch use of &#8216;locale&#8217; on or off, according to <tt class="docutils literal"><span class="pre">expr</span></tt>. When locale
+<h3><code class="docutils literal"><span class="pre">#locale</span> <span class="pre">expr#</span></code><a class="headerlink" href="#locale-expr" title="link permanente per questa intestazione">¶</a></h3>
+<p>switch use of &#8216;locale&#8217; on or off, according to <code class="docutils literal"><span class="pre">expr</span></code>. When locale
 is on floating point numbers may use a comma as the decimal separator
 instead of a point, depending on your localisation settings. Use
-<tt class="docutils literal"><span class="pre">&quot;True&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;False&quot;</span></tt> for expr.</p>
+<code class="docutils literal"><span class="pre">&quot;True&quot;</span></code> or <code class="docutils literal"><span class="pre">&quot;False&quot;</span></code> for expr.</p>
 </div>
 <div class="section" id="roundtime-expr">
-<h3><tt class="docutils literal"><span class="pre">#roundtime</span> <span class="pre">expr#</span></tt><a class="headerlink" href="#roundtime-expr" title="link permanente per questa intestazione">¶</a></h3>
-<p>Interruttore arrotondamento tempo on/off, secondo <tt class="docutils literal"><span class="pre">expr</span></tt>.  Quando l&#8217;arrotondamento del tempo è attivo, 30 secondi vengono aggiunti a ciascun valore di tempo. Questo è utile se si stampa solo in ore e minuti, ad esempio con un formato &#8221; %H: %M&#8221;, e che i valori di tempo come ad esempio 10:23:58 di apparire come &#8220;10:24 &#8221;. Usare <tt class="docutils literal"><span class="pre">&quot;True&quot;</span></tt> o <tt class="docutils literal"><span class="pre">&quot;False&quot;</span></tt> per <tt class="docutils literal"><span class="pre">expr</span></tt>.</p>
+<h3><code class="docutils literal"><span class="pre">#roundtime</span> <span class="pre">expr#</span></code><a class="headerlink" href="#roundtime-expr" title="link permanente per questa intestazione">¶</a></h3>
+<p>Interruttore arrotondamento tempo on/off, secondo <code class="docutils literal"><span class="pre">expr</span></code>.  Quando l&#8217;arrotondamento del tempo è attivo, 30 secondi vengono aggiunti a ciascun valore di tempo. Questo è utile se si stampa solo in ore e minuti, ad esempio con un formato &#8221; %H: %M&#8221;, e che i valori di tempo come ad esempio 10:23:58 di apparire come &#8220;10:24 &#8221;. Usare <code class="docutils literal"><span class="pre">&quot;True&quot;</span></code> o <code class="docutils literal"><span class="pre">&quot;False&quot;</span></code> per <code class="docutils literal"><span class="pre">expr</span></code>.</p>
 </div>
 <div class="section" id="jump-count">
-<h3><tt class="docutils literal"><span class="pre">#jump</span> <span class="pre">count#</span></tt><a class="headerlink" href="#jump-count" title="link permanente per questa intestazione">¶</a></h3>
-<p>Salta i valori <tt class="docutils literal"><span class="pre">count</span></tt>. L&#8217;indice dei dati è regolata da <tt class="docutils literal"><span class="pre">count</span></tt> ore o giorni. Con valori negativi salta indietro nel tempo.</p>
-<p>È una buona idea inserire salti all&#8217;interno di un loop alla fine, poco prima dell&#8217;istruzione <tt class="docutils literal"><span class="pre">#endloop#</span></tt>. Il ciclo può poi terminare in modo pulito se ha esaurito i dati.</p>
+<h3><code class="docutils literal"><span class="pre">#jump</span> <span class="pre">count#</span></code><a class="headerlink" href="#jump-count" title="link permanente per questa intestazione">¶</a></h3>
+<p>Salta i valori <code class="docutils literal"><span class="pre">count</span></code>. L&#8217;indice dei dati è regolata da <code class="docutils literal"><span class="pre">count</span></code> ore o giorni. Con valori negativi salta indietro nel tempo.</p>
+<p>È una buona idea inserire salti all&#8217;interno di un loop alla fine, poco prima dell&#8217;istruzione <code class="docutils literal"><span class="pre">#endloop#</span></code>. Il ciclo può poi terminare in modo pulito se ha esaurito i dati.</p>
 </div>
 <div class="section" id="goto-date-time">
-<h3><tt class="docutils literal"><span class="pre">#goto</span> <span class="pre">date-time#</span></tt><a class="headerlink" href="#goto-date-time" title="link permanente per questa intestazione">¶</a></h3>
-<p>va alla <tt class="docutils literal"><span class="pre">date-time</span></tt>&#8216;. L&#8217;indice di dati è impostato al record immediatamente dopo <tt class="docutils literal"><span class="pre">date-time</span></tt>.Questo può essere in UTC o il fuso orario locale, secondo l&#8217;impostazione di <tt class="docutils literal"><span class="pre">timezone</span></tt>, E deve corrispondere esattamente al formato data ISO, per esempio <tt class="docutils literal"><span class="pre">&quot;2010-11-01</span> <span class="pre">12:00:00&quot;</span></tt> è mezzogiorno a partire dal 1° novembre 2010.</p>
-<p>Parti di <tt class="docutils literal"><span class="pre">date-time</span></tt> possono essere sostituite con strftime % stile caratteri di formattazione per specificare l&#8217;attuale indice del ciclo. Ad esempio, <tt class="docutils literal"><span class="pre">&quot;%Y-%m-01</span> <span class="pre">12:00:00&quot;</span></tt> è mezzogiorno a partire dal giorno 1 del mese.</p>
+<h3><code class="docutils literal"><span class="pre">#goto</span> <span class="pre">date-time#</span></code><a class="headerlink" href="#goto-date-time" title="link permanente per questa intestazione">¶</a></h3>
+<p>va alla <code class="docutils literal"><span class="pre">date-time</span></code>&#8216;. L&#8217;indice di dati è impostato al record immediatamente dopo <code class="docutils literal"><span class="pre">date-time</span></code>.Questo può essere in UTC o il fuso orario locale, secondo l&#8217;impostazione di <code class="docutils literal"><span class="pre">timezone</span></code>, E deve corrispondere esattamente al formato data ISO, per esempio <code class="docutils literal"><span class="pre">&quot;2010-11-01</span> <span class="pre">12:00:00&quot;</span></code> è mezzogiorno a partire dal 1° novembre 2010.</p>
+<p>Parti di <code class="docutils literal"><span class="pre">date-time</span></code> possono essere sostituite con strftime % stile caratteri di formattazione per specificare l&#8217;attuale indice del ciclo. Ad esempio, <code class="docutils literal"><span class="pre">&quot;%Y-%m-01</span> <span class="pre">12:00:00&quot;</span></code> è mezzogiorno a partire dal giorno 1 del mese.</p>
 </div>
 <div class="section" id="loop-count">
-<h3><tt class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></tt><a class="headerlink" href="#loop-count" title="link permanente per questa intestazione">¶</a></h3>
-<p>avvia un ciclo che si ripete <tt class="docutils literal"><span class="pre">count</span></tt> volte. <tt class="docutils literal"><span class="pre">count</span></tt> deve essere uno o più.</p>
+<h3><code class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></code><a class="headerlink" href="#loop-count" title="link permanente per questa intestazione">¶</a></h3>
+<p>avvia un ciclo che si ripete <code class="docutils literal"><span class="pre">count</span></code> volte. <code class="docutils literal"><span class="pre">count</span></code> deve essere uno o più.</p>
 </div>
 <div class="section" id="endloop">
-<h3><tt class="docutils literal"><span class="pre">#endloop#</span></tt><a class="headerlink" href="#endloop" title="link permanente per questa intestazione">¶</a></h3>
-<p>finisce un ciclo avviato da <tt class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></tt>. L&#8217;elaborazione del modello torna alla riga contenente le istruzioni <tt class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></tt>. Non provare a nido loop.</p>
+<h3><code class="docutils literal"><span class="pre">#endloop#</span></code><a class="headerlink" href="#endloop" title="link permanente per questa intestazione">¶</a></h3>
+<p>finisce un ciclo avviato da <code class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></code>. L&#8217;elaborazione del modello torna alla riga contenente le istruzioni <code class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></code>. Non provare a nido loop.</p>
 </div>
 <div class="section" id="key-fmt-string-no-value-string-conversion">
-<h3><tt class="docutils literal"><span class="pre">#key</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></tt><a class="headerlink" href="#key-fmt-string-no-value-string-conversion" title="link permanente per questa intestazione">¶</a></h3>
-<p>ricava un valore di dati. <cite>key`</cite> è la chiave dei dati, es. <cite>temp_out`</cite> per la temperatura esterna. <tt class="docutils literal"><span class="pre">fmt_string</span></tt> è un printf come stringa di formattazione (in realtà l&#8217;operatore  % di Python&#8217;s) tranne che per i valori data e ora, quando si ha data e ora usare il metodo <tt class="docutils literal"><span class="pre">strftime()</span></tt>. <tt class="docutils literal"><span class="pre">no_value_string</span></tt> risulta al posto di <tt class="docutils literal"><span class="pre">fmt_string</span></tt> quando il valore dei dati è assente, ad esempio, se la stazione ha perso il contatto con il sensore esterno. <tt class="docutils literal"><span class="pre">conversion</span></tt> è un espressione Python per convertire i dati, ad esempio per convertire la velocità da m/s a mph è possibile utilizzare <tt class="docutils literal"><span class="pre">&quot;x</span> <span class="pre">*</span> <span class="pre">3.6</span> <span class="pre">/</span> <span class="pre">1.609344&quot;</span></tt>, o la funzione più conveniente prevista <tt class="docutils literal"><span class="pre">&quot;wind_mph(x)&quot;</span></tt>.</p>
-<p>Tutti questi valori tra virgolette &#8221; contengono spazi e altri caratteri potenzialmente difficili. Tutti tranne <tt class="docutils literal"><span class="pre">key</span></tt> sono facoltativi, ma si noti che se si desidera specificare una conversione, inoltre, è necessario specificare <tt class="docutils literal"><span class="pre">fmt_string</span></tt> e <tt class="docutils literal"><span class="pre">no_value_string</span></tt> .</p>
+<h3><code class="docutils literal"><span class="pre">#key</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></code><a class="headerlink" href="#key-fmt-string-no-value-string-conversion" title="link permanente per questa intestazione">¶</a></h3>
+<p>ricava un valore di dati. <cite>key`</cite> è la chiave dei dati, es. <cite>temp_out`</cite> per la temperatura esterna. <code class="docutils literal"><span class="pre">fmt_string</span></code> è un printf come stringa di formattazione (in realtà l&#8217;operatore  % di Python&#8217;s) tranne che per i valori data e ora, quando si ha data e ora usare il metodo <code class="docutils literal"><span class="pre">strftime()</span></code>. <code class="docutils literal"><span class="pre">no_value_string</span></code> risulta al posto di <code class="docutils literal"><span class="pre">fmt_string</span></code> quando il valore dei dati è assente, ad esempio, se la stazione ha perso il contatto con il sensore esterno. <code class="docutils literal"><span class="pre">conversion</span></code> è un espressione Python per convertire i dati, ad esempio per convertire la velocità da m/s a mph è possibile utilizzare <code class="docutils literal"><span class="pre">&quot;x</span> <span class="pre">*</span> <span class="pre">3.6</span> <span class="pre">/</span> <span class="pre">1.609344&quot;</span></code>, o la funzione più conveniente prevista <code class="docutils literal"><span class="pre">&quot;wind_mph(x)&quot;</span></code>.</p>
+<p>Tutti questi valori tra virgolette &#8221; contengono spazi e altri caratteri potenzialmente difficili. Tutti tranne <code class="docutils literal"><span class="pre">key</span></code> sono facoltativi, ma si noti che se si desidera specificare una conversione, inoltre, è necessario specificare <code class="docutils literal"><span class="pre">fmt_string</span></code> e <code class="docutils literal"><span class="pre">no_value_string</span></code> .</p>
 </div>
 <div class="section" id="calc-expression-fmt-string-no-value-string-conversion">
-<h3><tt class="docutils literal"><span class="pre">#calc</span> <span class="pre">expression</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></tt><a class="headerlink" href="#calc-expression-fmt-string-no-value-string-conversion" title="link permanente per questa intestazione">¶</a></h3>
-<p>restituisce un valore calcolato da uno o più elementi di dati. <tt class="docutils literal"><span class="pre">expression</span></tt> è una espressione valida in Python, ad es. <tt class="docutils literal"><span class="pre">&quot;dew_point(data['temp_out'],</span> <span class="pre">data['hum_out'])&quot;</span></tt> per calcolare il punto di rugiada all&#8217;aperto. <tt class="docutils literal"><span class="pre">fmt_string</span></tt>, <tt class="docutils literal"><span class="pre">no_value_string</span></tt> e <tt class="docutils literal"><span class="pre">conversion</span></tt> sono come descritti sopra. Si noti che, probabilmente, è più efficiente incorporare qualsiasi conversione nell&#8217;espressione stessa.</p>
+<h3><code class="docutils literal"><span class="pre">#calc</span> <span class="pre">expression</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></code><a class="headerlink" href="#calc-expression-fmt-string-no-value-string-conversion" title="link permanente per questa intestazione">¶</a></h3>
+<p>restituisce un valore calcolato da uno o più elementi di dati. <code class="docutils literal"><span class="pre">expression</span></code> è una espressione valida in Python, ad es. <code class="docutils literal"><span class="pre">&quot;dew_point(data['temp_out'],</span> <span class="pre">data['hum_out'])&quot;</span></code> per calcolare il punto di rugiada all&#8217;aperto. <code class="docutils literal"><span class="pre">fmt_string</span></code>, <code class="docutils literal"><span class="pre">no_value_string</span></code> e <code class="docutils literal"><span class="pre">conversion</span></code> sono come descritti sopra. Si noti che, probabilmente, è più efficiente incorporare qualsiasi conversione nell&#8217;espressione stessa.</p>
 </div>
 </div>
 <div class="section" id="example">
@@ -173,10 +173,10 @@ instead of a point, depending on your localisation settings. Use
 #endloop#
 </pre></div>
 </div>
-<p>Le prime tre righe di questo frammento: seleziona i dati orari, salta indietro di 6 ore, avvia un loop con un conteggio di 7. un salto in avanti di un&#8217;ora appare poco prima della fine del segmento ripetuto. A quest&#8217;ultimo salto (di un&#8217;ora) accade ogni volta nel ciclo, una sequenza di 7 letture dei dati sarà il risultato. L&#8217;ultima riga indica la fine del ciclo - tutto tra le linee <tt class="docutils literal"><span class="pre">#loop</span> <span class="pre">7#</span></tt> e <tt class="docutils literal"><span class="pre">#endloop#</span></tt> è ripetuta 7 volte.</p>
-<p>Le istruzioni <tt class="docutils literal"><span class="pre">#temp_out</span> <span class="pre">...#</span></tt>, <tt class="docutils literal"><span class="pre">#hum_out</span> <span class="pre">...#</span></tt>, <tt class="docutils literal"><span class="pre">#rain</span> <span class="pre">...#</span></tt> e <tt class="docutils literal"><span class="pre">#rel_pressure</span> <span class="pre">...#</span></tt> mostrano dati di base. Ognuno di essi con un <tt class="docutils literal"><span class="pre">fmt_string</span></tt> per formattare i dati in modo appropriato. Le istruzioni <tt class="docutils literal"><span class="pre">#wind_ave</span> <span class="pre">...#</span></tt> e <tt class="docutils literal"><span class="pre">#wind_gust</span> <span class="pre">...#</span></tt> mostra come utilizzare un&#8217;espressione di conversione per convertire m/s a mph.</p>
-<p>Le istruzioni <tt class="docutils literal"><span class="pre">#wind_dir</span> <span class="pre">...#</span></tt> e <tt class="docutils literal"><span class="pre">#pressure_trend</span> <span class="pre">...#</span></tt> mostrano l&#8217;uso della funzione incorporata <tt class="docutils literal"><span class="pre">wind_dir_text</span></tt> e la funzione <tt class="docutils literal"><span class="pre">pressure_trend_text</span></tt> convertono i valori numerici in testo.</p>
-<p>Finalmente arriviamo ai valori di datetime. L&#8217;istruzione <tt class="docutils literal"><span class="pre">#idx</span> <span class="pre">&quot;%H%M&quot;#</span></tt> emette semplicemente l&#8217;ora (in formato HHMM) dell&#8217;indice dei dati meteo. L&#8217;istruzione``#idx &#8220;%Y/%m/%d&#8221; &#8220;&#8221; &#8220;[None, x][x.hour == 0 or loop_count == 7]&#8221;#`` è un po&#8217; più complicato. Esso emette la data, ma solo sulla prima riga o se la data è cambiata. Ciò è reso possibile dall&#8217;indicizzazione dell&#8217;array <tt class="docutils literal"><span class="pre">[None,</span> <span class="pre">x]</span></tt> con un&#8217;espressione booleana che è vera quando <tt class="docutils literal"><span class="pre">loop_count</span></tt> è 7 (Cioè il primo passo del ciclo) o <tt class="docutils literal"><span class="pre">x.hour</span></tt> è pari a zero (Vale a dire che questa è la prima ora del giorno).</p>
+<p>Le prime tre righe di questo frammento: seleziona i dati orari, salta indietro di 6 ore, avvia un loop con un conteggio di 7. un salto in avanti di un&#8217;ora appare poco prima della fine del segmento ripetuto. A quest&#8217;ultimo salto (di un&#8217;ora) accade ogni volta nel ciclo, una sequenza di 7 letture dei dati sarà il risultato. L&#8217;ultima riga indica la fine del ciclo - tutto tra le linee <code class="docutils literal"><span class="pre">#loop</span> <span class="pre">7#</span></code> e <code class="docutils literal"><span class="pre">#endloop#</span></code> è ripetuta 7 volte.</p>
+<p>Le istruzioni <code class="docutils literal"><span class="pre">#temp_out</span> <span class="pre">...#</span></code>, <code class="docutils literal"><span class="pre">#hum_out</span> <span class="pre">...#</span></code>, <code class="docutils literal"><span class="pre">#rain</span> <span class="pre">...#</span></code> e <code class="docutils literal"><span class="pre">#rel_pressure</span> <span class="pre">...#</span></code> mostrano dati di base. Ognuno di essi con un <code class="docutils literal"><span class="pre">fmt_string</span></code> per formattare i dati in modo appropriato. Le istruzioni <code class="docutils literal"><span class="pre">#wind_ave</span> <span class="pre">...#</span></code> e <code class="docutils literal"><span class="pre">#wind_gust</span> <span class="pre">...#</span></code> mostra come utilizzare un&#8217;espressione di conversione per convertire m/s a mph.</p>
+<p>Le istruzioni <code class="docutils literal"><span class="pre">#wind_dir</span> <span class="pre">...#</span></code> e <code class="docutils literal"><span class="pre">#pressure_trend</span> <span class="pre">...#</span></code> mostrano l&#8217;uso della funzione incorporata <code class="docutils literal"><span class="pre">wind_dir_text</span></code> e la funzione <code class="docutils literal"><span class="pre">pressure_trend_text</span></code> convertono i valori numerici in testo.</p>
+<p>Finalmente arriviamo ai valori di datetime. L&#8217;istruzione <code class="docutils literal"><span class="pre">#idx</span> <span class="pre">&quot;%H%M&quot;#</span></code> emette semplicemente l&#8217;ora (in formato HHMM) dell&#8217;indice dei dati meteo. L&#8217;istruzione``#idx &#8220;%Y/%m/%d&#8221; &#8220;&#8221; &#8220;[None, x][x.hour == 0 or loop_count == 7]&#8221;#`` è un po&#8217; più complicato. Esso emette la data, ma solo sulla prima riga o se la data è cambiata. Ciò è reso possibile dall&#8217;indicizzazione dell&#8217;array <code class="docutils literal"><span class="pre">[None,</span> <span class="pre">x]</span></code> con un&#8217;espressione booleana che è vera quando <code class="docutils literal"><span class="pre">loop_count</span></code> è 7 (Cioè il primo passo del ciclo) o <code class="docutils literal"><span class="pre">x.hour</span></code> è pari a zero (Vale a dire che questa è la prima ora del giorno).</p>
 </div>
 <div class="section" id="detailed-api">
 <h2>Dettagli API<a class="headerlink" href="#detailed-api" title="link permanente per questa intestazione">¶</a></h2>
@@ -187,79 +187,79 @@ instead of a point, depending on your localisation settings. Use
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">Zambretti</span></tt>(params,&nbsp;hourly_data)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">Zambretti</span></code>(params,&nbsp;hourly_data)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ZambrettiCode</span></tt>(params,&nbsp;hourly_data)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ZambrettiCode</span></code>(params,&nbsp;hourly_data)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></tt>(temp,&nbsp;rh,&nbsp;wind)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></code>(temp,&nbsp;rh,&nbsp;wind)</td>
 <td><p class="first last">Calcola la temperatura apparente (sensazione reale), con formula da</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">cadhumidex</span></tt>(temp,&nbsp;humidity)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">cadhumidex</span></code>(temp,&nbsp;humidity)</td>
 <td><p class="first last">Calcolo Indice di umidità come per gli standard Canadian Weather Standards</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">dew_point</span></tt>(temp,&nbsp;hum)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">dew_point</span></code>(temp,&nbsp;hum)</td>
 <td><p class="first last">Calcola il punto di rugiada, usando la formula da <a class="reference external" href="http://en.wikipedia.org/wiki/Dew_point">http://en.wikipedia.org/wiki/Dew_point</a>.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></tt>(lux)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></code>(lux)</td>
 <td><p class="first last">Conversione approssimativa di illuminazione in lux a radiazione solare in W/m2</p>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.Template.main" title="pywws.Template.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.Template.main" title="pywws.Template.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_inhg</span></tt>(hPa)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pressure_inhg</span></code>(hPa)</td>
 <td><p class="first last">Converte la pressione da ettopascal/millibar in pollici di mercurio</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></tt>(trend)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></code>(trend)</td>
 <td><p class="first last">Converte in una stringa, la tendenza barometrica sono usati per la UK met office.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></tt>(mm)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></code>(mm)</td>
 <td><p class="first last">Converte le precipitazioni da millimetri a pollici</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">temp_f</span></tt>(c)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">temp_f</span></code>(c)</td>
 <td><p class="first last">Converte la temperatura da gradi Celsius a Fahrenheit</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">usaheatindex</span></tt>(temp,&nbsp;humidity,&nbsp;dew)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">usaheatindex</span></code>(temp,&nbsp;humidity,&nbsp;dew)</td>
 <td><p class="first last">Calcolare l&#8217;indice di calore secondo Standards USA National Weather Service</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_bft</span></tt>(ms)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_bft</span></code>(ms)</td>
 <td><p class="first last">Converte i metri al secondo del vento in scala Beaufort</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_chill</span></tt>(temp,&nbsp;wind)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_chill</span></code>(temp,&nbsp;wind)</td>
 <td><p class="first last">Calcola il vento gelido, usando la formula di</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_kmph</span></tt>(ms)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_kmph</span></code>(ms)</td>
 <td><p class="first last">Converte il vento da metri al secondo a chilometri orari</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_kn</span></tt>(ms)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_kn</span></code>(ms)</td>
 <td><p class="first last">Converte il vento da metri al secondo a nodi</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_mph</span></tt>(ms)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_mph</span></code>(ms)</td>
 <td><p class="first last">Converte il vento da metri al secondo a miglia all&#8217;ora</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">winddir_degrees</span></tt>(pts)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">winddir_degrees</span></code>(pts)</td>
 <td><p class="first last">Convertire la direzione del vento a 0..15 in gradi</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">winddir_text</span></tt>(pts)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">winddir_text</span></code>(pts)</td>
 <td><p class="first last">Convertire direzione del vento da 0 .. 15 per i punti della bussola</p>
 </td>
 </tr>
@@ -272,13 +272,13 @@ instead of a point, depending on your localisation settings. Use
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.Template.Template" title="pywws.Template.Template"><tt class="xref py py-obj docutils literal"><span class="pre">Template</span></tt></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.Template.Template" title="pywws.Template.Template"><code class="xref py py-obj docutils literal"><span class="pre">Template</span></code></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...[,&nbsp;...])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Differenza tra due valori datetime.</p>
 </td>
 </tr>
@@ -286,27 +286,27 @@ instead of a point, depending on your localisation settings. Use
 </table>
 <dl class="class">
 <dt id="pywws.Template.Template">
-<em class="property">class </em><tt class="descclassname">pywws.Template.</tt><tt class="descname">Template</tt><big>(</big><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>use_locale=True</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template" title="link permanente per questa definizione">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.Template.</code><code class="descname">Template</code><span class="sig-paren">(</span><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>use_locale=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Template.html#Template"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template" title="link permanente per questa definizione">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.Template.Template.process">
-<tt class="descname">process</tt><big>(</big><em>live_data</em>, <em>template_file</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.process"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.process" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">process</code><span class="sig-paren">(</span><em>live_data</em>, <em>template_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Template.html#Template.process"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.process" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Template.Template.make_text">
-<tt class="descname">make_text</tt><big>(</big><em>template_file</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_text"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.make_text" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">make_text</code><span class="sig-paren">(</span><em>template_file</em>, <em>live_data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_text"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.make_text" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Template.Template.make_file">
-<tt class="descname">make_file</tt><big>(</big><em>template_file</em>, <em>output_file</em>, <em>live_data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_file"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.make_file" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">make_file</code><span class="sig-paren">(</span><em>template_file</em>, <em>output_file</em>, <em>live_data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Template.html#Template.make_file"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.Template.make_file" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pywws.Template.main">
-<tt class="descclassname">pywws.Template.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Template.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.main" title="link permanente per questa definizione">¶</a></dt>
+<code class="descclassname">pywws.Template.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Template.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.Template.main" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -316,7 +316,7 @@ instead of a point, depending on your localisation settings. Use
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -326,21 +326,21 @@ instead of a point, depending on your localisation settings. Use
 <li><a class="reference internal" href="#">pywws.Template</a><ul>
 <li><a class="reference internal" href="#introduction">Introduzione</a></li>
 <li><a class="reference internal" href="#processing-instructions">Istruzioni di elaborazione</a><ul>
-<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">##</span></tt></a></li>
-<li><a class="reference internal" href="#comment-text"><tt class="docutils literal"><span class="pre">#!</span> <span class="pre">testo</span> <span class="pre">di</span> <span class="pre">commento#</span></tt></a></li>
-<li><a class="reference internal" href="#monthly"><tt class="docutils literal"><span class="pre">#monthly#</span></tt></a></li>
-<li><a class="reference internal" href="#daily"><tt class="docutils literal"><span class="pre">#daily#</span></tt></a></li>
-<li><a class="reference internal" href="#hourly"><tt class="docutils literal"><span class="pre">#hourly#</span></tt></a></li>
-<li><a class="reference internal" href="#raw"><tt class="docutils literal"><span class="pre">#raw#</span></tt></a></li>
-<li><a class="reference internal" href="#timezone-name"><tt class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></tt></a></li>
-<li><a class="reference internal" href="#locale-expr"><tt class="docutils literal"><span class="pre">#locale</span> <span class="pre">expr#</span></tt></a></li>
-<li><a class="reference internal" href="#roundtime-expr"><tt class="docutils literal"><span class="pre">#roundtime</span> <span class="pre">expr#</span></tt></a></li>
-<li><a class="reference internal" href="#jump-count"><tt class="docutils literal"><span class="pre">#jump</span> <span class="pre">count#</span></tt></a></li>
-<li><a class="reference internal" href="#goto-date-time"><tt class="docutils literal"><span class="pre">#goto</span> <span class="pre">date-time#</span></tt></a></li>
-<li><a class="reference internal" href="#loop-count"><tt class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></tt></a></li>
-<li><a class="reference internal" href="#endloop"><tt class="docutils literal"><span class="pre">#endloop#</span></tt></a></li>
-<li><a class="reference internal" href="#key-fmt-string-no-value-string-conversion"><tt class="docutils literal"><span class="pre">#key</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></tt></a></li>
-<li><a class="reference internal" href="#calc-expression-fmt-string-no-value-string-conversion"><tt class="docutils literal"><span class="pre">#calc</span> <span class="pre">expression</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></tt></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal"><span class="pre">##</span></code></a></li>
+<li><a class="reference internal" href="#comment-text"><code class="docutils literal"><span class="pre">#!</span> <span class="pre">testo</span> <span class="pre">di</span> <span class="pre">commento#</span></code></a></li>
+<li><a class="reference internal" href="#monthly"><code class="docutils literal"><span class="pre">#monthly#</span></code></a></li>
+<li><a class="reference internal" href="#daily"><code class="docutils literal"><span class="pre">#daily#</span></code></a></li>
+<li><a class="reference internal" href="#hourly"><code class="docutils literal"><span class="pre">#hourly#</span></code></a></li>
+<li><a class="reference internal" href="#raw"><code class="docutils literal"><span class="pre">#raw#</span></code></a></li>
+<li><a class="reference internal" href="#timezone-name"><code class="docutils literal"><span class="pre">#timezone</span> <span class="pre">name#</span></code></a></li>
+<li><a class="reference internal" href="#locale-expr"><code class="docutils literal"><span class="pre">#locale</span> <span class="pre">expr#</span></code></a></li>
+<li><a class="reference internal" href="#roundtime-expr"><code class="docutils literal"><span class="pre">#roundtime</span> <span class="pre">expr#</span></code></a></li>
+<li><a class="reference internal" href="#jump-count"><code class="docutils literal"><span class="pre">#jump</span> <span class="pre">count#</span></code></a></li>
+<li><a class="reference internal" href="#goto-date-time"><code class="docutils literal"><span class="pre">#goto</span> <span class="pre">date-time#</span></code></a></li>
+<li><a class="reference internal" href="#loop-count"><code class="docutils literal"><span class="pre">#loop</span> <span class="pre">count#</span></code></a></li>
+<li><a class="reference internal" href="#endloop"><code class="docutils literal"><span class="pre">#endloop#</span></code></a></li>
+<li><a class="reference internal" href="#key-fmt-string-no-value-string-conversion"><code class="docutils literal"><span class="pre">#key</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></code></a></li>
+<li><a class="reference internal" href="#calc-expression-fmt-string-no-value-string-conversion"><code class="docutils literal"><span class="pre">#calc</span> <span class="pre">expression</span> <span class="pre">fmt_string</span> <span class="pre">no_value_string</span> <span class="pre">conversion#</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#example">Esempio</a></li>
@@ -355,7 +355,7 @@ instead of a point, depending on your localisation settings. Use
   <h4>Argomento successivo</h4>
   <p class="topless"><a href="pywws.Forecast.html"
                         title="capitolo successivo">pywws.Forecast</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Ricerca veloce</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -372,7 +372,7 @@ instead of a point, depending on your localisation settings. Use
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -391,9 +391,9 @@ instead of a point, depending on your localisation settings. Use
           <li><a href="../api_index.html" >Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.device_cython_hidapi" href="pywws.device_cython_hidapi.html" />
     <link rel="prev" title="pywws.WeatherStation" href="pywws.WeatherStation.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.device_ctypes_hidapi">
 <span id="pywws-device-ctypes-hidapi"></span><h1>pywws.device_ctypes_hidapi<a class="headerlink" href="#module-pywws.device_ctypes_hidapi" title="link permanente per questa intestazione">¶</a></h1>
@@ -62,15 +62,15 @@
 <div class="section" id="introduction">
 <h2>Introduzione<a class="headerlink" href="#introduction" title="link permanente per questa intestazione">¶</a></h2>
 <p>Questo modulo gestisce la comunicazione di livello basso con la stazione meteo tramite la libreria <a class="reference external" href="http://docs.python.org/2/library/ctypes.html">ctypes</a> e <a class="reference external" href="https://github.com/signal11/hidapi">hidapi</a>. Un modo alternativo utilizza la libreria, <a class="reference internal" href="pywws.device_cython_hidapi.html"><em>pywws.device_cython_hidapi</em></a>, e <a class="reference internal" href="pywws.device_pyusb.html"><em>pywws.device_pyusb</em></a>. La scelta di quale modo utilizzare dipende da quali librerie sono disponibili per il tuo computer.</p>
-<p>Gli utenti delle recenti versioni di Mac OS non hanno altra scelta. Il sistema operativo rende molto difficile accedere direttamente, ai dispositivi HID (come la stazione meteorologica) così la libreria <tt class="docutils literal"><span class="pre">hidapi</span></tt> deve essere usata.</p>
-<p>Gli utenti di OpenWRT e simili piattaforme Linux embedded probabilmente non sono in grado di installare <tt class="docutils literal"><span class="pre">ctypes</span></tt> o <tt class="docutils literal"><span class="pre">cython-hidapi</span></tt>, così sono costretti ad usare <tt class="docutils literal"><span class="pre">libusb</span></tt> e la sua interfaccia Python <tt class="docutils literal"><span class="pre">PyUSB</span></tt>.</p>
+<p>Gli utenti delle recenti versioni di Mac OS non hanno altra scelta. Il sistema operativo rende molto difficile accedere direttamente, ai dispositivi HID (come la stazione meteorologica) così la libreria <code class="docutils literal"><span class="pre">hidapi</span></code> deve essere usata.</p>
+<p>Gli utenti di OpenWRT e simili piattaforme Linux embedded probabilmente non sono in grado di installare <code class="docutils literal"><span class="pre">ctypes</span></code> o <code class="docutils literal"><span class="pre">cython-hidapi</span></code>, così sono costretti ad usare <code class="docutils literal"><span class="pre">libusb</span></code> e la sua interfaccia Python <code class="docutils literal"><span class="pre">PyUSB</span></code>.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installazione<a class="headerlink" href="#installation" title="link permanente per questa intestazione">¶</a></h2>
 <p>Alcuni di questi software potrebbero essere già installati sulla vostra macchina, quindi controllare prima di scaricare i sorgenti e compilarli da te.</p>
 <ol class="arabic">
 <li><p class="first">Installazione hidapi</p>
-<p>Creare una copia locale del repository git, passare alla nuova directory e quindi seguire le istruzioni in <tt class="docutils literal"><span class="pre">README.txt</span></tt>:</p>
+<p>Creare una copia locale del repository git, passare alla nuova directory e quindi seguire le istruzioni in <code class="docutils literal"><span class="pre">README.txt</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/signal11/hidapi.git
 cd hidapi
 more README.txt
@@ -87,7 +87,7 @@ more README.txt
 </div>
 <div class="section" id="testing">
 <h2>Collaudo<a class="headerlink" href="#testing" title="link permanente per questa intestazione">¶</a></h2>
-<p>Eseguire <tt class="docutils literal"><span class="pre">TestWeatherStation.py</span></tt> con un livello di dettaglio maggiore così segnala quale modulo USB di accesso al dispositivo viene usato:</p>
+<p>Eseguire <code class="docutils literal"><span class="pre">TestWeatherStation.py</span></code> con un livello di dettaglio maggiore così segnala quale modulo USB di accesso al dispositivo viene usato:</p>
 <div class="highlight-python"><div class="highlight"><pre>python TestWeatherStation.py -vv
 18:10:27:pywws.WeatherStation.CUSBDrive:using pywws.device_ctypes_hidapi
 0000 55 aa ff ff ff ff ff ff ff ff ff ff ff ff ff ff 05 20 01 51 11 00 00 00 81 00 00 07 01 00 d0 56
@@ -110,7 +110,7 @@ more README.txt
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">find_library</span></tt>(name)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">find_library</span></code>(name)</td>
 <td></td>
 </tr>
 </tbody>
@@ -122,7 +122,7 @@ more README.txt
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.device_ctypes_hidapi.USBDevice" title="pywws.device_ctypes_hidapi.USBDevice"><tt class="xref py py-obj docutils literal"><span class="pre">USBDevice</span></tt></a>(vendor_id,&nbsp;product_id)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.device_ctypes_hidapi.USBDevice" title="pywws.device_ctypes_hidapi.USBDevice"><code class="xref py py-obj docutils literal"><span class="pre">USBDevice</span></code></a>(vendor_id,&nbsp;product_id)</td>
 <td><p class="first last">Basso livello di accesso al dispositivo USB tramite la libreria hidapi.</p>
 </td>
 </tr>
@@ -130,7 +130,7 @@ more README.txt
 </table>
 <dl class="class">
 <dt id="pywws.device_ctypes_hidapi.USBDevice">
-<em class="property">class </em><tt class="descclassname">pywws.device_ctypes_hidapi.</tt><tt class="descname">USBDevice</tt><big>(</big><em>vendor_id</em>, <em>product_id</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_ctypes_hidapi.html#USBDevice"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.device_ctypes_hidapi.USBDevice" title="link permanente per questa definizione">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.device_ctypes_hidapi.</code><code class="descname">USBDevice</code><span class="sig-paren">(</span><em>vendor_id</em>, <em>product_id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_ctypes_hidapi.html#USBDevice"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.device_ctypes_hidapi.USBDevice" title="link permanente per questa definizione">¶</a></dt>
 <dd><p>Basso livello di accesso al dispositivo USB tramite la libreria hidapi.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -146,9 +146,9 @@ more README.txt
 </table>
 <dl class="method">
 <dt id="pywws.device_ctypes_hidapi.USBDevice.read_data">
-<tt class="descname">read_data</tt><big>(</big><em>size</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_ctypes_hidapi.html#USBDevice.read_data"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.device_ctypes_hidapi.USBDevice.read_data" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">read_data</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_ctypes_hidapi.html#USBDevice.read_data"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.device_ctypes_hidapi.USBDevice.read_data" title="link permanente per questa definizione">¶</a></dt>
 <dd><p>Riceve i dati dalla stazione meteo.</p>
-<p>Se la lettura non riesce per qualche motivo, <tt class="xref py py-obj docutils literal"><span class="pre">IOError</span></tt> l&#8217;eccezione è restituita.</p>
+<p>Se la lettura non riesce per qualche motivo, <code class="xref py py-obj docutils literal"><span class="pre">IOError</span></code> l&#8217;eccezione è restituita.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -166,7 +166,7 @@ more README.txt
 
 <dl class="method">
 <dt id="pywws.device_ctypes_hidapi.USBDevice.write_data">
-<tt class="descname">write_data</tt><big>(</big><em>buf</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_ctypes_hidapi.html#USBDevice.write_data"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.device_ctypes_hidapi.USBDevice.write_data" title="link permanente per questa definizione">¶</a></dt>
+<code class="descname">write_data</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_ctypes_hidapi.html#USBDevice.write_data"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.device_ctypes_hidapi.USBDevice.write_data" title="link permanente per questa definizione">¶</a></dt>
 <dd><p>Inviare dati al dispositivo.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -192,7 +192,7 @@ more README.txt
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -214,7 +214,7 @@ more README.txt
   <h4>Argomento successivo</h4>
   <p class="topless"><a href="pywws.device_cython_hidapi.html"
                         title="capitolo successivo">pywws.device_cython_hidapi</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Ricerca veloce</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -231,7 +231,7 @@ more README.txt
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -250,9 +250,9 @@ more README.txt
           <li><a href="../api_index.html" >Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

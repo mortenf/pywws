@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.LiveLog" href="pywws.LiveLog.html" />
     <link rel="prev" title="pywws.Logger" href="pywws.Logger.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.Hourly">
 <span id="pywws-hourly"></span><h1>pywws.Hourly<a class="headerlink" href="#module-pywws.Hourly" title="Lien permanent vers ce titre">¶</a></h1>
@@ -68,7 +68,7 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
 </pre></div>
 </div>
 <p>Ce script ne fait guère plus que d&#8217;appeler d&#8217;autres modules dans l&#8217;ordre pour obtenir les données de la station météo, les traiter, tracer des graphes, de générer des fichiers texte et transférer le résultat vers un site web.</p>
-<p>Pour plus d&#8217;informations sur l&#8217;utilisation de <tt class="docutils literal"><span class="pre">Hourly.py</span></tt>, voir <a class="reference internal" href="../guides/hourlylogging.html"><em>Comment configurer la journalisation horaire avec pywws</em></a>.</p>
+<p>Pour plus d&#8217;informations sur l&#8217;utilisation de <code class="docutils literal"><span class="pre">Hourly.py</span></code>, voir <a class="reference internal" href="../guides/hourlylogging.html"><em>Comment configurer la journalisation horaire avec pywws</em></a>.</p>
 <p class="rubric">Fonctions</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -76,25 +76,25 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.Hourly.Hourly" title="pywws.Hourly.Hourly"><tt class="xref py py-obj docutils literal"><span class="pre">Hourly</span></tt></a>(data_dir)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.Hourly.Hourly" title="pywws.Hourly.Hourly"><code class="xref py py-obj docutils literal"><span class="pre">Hourly</span></code></a>(data_dir)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.Hourly.main" title="pywws.Hourly.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.Hourly.main" title="pywws.Hourly.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="pywws.Hourly.Hourly">
-<tt class="descclassname">pywws.Hourly.</tt><tt class="descname">Hourly</tt><big>(</big><em>data_dir</em><big>)</big><a class="reference internal" href="../_modules/pywws/Hourly.html#Hourly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.Hourly" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.Hourly.</code><code class="descname">Hourly</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Hourly.html#Hourly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.Hourly" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pywws.Hourly.main">
-<tt class="descclassname">pywws.Hourly.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Hourly.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.main" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.Hourly.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Hourly.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.main" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -103,7 +103,7 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -114,7 +114,7 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.LiveLog.html"
                         title="Chapitre suivant">pywws.LiveLog</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -131,7 +131,7 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -150,9 +150,9 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.WeatherStation" href="pywws.WeatherStation.html" />
     <link rel="prev" title="pywws.toservice" href="pywws.toservice.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.YoWindow">
 <span id="pywws-yowindow"></span><h1>pywws.YoWindow<a class="headerlink" href="#module-pywws.YoWindow" title="Lien permanent vers ce titre">¶</a></h1>
@@ -74,15 +74,15 @@ output_file is the YoWindow XML file to be written
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></tt>(temp,&nbsp;hr,&nbsp;vent)</p>
+<tr class="row-even"><td><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></code>(temp,&nbsp;hr,&nbsp;vent)</p>
 </td>
 <td><p class="first last">Calcule la température apparente (sensation réelle), en utilisant la formule de</p>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.YoWindow.main" title="pywws.YoWindow.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.YoWindow.main" title="pywws.YoWindow.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -94,15 +94,14 @@ output_file is the YoWindow XML file to be written
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.YoWindow.YoWindow" title="pywws.YoWindow.YoWindow"><tt class="xref py py-obj docutils literal"><span class="pre">YoWindow</span></tt></a>(calib_data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.YoWindow.YoWindow" title="pywws.YoWindow.YoWindow"><code class="xref py py-obj docutils literal"><span class="pre">YoWindow</span></code></a>(calib_data)</td>
 <td><p class="first last">Classe pour écrire un fichier XML YoWindow.</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
-</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Différence entre deux valeurs de datetime.</p>
 </td>
 </tr>
@@ -110,18 +109,18 @@ output_file is the YoWindow XML file to be written
 </table>
 <dl class="class">
 <dt id="pywws.YoWindow.YoWindow">
-<em class="property">class </em><tt class="descclassname">pywws.YoWindow.</tt><tt class="descname">YoWindow</tt><big>(</big><em>calib_data</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.YoWindow.</code><code class="descname">YoWindow</code><span class="sig-paren">(</span><em>calib_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Classe pour écrire un fichier XML YoWindow. Pour voir les spécifications du fichier <a class="reference external" href="http://yowindow.com/doc/yowindow_pws_format.xml">http://yowindow.com/doc/yowindow_pws_format.xml</a></p>
 <dl class="method">
 <dt id="pywws.YoWindow.YoWindow.write_file">
-<tt class="descname">write_file</tt><big>(</big><em>file_name</em>, <em>data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow.write_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow.write_file" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">write_file</code><span class="sig-paren">(</span><em>file_name</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/YoWindow.html#YoWindow.write_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.YoWindow.write_file" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pywws.YoWindow.main">
-<tt class="descclassname">pywws.YoWindow.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/YoWindow.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.main" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.YoWindow.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/YoWindow.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.YoWindow.main" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -130,7 +129,7 @@ output_file is the YoWindow XML file to be written
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -141,7 +140,7 @@ output_file is the YoWindow XML file to be written
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.WeatherStation.html"
                         title="Chapitre suivant">pywws.WeatherStation</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -158,7 +157,7 @@ output_file is the YoWindow XML file to be written
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -177,9 +176,9 @@ output_file is the YoWindow XML file to be written
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

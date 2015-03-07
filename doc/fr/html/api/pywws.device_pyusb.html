@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.DataStore" href="pywws.DataStore.html" />
     <link rel="prev" title="pywws.device_pyusb1" href="pywws.device_pyusb1.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.device_pyusb">
 <span id="pywws-device-pyusb"></span><h1>pywws.device_pyusb<a class="headerlink" href="#module-pywws.device_pyusb" title="Lien permanent vers ce titre">¶</a></h1>
@@ -62,8 +62,8 @@
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Ce module gère la communication de bas niveau avec la station météo via la bibliothèque <a class="reference external" href="http://sourceforge.net/apps/trac/pyusb/">PyUSB</a> . Un module alternatif, <a class="reference internal" href="pywws.device_cython_hidapi.html"><em>pywws.device_cython_hidapi</em></a>,  utilise la bibliothèque <a class="reference external" href="https://github.com/gbishop/cython-hidapi">cython-hidapi</a>. Le choix du module à utiliser dépend de la disponibilité des bibliothèques selon votre ordinateur.</p>
-<p>Les utilisateurs de versions récentes de Mac OS n&#8217;ont pas le choix. Le système d&#8217;exploitation rend très difficile l&#8217;accès direct aux périphériques HID (comme la station météo), de sorte que la bibliothèque <tt class="docutils literal"><span class="pre">hidapi</span></tt> doit être utilisée. <tt class="docutils literal"><span class="pre">Cython-hidapi</span></tt> est une interface Python pour cette bibliothèque.</p>
-<p>Les utilisateurs de OpenWRT et plateformes embarquées Linux similaires ne seront probablement pas en mesure d&#8217;installer <tt class="docutils literal"><span class="pre">cython-hidapi</span></tt> et sont donc contraints d&#8217;utiliser <tt class="docutils literal"><span class="pre">libusb</span></tt> et son interface Python <tt class="docutils literal"><span class="pre">PyUSB</span></tt>.</p>
+<p>Les utilisateurs de versions récentes de Mac OS n&#8217;ont pas le choix. Le système d&#8217;exploitation rend très difficile l&#8217;accès direct aux périphériques HID (comme la station météo), de sorte que la bibliothèque <code class="docutils literal"><span class="pre">hidapi</span></code> doit être utilisée. <code class="docutils literal"><span class="pre">Cython-hidapi</span></code> est une interface Python pour cette bibliothèque.</p>
+<p>Les utilisateurs de OpenWRT et plateformes embarquées Linux similaires ne seront probablement pas en mesure d&#8217;installer <code class="docutils literal"><span class="pre">cython-hidapi</span></code> et sont donc contraints d&#8217;utiliser <code class="docutils literal"><span class="pre">libusb</span></code> et son interface Python <code class="docutils literal"><span class="pre">PyUSB</span></code>.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Lien permanent vers ce titre">¶</a></h2>
@@ -83,7 +83,7 @@
 </div>
 <div class="section" id="testing">
 <h2>Vérification<a class="headerlink" href="#testing" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Exécute <tt class="docutils literal"><span class="pre">TestWeatherStation.py</span></tt> avec un niveau de message accru  de sorte qu&#8217;il indique quel module d&#8217;accès au dispositif USB est utilisé:</p>
+<p>Exécute <code class="docutils literal"><span class="pre">TestWeatherStation.py</span></code> avec un niveau de message accru  de sorte qu&#8217;il indique quel module d&#8217;accès au dispositif USB est utilisé:</p>
 <div class="highlight-python"><div class="highlight"><pre>python TestWeatherStation.py -vv
 18:28:09:pywws.WeatherStation.CUSBDrive:using pywws.device_pyusb
 0000 55 aa ff ff ff ff ff ff ff ff ff ff ff ff ff ff 05 20 01 41 11 00 00 00 81 00 00 0f 05 00 e0 51
@@ -106,7 +106,7 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.device_pyusb.USBDevice" title="pywws.device_pyusb.USBDevice"><tt class="xref py py-obj docutils literal"><span class="pre">USBDevice</span></tt></a>(idVendor,&nbsp;idProduct)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.device_pyusb.USBDevice" title="pywws.device_pyusb.USBDevice"><code class="xref py py-obj docutils literal"><span class="pre">USBDevice</span></code></a>(idVendor,&nbsp;idProduct)</td>
 <td><p class="first last">Accès de bas niveau au périphérique USB via la bibliothèque PyUSB.</p>
 </td>
 </tr>
@@ -114,7 +114,7 @@
 </table>
 <dl class="class">
 <dt id="pywws.device_pyusb.USBDevice">
-<em class="property">class </em><tt class="descclassname">pywws.device_pyusb.</tt><tt class="descname">USBDevice</tt><big>(</big><em>idVendor</em>, <em>idProduct</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_pyusb.html#USBDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_pyusb.USBDevice" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.device_pyusb.</code><code class="descname">USBDevice</code><span class="sig-paren">(</span><em>idVendor</em>, <em>idProduct</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_pyusb.html#USBDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_pyusb.USBDevice" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Accès de bas niveau au périphérique USB via la bibliothèque PyUSB.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -130,9 +130,9 @@
 </table>
 <dl class="method">
 <dt id="pywws.device_pyusb.USBDevice.read_data">
-<tt class="descname">read_data</tt><big>(</big><em>size</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_pyusb.html#USBDevice.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_pyusb.USBDevice.read_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">read_data</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_pyusb.html#USBDevice.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_pyusb.USBDevice.read_data" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Reçoit des données de l&#8217;appareil.</p>
-<p>Si la lecture échoue pour une raison quelconque, une exception <tt class="xref py py-obj docutils literal"><span class="pre">IOError</span></tt> est levée.</p>
+<p>Si la lecture échoue pour une raison quelconque, une exception <code class="xref py py-obj docutils literal"><span class="pre">IOError</span></code> est levée.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -149,9 +149,9 @@
 
 <dl class="method">
 <dt id="pywws.device_pyusb.USBDevice.write_data">
-<tt class="descname">write_data</tt><big>(</big><em>buf</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_pyusb.html#USBDevice.write_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_pyusb.USBDevice.write_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">write_data</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_pyusb.html#USBDevice.write_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_pyusb.USBDevice.write_data" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Envoyer donnée au service</p>
-<p>Si l&#8217;écriture échoue pour une raison quelconque, une exception <tt class="xref py py-obj docutils literal"><span class="pre">IOError</span></tt> est levée.</p>
+<p>Si l&#8217;écriture échoue pour une raison quelconque, une exception <code class="xref py py-obj docutils literal"><span class="pre">IOError</span></code> est levée.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -175,7 +175,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -197,7 +197,7 @@
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.DataStore.html"
                         title="Chapitre suivant">pywws.DataStore</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -214,7 +214,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -233,9 +233,9 @@
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

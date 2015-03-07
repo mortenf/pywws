@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.device_cython_hidapi &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>pywws.device_cython_hidapi &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.DataStore" href="pywws.DataStore.html" />
     <link rel="prev" title="pywws.device_ctypes_hidapi" href="pywws.device_ctypes_hidapi.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.device_ctypes_hidapi.html" title="pywws.device_ctypes_hidapi"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.device_cython_hidapi">
 <span id="pywws-device-cython-hidapi"></span><h1>pywws.device_cython_hidapi<a class="headerlink" href="#module-pywws.device_cython_hidapi" title="Permalink to this headline">¶</a></h1>
@@ -68,7 +68,7 @@ library</em></a> for details.</p>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>Run <a class="reference internal" href="pywws.TestWeatherStation.html#module-pywws.TestWeatherStation" title="pywws.TestWeatherStation"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.TestWeatherStation</span></tt></a> with increased verbosity so it
+<p>Run <a class="reference internal" href="pywws.TestWeatherStation.html#module-pywws.TestWeatherStation" title="pywws.TestWeatherStation"><code class="xref py py-mod docutils literal"><span class="pre">pywws.TestWeatherStation</span></code></a> with increased verbosity so it
 reports which USB device access module is being used:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.TestWeatherStation -vv
 18:10:27:pywws.WeatherStation.CUSBDrive:using pywws.device_cython_hidapi
@@ -92,14 +92,14 @@ reports which USB device access module is being used:</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.device_cython_hidapi.USBDevice" title="pywws.device_cython_hidapi.USBDevice"><tt class="xref py py-obj docutils literal"><span class="pre">USBDevice</span></tt></a>(idVendor,&nbsp;idProduct)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.device_cython_hidapi.USBDevice" title="pywws.device_cython_hidapi.USBDevice"><code class="xref py py-obj docutils literal"><span class="pre">USBDevice</span></code></a>(idVendor,&nbsp;idProduct)</td>
 <td>Low level USB device access via cython-hidapi library.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="pywws.device_cython_hidapi.USBDevice">
-<em class="property">class </em><tt class="descclassname">pywws.device_cython_hidapi.</tt><tt class="descname">USBDevice</tt><big>(</big><em>idVendor</em>, <em>idProduct</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_cython_hidapi.html#USBDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_cython_hidapi.USBDevice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.device_cython_hidapi.</code><code class="descname">USBDevice</code><span class="sig-paren">(</span><em>idVendor</em>, <em>idProduct</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_cython_hidapi.html#USBDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_cython_hidapi.USBDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Low level USB device access via cython-hidapi library.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -115,9 +115,9 @@ reports which USB device access module is being used:</p>
 </table>
 <dl class="method">
 <dt id="pywws.device_cython_hidapi.USBDevice.read_data">
-<tt class="descname">read_data</tt><big>(</big><em>size</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_cython_hidapi.html#USBDevice.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_cython_hidapi.USBDevice.read_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_data</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_cython_hidapi.html#USBDevice.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_cython_hidapi.USBDevice.read_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Receive data from the device.</p>
-<p>If the read fails for any reason, an <tt class="xref py py-obj docutils literal"><span class="pre">IOError</span></tt> exception
+<p>If the read fails for any reason, an <code class="xref py py-obj docutils literal"><span class="pre">IOError</span></code> exception
 is raised.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -135,7 +135,7 @@ is raised.</p>
 
 <dl class="method">
 <dt id="pywws.device_cython_hidapi.USBDevice.write_data">
-<tt class="descname">write_data</tt><big>(</big><em>buf</em><big>)</big><a class="reference internal" href="../_modules/pywws/device_cython_hidapi.html#USBDevice.write_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_cython_hidapi.USBDevice.write_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_data</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/device_cython_hidapi.html#USBDevice.write_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.device_cython_hidapi.USBDevice.write_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send data to the device.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -163,7 +163,7 @@ is raised.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -184,7 +184,7 @@ is raised.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="pywws.DataStore.html"
                         title="next chapter">pywws.DataStore</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -201,7 +201,7 @@ is raised.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -216,13 +216,13 @@ is raised.</p>
         <li class="right" >
           <a href="pywws.device_ctypes_hidapi.html" title="pywws.device_ctypes_hidapi"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

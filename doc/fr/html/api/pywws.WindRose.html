@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.Template" href="pywws.Template.html" />
     <link rel="prev" title="pywws.Plot" href="pywws.Plot.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.WindRose">
 <span id="pywws-windrose"></span><h1>pywws.WindRose<a class="headerlink" href="#module-pywws.WindRose" title="Lien permanent vers ce titre">¶</a></h1>
@@ -70,7 +70,7 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Cette routine trace une ou plusieurs &#8220;rose des vents&#8221; (voir <cite>Wikipedia &lt;http://en.wikipedia.org/wiki/Wind_rose&gt;</cite> _ pour une description). Comme <a class="reference internal" href="pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Plot</span></tt></a> presque tout est contrôlé par un fichier &#8220;recette&#8221;/gabarit XML.</p>
+<p>Cette routine trace une ou plusieurs &#8220;rose des vents&#8221; (voir <cite>Wikipedia &lt;http://en.wikipedia.org/wiki/Wind_rose&gt;</cite> _ pour une description). Comme <a class="reference internal" href="pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Plot</span></code></a> presque tout est contrôlé par un fichier &#8220;recette&#8221;/gabarit XML.</p>
 <p>Avant d&#8217;écrire vos propres fichiers gabarits, il pourrait être utile de jeter un coup d&#8217;oeil sur quelques exemples dans le répertoire example_graph_templates. Si (comme moi) vous n&#8217;êtes pas familier avec le langage XML, je vous suggère de lire <cite>Le point sur le XML &lt; http://www.siteduzero.com/tutoriel-3-33440-le-point-sur-xml.html/&gt;</cite> _.</p>
 </div>
 <div class="section" id="xml-graph-file-syntax">
@@ -116,27 +116,27 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 </div>
 <div class="section" id="start">
 <h3>start<a class="headerlink" href="#start" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Cet élément règle la date et l&#8217;heure des roses des vents. Il est utilisé dans la construction d&#8217;un objet datetime Python. Par exemple, pour commencer, à midi (heure locale) le jour de Noël 2008: <tt class="docutils literal"><span class="pre">&lt;start&gt;year=2008,</span> <span class="pre">month=12,</span> <span class="pre">day=25,</span> <span class="pre">hour=12&lt;/</span> <span class="pre">start&gt;</span></tt>. La valeur par défaut est (stop - durée).</p>
+<p>Cet élément règle la date et l&#8217;heure des roses des vents. Il est utilisé dans la construction d&#8217;un objet datetime Python. Par exemple, pour commencer, à midi (heure locale) le jour de Noël 2008: <code class="docutils literal"><span class="pre">&lt;start&gt;year=2008,</span> <span class="pre">month=12,</span> <span class="pre">day=25,</span> <span class="pre">hour=12&lt;/</span> <span class="pre">start&gt;</span></code>. La valeur par défaut est (stop - durée).</p>
 </div>
 <div class="section" id="stop">
 <h3>stop<a class="headerlink" href="#stop" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Cet élément règle la date et l&#8217;heure de la fin des roses des vents. Il est utilisé dans la construction d&#8217;un objet datetime Python. Par exemple, pour se terminer à 10 h (heure locale) le jour de l&#8217;an 2009: <tt class="docutils literal"><span class="pre">&lt;stop&gt;year=2009,</span> <span class="pre">month=1,</span> <span class="pre">day=1,</span> <span class="pre">hour=10&lt;/stop&gt;</span></tt>. La valeur par défaut est (départ + durée), à ​​moins que départ ne soit pas défini. Dans ce cas, l&#8217;horodatage de la dernière lecture horaire de la station est utilisée.</p>
+<p>Cet élément règle la date et l&#8217;heure de la fin des roses des vents. Il est utilisé dans la construction d&#8217;un objet datetime Python. Par exemple, pour se terminer à 10 h (heure locale) le jour de l&#8217;an 2009: <code class="docutils literal"><span class="pre">&lt;stop&gt;year=2009,</span> <span class="pre">month=1,</span> <span class="pre">day=1,</span> <span class="pre">hour=10&lt;/stop&gt;</span></code>. La valeur par défaut est (départ + durée), à ​​moins que départ ne soit pas défini. Dans ce cas, l&#8217;horodatage de la dernière lecture horaire de la station est utilisée.</p>
 </div>
 <div class="section" id="duration">
 <h3>duration<a class="headerlink" href="#duration" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Cet élément définit la durée de la rose des vents, à moins que démarrage et arrêt soient définies. Il est utilisé dans la construction d&#8217;un objet Python timedelta. Par exemple, pour tracer une semaine: <tt class="docutils literal"><span class="pre">&lt;duration&gt;</span> <span class="pre">weeks=1&lt;/duration&gt;</span></tt>. La valeur par défaut est hours=24.</p>
+<p>Cet élément définit la durée de la rose des vents, à moins que démarrage et arrêt soient définies. Il est utilisé dans la construction d&#8217;un objet Python timedelta. Par exemple, pour tracer une semaine: <code class="docutils literal"><span class="pre">&lt;duration&gt;</span> <span class="pre">weeks=1&lt;/duration&gt;</span></code>. La valeur par défaut est hours=24.</p>
 </div>
 <div class="section" id="layout">
 <h3>layout<a class="headerlink" href="#layout" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Contrôle la disposition des graphes. Le défaut est une grille qui est plus large que haute. L&#8217;élément de mise en page définit les lignes et les colonnes. Par exemple: <tt class="docutils literal"><span class="pre">&lt;layout&gt;</span> <span class="pre">4,</span> <span class="pre">2</span> <span class="pre">&lt;/</span> <span class="pre">layout&gt;</span></tt> utilisera une grille de 4 lignes et 2 colonnes.</p>
+<p>Contrôle la disposition des graphes. Le défaut est une grille qui est plus large que haute. L&#8217;élément de mise en page définit les lignes et les colonnes. Par exemple: <code class="docutils literal"><span class="pre">&lt;layout&gt;</span> <span class="pre">4,</span> <span class="pre">2</span> <span class="pre">&lt;/</span> <span class="pre">layout&gt;</span></code> utilisera une grille de 4 lignes et 2 colonnes.</p>
 </div>
 <div class="section" id="size">
 <h3>size<a class="headerlink" href="#size" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit les dimensions globales du fichier image contenant le graphe. Par défaut elle est d&#8217;une hauteur de 600 pixels et une largeur qui dépend de la disposition. Tout élément de taille doit inclure à la fois la largeur et la hauteur. Par exemple: <tt class="docutils literal"><span class="pre">&lt;size&gt;800,</span> <span class="pre">600&lt;/size&gt;</span></tt> produira une image 800 pixels de large et 600 pixels de haut.</p>
+<p>Définit les dimensions globales du fichier image contenant le graphe. Par défaut elle est d&#8217;une hauteur de 600 pixels et une largeur qui dépend de la disposition. Tout élément de taille doit inclure à la fois la largeur et la hauteur. Par exemple: <code class="docutils literal"><span class="pre">&lt;size&gt;800,</span> <span class="pre">600&lt;/size&gt;</span></code> produira une image 800 pixels de large et 600 pixels de haut.</p>
 </div>
 <div class="section" id="fileformat">
 <h3>fileformat<a class="headerlink" href="#fileformat" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit le format d&#8217;image du fichier contenant les graphes. Par défaut png. Toute chaîne reconnue par votre installation de gnuplot peut convenir. Par exemple: <tt class="docutils literal"><span class="pre">&lt;fileformat&gt;gif&lt;/fileformat&gt;</span></tt> va produire une image GIF.</p>
+<p>Définit le format d&#8217;image du fichier contenant les graphes. Par défaut png. Toute chaîne reconnue par votre installation de gnuplot peut convenir. Par exemple: <code class="docutils literal"><span class="pre">&lt;fileformat&gt;gif&lt;/fileformat&gt;</span></code> va produire une image GIF.</p>
 </div>
 <div class="section" id="lmargin-rmargin-tmargin-bmargin">
 <h3>lmargin, rmargin, tmargin, bmargin<a class="headerlink" href="#lmargin-rmargin-tmargin-bmargin" title="Lien permanent vers ce titre">¶</a></h3>
@@ -144,19 +144,19 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 </div>
 <div class="section" id="title">
 <h3>title<a class="headerlink" href="#title" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit le titre principal des graphes. Une seule ligne de texte, par exemple: <tt class="docutils literal"><span class="pre">&lt;title&gt;La</span> <span class="pre">météo</span> <span class="pre">du</span> <span class="pre">jour&lt;/title&gt;</span></tt>. Ce titre apparaît tout en haut, en dehors de toute zone de graphe.</p>
+<p>Définit le titre principal des graphes. Une seule ligne de texte, par exemple: <code class="docutils literal"><span class="pre">&lt;title&gt;La</span> <span class="pre">météo</span> <span class="pre">du</span> <span class="pre">jour&lt;/title&gt;</span></code>. Ce titre apparaît tout en haut, en dehors de toute zone de graphe.</p>
 </div>
 <div class="section" id="xcalc">
 <h3>xcalc<a class="headerlink" href="#xcalc" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Sélectionne si les données sont incluses dans la rose des vents. La valeur doit être une expression logique Python valide. Par exemple, pour tracer une rose des vents pour l&#8217;après-midi seulement: <tt class="docutils literal"><span class="pre">&lt;xcalc&gt;data</span> <span class="pre">['idx'].hour&amp;gt;=</span> <span class="pre">12&lt;/xcalc&gt;</span></tt>. Cela permet l&#8217;agrégation des données de vent l&#8217;après-midi pendant plusieurs jours. Rappelez-vous que les données sont indexées en UTC, vous devez donc utiliser une expression qui tient compte de votre fuseau horaire. La valeur par défaut est &#8220;True&#8221;.</p>
+<p>Sélectionne si les données sont incluses dans la rose des vents. La valeur doit être une expression logique Python valide. Par exemple, pour tracer une rose des vents pour l&#8217;après-midi seulement: <code class="docutils literal"><span class="pre">&lt;xcalc&gt;data</span> <span class="pre">['idx'].hour&amp;gt;=</span> <span class="pre">12&lt;/xcalc&gt;</span></code>. Cela permet l&#8217;agrégation des données de vent l&#8217;après-midi pendant plusieurs jours. Rappelez-vous que les données sont indexées en UTC, vous devez donc utiliser une expression qui tient compte de votre fuseau horaire. La valeur par défaut est &#8220;True&#8221;.</p>
 </div>
 <div class="section" id="ycalc">
 <h3>ycalc<a class="headerlink" href="#ycalc" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Sélectionne les données à tracer. Toute expression Python sur une ligne qui retourne une valeur flottante simple peut être utilisée. Dans sa plus simple utilisation cela sélectionne une seule valeur du dictionnaire de &#8220;données&#8221;, par exemple: <tt class="docutils literal"><span class="pre">&lt;ycalc&gt;data['wind_ave']&lt;/ycalc&gt;</span></tt>. Pour convertir en mph, utiliser: <tt class="docutils literal"><span class="pre">&lt;ycalc&gt;data['wind_ave']</span> <span class="pre">*</span> <span class="pre">3.6</span> <span class="pre">/</span> <span class="pre">1.609344&lt;/ycalc&gt;</span></tt>. Il est très peu probable de vouloir utiliser pour autre chose que &#8216;wind_ave&#8217; ici.</p>
+<p>Sélectionne les données à tracer. Toute expression Python sur une ligne qui retourne une valeur flottante simple peut être utilisée. Dans sa plus simple utilisation cela sélectionne une seule valeur du dictionnaire de &#8220;données&#8221;, par exemple: <code class="docutils literal"><span class="pre">&lt;ycalc&gt;data['wind_ave']&lt;/ycalc&gt;</span></code>. Pour convertir en mph, utiliser: <code class="docutils literal"><span class="pre">&lt;ycalc&gt;data['wind_ave']</span> <span class="pre">*</span> <span class="pre">3.6</span> <span class="pre">/</span> <span class="pre">1.609344&lt;/ycalc&gt;</span></code>. Il est très peu probable de vouloir utiliser pour autre chose que &#8216;wind_ave&#8217; ici.</p>
 </div>
 <div class="section" id="threshold">
 <h3>threshold<a class="headerlink" href="#threshold" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit les seuils pour chaque couleur sur les pétales de rose. Par défaut sont basées sur l&#8217;exemple Wikipedia. Les valeurs doivent être une liste correctement ordonnée de nombres réels, par exemple: <tt class="docutils literal"><span class="pre">&lt;threshold&gt;0.5,</span> <span class="pre">3.5,</span> <span class="pre">7.5,</span> <span class="pre">12.5,</span> <span class="pre">18.5,</span> <span class="pre">24.5,</span> <span class="pre">31.5&lt;/threshold&gt;</span></tt> se rapproche de l&#8217;échelle de Beaufort, si ycalc a été défini pour convertir les vitesses de vent en mph.</p>
+<p>Définit les seuils pour chaque couleur sur les pétales de rose. Par défaut sont basées sur l&#8217;exemple Wikipedia. Les valeurs doivent être une liste correctement ordonnée de nombres réels, par exemple: <code class="docutils literal"><span class="pre">&lt;threshold&gt;0.5,</span> <span class="pre">3.5,</span> <span class="pre">7.5,</span> <span class="pre">12.5,</span> <span class="pre">18.5,</span> <span class="pre">24.5,</span> <span class="pre">31.5&lt;/threshold&gt;</span></code> se rapproche de l&#8217;échelle de Beaufort, si ycalc a été défini pour convertir les vitesses de vent en mph.</p>
 </div>
 <div class="section" id="colour">
 <h3>colour<a class="headerlink" href="#colour" title="Lien permanent vers ce titre">¶</a></h3>
@@ -164,19 +164,19 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 </div>
 <div class="section" id="yrange">
 <h3>yrange<a class="headerlink" href="#yrange" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit les limites supérieures des axes. La rose indique le pourcentage du temps où le vent est venu d&#8217;une direction particulière. Par exemple, si vous vivez dans un endroit avec un vent très régulier vous voudrez peut-être permettre à des pourcentages plus élevés que la normale: <tt class="docutils literal"><span class="pre">&lt;yrange&gt;</span> <span class="pre">91&lt;/</span> <span class="pre">yrange&gt;</span></tt> . Auto-mise à l&#8217;échelle est également possible, à l&#8217;aide d&#8217;un astérisque:<tt class="docutils literal"><span class="pre">&lt;yrange&gt;</span> <span class="pre">*&lt;/</span> <span class="pre">yrange&gt;</span></tt></p>
+<p>Définit les limites supérieures des axes. La rose indique le pourcentage du temps où le vent est venu d&#8217;une direction particulière. Par exemple, si vous vivez dans un endroit avec un vent très régulier vous voudrez peut-être permettre à des pourcentages plus élevés que la normale: <code class="docutils literal"><span class="pre">&lt;yrange&gt;</span> <span class="pre">91&lt;/</span> <span class="pre">yrange&gt;</span></code> . Auto-mise à l&#8217;échelle est également possible, à l&#8217;aide d&#8217;un astérisque:<code class="docutils literal"><span class="pre">&lt;yrange&gt;</span> <span class="pre">*&lt;/</span> <span class="pre">yrange&gt;</span></code></p>
 </div>
 <div class="section" id="points">
 <h3>points<a class="headerlink" href="#points" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit le texte des points cardinaux. Les valeurs par défaut sont &#8216;N&#8217;, &#8216;S&#8217;, &#8216;E&#8217; et &#8216;W&#8217;. Pour les graphiques dans une autre langue, vous pouvez les remplacer, par exemple par ceci: <tt class="docutils literal"><span class="pre">&lt;points&gt;'No',</span> <span class="pre">'Zu',</span> <span class="pre">'Oo',</span> <span class="pre">'We'&lt;/points&gt;</span></tt>. (La meilleure façon de le faire est de créer un fichier de langue, voir Localisation.py.)</p>
+<p>Définit le texte des points cardinaux. Les valeurs par défaut sont &#8216;N&#8217;, &#8216;S&#8217;, &#8216;E&#8217; et &#8216;W&#8217;. Pour les graphiques dans une autre langue, vous pouvez les remplacer, par exemple par ceci: <code class="docutils literal"><span class="pre">&lt;points&gt;'No',</span> <span class="pre">'Zu',</span> <span class="pre">'Oo',</span> <span class="pre">'We'&lt;/points&gt;</span></code>. (La meilleure façon de le faire est de créer un fichier de langue, voir Localisation.py.)</p>
 </div>
 <div class="section" id="source">
 <h3>source<a class="headerlink" href="#source" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Sélectionne les données météorologiques à tracer. Les valeurs autorisées sont <tt class="docutils literal"><span class="pre">&lt;source&gt;raw&lt;/source&gt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;source&gt;</span> <span class="pre">hourly&lt;/</span> <span class="pre">source&gt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;source&gt;daily&lt;/source&gt;</span></tt> et <tt class="docutils literal"><span class="pre">&lt;source&gt;monthly&lt;/source&gt;</span></tt>. LA valeur par défaut est raw. Notez que les sources différentes ont des dictionnaires de données différents, donc ce choix affecte ycalc.</p>
+<p>Sélectionne les données météorologiques à tracer. Les valeurs autorisées sont <code class="docutils literal"><span class="pre">&lt;source&gt;raw&lt;/source&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;source&gt;</span> <span class="pre">hourly&lt;/</span> <span class="pre">source&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;source&gt;daily&lt;/source&gt;</span></code> et <code class="docutils literal"><span class="pre">&lt;source&gt;monthly&lt;/source&gt;</span></code>. LA valeur par défaut est raw. Notez que les sources différentes ont des dictionnaires de données différents, donc ce choix affecte ycalc.</p>
 </div>
 <div class="section" id="id1">
 <h3>title<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Définit le titre du graphe. Une seule ligne de texte, par exemple: <tt class="docutils literal"><span class="pre">&lt;title&gt;Vents</span> <span class="pre">du</span> <span class="pre">matin&lt;/title&gt;</span></tt>. Ce titre apparaît dans la zone de traçage, au-dessus de la légende des couleurs.</p>
+<p>Définit le titre du graphe. Une seule ligne de texte, par exemple: <code class="docutils literal"><span class="pre">&lt;title&gt;Vents</span> <span class="pre">du</span> <span class="pre">matin&lt;/title&gt;</span></code>. Ce titre apparaît dans la zone de traçage, au-dessus de la légende des couleurs.</p>
 </div>
 </div>
 <div class="section" id="detailed-api">
@@ -188,74 +188,74 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><p class="first last"><tt class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></tt>(temp,&nbsp;hr,&nbsp;vent)</p>
+<tr class="row-odd"><td><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">apparent_temp</span></code>(temp,&nbsp;hr,&nbsp;vent)</p>
 </td>
 <td><p class="first last">Calcule la température apparente (sensation réelle), en utilisant la formule de</p>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="xref py py-obj docutils literal"><span class="pre">cadhumidex</span></tt>(temp,&nbsp;humidité)</p>
+<tr class="row-even"><td><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">cadhumidex</span></code>(temp,&nbsp;humidité)</p>
 </td>
 <td><p class="first last">Calcule l&#8217;Indice d&#8217;Humidité selon les Normes Météo Canadiennes</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">dew_point</span></tt>(temp,&nbsp;hum)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dew_point</span></code>(temp,&nbsp;hum)</td>
 <td><p class="first last">Calcule le point de rosée, en utilisant la formule provenant de <a class="reference external" href="http://en.wikipedia.org/wiki/Dew_point">http://en.wikipedia.org/wiki/Dew_point</a>.</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></tt>(lux)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">illuminance_wm2</span></code>(lux)</td>
 <td><p class="first last">Conversion approximative de la luminosité en lux, au rayonnement solaire en W/m2</p>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.WindRose.main" title="pywws.WindRose.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.WindRose.main" title="pywws.WindRose.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_inhg</span></tt>(hPa)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">pressure_inhg</span></code>(hPa)</td>
 <td><p class="first last">Converti la pression de hectopascals/millibars, à pouces de mercure</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></tt>(trend)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pressure_trend_text</span></code>(trend)</td>
 <td><p class="first last">Converti la tendance de la pression en une chaîne, telle qu&#8217;utilisée par le UK Met Office.</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></tt>(mm)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">rain_inch</span></code>(mm)</td>
 <td><p class="first last">Converti les précipitations de millimètres, à pouces</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">temp_f</span></tt>(c)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">temp_f</span></code>(c)</td>
 <td><p class="first last">Converti la température de Celsius, à Fahrenheit</p>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="xref py py-obj docutils literal"><span class="pre">usaheatindex</span></tt>(temp,&nbsp;humidité,&nbsp;point&nbsp;de&nbsp;rosée)</p>
+<tr class="row-even"><td><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">usaheatindex</span></code>(temp,&nbsp;humidité,&nbsp;point&nbsp;de&nbsp;rosée)</p>
 </td>
 <td><p class="first last">Calcule l&#8217;Indice de Chaleur selon les normes du Service Météorologique National USA</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_bft</span></tt>(ms)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_bft</span></code>(ms)</td>
 <td><p class="first last">Converti la vitesse du vent de mètres par seconde, vers l&#8217;échelle Beaufort</p>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="xref py py-obj docutils literal"><span class="pre">wind_chill</span></tt>(temp,&nbsp;vent)</p>
+<tr class="row-even"><td><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">wind_chill</span></code>(temp,&nbsp;vent)</p>
 </td>
 <td><p class="first last">Calcule le refroidissement éolien, en utilisant la formule de</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_kmph</span></tt>(ms)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_kmph</span></code>(ms)</td>
 <td><p class="first last">Converti la vitesse du vent de mètres par seconde, à kilomètres par heure</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_kn</span></tt>(ms)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_kn</span></code>(ms)</td>
 <td><p class="first last">Converti la vitesse du vent de mètres par seconde, à noeuds</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">wind_mph</span></tt>(ms)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wind_mph</span></code>(ms)</td>
 <td><p class="first last">Converti la vitesse du vent de mètres par seconde, en miles par heure</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">winddir_degrees</span></tt>(pts)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">winddir_degrees</span></code>(pts)</td>
 <td><p class="first last">Converti la direction du vent de 0..15 en degrés</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">winddir_text</span></tt>(pts)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">winddir_text</span></code>(pts)</td>
 <td><p class="first last">Converti la direction du vent de 0..15, en points cardinaux</p>
 </td>
 </tr>
@@ -268,17 +268,16 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">BasePlotter</span></tt>(params,&nbsp;status,&nbsp;raw_data,&nbsp;...)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">BasePlotter</span></code>(params,&nbsp;status,&nbsp;raw_data,&nbsp;...)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.WindRose.RosePlotter" title="pywws.WindRose.RosePlotter"><tt class="xref py py-obj docutils literal"><span class="pre">RosePlotter</span></tt></a>(params,&nbsp;status,&nbsp;raw_data,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.WindRose.RosePlotter" title="pywws.WindRose.RosePlotter"><code class="xref py py-obj docutils literal"><span class="pre">RosePlotter</span></code></a>(params,&nbsp;status,&nbsp;raw_data,&nbsp;...)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
-</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Différence entre deux valeurs de datetime.</p>
 </td>
 </tr>
@@ -286,37 +285,37 @@ output_file is the name of the image file to be created e.g. 24hrs.png
 </table>
 <dl class="class">
 <dt id="pywws.WindRose.RosePlotter">
-<em class="property">class </em><tt class="descclassname">pywws.WindRose.</tt><tt class="descname">RosePlotter</tt><big>(</big><em>params</em>, <em>status</em>, <em>raw_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>work_dir</em><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.WindRose.</code><code class="descname">RosePlotter</code><span class="sig-paren">(</span><em>params</em>, <em>status</em>, <em>raw_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>work_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter" title="Permalien vers cette définition">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.WindRose.RosePlotter.GetPlotList">
-<tt class="descname">GetPlotList</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetPlotList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetPlotList" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">GetPlotList</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetPlotList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetPlotList" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.WindRose.RosePlotter.GetDefaultRows">
-<tt class="descname">GetDefaultRows</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetDefaultRows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetDefaultRows" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">GetDefaultRows</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetDefaultRows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetDefaultRows" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.WindRose.RosePlotter.GetDefaultPlotSize">
-<tt class="descname">GetDefaultPlotSize</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetDefaultPlotSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetDefaultPlotSize" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">GetDefaultPlotSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetDefaultPlotSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetDefaultPlotSize" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.WindRose.RosePlotter.GetPreamble">
-<tt class="descname">GetPreamble</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetPreamble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetPreamble" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">GetPreamble</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.GetPreamble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.GetPreamble" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.WindRose.RosePlotter.PlotData">
-<tt class="descname">PlotData</tt><big>(</big><em>plot_no</em>, <em>plot</em>, <em>source</em><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.PlotData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.PlotData" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">PlotData</code><span class="sig-paren">(</span><em>plot_no</em>, <em>plot</em>, <em>source</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#RosePlotter.PlotData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.RosePlotter.PlotData" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pywws.WindRose.main">
-<tt class="descclassname">pywws.WindRose.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/WindRose.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.main" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.WindRose.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/WindRose.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.WindRose.main" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -326,7 +325,7 @@ output_file is the name of the image file to be created e.g. 24hrs.png
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -367,7 +366,7 @@ output_file is the name of the image file to be created e.g. 24hrs.png
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.Template.html"
                         title="Chapitre suivant">pywws.Template</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -384,7 +383,7 @@ output_file is the name of the image file to be created e.g. 24hrs.png
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -403,9 +402,9 @@ output_file is the name of the image file to be created e.g. 24hrs.png
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

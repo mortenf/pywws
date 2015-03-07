@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to get started with pywws &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>How to get started with pywws &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to set up ‘hourly’ logging with pywws" href="hourlylogging.html" />
     <link rel="prev" title="User guides" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="index.html" title="User guides"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-get-started-with-pywws">
 <h1>How to get started with pywws<a class="headerlink" href="#how-to-get-started-with-pywws" title="Permalink to this headline">¶</a></h1>
@@ -92,7 +92,7 @@ tar zxvf pywws-14.03.dev1178.tar.gz
 unzip pywws-14.03.dev1178.zip
 </pre></div>
 </div>
-<p>This should create a directory (called <tt class="docutils literal"><span class="pre">pywws-14.03.dev1178</span></tt> in this example) containing all the pywws source files.
+<p>This should create a directory (called <code class="docutils literal"><span class="pre">pywws-14.03.dev1178</span></code> in this example) containing all the pywws source files.
 It is convenient to create a soft link to this awkwardly named directory:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd ~/weather
 ln -s pywws-14.03.dev1178 pywws
@@ -125,7 +125,7 @@ python setup.py build
 sudo python setup.py develop
 </pre></div>
 </div>
-<p>Note to Python 3 users: this will generate and use Python 3 versions of the pywws software in <tt class="docutils literal"><span class="pre">~/weather/pywws/build/lib</span></tt>.</p>
+<p>Note to Python 3 users: this will generate and use Python 3 versions of the pywws software in <code class="docutils literal"><span class="pre">~/weather/pywws/build/lib</span></code>.</p>
 </div>
 </div>
 <div class="section" id="compile-documentation-optional">
@@ -143,13 +143,13 @@ sphinx-intl build --locale-dir src/pywws/lang -l fr
 LANG=fr python setup.py build_sphinx
 </pre></div>
 </div>
-<p>The compiled documentation should then be found at <tt class="docutils literal"><span class="pre">~/weather/pywws/doc/fr/html/index.html</span></tt>.
+<p>The compiled documentation should then be found at <code class="docutils literal"><span class="pre">~/weather/pywws/doc/fr/html/index.html</span></code>.
 See <a class="reference internal" href="language.html"><em>How to use pywws in another language</em></a> for more detail.</p>
 </div>
 <div class="section" id="test-the-weather-station-connection">
 <span id="test-weather-station"></span><h2>Test the weather station connection<a class="headerlink" href="#test-the-weather-station-connection" title="Permalink to this headline">¶</a></h2>
 <p>Now you&#8217;re ready to test your pywws installation.
-Connect the weather station (if not already connected) then run the <a class="reference internal" href="../api/pywws.TestWeatherStation.html#module-pywws.TestWeatherStation" title="pywws.TestWeatherStation"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.TestWeatherStation</span></tt></a> module:</p>
+Connect the weather station (if not already connected) then run the <a class="reference internal" href="../api/pywws.TestWeatherStation.html#module-pywws.TestWeatherStation" title="pywws.TestWeatherStation"><code class="xref py py-mod docutils literal"><span class="pre">pywws.TestWeatherStation</span></code></a> module:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">pywws</span><span class="o">-</span><span class="n">testweatherstation</span>
 </pre></div>
 </div>
@@ -170,8 +170,16 @@ This can be tested by running the command as root:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo pywws-testweatherstation
 </pre></div>
 </div>
-<p>If this works then you may be able to allow your normal user account to access the weather station by setting up a &#8216;udev&#8217; rule.
-See the compatibility wiki page <a class="reference external" href="http://code.google.com/p/pywws/wiki/Compatibility">http://code.google.com/p/pywws/wiki/Compatibility</a> for more details.</p>
+<p>If this works then you may be able to allow your normal user account to access the weather station by setting up a <a class="reference external" href="http://en.wikipedia.org/wiki/Udev">&#8216;udev&#8217;</a> rule.
+The exact method may depend on your Linux version, but this is typically done by creating a file <code class="docutils literal"><span class="pre">/etc/udev/rules.d/39-weather-station.rules</span></code> containing the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>ACTION!=&quot;add|change&quot;, GOTO=&quot;weatherstation_end&quot;
+SUBSYSTEM==&quot;usb&quot;, ATTRS{idVendor}==&quot;1941&quot;, ATTRS{idProduct}==&quot;8021&quot;, GROUP=&quot;weatherstation&quot;
+LABEL=&quot;weatherstation_end&quot;
+</pre></div>
+</div>
+<p>Unplug and replug the station&#8217;s USB connection to force <code class="docutils literal"><span class="pre">udev</span></code> to apply the new rule.
+This allows any user in the group <code class="docutils literal"><span class="pre">weatherstation</span></code> to access the weather station.
+You need to create this group and add your normal user account to it &#8211; many Linux systems have a GUI for user and group management.</p>
 <p>If you have any other problem, please ask for help on the pywws mailing list: <a class="reference external" href="http://groups.google.com/group/pywws">http://groups.google.com/group/pywws</a></p>
 </div>
 <div class="section" id="set-up-your-weather-station">
@@ -188,7 +196,7 @@ This is best done during calm weather when the pressure is almost constant over 
 This enables the station to store about 11 weeks of data.
 Most pywws users set up their computers to read data from the station every hour, or more often, and only need the station to store enough data to cover computer failures.
 The recommended interval is 5 minutes, which still allows 2 weeks of storage.
-Use <a class="reference internal" href="../api/pywws.SetWeatherStation.html#module-pywws.SetWeatherStation" title="pywws.SetWeatherStation"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.SetWeatherStation</span></tt></a> to set the interval:</p>
+Use <a class="reference internal" href="../api/pywws.SetWeatherStation.html#module-pywws.SetWeatherStation" title="pywws.SetWeatherStation"><code class="xref py py-mod docutils literal"><span class="pre">pywws.SetWeatherStation</span></code></a> to set the interval:</p>
 <div class="highlight-python"><div class="highlight"><pre>pywws-setweatherstation -r 5
 </pre></div>
 </div>
@@ -204,17 +212,17 @@ In most cases your home directory is suitable, for example:</p>
 <p>This directory is referred to elsewhere in the pywws documentation as your data directory.</p>
 <p>Make sure your computer has the right date &amp; time, and time zone, as these are used to label the weather station data.
 If you haven&#8217;t already done so, it&#8217;s worth setting up NTP to synchronise your computer to a &#8216;time server&#8217;.</p>
-<p>The first time you run <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></tt></a> it will create a configuration file in your data directory called &#8216;weather.ini&#8217; and then stop.
-You need to edit the configuration file and change the line <tt class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">Unknown</span></tt> to <tt class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">1080</span></tt> or <tt class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">3080</span></tt>.
+<p>The first time you run <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></code></a> it will create a configuration file in your data directory called &#8216;weather.ini&#8217; and then stop.
+You need to edit the configuration file and change the line <code class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">Unknown</span></code> to <code class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">1080</span></code> or <code class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">3080</span></code>.
 (If your weather station console displays solar illuminance you have a 3080 type, all others are 1080.)
-Then run <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></tt></a> again.
+Then run <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></code></a> again.
 This may take several minutes, as it will copy all the data stored in your station&#8217;s memory.
-The <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></tt></a> program has a &#8216;verbose&#8217; option that increases the amount of messages it displays while running.
+The <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></code></a> program has a &#8216;verbose&#8217; option that increases the amount of messages it displays while running.
 This is useful when running it manually, for example:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.LogData -vvv ~/weather/data
 </pre></div>
 </div>
-<p>(Replace <tt class="docutils literal"><span class="pre">~/weather/data</span></tt> with your data directory, if it&#8217;s different.)</p>
+<p>(Replace <code class="docutils literal"><span class="pre">~/weather/data</span></code> with your data directory, if it&#8217;s different.)</p>
 <p>You should now have some data files you can look at.
 For example:</p>
 <div class="highlight-python"><div class="highlight"><pre>more ~/weather/data/raw/2012/2012-12/2012-12-16.txt
@@ -232,7 +240,7 @@ Find your EasyWeather.dat file and then convert it:</p>
 </div>
 <div class="section" id="set-some-configuration-options">
 <h2>Set some configuration options<a class="headerlink" href="#set-some-configuration-options" title="Permalink to this headline">¶</a></h2>
-<p>After running <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></tt></a> there should be a configuration file in your data directory called &#8216;weather.ini&#8217;.
+<p>After running <a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></code></a> there should be a configuration file in your data directory called &#8216;weather.ini&#8217;.
 Open this with a text editor. You should find something like the following:</p>
 <div class="highlight-python"><div class="highlight"><pre>[config]
 ws type = 1080
@@ -240,7 +248,7 @@ logdata sync = 1
 pressure offset = 9.4
 </pre></div>
 </div>
-<p>You need to add a new entry in the <tt class="docutils literal"><span class="pre">[config]</span></tt> section called <tt class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></tt>.
+<p>You need to add a new entry in the <code class="docutils literal"><span class="pre">[config]</span></code> section called <code class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></code>.
 This tells pywws what convention you want to use when calculating daily summary data.
 In the UK, the &#8216;meteorological day&#8217; is usually from 09:00 to 09:00 GMT (10:00 to 10:00 BST during summer), so I use a day end hour value of 9.
 In other countries a value of 24 (or 0) might be more suitable.
@@ -254,19 +262,19 @@ pressure offset = 9.4
 day end hour = 9
 </pre></div>
 </div>
-<p>You can also edit the <tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> value to adjust how pywws calculates the relative (sea level) air pressure from the absolute value that the station measures.
-If you change the pressure offset or day end hour in future, you must update all your stored data by running <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a>.</p>
+<p>You can also edit the <code class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></code> value to adjust how pywws calculates the relative (sea level) air pressure from the absolute value that the station measures.
+If you change the pressure offset or day end hour in future, you must update all your stored data by running <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></code></a>.</p>
 <p>For more detail on the configuration file options, see <a class="reference internal" href="weather_ini.html"><em>weather.ini - configuration file format</em></a>.</p>
 <div class="versionchanged">
-<p><span class="versionmodified">Changed in version 13.10_r1082: </span>made <tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> a config item.
+<p><span class="versionmodified">Changed in version 13.10_r1082: </span>made <code class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></code> a config item.
 Previously it was always read from the weather station.</p>
 </div>
 </div>
 <div class="section" id="process-the-raw-data">
 <h2>Process the raw data<a class="headerlink" href="#process-the-raw-data" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></tt></a> just copies the raw data from the weather station.
+<p><a class="reference internal" href="../api/pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></code></a> just copies the raw data from the weather station.
 To do something useful with that data you probably need hourly, daily and monthly summaries.
-These are created by <a class="reference internal" href="../api/pywws.Process.html#module-pywws.Process" title="pywws.Process"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Process</span></tt></a>. For example:</p>
+These are created by <a class="reference internal" href="../api/pywws.Process.html#module-pywws.Process" title="pywws.Process"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Process</span></code></a>. For example:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.Process ~/weather/data
 </pre></div>
 </div>
@@ -274,8 +282,8 @@ These are created by <a class="reference internal" href="../api/pywws.Process.ht
 <div class="highlight-python"><div class="highlight"><pre>more ~/weather/data/daily/2012/2012-12-16.txt
 </pre></div>
 </div>
-<p>If you ever change your <tt class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></tt> configuration setting, you will need to reprocess all your weather data.
-You can do this by running <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a>:</p>
+<p>If you ever change your <code class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></code> configuration setting, you will need to reprocess all your weather data.
+You can do this by running <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.Reprocess ~/weather/data
 </pre></div>
 </div>
@@ -295,7 +303,7 @@ The <a class="reference internal" href="index.html"><em>User guides</em></a> sec
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -329,7 +337,7 @@ The <a class="reference internal" href="index.html"><em>User guides</em></a> sec
   <h4>Next topic</h4>
   <p class="topless"><a href="hourlylogging.html"
                         title="next chapter">How to set up &#8216;hourly&#8217; logging with pywws</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -346,7 +354,7 @@ The <a class="reference internal" href="index.html"><em>User guides</em></a> sec
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -361,13 +369,13 @@ The <a class="reference internal" href="index.html"><em>User guides</em></a> sec
         <li class="right" >
           <a href="index.html" title="User guides"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

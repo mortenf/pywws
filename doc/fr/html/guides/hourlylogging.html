@@ -30,8 +30,8 @@
     <link rel="next" title="Comment configurer le mode ‘live’ avec pywws" href="livelogging.html" />
     <link rel="prev" title="Comment démarrer avec pywws" href="getstarted.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,19 +54,19 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-set-up-hourly-logging-with-pywws">
 <h1>Comment configurer la journalisation horaire avec pywws<a class="headerlink" href="#how-to-set-up-hourly-logging-with-pywws" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Pywws offre deux modes de fonctionnement très différents. Habituellement le programme <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> devrait être exécuté à intervale régulier (habituellement chaque heure) à partir d&#8217;une tâche programmée (Cron). Ceci convient aux sites Web plutôt statiques, mais des mises à jour plus fréquentes peuvent être utiles pour des sites comme Weather Underground (<a class="reference external" href="http://www.wunderground.com/">http://www.wunderground.com/</a>). Le plus récent programme <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></tt></a> s&#8217;exécute continuellement et peut envoyer des données à chaque 48 secondes.</p>
-<p>Notez: bien que ce document (et le nom du programme) réfère à la journalisation horaire (hourly), vous pouvez exécuter le programme  <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> aussi souvent ou peu fréquemment que vous le souhaitez, mais n&#8217;essayez pas de l&#8217;exécuter plus souvent que le double de la fréquence d&#8217;historique. Par exemple, si votre intervalle d&#8217;historique est de 10 minutes, n&#8217;exécutez pas  <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> plus fréquemment qu&#8217;aux 20 minutes.</p>
+<p>Pywws offre deux modes de fonctionnement très différents. Habituellement le programme <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> devrait être exécuté à intervale régulier (habituellement chaque heure) à partir d&#8217;une tâche programmée (Cron). Ceci convient aux sites Web plutôt statiques, mais des mises à jour plus fréquentes peuvent être utiles pour des sites comme Weather Underground (<a class="reference external" href="http://www.wunderground.com/">http://www.wunderground.com/</a>). Le plus récent programme <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><code class="xref py py-mod docutils literal"><span class="pre">LiveLog</span></code></a> s&#8217;exécute continuellement et peut envoyer des données à chaque 48 secondes.</p>
+<p>Notez: bien que ce document (et le nom du programme) réfère à la journalisation horaire (hourly), vous pouvez exécuter le programme  <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> aussi souvent ou peu fréquemment que vous le souhaitez, mais n&#8217;essayez pas de l&#8217;exécuter plus souvent que le double de la fréquence d&#8217;historique. Par exemple, si votre intervalle d&#8217;historique est de 10 minutes, n&#8217;exécutez pas  <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> plus fréquemment qu&#8217;aux 20 minutes.</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Mise en route<a class="headerlink" href="#getting-started" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Avant tout, vous devez installer pywws et vous assurer qu&#8217;il reçoit bien les informations de votre station météo. Voir <a class="reference internal" href="getstarted.html"><em>Comment démarrer avec pywws</em></a> pour plus de détails.</p>
-<p>Essayez d&#8217;exécuter  <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> à partir de la ligne de commande, avec un haut niveau de commentaires pour que vous puissiez voir ce qui se passe:</p>
+<p>Essayez d&#8217;exécuter  <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> à partir de la ligne de commande, avec un haut niveau de commentaires pour que vous puissiez voir ce qui se passe:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.Hourly -vvv ~/weather/data
 </pre></div>
 </div>
@@ -74,19 +74,19 @@
 </div>
 <div class="section" id="configuring-file-locations">
 <h2>Configurer l&#8217;emplacement des fichiers<a class="headerlink" href="#configuring-file-locations" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Ouvrez votre fichier weather.ini avec un éditeur de texte. Vous devriez avoir une section <tt class="docutils literal"><span class="pre">[paths]</span></tt> similaire à ce qui suit (où <tt class="docutils literal"><span class="pre">xxx</span></tt> est votre nom d&#8217;usager):</p>
+<p>Ouvrez votre fichier weather.ini avec un éditeur de texte. Vous devriez avoir une section <code class="docutils literal"><span class="pre">[paths]</span></code> similaire à ce qui suit (où <code class="docutils literal"><span class="pre">xxx</span></code> est votre nom d&#8217;usager):</p>
 <div class="highlight-python"><div class="highlight"><pre>[paths]
 work = /tmp/weather
 templates = /home/xxx/weather/templates/
 graph_templates = /home/xxx/weather/graph_templates/
 </pre></div>
 </div>
-<p>Éditez pour correspondre à votre installation et à vos préférences. <tt class="docutils literal"><span class="pre">work</span></tt> est un dossier temporaire utilisé pour emmagasiner les fichiers intermédiaires, <tt class="docutils literal"><span class="pre">templates</span></tt> est le dossier où vous gardez vos fichiers de gabarit texte et <tt class="docutils literal"><span class="pre">graph_templates</span></tt> est le dossier où vous gardez vos fichiers de gabarit graphes. Ne pas utiliser les dossiers exemple de pywws pour celà, puisqu&#8217;ils seront écrasés lors de mise à jour de pywws.</p>
-<p>Copiez vos fichiers de gabarits texte et graphes dans les dossiers appropriés. Vous pouvez trouver les quelques exemples fournis avec pywws fort utiles pour débuter.  Si vous avez installé pywws avec la commande <tt class="docutils literal"><span class="pre">pip</span></tt>, les exemples devrait se trouver dans le dossier <tt class="docutils literal"><span class="pre">/usr/share/pywws</span></tt> ou <tt class="docutils literal"><span class="pre">/usr/local/share/pywws</span></tt> ou similaire.</p>
+<p>Éditez pour correspondre à votre installation et à vos préférences. <code class="docutils literal"><span class="pre">work</span></code> est un dossier temporaire utilisé pour emmagasiner les fichiers intermédiaires, <code class="docutils literal"><span class="pre">templates</span></code> est le dossier où vous gardez vos fichiers de gabarit texte et <code class="docutils literal"><span class="pre">graph_templates</span></code> est le dossier où vous gardez vos fichiers de gabarit graphes. Ne pas utiliser les dossiers exemple de pywws pour celà, puisqu&#8217;ils seront écrasés lors de mise à jour de pywws.</p>
+<p>Copiez vos fichiers de gabarits texte et graphes dans les dossiers appropriés. Vous pouvez trouver les quelques exemples fournis avec pywws fort utiles pour débuter.  Si vous avez installé pywws avec la commande <code class="docutils literal"><span class="pre">pip</span></code>, les exemples devrait se trouver dans le dossier <code class="docutils literal"><span class="pre">/usr/share/pywws</span></code> ou <code class="docutils literal"><span class="pre">/usr/local/share/pywws</span></code> ou similaire.</p>
 </div>
 <div class="section" id="configuring-periodic-tasks">
 <h2>Configurer les tâches périodiques<a class="headerlink" href="#configuring-periodic-tasks" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Dans weather.ini vous devriez avoir les sections <tt class="docutils literal"><span class="pre">[logged]</span></tt>, <tt class="docutils literal"><span class="pre">[hourly]</span></tt>, <tt class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></tt> et <tt class="docutils literal"><span class="pre">[daily]</span></tt> similaires à celle-ci:</p>
+<p>Dans weather.ini vous devriez avoir les sections <code class="docutils literal"><span class="pre">[logged]</span></code>, <code class="docutils literal"><span class="pre">[hourly]</span></code>, <code class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></code> et <code class="docutils literal"><span class="pre">[daily]</span></code> similaires à celle-ci:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">logged</span><span class="p">]</span>
 <span class="n">services</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">twitter</span> <span class="o">=</span> <span class="p">[]</span>
@@ -97,8 +97,8 @@ graph_templates = /home/xxx/weather/graph_templates/
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>Ces sections spécifient ce que devrait faire <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> à chaque exécution. Les tâches dans la section <tt class="docutils literal"><span class="pre">[logged]</span></tt> sont réalisées à chaque fois qu&#8217;une nouvelle donnée est enregistrée, les tâches dans la section <tt class="docutils literal"><span class="pre">[hourly]</span></tt> sont exécutées à chaque heure, les tâches dans la section <tt class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></tt> sont lancées deux fois par jour, tandis que les tâches dans la section <tt class="docutils literal"><span class="pre">[daily]</span></tt> sont réalisées une fois par jour.</p>
-<p>Les entrées dans <tt class="docutils literal"><span class="pre">services</span></tt> sont une liste de services météo en ligne sur lesquels envoyer vos données météo. Les entrées <tt class="docutils literal"><span class="pre">plot</span></tt> et <tt class="docutils literal"><span class="pre">text</span></tt> sont des listes de fichiers gabarits graphes et textes à téléverser sur votre site web, et l&#8217;entrée <tt class="docutils literal"><span class="pre">twitter</span></tt> est une liste de gabarits pour les messages à poster sur Twitter. Ajoutez le nom de vos fichiers de gabarit et de services météo à l&#8217;entrée correspondante, par exemple:</p>
+<p>Ces sections spécifient ce que devrait faire <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> à chaque exécution. Les tâches dans la section <code class="docutils literal"><span class="pre">[logged]</span></code> sont réalisées à chaque fois qu&#8217;une nouvelle donnée est enregistrée, les tâches dans la section <code class="docutils literal"><span class="pre">[hourly]</span></code> sont exécutées à chaque heure, les tâches dans la section <code class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></code> sont lancées deux fois par jour, tandis que les tâches dans la section <code class="docutils literal"><span class="pre">[daily]</span></code> sont réalisées une fois par jour.</p>
+<p>Les entrées dans <code class="docutils literal"><span class="pre">services</span></code> sont une liste de services météo en ligne sur lesquels envoyer vos données météo. Les entrées <code class="docutils literal"><span class="pre">plot</span></code> et <code class="docutils literal"><span class="pre">text</span></code> sont des listes de fichiers gabarits graphes et textes à téléverser sur votre site web, et l&#8217;entrée <code class="docutils literal"><span class="pre">twitter</span></code> est une liste de gabarits pour les messages à poster sur Twitter. Ajoutez le nom de vos fichiers de gabarit et de services météo à l&#8217;entrée correspondante, par exemple:</p>
 <div class="highlight-python"><div class="highlight"><pre>[logged]
 services = [&#39;underground&#39;, &#39;metoffice&#39;]
 twitter = []
@@ -124,28 +124,28 @@ plot = [&#39;28days.png.xml&#39;]
 text = [&#39;allmonths.txt&#39;]
 </pre></div>
 </div>
-<p>Vous pouvez réaliser un test de bon fonctionnement en enlevant la section <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> du fichier weather.ini, puis exécutez <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> de nouveau:</p>
+<p>Vous pouvez réaliser un test de bon fonctionnement en enlevant la section <code class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></code> du fichier weather.ini, puis exécutez <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> de nouveau:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.Hourly -v ~/weather/data
 </pre></div>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified">Modifié dans la version 13.05_r1009: </span>The last update information was previously stored in weather.ini, with <tt class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></tt> entries in several sections.</p>
+<p><span class="versionmodified">Modifié dans la version 13.05_r1009: </span>The last update information was previously stored in weather.ini, with <code class="docutils literal"><span class="pre">last</span> <span class="pre">update</span></code> entries in several sections.</p>
 </div>
 </div>
 <div class="section" id="using-a-utility-script">
 <h2>Utilisation d&#8217;un script<a class="headerlink" href="#using-a-utility-script" title="Lien permanent vers ce titre">¶</a></h2>
-<p>L&#8217;installation de pywws inclu un petit script <tt class="docutils literal"><span class="pre">pywws-hourly.py</span></tt> à installer dans <tt class="docutils literal"><span class="pre">/usr/bin</span></tt> ou <tt class="docutils literal"><span class="pre">/usr/local/bin</span></tt> ou similaire. Vous devriez être en mesure d&#8217;utiliser ce script en exécutant <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a>:</p>
+<p>L&#8217;installation de pywws inclu un petit script <code class="docutils literal"><span class="pre">pywws-hourly.py</span></code> à installer dans <code class="docutils literal"><span class="pre">/usr/bin</span></code> ou <code class="docutils literal"><span class="pre">/usr/local/bin</span></code> ou similaire. Vous devriez être en mesure d&#8217;utiliser ce script en exécutant <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre>pywws-hourly.py -v ~/weather/data
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-as-a-cron-job">
 <h2>Exécuter en tant que tâche &#8216;cron&#8217;<a class="headerlink" href="#run-as-a-cron-job" title="Lien permanent vers ce titre">¶</a></h2>
-<p>La plupart des systèmes UNIX/Linux possèdent un service &#8216;cron&#8217; qui à pour but d&#8217;exécuter un programme spécifié à un intervalle défini, même si vous n&#8217;êtes pas connecté à votre session. Vous éditez un fichier &#8216;crontab&#8217; pour spécifier ce qui doit être exécuté et quand. Par exemple, pour exécuter <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> à chaque heure, à zéro minutes de l&#8217;heure:</p>
+<p>La plupart des systèmes UNIX/Linux possèdent un service &#8216;cron&#8217; qui à pour but d&#8217;exécuter un programme spécifié à un intervalle défini, même si vous n&#8217;êtes pas connecté à votre session. Vous éditez un fichier &#8216;crontab&#8217; pour spécifier ce qui doit être exécuté et quand. Par exemple, pour exécuter <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> à chaque heure, à zéro minutes de l&#8217;heure:</p>
 <div class="highlight-python"><div class="highlight"><pre>0 * * * *       pywws-hourly.py /home/jim/weather/data
 </pre></div>
 </div>
-<p>Ceci devrait fonctionner, mais si ce n&#8217;est pas le cas vous n&#8217;obtiendrez probablement pas de messages d&#8217;erreur vous indiquant ce qui ne va pas. Il est préférable d&#8217;exécuter un script qui lance <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><tt class="xref py py-mod docutils literal"><span class="pre">Hourly</span></tt></a> puis vous envoi un courriel avec tout message qui aurait pu être produit. Voici le script que j&#8217;utilise:</p>
+<p>Ceci devrait fonctionner, mais si ce n&#8217;est pas le cas vous n&#8217;obtiendrez probablement pas de messages d&#8217;erreur vous indiquant ce qui ne va pas. Il est préférable d&#8217;exécuter un script qui lance <a class="reference internal" href="../api/pywws.Hourly.html#module-pywws.Hourly" title="pywws.Hourly"><code class="xref py py-mod docutils literal"><span class="pre">Hourly</span></code></a> puis vous envoi un courriel avec tout message qui aurait pu être produit. Voici le script que j&#8217;utilise:</p>
 <div class="highlight-python"><div class="highlight"><pre>#!/bin/sh
 #
 # weather station logger calling script
@@ -171,7 +171,7 @@ pywws-hourly.py -v /data/weather &gt;$log 2&gt;&amp;1
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -195,7 +195,7 @@ pywws-hourly.py -v /data/weather &gt;$log 2&gt;&amp;1
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="livelogging.html"
                         title="Chapitre suivant">Comment configurer le mode &#8216;live&#8217; avec pywws</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -212,7 +212,7 @@ pywws-hourly.py -v /data/weather &gt;$log 2&gt;&amp;1
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -231,9 +231,9 @@ pywws-hourly.py -v /data/weather &gt;$log 2&gt;&amp;1
           <li><a href="index.html" >Guides utilisateur</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to use pywws in another language &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>How to use pywws in another language &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="weather.ini - configuration file format" href="weather_ini.html" />
     <link rel="prev" title="How to configure pywws to post messages to Twitter" href="twitter.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="twitter.html" title="How to configure pywws to post messages to Twitter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-use-pywws-in-another-language">
 <h1>How to use pywws in another language<a class="headerlink" href="#how-to-use-pywws-in-another-language" title="Permalink to this headline">¶</a></h1>
@@ -69,8 +69,8 @@ This is a lot more work, but could be very useful to potential users who do not 
 <h2>Using an existing language file<a class="headerlink" href="#using-an-existing-language-file" title="Permalink to this headline">¶</a></h2>
 <p>There may already be a pywws translation for your preferred language.
 First you need to choose the appropriate two-letter code from the list at <a class="reference external" href="http://www.w3schools.com/tags/ref_language_codes.asp">http://www.w3schools.com/tags/ref_language_codes.asp</a>.
-For example, <tt class="docutils literal"><span class="pre">fr</span></tt> is the code for French.
-Now use the <a class="reference internal" href="../api/pywws.Localisation.html#module-pywws.Localisation" title="pywws.Localisation"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Localisation</span></tt></a> module to do a quick test:</p>
+For example, <code class="docutils literal"><span class="pre">fr</span></code> is the code for French.
+Now use the <a class="reference internal" href="../api/pywws.Localisation.html#module-pywws.Localisation" title="pywws.Localisation"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Localisation</span></code></a> module to do a quick test:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.Localisation -t fr
 </pre></div>
 </div>
@@ -87,7 +87,7 @@ Translations
 </pre></div>
 </div>
 <p>This shows that pywws is already able to generate French output, and that your installation is correctly configured.
-Now you can edit the language entry in your <tt class="docutils literal"><span class="pre">weather.ini</span></tt> file to use your language code.</p>
+Now you can edit the language entry in your <code class="docutils literal"><span class="pre">weather.ini</span></code> file to use your language code.</p>
 <p>If the above test shows no translations into your language then you need to create a new language file, as described below.</p>
 </div>
 <div class="section" id="dependencies">
@@ -105,13 +105,13 @@ It is free to use for open source projects such as pywws.
 In May 2014 I created a <a class="reference external" href="https://www.transifex.com/organization/jim-easterbrook">pywws project</a> on Transifex.
 If you&#8217;d like to use Transifex to help translate pywws, please create an account and join the appropriate language team.</p>
 <p>Visit the newest pywws project page on Transifex and click on your language, then click on the &#8220;resource&#8221; you want to translate.
-(<tt class="docutils literal"><span class="pre">pywws</span></tt> contains the program strings used when running pywws, the others contain strings from the pywws documentation.)
+(<code class="docutils literal"><span class="pre">pywws</span></code> contains the program strings used when running pywws, the others contain strings from the pywws documentation.)
 This opens a dialog where you can choose to download a file to work on or translate the strings online.
 Please read <a class="reference internal" href="#translator-notes"><em>Notes for translators</em></a> before you start.</p>
-<p>When you&#8217;ve finished translating <tt class="docutils literal"><span class="pre">pywws</span></tt> select the &#8220;download for use&#8221; option and save the file to <tt class="docutils literal"><span class="pre">pywws/lang/fr/LC_MESSAGES/pywws.po</span></tt> (replace <tt class="docutils literal"><span class="pre">fr</span></tt> with your language code).
+<p>When you&#8217;ve finished translating <code class="docutils literal"><span class="pre">pywws</span></code> select the &#8220;download for use&#8221; option and save the file to <code class="docutils literal"><span class="pre">pywws/lang/fr/LC_MESSAGES/pywws.po</span></code> (replace <code class="docutils literal"><span class="pre">fr</span></code> with your language code).
 Now you can <a class="reference internal" href="#test-translation"><em>Test the pywws translation</em></a>.</p>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 14.05.dev1221: </span>pywws now includes a config file for the <tt class="docutils literal"><span class="pre">transifex-client</span></tt> program (see <a class="reference internal" href="../essentials/dependencies.html#dependencies-translations"><em>dependencies</em></a>).
+<p><span class="versionmodified">New in version 14.05.dev1221: </span>pywws now includes a config file for the <code class="docutils literal"><span class="pre">transifex-client</span></code> program (see <a class="reference internal" href="../essentials/dependencies.html#dependencies-translations"><em>dependencies</em></a>).
 This simplifies the process of downloading files for testing (or uploading files you&#8217;ve been editing on your computer).</p>
 </div>
 <p>For example, this command downloads any updated files for the French language:</p>
@@ -130,21 +130,21 @@ These strings are extracted using setup.py:</p>
 <div class="highlight-python"><div class="highlight"><pre>python setup.py extract_messages
 </pre></div>
 </div>
-<p>This creates the file <tt class="docutils literal"><span class="pre">build/gettext/pywws.pot</span></tt>.
+<p>This creates the file <code class="docutils literal"><span class="pre">build/gettext/pywws.pot</span></code>.
 This is a &#8220;portable object template&#8221; file that contains the English language strings to be translated.</p>
 </div>
 <div class="section" id="create-language-files">
 <h3>Create language files<a class="headerlink" href="#create-language-files" title="Permalink to this headline">¶</a></h3>
 <p>The .pot files have headers that need to be initialised.
-This can be done manually, but the Babel library has an <tt class="docutils literal"><span class="pre">init_catalog</span></tt> command to simplify the process:</p>
+This can be done manually, but the Babel library has an <code class="docutils literal"><span class="pre">init_catalog</span></code> command to simplify the process:</p>
 <div class="highlight-python"><div class="highlight"><pre>python setup.py init_catalog --locale fr
 </pre></div>
 </div>
-<p>If a .po file for your language already exists, but needs updating with new source strings, you should use the <tt class="docutils literal"><span class="pre">update_catalog</span></tt> command instead:</p>
+<p>If a .po file for your language already exists, but needs updating with new source strings, you should use the <code class="docutils literal"><span class="pre">update_catalog</span></code> command instead:</p>
 <div class="highlight-python"><div class="highlight"><pre>python setup.py update_catalog --locale fr
 </pre></div>
 </div>
-<p>Now you can open the <tt class="docutils literal"><span class="pre">src/pywws/lang/fr/LC_MESSAGES/pywws.po</span></tt> file in your favourite text editor and start filling in the empty <tt class="docutils literal"><span class="pre">msgstr</span></tt> strings with your translation of the corresponding <tt class="docutils literal"><span class="pre">msgid</span></tt> string.
+<p>Now you can open the <code class="docutils literal"><span class="pre">src/pywws/lang/fr/LC_MESSAGES/pywws.po</span></code> file in your favourite text editor and start filling in the empty <code class="docutils literal"><span class="pre">msgstr</span></code> strings with your translation of the corresponding <code class="docutils literal"><span class="pre">msgid</span></code> string.
 Please read <a class="reference internal" href="#translator-notes"><em>Notes for translators</em></a> before you start.</p>
 </div>
 </div>
@@ -163,7 +163,7 @@ This is done with setup.py:</p>
 </div>
 <div class="section" id="notes-for-translators">
 <span id="translator-notes"></span><h2>Notes for translators<a class="headerlink" href="#notes-for-translators" title="Permalink to this headline">¶</a></h2>
-<p>The pywws program strings (<tt class="docutils literal"><span class="pre">pywws.po</span></tt>) are quite simple.
+<p>The pywws program strings (<code class="docutils literal"><span class="pre">pywws.po</span></code>) are quite simple.
 They comprise simple weather forecasts (&#8220;Fine weather&#8221;), air pressure changes (&#8220;rising quickly&#8221;) and the 16 points of the compass (&#8220;NNE&#8221;).
 Leave the &#8220;(%Z)&#8221; in &#8220;Time (%Z)&#8221; unchanged and make sure your translation&#8217;s punctuation matches the original.</p>
 <p>The other files contain strings from the pywws documentation.
@@ -180,14 +180,14 @@ pywws.Forecast
 </div>
 <p>Translating all of the pywws documentation is a lot of work.
 However, when the documentation is &#8220;compiled&#8221; any untranslated strings revert to their English original.
-This means that a partial translation could still be useful &#8211; I suggest starting with the documentation front page, <tt class="docutils literal"><span class="pre">index.po</span></tt>.</p>
+This means that a partial translation could still be useful &#8211; I suggest starting with the documentation front page, <code class="docutils literal"><span class="pre">index.po</span></code>.</p>
 </div>
 <div class="section" id="send-jim-the-translation">
 <h2>Send Jim the translation<a class="headerlink" href="#send-jim-the-translation" title="Permalink to this headline">¶</a></h2>
 <p>I&#8217;m sure you would like others to benefit from the work you&#8217;ve done in translating pywws.
 If you&#8217;ve been using Transifex then please send me an email (<a class="reference external" href="mailto:jim&#37;&#52;&#48;jim-easterbrook&#46;me&#46;uk">jim<span>&#64;</span>jim-easterbrook<span>&#46;</span>me<span>&#46;</span>uk</a>) to let me know there&#8217;s a new translation available.
 Otherwise, please email me any .po files you create.
-Please include details of which version of pywws your work is based on &#8211; the easiest way to do this is to include the value of <tt class="docutils literal"><span class="pre">_commit</span></tt> from the file <tt class="docutils literal"><span class="pre">pywws/__init__.py</span></tt> in your email.</p>
+Please include details of which version of pywws your work is based on &#8211; the easiest way to do this is to include the value of <code class="docutils literal"><span class="pre">_commit</span></code> from the file <code class="docutils literal"><span class="pre">pywws/__init__.py</span></code> in your email.</p>
 </div>
 <div class="section" id="translating-the-documentation">
 <h2>Translating the documentation<a class="headerlink" href="#translating-the-documentation" title="Permalink to this headline">¶</a></h2>
@@ -204,7 +204,7 @@ Just let me know when you&#8217;ve done enough to be worth publishing.</p>
 <div class="highlight-python"><div class="highlight"><pre>python setup.py extract_messages_doc
 </pre></div>
 </div>
-<p>This creates several .pot files in the <tt class="docutils literal"><span class="pre">build/gettext/</span></tt> directory.</p>
+<p>This creates several .pot files in the <code class="docutils literal"><span class="pre">build/gettext/</span></code> directory.</p>
 </div>
 <div class="section" id="id2">
 <h3>Create language files<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -224,8 +224,8 @@ Just let me know when you&#8217;ve done enough to be worth publishing.</p>
 LANG=fr python setup.py build_sphinx
 </pre></div>
 </div>
-<p>Note that the <tt class="docutils literal"><span class="pre">build_sphinx</span></tt> command doesn&#8217;t have a <tt class="docutils literal"><span class="pre">--locale</span></tt> (or <tt class="docutils literal"><span class="pre">-l</span></tt>) option, so the language is set by a temporary environment variable.</p>
-<p>Finally you can view the translated documentation by using a web browser to read the file <tt class="docutils literal"><span class="pre">doc/fr/html/index.html</span></tt>.</p>
+<p>Note that the <code class="docutils literal"><span class="pre">build_sphinx</span></code> command doesn&#8217;t have a <code class="docutils literal"><span class="pre">--locale</span></code> (or <code class="docutils literal"><span class="pre">-l</span></code>) option, so the language is set by a temporary environment variable.</p>
+<p>Finally you can view the translated documentation by using a web browser to read the file <code class="docutils literal"><span class="pre">doc/fr/html/index.html</span></code>.</p>
 <p>As before, please make sure you send your translation to <a class="reference external" href="mailto:jim&#37;&#52;&#48;jim-easterbrook&#46;me&#46;uk">jim<span>&#64;</span>jim-easterbrook<span>&#46;</span>me<span>&#46;</span>uk</a> so other pywws users can benefit from your work.</p>
 <hr class="docutils" />
 <p>Comments or questions? Please subscribe to the pywws mailing list
@@ -238,7 +238,7 @@ LANG=fr python setup.py build_sphinx
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -274,7 +274,7 @@ LANG=fr python setup.py build_sphinx
   <h4>Next topic</h4>
   <p class="topless"><a href="weather_ini.html"
                         title="next chapter">weather.ini - configuration file format</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -291,7 +291,7 @@ LANG=fr python setup.py build_sphinx
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -306,13 +306,13 @@ LANG=fr python setup.py build_sphinx
         <li class="right" >
           <a href="twitter.html" title="How to configure pywws to post messages to Twitter"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.conversions" href="pywws.conversions.html" />
     <link rel="prev" title="pywws.Localisation" href="pywws.Localisation.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.calib">
 <span id="pywws-calib"></span><h1>pywws.calib<a class="headerlink" href="#module-pywws.calib" title="Lien permanent vers ce titre">¶</a></h1>
@@ -74,8 +74,8 @@
 <p>Toute calibration utilisateur que vous écrivez doit également faire ceci.</p>
 <div class="section" id="writing-your-calibration-module">
 <h3>Écrire votre module de calibration<a class="headerlink" href="#writing-your-calibration-module" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Tout d&#8217;abord, décider où vous voulez garder votre module. Comme vos gabarits texte et graphe, il est préférable de le garder séparé du code pywws, de sorte qu&#8217;il n&#8217;est pas affecté par les mises à jour de pywws. Je suggère la création d&#8217;un répertoire <tt class="docutils literal"><span class="pre">modules</span></tt> au même endroit que votre répertoire <tt class="docutils literal"><span class="pre">templates</span></tt>.</p>
-<p>Créez un fichier texte dans votre répertoire <tt class="docutils literal"><span class="pre">modules</span></tt>, par exemple, <tt class="docutils literal"><span class="pre">Calib.py</span></tt> et copiez-y le texte suivant:</p>
+<p>Tout d&#8217;abord, décider où vous voulez garder votre module. Comme vos gabarits texte et graphe, il est préférable de le garder séparé du code pywws, de sorte qu&#8217;il n&#8217;est pas affecté par les mises à jour de pywws. Je suggère la création d&#8217;un répertoire <code class="docutils literal"><span class="pre">modules</span></code> au même endroit que votre répertoire <code class="docutils literal"><span class="pre">templates</span></code>.</p>
+<p>Créez un fichier texte dans votre répertoire <code class="docutils literal"><span class="pre">modules</span></code>, par exemple, <code class="docutils literal"><span class="pre">Calib.py</span></code> et copiez-y le texte suivant:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Calib</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pressure_offset</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;fixed&#39;</span><span class="p">,</span> <span class="s">&#39;pressure offset&#39;</span><span class="p">))</span>
@@ -89,20 +89,20 @@
         <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-<p>La classe <a class="reference internal" href="#pywws.calib.Calib" title="pywws.calib.Calib"><tt class="xref py py-class docutils literal"><span class="pre">Calib</span></tt></a> a deux méthodes. <tt class="xref py py-meth docutils literal"><span class="pre">Calib.__init__()</span></tt> est le constructeur et est un bon endroit pour mettre toutes les constantes nécessaires. :py: meth:<cite>Calib.calib</cite> génère un ensemble unique de données &#8216;calibrées&#8217; à partir d&#8217;un seul ensemble de données &#8216;brutes&#8217;. Il y a quelques règles à suivre lors de l&#8217;écriture de cette méthode:</p>
+<p>La classe <a class="reference internal" href="#pywws.calib.Calib" title="pywws.calib.Calib"><code class="xref py py-class docutils literal"><span class="pre">Calib</span></code></a> a deux méthodes. <code class="xref py py-meth docutils literal"><span class="pre">Calib.__init__()</span></code> est le constructeur et est un bon endroit pour mettre toutes les constantes nécessaires. :py: meth:<cite>Calib.calib</cite> génère un ensemble unique de données &#8216;calibrées&#8217; à partir d&#8217;un seul ensemble de données &#8216;brutes&#8217;. Il y a quelques règles à suivre lors de l&#8217;écriture de cette méthode:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p class="first">Assurez-vous d&#8217;inclure la ligne <tt class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">dict(raw)</span></tt>, qui permet de copier toutes les données brutes à votre résultat, au début.</p>
+<li><p class="first">Assurez-vous d&#8217;inclure la ligne <code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">dict(raw)</span></code>, qui permet de copier toutes les données brutes à votre résultat, au début.</p>
 </li>
 <li><p class="first">Ne modifiez pas les données brutes.</p>
 </li>
-<li><p class="first">Assurez-vous que vous définissez <tt class="docutils literal"><span class="pre">result['rel_pressure']</span></tt>.</p>
+<li><p class="first">Assurez-vous que vous définissez <code class="docutils literal"><span class="pre">result['rel_pressure']</span></code>.</p>
 </li>
-<li><p class="first">N&#8217;oubliez pas de retourner (<tt class="docutils literal"><span class="pre">return</span></tt>) le résultat à la fin.</p>
+<li><p class="first">N&#8217;oubliez pas de retourner (<code class="docutils literal"><span class="pre">return</span></code>) le résultat à la fin.</p>
 </li>
 </ul>
 </div></blockquote>
-<p>Lorsque vous avez fini d&#8217;écrire votre module de calibration vous pouvez demander à pywws de l&#8217;utiliser en mettant son emplacement dans votre fichier <tt class="docutils literal"><span class="pre">weather.ini</span></tt>. Il va dans les sections <tt class="docutils literal"><span class="pre">[paths]</span></tt>, comme le montre l&#8217;exemple ci-dessous:</p>
+<p>Lorsque vous avez fini d&#8217;écrire votre module de calibration vous pouvez demander à pywws de l&#8217;utiliser en mettant son emplacement dans votre fichier <code class="docutils literal"><span class="pre">weather.ini</span></code>. Il va dans les sections <code class="docutils literal"><span class="pre">[paths]</span></code>, comme le montre l&#8217;exemple ci-dessous:</p>
 <div class="highlight-python"><div class="highlight"><pre>[paths]
 work = /tmp/weather
 templates = /home/jim/weather/templates/
@@ -110,7 +110,7 @@ graph_templates = /home/jim/weather/graph_templates/
 user_calib = /home/jim/weather/modules/usercalib
 </pre></div>
 </div>
-<p>Notez que la valeur de <tt class="docutils literal"><span class="pre">user_calib</span></tt> ne doit pas inclure le <tt class="docutils literal"><span class="pre">.py</span></tt> à la fin du nom de fichier.</p>
+<p>Notez que la valeur de <code class="docutils literal"><span class="pre">user_calib</span></code> ne doit pas inclure le <code class="docutils literal"><span class="pre">.py</span></code> à la fin du nom de fichier.</p>
 <p class="rubric">Classes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -118,19 +118,18 @@ user_calib = /home/jim/weather/modules/usercalib
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.calib.Calib" title="pywws.calib.Calib"><tt class="xref py py-obj docutils literal"><span class="pre">Calib</span></tt></a>(params,&nbsp;status)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.calib.Calib" title="pywws.calib.Calib"><code class="xref py py-obj docutils literal"><span class="pre">Calib</span></code></a>(params,&nbsp;status)</td>
 <td><p class="first last">Classe qui implémente la calibration par défaut ou la calibration par l&#8217;utilisateur.</p>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.calib.DefaultCalib" title="pywws.calib.DefaultCalib"><tt class="xref py py-obj docutils literal"><span class="pre">DefaultCalib</span></tt></a>(status)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.calib.DefaultCalib" title="pywws.calib.DefaultCalib"><code class="xref py py-obj docutils literal"><span class="pre">DefaultCalib</span></code></a>(status)</td>
 <td><p class="first last">Classe de calibration par défaut</p>
 </td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
-</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Différence entre deux valeurs de datetime.</p>
 </td>
 </tr>
@@ -138,24 +137,24 @@ user_calib = /home/jim/weather/modules/usercalib
 </table>
 <dl class="class">
 <dt id="pywws.calib.DefaultCalib">
-<em class="property">class </em><tt class="descclassname">pywws.calib.</tt><tt class="descname">DefaultCalib</tt><big>(</big><em>status</em><big>)</big><a class="reference internal" href="../_modules/pywws/calib.html#DefaultCalib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.calib.DefaultCalib" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.calib.</code><code class="descname">DefaultCalib</code><span class="sig-paren">(</span><em>status</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/calib.html#DefaultCalib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.calib.DefaultCalib" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Classe de calibration par défaut</p>
 <p>Cette classe définit la pression relative, en utilisant un décalage de pression lues à partir de la station météorologique, et &#8216;normalise&#8217; la valeur de la direction du vent. C&#8217;est la calibration strictement minimale nécessaire.</p>
 <dl class="method">
 <dt id="pywws.calib.DefaultCalib.calib">
-<tt class="descname">calib</tt><big>(</big><em>raw</em><big>)</big><a class="reference internal" href="../_modules/pywws/calib.html#DefaultCalib.calib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.calib.DefaultCalib.calib" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">calib</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/calib.html#DefaultCalib.calib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.calib.DefaultCalib.calib" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pywws.calib.Calib">
-<em class="property">class </em><tt class="descclassname">pywws.calib.</tt><tt class="descname">Calib</tt><big>(</big><em>params</em>, <em>status</em><big>)</big><a class="reference internal" href="../_modules/pywws/calib.html#Calib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.calib.Calib" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.calib.</code><code class="descname">Calib</code><span class="sig-paren">(</span><em>params</em>, <em>status</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/calib.html#Calib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.calib.Calib" title="Permalien vers cette définition">¶</a></dt>
 <dd><p>Classe qui implémente la calibration par défaut ou la calibration par l&#8217;utilisateur.</p>
-<p>D&#8217;autres modules pywws utilisent cette méthode pour créer un objet de calibration. Le constructeur crée soit un objet de calibration par défaut ou un objet de calibration utilisateur, en fonction de la valeur <tt class="docutils literal"><span class="pre">user_calib</span></tt> dans la section <tt class="docutils literal"><span class="pre">[paths]</span></tt> du paramètre <tt class="docutils literal"><span class="pre">params</span></tt>. Il adopte alors la méthode de calibration de l&#8217;objet :py: meth:<cite>calib</cite> comme sien.</p>
+<p>D&#8217;autres modules pywws utilisent cette méthode pour créer un objet de calibration. Le constructeur crée soit un objet de calibration par défaut ou un objet de calibration utilisateur, en fonction de la valeur <code class="docutils literal"><span class="pre">user_calib</span></code> dans la section <code class="docutils literal"><span class="pre">[paths]</span></code> du paramètre <code class="docutils literal"><span class="pre">params</span></code>. Il adopte alors la méthode de calibration de l&#8217;objet :py: meth:<cite>calib</cite> comme sien.</p>
 <dl class="attribute">
 <dt id="pywws.calib.Calib.calibrator">
-<tt class="descname">calibrator</tt><em class="property"> = None</em><a class="headerlink" href="#pywws.calib.Calib.calibrator" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">calibrator</code><em class="property"> = None</em><a class="headerlink" href="#pywws.calib.Calib.calibrator" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -168,7 +167,7 @@ user_calib = /home/jim/weather/modules/usercalib
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -190,7 +189,7 @@ user_calib = /home/jim/weather/modules/usercalib
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.conversions.html"
                         title="Chapitre suivant">pywws.conversions</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -207,7 +206,7 @@ user_calib = /home/jim/weather/modules/usercalib
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -226,9 +225,9 @@ user_calib = /home/jim/weather/modules/usercalib
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

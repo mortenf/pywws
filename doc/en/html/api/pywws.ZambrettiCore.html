@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.ZambrettiCore &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>pywws.ZambrettiCore &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.Upload" href="pywws.Upload.html" />
     <link rel="prev" title="pywws.Forecast" href="pywws.Forecast.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.Forecast.html" title="pywws.Forecast"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.ZambrettiCore">
 <span id="pywws-zambretticore"></span><h1>pywws.ZambrettiCore<a class="headerlink" href="#module-pywws.ZambrettiCore" title="Permalink to this headline">¶</a></h1>
@@ -64,20 +64,20 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.ZambrettiCore.ZambrettiCode" title="pywws.ZambrettiCore.ZambrettiCode"><tt class="xref py py-obj docutils literal"><span class="pre">ZambrettiCode</span></tt></a>(pressure,&nbsp;month,&nbsp;wind,&nbsp;trend)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.ZambrettiCore.ZambrettiCode" title="pywws.ZambrettiCore.ZambrettiCode"><code class="xref py py-obj docutils literal"><span class="pre">ZambrettiCode</span></code></a>(pressure,&nbsp;month,&nbsp;wind,&nbsp;trend)</td>
 <td>Simple implementation of Zambretti forecaster algorithm.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.ZambrettiCore.ZambrettiText" title="pywws.ZambrettiCore.ZambrettiText"><tt class="xref py py-obj docutils literal"><span class="pre">ZambrettiText</span></tt></a>(letter)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.ZambrettiCore.ZambrettiText" title="pywws.ZambrettiCore.ZambrettiText"><code class="xref py py-obj docutils literal"><span class="pre">ZambrettiText</span></code></a>(letter)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.ZambrettiCore.main" title="pywws.ZambrettiCore.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.ZambrettiCore.main" title="pywws.ZambrettiCore.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="pywws.ZambrettiCore.ZambrettiCode">
-<tt class="descclassname">pywws.ZambrettiCore.</tt><tt class="descname">ZambrettiCode</tt><big>(</big><em>pressure</em>, <em>month</em>, <em>wind</em>, <em>trend</em>, <em>north=True</em>, <em>baro_top=1050.0</em>, <em>baro_bottom=950.0</em><big>)</big><a class="reference internal" href="../_modules/pywws/ZambrettiCore.html#ZambrettiCode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.ZambrettiCore.ZambrettiCode" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.ZambrettiCore.</code><code class="descname">ZambrettiCode</code><span class="sig-paren">(</span><em>pressure</em>, <em>month</em>, <em>wind</em>, <em>trend</em>, <em>north=True</em>, <em>baro_top=1050.0</em>, <em>baro_bottom=950.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ZambrettiCore.html#ZambrettiCode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.ZambrettiCore.ZambrettiCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple implementation of Zambretti forecaster algorithm.
 Inspired by beteljuice.com Java algorithm, as converted to Python by
 honeysucklecottage.me.uk, and further information
@@ -86,12 +86,12 @@ from <a class="reference external" href="http://www.meteormetrics.com/zambretti.
 
 <dl class="function">
 <dt id="pywws.ZambrettiCore.ZambrettiText">
-<tt class="descclassname">pywws.ZambrettiCore.</tt><tt class="descname">ZambrettiText</tt><big>(</big><em>letter</em><big>)</big><a class="reference internal" href="../_modules/pywws/ZambrettiCore.html#ZambrettiText"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.ZambrettiCore.ZambrettiText" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.ZambrettiCore.</code><code class="descname">ZambrettiText</code><span class="sig-paren">(</span><em>letter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ZambrettiCore.html#ZambrettiText"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.ZambrettiCore.ZambrettiText" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pywws.ZambrettiCore.main">
-<tt class="descclassname">pywws.ZambrettiCore.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/ZambrettiCore.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.ZambrettiCore.main" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.ZambrettiCore.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/ZambrettiCore.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.ZambrettiCore.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr class="docutils" />
@@ -103,7 +103,7 @@ from <a class="reference external" href="http://www.meteormetrics.com/zambretti.
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -114,7 +114,7 @@ from <a class="reference external" href="http://www.meteormetrics.com/zambretti.
   <h4>Next topic</h4>
   <p class="topless"><a href="pywws.Upload.html"
                         title="next chapter">pywws.Upload</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -131,7 +131,7 @@ from <a class="reference external" href="http://www.meteormetrics.com/zambretti.
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -146,13 +146,13 @@ from <a class="reference external" href="http://www.meteormetrics.com/zambretti.
         <li class="right" >
           <a href="pywws.Forecast.html" title="pywws.Forecast"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

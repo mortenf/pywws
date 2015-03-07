@@ -29,8 +29,8 @@
     <link rel="next" title="Storico aggiornamenti" href="CHANGELOG.html" />
     <link rel="prev" title="Licenza Pubblica Generale GNU" href="LICENCE.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -52,13 +52,13 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="dependencies">
 <h1>Dipendenze<a class="headerlink" href="#dependencies" title="link permanente per questa intestazione">¶</a></h1>
 <p>La lista di altri software da cui dipende pywws sembra spaventosamente lunga a prima vista. Tuttavia, molti di questi pacchetti non sono necessari nella maggior parte degli utenti. Che cosa avete bisogno dipende da cosa si vuole fare con pywws. Ricordate, è un &#8220;kit of parts&#8221; piuttosto che un&#8217;applicazione monolitica.</p>
 <p>Si può essere in grado di installare la maggior parte di questi utilizzando il gestore dei pacchetti del sistema operativo. Questo è molto più facile che scaricando e compilando il file di origine da siti Web del progetto. Si noti che alcune distribuzioni di Linux utilizzano nomi differenti per alcuni pacchetti, ad esempio in Ubuntu, pyusb viene chiamato python-usb.</p>
-<p>In alternativa, può essere in grado di installare le versioni più recenti di alcune delle librerie dal <a class="reference external" href="http://pypi.python.org/pypi">Python Package Index (PyPI)</a>. Vi consiglio l&#8217;installazione di <a class="reference external" href="http://www.pip-installer.org/">pip</a> (il pacchetto può essere chiamato python-pip) o <a class="reference external" href="http://peak.telecommunity.com/DevCenter/EasyInstall">easy_install</a>. Questo semplifica l&#8217;installazione del software da PyPI. Per esempio, per installare PyUSB da PyPI utilizzando il comando <tt class="docutils literal"><span class="pre">pip</span></tt> command:</p>
+<p>In alternativa, può essere in grado di installare le versioni più recenti di alcune delle librerie dal <a class="reference external" href="http://pypi.python.org/pypi">Python Package Index (PyPI)</a>. Vi consiglio l&#8217;installazione di <a class="reference external" href="http://www.pip-installer.org/">pip</a> (il pacchetto può essere chiamato python-pip) o <a class="reference external" href="http://peak.telecommunity.com/DevCenter/EasyInstall">easy_install</a>. Questo semplifica l&#8217;installazione del software da PyPI. Per esempio, per installare PyUSB da PyPI utilizzando il comando <code class="docutils literal"><span class="pre">pip</span></code> command:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo pip install pyusb
 </pre></div>
 </div>
@@ -110,7 +110,7 @@
 </div>
 <div class="section" id="graph-drawing">
 <h2>Disegnare grafici<a class="headerlink" href="#graph-drawing" title="link permanente per questa intestazione">¶</a></h2>
-<p>Il modulo <a class="reference internal" href="../api/pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Plot</span></tt></a> usa <tt class="docutils literal"><span class="pre">gnuplot</span></tt> per disegnare grafici. Se si vogliono produrre i grafici dei dati meteo, ad esempio, da includere in una pagina web, è necessario installare l&#8217;applicazione <tt class="docutils literal"><span class="pre">gnuplot</span></tt>:</p>
+<p>Il modulo <a class="reference internal" href="../api/pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Plot</span></code></a> usa <code class="docutils literal"><span class="pre">gnuplot</span></code> per disegnare grafici. Se si vogliono produrre i grafici dei dati meteo, ad esempio, da includere in una pagina web, è necessario installare l&#8217;applicazione <code class="docutils literal"><span class="pre">gnuplot</span></code>:</p>
 <ul class="simple">
 <li><p class="first"><a class="reference external" href="http://www.gnuplot.info/">gnuplot</a> v4.2 o superiore</p>
 </li>
@@ -118,7 +118,7 @@
 </div>
 <div class="section" id="secure-website-uploading-sftp">
 <h2>Trasferimento sicuro di file (sftp)<a class="headerlink" href="#secure-website-uploading-sftp" title="link permanente per questa intestazione">¶</a></h2>
-<p>Il modulo <a class="reference internal" href="../api/pywws.Upload.html#module-pywws.Upload" title="pywws.Upload"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Upload</span></tt></a> può utilizzare &#8220;ftp over ssh&#8221; (sftp) per caricare i file sul vostro sito web. Il caricamento normale utilizza i moduli Python standard, ma se si desidera utilizzare sftp è necessario installare questi due moduli:</p>
+<p>Il modulo <a class="reference internal" href="../api/pywws.Upload.html#module-pywws.Upload" title="pywws.Upload"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Upload</span></code></a> può utilizzare &#8220;ftp over ssh&#8221; (sftp) per caricare i file sul vostro sito web. Il caricamento normale utilizza i moduli Python standard, ma se si desidera utilizzare sftp è necessario installare questi due moduli:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/paramiko/paramiko">paramiko</a></li>
 <li><a class="reference external" href="http://www.dlitz.net/software/pycrypto/">pycrypto</a></li>
@@ -126,7 +126,7 @@
 </div>
 <div class="section" id="twitter-updates">
 <span id="dependencies-twitter"></span><h2>Postare su Twitter<a class="headerlink" href="#twitter-updates" title="link permanente per questa intestazione">¶</a></h2>
-<p>Il modulo <a class="reference internal" href="../api/pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.ToTwitter</span></tt></a> è utilizzato per inviare messaggi delle condizioni meteo a Twitter. Per postare su Twitter richiede questi moduli:</p>
+<p>Il modulo <a class="reference internal" href="../api/pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><code class="xref py py-mod docutils literal"><span class="pre">pywws.ToTwitter</span></code></a> è utilizzato per inviare messaggi delle condizioni meteo a Twitter. Per postare su Twitter richiede questi moduli:</p>
 <ul class="simple">
 <li><p class="first"><a class="reference external" href="https://github.com/bear/python-twitter">python-twitter</a> v1.0 o superiore <strong>o</strong> <a class="reference external" href="https://github.com/tweepy/tweepy">tweepy</a> v2.0 o superiore</p>
 </li>
@@ -135,22 +135,22 @@
 <li><a class="reference external" href="http://code.google.com/p/httplib2/">httplib2</a></li>
 </ul>
 <div class="versionchanged">
-<p><span class="versionmodified">Cambiato nella versione 13.10_r1086: </span>Riabilitato uso della libreria <tt class="docutils literal"><span class="pre">tweepy</span></tt> come un&#8217;alternativa a <tt class="docutils literal"><span class="pre">python-twitter</span></tt>.  <tt class="docutils literal"><span class="pre">python-oauth2</span></tt> è ancora richiesto da <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.TwitterAuth</span></tt></a>.</p>
+<p><span class="versionmodified">Cambiato nella versione 13.10_r1086: </span>Riabilitato uso della libreria <code class="docutils literal"><span class="pre">tweepy</span></code> come un&#8217;alternativa a <code class="docutils literal"><span class="pre">python-twitter</span></code>.  <code class="docutils literal"><span class="pre">python-oauth2</span></code> è ancora richiesto da <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><code class="xref py py-mod docutils literal"><span class="pre">pywws.TwitterAuth</span></code></a>.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified">Cambiato nella versione 13.06_r1023: </span>Pywws precedentemente utilizzava la libreria <tt class="docutils literal"><span class="pre">tweepy</span></tt> invece di <tt class="docutils literal"><span class="pre">python-twitter</span></tt> e <tt class="docutils literal"><span class="pre">python-oauth2</span></tt>.</p>
+<p><span class="versionmodified">Cambiato nella versione 13.06_r1023: </span>Pywws precedentemente utilizzava la libreria <code class="docutils literal"><span class="pre">tweepy</span></code> invece di <code class="docutils literal"><span class="pre">python-twitter</span></code> e <code class="docutils literal"><span class="pre">python-oauth2</span></code>.</p>
 </div>
 </div>
 <div class="section" id="to-create-new-language-translations">
 <h2>Per creare nuove traduzioni di lingua<a class="headerlink" href="#to-create-new-language-translations" title="link permanente per questa intestazione">¶</a></h2>
-<p>pywws può essere configurato per utilizzare lingue diverse dall&#8217;inglese, e la documentazione può anche essere tradotta in altre lingue. Vedere <a class="reference internal" href="../guides/language.html"><em>Come utilizzare pywws in un altra lingua</em></a> per ulteriori informazioni. Il pacchetto <tt class="docutils literal"><span class="pre">gettext</span></tt> è necessario per estrarre le stringhe da tradurre e compilare i file di traduzione.</p>
+<p>pywws può essere configurato per utilizzare lingue diverse dall&#8217;inglese, e la documentazione può anche essere tradotta in altre lingue. Vedere <a class="reference internal" href="../guides/language.html"><em>Come utilizzare pywws in un altra lingua</em></a> per ulteriori informazioni. Il pacchetto <code class="docutils literal"><span class="pre">gettext</span></code> è necessario per estrarre le stringhe da tradurre e compilare i file di traduzione.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.gnu.org/s/gettext/">gettext</a></li>
 </ul>
 </div>
 <div class="section" id="to-compile-the-documentation">
 <h2>Per &#8216;compilare&#8217; la documentazione<a class="headerlink" href="#to-compile-the-documentation" title="link permanente per questa intestazione">¶</a></h2>
-<p>La documentazione di pywws è scritto in &#8220;testo RiStrutturato&#8221;.  Un programma chiamato <tt class="docutils literal"><span class="pre">Sphinx</span></tt> è utilizzato per convertire questo formato di scrittura in HTML per l&#8217;uso di un browser web. Se si desidera creare una copia locale della documentazione (in modo non sia necessario fare affidamento sulla versione online, o per provare una traduzione su cui stai lavorando) è necessario installare <tt class="docutils literal"><span class="pre">Sphinx</span></tt>.</p>
+<p>La documentazione di pywws è scritto in &#8220;testo RiStrutturato&#8221;.  Un programma chiamato <code class="docutils literal"><span class="pre">Sphinx</span></code> è utilizzato per convertire questo formato di scrittura in HTML per l&#8217;uso di un browser web. Se si desidera creare una copia locale della documentazione (in modo non sia necessario fare affidamento sulla versione online, o per provare una traduzione su cui stai lavorando) è necessario installare <code class="docutils literal"><span class="pre">Sphinx</span></code>.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://sphinx-doc.org/">sphinx</a></li>
 </ul>
@@ -163,7 +163,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -190,7 +190,7 @@
   <h4>Argomento successivo</h4>
   <p class="topless"><a href="CHANGELOG.html"
                         title="capitolo successivo">Storico aggiornamenti</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Ricerca veloce</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -207,7 +207,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -225,9 +225,9 @@
         <li><a href="../index.html">pywws 13.12.dev1118 documentazione</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

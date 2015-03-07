@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.Hourly &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>pywws.Hourly &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.LiveLog" href="pywws.LiveLog.html" />
     <link rel="prev" title="pywws.EWtoPy" href="pywws.EWtoPy.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.EWtoPy.html" title="pywws.EWtoPy"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.Hourly">
 <span id="pywws-hourly"></span><h1>pywws.Hourly<a class="headerlink" href="#module-pywws.Hourly" title="Permalink to this headline">¶</a></h1>
@@ -70,7 +70,7 @@ data_dir is the root directory of the weather data (e.g. $(HOME)/weather/data)
 <p>This script does little more than call other modules in sequence to
 get data from the weather station, process it, plot some graphs,
 generate some text files and upload the results to a web site.</p>
-<p>For more information on using <tt class="docutils literal"><span class="pre">Hourly.py</span></tt>, see
+<p>For more information on using <code class="docutils literal"><span class="pre">Hourly.py</span></code>, see
 <a class="reference internal" href="../guides/hourlylogging.html"><em>How to set up &#8216;hourly&#8217; logging with pywws</em></a>.</p>
 <p class="rubric">Functions</p>
 <table border="1" class="longtable docutils">
@@ -79,13 +79,13 @@ generate some text files and upload the results to a web site.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.Hourly.Hourly" title="pywws.Hourly.Hourly"><tt class="xref py py-obj docutils literal"><span class="pre">Hourly</span></tt></a>(data_dir)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.Hourly.Hourly" title="pywws.Hourly.Hourly"><code class="xref py py-obj docutils literal"><span class="pre">Hourly</span></code></a>(data_dir)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.Hourly.main" title="pywws.Hourly.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.Hourly.main" title="pywws.Hourly.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -97,19 +97,19 @@ generate some text files and upload the results to a web site.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DataLogger</span></tt>(params,&nbsp;status,&nbsp;raw_data)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">DataLogger</span></code>(params,&nbsp;status,&nbsp;raw_data)</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="pywws.Hourly.Hourly">
-<tt class="descclassname">pywws.Hourly.</tt><tt class="descname">Hourly</tt><big>(</big><em>data_dir</em><big>)</big><a class="reference internal" href="../_modules/pywws/Hourly.html#Hourly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.Hourly" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.Hourly.</code><code class="descname">Hourly</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Hourly.html#Hourly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.Hourly" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pywws.Hourly.main">
-<tt class="descclassname">pywws.Hourly.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Hourly.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.main" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.Hourly.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Hourly.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Hourly.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr class="docutils" />
@@ -121,7 +121,7 @@ generate some text files and upload the results to a web site.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -132,7 +132,7 @@ generate some text files and upload the results to a web site.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="pywws.LiveLog.html"
                         title="next chapter">pywws.LiveLog</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -149,7 +149,7 @@ generate some text files and upload the results to a web site.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -164,13 +164,13 @@ generate some text files and upload the results to a web site.</p>
         <li class="right" >
           <a href="pywws.EWtoPy.html" title="pywws.EWtoPy"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

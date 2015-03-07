@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.Tasks" href="pywws.Tasks.html" />
     <link rel="prev" title="pywws.USBQualityTest" href="pywws.USBQualityTest.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.EWtoPy">
 <span id="pywws-ewtopy"></span><h1>pywws.EWtoPy<a class="headerlink" href="#module-pywws.EWtoPy" title="Lien permanent vers ce titre">¶</a></h1>
@@ -69,8 +69,8 @@ data_dir is the root directory of the weather data
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Ce programme convertit les données du format utilisé par le programme EasyWeather fourni avec la station météo, vers le format utilisé par pywws. Il est utile si vous avez utilisé EasyWeather pendant un certain temps avant de découvrir pywws.</p>
-<p>Le  fichier <tt class="docutils literal"><span class="pre">EasyWeather.dat</span></tt> n&#8217;est utilisé que pour fournir les données précédent le début des données pywws. Étant donné que votre station météo dispose de sa propre mémoire, vous devez exécuter <a class="reference internal" href="pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></tt></a> avant <a class="reference internal" href="#module-pywws.EWtoPy" title="pywws.EWtoPy"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.EWtoPy</span></tt></a> pour minimiser l&#8217;utilisation du fichier EasyWeather.dat.</p>
-<p><a class="reference internal" href="#module-pywws.EWtoPy" title="pywws.EWtoPy"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.EWtoPy</span></tt></a> convertit les horodates EasyWeather.dat de l&#8217;heure locale vers l&#8217;heure UTC. Cela peut causer des problèmes lorsque l&#8217;heure d&#8217;été se termine, puisque l&#8217;heure locale semble revenir en arrière d&#8217;une heure. Le programme tente de détecter et de corriger les horodates concernées, mais je n&#8217;ai pas pu tester cela sur une variété de fuseaux horaires.</p>
+<p>Le  fichier <code class="docutils literal"><span class="pre">EasyWeather.dat</span></code> n&#8217;est utilisé que pour fournir les données précédent le début des données pywws. Étant donné que votre station météo dispose de sa propre mémoire, vous devez exécuter <a class="reference internal" href="pywws.LogData.html#module-pywws.LogData" title="pywws.LogData"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LogData</span></code></a> avant <a class="reference internal" href="#module-pywws.EWtoPy" title="pywws.EWtoPy"><code class="xref py py-mod docutils literal"><span class="pre">pywws.EWtoPy</span></code></a> pour minimiser l&#8217;utilisation du fichier EasyWeather.dat.</p>
+<p><a class="reference internal" href="#module-pywws.EWtoPy" title="pywws.EWtoPy"><code class="xref py py-mod docutils literal"><span class="pre">pywws.EWtoPy</span></code></a> convertit les horodates EasyWeather.dat de l&#8217;heure locale vers l&#8217;heure UTC. Cela peut causer des problèmes lorsque l&#8217;heure d&#8217;été se termine, puisque l&#8217;heure locale semble revenir en arrière d&#8217;une heure. Le programme tente de détecter et de corriger les horodates concernées, mais je n&#8217;ai pas pu tester cela sur une variété de fuseaux horaires.</p>
 </div>
 <div class="section" id="detailed-api">
 <h2>API détaillé<a class="headerlink" href="#detailed-api" title="Lien permanent vers ce titre">¶</a></h2>
@@ -81,7 +81,7 @@ data_dir is the root directory of the weather data
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.EWtoPy.main" title="pywws.EWtoPy.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.EWtoPy.main" title="pywws.EWtoPy.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -93,11 +93,10 @@ data_dir is the root directory of the weather data
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
-</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Différence entre deux valeurs de datetime.</p>
 </td>
 </tr>
@@ -105,7 +104,7 @@ data_dir is the root directory of the weather data
 </table>
 <dl class="function">
 <dt id="pywws.EWtoPy.main">
-<tt class="descclassname">pywws.EWtoPy.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/EWtoPy.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.EWtoPy.main" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descclassname">pywws.EWtoPy.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/EWtoPy.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.EWtoPy.main" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -115,7 +114,7 @@ data_dir is the root directory of the weather data
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -135,7 +134,7 @@ data_dir is the root directory of the weather data
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.Tasks.html"
                         title="Chapitre suivant">pywws.Tasks</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -152,7 +151,7 @@ data_dir is the root directory of the weather data
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -171,9 +170,9 @@ data_dir is the root directory of the weather data
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

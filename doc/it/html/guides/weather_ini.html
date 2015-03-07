@@ -30,8 +30,8 @@
     <link rel="next" title="Indice di umidità (Humidex)" href="humidex.html" />
     <link rel="prev" title="Come utilizzare pywws in un altra lingua" href="language.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="weather-ini-configuration-file-format">
 <h1>weather.ini - configurazione del formato del file<a class="headerlink" href="#weather-ini-configuration-file-format" title="link permanente per questa intestazione">¶</a></h1>
@@ -102,25 +102,25 @@ usb activity margin = 3.0
 gnuplot version = 4.2
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span></tt> è il &#8220;tipo&#8221; della stazione meteo. Esso deve essere impostato <tt class="docutils literal"><span class="pre">1080</span></tt> per la maggior parte delle stazioni meteorologiche, o <tt class="docutils literal"><span class="pre">3080</span></tt> se la vostra console stazione visualizza illuminazione solare.</p>
-<p><tt class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></tt> è la fine del &#8220;<a class="reference external" href="http://en.wikipedia.org/wiki/Meteorological_day">giornata meteorologica</a>&#8221;, nell&#8217;ora locale, senza tenere conto dell&#8217;ora legale. Valori tipici sono 21, 9, o 24. È necessario aggiornare tutti i vostri dati memorizzati eseguendo <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a> per rielaborare tutto dopo aver modificato questo valore.</p>
-<p><tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> è la differenza tra la pressione dell&#8217;aria assoluta e relativa (al livello del mare). È copiata dalla stazione meteo, supponendo che è stata impostata fino a visualizzare la corretta pressione relativa, ma è possibile modificare il valore in weather.ini per calibrare la vostra stazione. È necessario aggiornare tutti i vostri dati memorizzati tramite l&#8217;esecuzione di <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a> dopo aver modificato questo valore.</p>
+<p><code class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span></code> è il &#8220;tipo&#8221; della stazione meteo. Esso deve essere impostato <code class="docutils literal"><span class="pre">1080</span></code> per la maggior parte delle stazioni meteorologiche, o <code class="docutils literal"><span class="pre">3080</span></code> se la vostra console stazione visualizza illuminazione solare.</p>
+<p><code class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></code> è la fine del &#8220;<a class="reference external" href="http://en.wikipedia.org/wiki/Meteorological_day">giornata meteorologica</a>&#8221;, nell&#8217;ora locale, senza tenere conto dell&#8217;ora legale. Valori tipici sono 21, 9, o 24. È necessario aggiornare tutti i vostri dati memorizzati eseguendo <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></code></a> per rielaborare tutto dopo aver modificato questo valore.</p>
+<p><code class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></code> è la differenza tra la pressione dell&#8217;aria assoluta e relativa (al livello del mare). È copiata dalla stazione meteo, supponendo che è stata impostata fino a visualizzare la corretta pressione relativa, ma è possibile modificare il valore in weather.ini per calibrare la vostra stazione. È necessario aggiornare tutti i vostri dati memorizzati tramite l&#8217;esecuzione di <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></code></a> dopo aver modificato questo valore.</p>
 <div class="versionchanged">
-<p><span class="versionmodified">Cambiato nella versione 13.10_r1082: </span>inserito <tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> un elemento di configurazione. In precedenza è sempre stata letta dalla stazione meteo.</p>
+<p><span class="versionmodified">Cambiato nella versione 13.10_r1082: </span>inserito <code class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></code> un elemento di configurazione. In precedenza è sempre stata letta dalla stazione meteo.</p>
 </div>
-<p><tt class="docutils literal"><span class="pre">gnuplot</span> <span class="pre">encoding</span></tt> è la codifica del testo utilizzato per tracciare i grafici. Il valore predefinito di <tt class="docutils literal"><span class="pre">iso_8859_1</span></tt> che consente di usare il simbolo del grado, il che è utile per un&#8217;applicazione meteo! Altri valori potrebbero essere necessari se la lingua comprende i caratteri accentati. I possibili valori dipendono dalla vostra installazione gnuplot così alcuni esperimenti possono essere necessari.</p>
-<p><tt class="docutils literal"><span class="pre">template</span> <span class="pre">encoding</span></tt> è la codifica del testo utilizzato per i modelli. Il valore predefinito è <tt class="docutils literal"><span class="pre">iso-8859-1</span></tt>, che è la codifica utilizzata nell&#8217;esempio dei modelli. Se è necessario creare modelli con un diverso set di caratteri, è necessario modificare questo valore in base ai vostri modelli.</p>
-<p><tt class="docutils literal"><span class="pre">language</span></tt> è utilizzata per localizzare pywws. E&#8217; facoltativa, siccome pywws solitamente utilizza il computer come lingua di default impostata dalla variabile di ambiente LANG. Le lingue disponibili sono quelle della sottodirectory <tt class="docutils literal"><span class="pre">translations</span></tt> del vostra installazione pywws. Se si imposta un&#8217;altra lingua non presente, pywws tornerà in Inglese.</p>
-<p><tt class="docutils literal"><span class="pre">logdata</span> <span class="pre">sync</span></tt> imposta la qualità di sincronizzazione utilizzato da <a class="reference internal" href="../api/pywws.LogData.html"><em>pywws.LogData</em></a>. Impostare a 0 è più veloce ma imprecisa o 1 più lento ma preciso.</p>
-<p><tt class="docutils literal"><span class="pre">rain</span> <span class="pre">day</span> <span class="pre">threshold</span></tt> è la quantità di pioggia (in mm) che deve cadere in un giorno per poter qualificare come un giorno di pioggia nei dati di riepilogo mensili. È necessario aggiornare tutti i vostri dati memorizzati tramite l&#8217;esecuzione di <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a> dopo aver modificato questo valore.</p>
+<p><code class="docutils literal"><span class="pre">gnuplot</span> <span class="pre">encoding</span></code> è la codifica del testo utilizzato per tracciare i grafici. Il valore predefinito di <code class="docutils literal"><span class="pre">iso_8859_1</span></code> che consente di usare il simbolo del grado, il che è utile per un&#8217;applicazione meteo! Altri valori potrebbero essere necessari se la lingua comprende i caratteri accentati. I possibili valori dipendono dalla vostra installazione gnuplot così alcuni esperimenti possono essere necessari.</p>
+<p><code class="docutils literal"><span class="pre">template</span> <span class="pre">encoding</span></code> è la codifica del testo utilizzato per i modelli. Il valore predefinito è <code class="docutils literal"><span class="pre">iso-8859-1</span></code>, che è la codifica utilizzata nell&#8217;esempio dei modelli. Se è necessario creare modelli con un diverso set di caratteri, è necessario modificare questo valore in base ai vostri modelli.</p>
+<p><code class="docutils literal"><span class="pre">language</span></code> è utilizzata per localizzare pywws. E&#8217; facoltativa, siccome pywws solitamente utilizza il computer come lingua di default impostata dalla variabile di ambiente LANG. Le lingue disponibili sono quelle della sottodirectory <code class="docutils literal"><span class="pre">translations</span></code> del vostra installazione pywws. Se si imposta un&#8217;altra lingua non presente, pywws tornerà in Inglese.</p>
+<p><code class="docutils literal"><span class="pre">logdata</span> <span class="pre">sync</span></code> imposta la qualità di sincronizzazione utilizzato da <a class="reference internal" href="../api/pywws.LogData.html"><em>pywws.LogData</em></a>. Impostare a 0 è più veloce ma imprecisa o 1 più lento ma preciso.</p>
+<p><code class="docutils literal"><span class="pre">rain</span> <span class="pre">day</span> <span class="pre">threshold</span></code> è la quantità di pioggia (in mm) che deve cadere in un giorno per poter qualificare come un giorno di pioggia nei dati di riepilogo mensili. È necessario aggiornare tutti i vostri dati memorizzati tramite l&#8217;esecuzione di <a class="reference internal" href="../api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></code></a> dopo aver modificato questo valore.</p>
 <div class="versionadded">
-<p><span class="versionmodified">Nuovo nella versione 13.09_r1057: </span><tt class="docutils literal"><span class="pre">asynchrouous</span></tt> controlla l&#8217;utilizzo di un processo separato in upload di <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></tt></a>.</p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified">Nuovo nella versione 13.10_r1094: </span><tt class="docutils literal"><span class="pre">usb</span> <span class="pre">activity</span> <span class="pre">margin</span></tt> controlla l&#8217;algoritmo che evita il problema &#8220;USB lockup&#8221; che colpisce alcune stazioni. Imposta un numero di secondi su entrambi i lati in attesa di attività della stazione (ricevendo una lettura dall&#8217;esterno o la registrazione di una lettura) finchè pywws non ottiene i dati dalla stazione. Se la stazione non è interessato dal problema blocco USB è possibile impostare <tt class="docutils literal"><span class="pre">usb</span> <span class="pre">activity</span> <span class="pre">margin</span></tt> to 0.0.</p>
+<p><span class="versionmodified">Nuovo nella versione 13.09_r1057: </span><code class="docutils literal"><span class="pre">asynchrouous</span></code> controlla l&#8217;utilizzo di un processo separato in upload di <a class="reference internal" href="../api/pywws.LiveLog.html#module-pywws.LiveLog" title="pywws.LiveLog"><code class="xref py py-mod docutils literal"><span class="pre">pywws.LiveLog</span></code></a>.</p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified">Nuovo nella versione 13.11_r1102: </span><tt class="docutils literal"><span class="pre">gnuplot</span> <span class="pre">version</span></tt> dice <a class="reference internal" href="../api/pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Plot</span></tt></a> e <a class="reference internal" href="../api/pywws.WindRose.html#module-pywws.WindRose" title="pywws.WindRose"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.WindRose</span></tt></a> quale versione di gnuplot è installata sul tuo computer. Questo permette loro di utilizzare le caratteristiche specifiche della versione per dare una migliore qualità di stampa.</p>
+<p><span class="versionmodified">Nuovo nella versione 13.10_r1094: </span><code class="docutils literal"><span class="pre">usb</span> <span class="pre">activity</span> <span class="pre">margin</span></code> controlla l&#8217;algoritmo che evita il problema &#8220;USB lockup&#8221; che colpisce alcune stazioni. Imposta un numero di secondi su entrambi i lati in attesa di attività della stazione (ricevendo una lettura dall&#8217;esterno o la registrazione di una lettura) finchè pywws non ottiene i dati dalla stazione. Se la stazione non è interessato dal problema blocco USB è possibile impostare <code class="docutils literal"><span class="pre">usb</span> <span class="pre">activity</span> <span class="pre">margin</span></code> to 0.0.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">Nuovo nella versione 13.11_r1102: </span><code class="docutils literal"><span class="pre">gnuplot</span> <span class="pre">version</span></code> dice <a class="reference internal" href="../api/pywws.Plot.html#module-pywws.Plot" title="pywws.Plot"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Plot</span></code></a> e <a class="reference internal" href="../api/pywws.WindRose.html#module-pywws.WindRose" title="pywws.WindRose"><code class="xref py py-mod docutils literal"><span class="pre">pywws.WindRose</span></code></a> quale versione di gnuplot è installata sul tuo computer. Questo permette loro di utilizzare le caratteristiche specifiche della versione per dare una migliore qualità di stampa.</p>
 </div>
 </div>
 <div class="section" id="paths-directories-in-which-templates-etc-are-stored">
@@ -144,10 +144,10 @@ local_files = /home/$USER/weather/results/
 </pre></div>
 </div>
 <p>Questa sezione specifica le attività che devono essere effettuate per ogni campione di dati durante la &#8216;live logging&#8217;, cioè ogni 48 secondi. È improbabile che si vorrebbe fare altro che caricare questo spesso a Weather Underground o aggiornare il file di YoWindow.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <code class="docutils literal"><span class="pre">pywws/services/</span></code>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> and <code class="docutils literal"><span class="pre">plot</span></code> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
 <div class="versionchanged">
-<p><span class="versionmodified">Cambiato nella versione 13.05_r1013: </span>aggiunto il modello  <tt class="docutils literal"><span class="pre">'yowindow.xml'</span></tt>. Precedentemente il file yowindow era generato da un modulo separato, richiamato dalla voce <tt class="docutils literal"><span class="pre">yowindow</span></tt> nella sezione <tt class="docutils literal"><span class="pre">[live]</span></tt>. La sintassi precedente funziona ancora, ma è obsoleta.</p>
+<p><span class="versionmodified">Cambiato nella versione 13.05_r1013: </span>aggiunto il modello  <code class="docutils literal"><span class="pre">'yowindow.xml'</span></code>. Precedentemente il file yowindow era generato da un modulo separato, richiamato dalla voce <code class="docutils literal"><span class="pre">yowindow</span></code> nella sezione <code class="docutils literal"><span class="pre">[live]</span></code>. La sintassi precedente funziona ancora, ma è obsoleta.</p>
 </div>
 </div>
 <div class="section" id="logged-tasks-to-be-done-every-time-the-station-logs-a-data-record">
@@ -159,8 +159,8 @@ local_files = /home/$USER/weather/results/
 </pre></div>
 </div>
 <p>Questa sezione specifica le attività che devono essere effettuate ogni volta che viene registrato un record di dati in modalità &#8216;live logging&#8217; o ogni volta che viene eseguito un attività di cron.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <code class="docutils literal"><span class="pre">pywws/services/</span></code>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> and <code class="docutils literal"><span class="pre">plot</span></code> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
 </div>
 <div class="section" id="hourly-tasks-to-be-done-every-hour">
 <h2>hourly: le attività da fare ogni ora<a class="headerlink" href="#hourly-tasks-to-be-done-every-hour" title="link permanente per questa intestazione">¶</a></h2>
@@ -171,10 +171,10 @@ local_files = /home/$USER/weather/results/
 </pre></div>
 </div>
 <p>Questa sezione specifica le attività che devono essere eseguite ogni ora in modalità &#8216;live logging&#8217; o l&#8217;esecuzione oraria di un attività di cron.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <code class="docutils literal"><span class="pre">pywws/services/</span></code>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> and <code class="docutils literal"><span class="pre">plot</span></code> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
 <div class="versionchanged">
-<p><span class="versionmodified">Cambiato nella versione 13.06_r1015: </span>Aggiunto il flag <tt class="docutils literal"><span class="pre">'T'</span></tt>. Precedentemente i modelli Twitter sono stati indicati separatamente in voci <tt class="docutils literal"><span class="pre">twitter</span></tt> in <tt class="docutils literal"><span class="pre">[hourly]</span></tt> e di altre sezioni. La sintassi precedente funziona ancora, ma è obsoleta.</p>
+<p><span class="versionmodified">Cambiato nella versione 13.06_r1015: </span>Aggiunto il flag <code class="docutils literal"><span class="pre">'T'</span></code>. Precedentemente i modelli Twitter sono stati indicati separatamente in voci <code class="docutils literal"><span class="pre">twitter</span></code> in <code class="docutils literal"><span class="pre">[hourly]</span></code> e di altre sezioni. La sintassi precedente funziona ancora, ma è obsoleta.</p>
 </div>
 </div>
 <div class="section" id="hourly-tasks-to-be-done-every-12-hours">
@@ -186,8 +186,8 @@ plot = []
 </pre></div>
 </div>
 <p>Questa sezione specifica le attività che devono essere eseguite ogni 12 ore in modalità &#8216;live logging&#8217; o l&#8217;esecuzione di un attività oraria di cron. Per cose che non cambiano molto spesso, come i grafici mensili.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <code class="docutils literal"><span class="pre">pywws/services/</span></code>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> and <code class="docutils literal"><span class="pre">plot</span></code> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
 </div>
 <div class="section" id="daily-tasks-to-be-done-every-24-hours">
 <h2>daily: le attività da fare ogni 24 ore<a class="headerlink" href="#daily-tasks-to-be-done-every-24-hours" title="link permanente per questa intestazione">¶</a></h2>
@@ -198,8 +198,8 @@ plot = []
 </pre></div>
 </div>
 <p>Questa sezione specifica le attività che devono essere eseguite ogni giorno in modalità &#8216;live logging&#8217; o l&#8217;esecuzione di un jun attività oraria di cron. Per le cose che non cambiano molto spesso, ad esempio i grafici mensilmente o annualmente.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> and <tt class="docutils literal"><span class="pre">plot</span></tt> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> è un elenco di &#8216;servizi&#8217; per caricare i dati. Ognuno qui elencato deve avere un file di configurazione <code class="docutils literal"><span class="pre">pywws/services/</span></code>. See <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> per ulteriori dettagli.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> and <code class="docutils literal"><span class="pre">plot</span></code> sono elenchi di modelli di testo e grafici che devono essere elaborati ed, opzionalmente, caricati sul tuo sito Web.</p>
 </div>
 <div class="section" id="ftp-configuration-of-uploading-to-a-website">
 <h2>ftp: configurazione di caricamento su un sito web<a class="headerlink" href="#ftp-configuration-of-uploading-to-a-website" title="link permanente per questa intestazione">¶</a></h2>
@@ -213,11 +213,11 @@ directory = public_html/weather/data/
 </pre></div>
 </div>
 <p>Queste voci forniscono i dettagli del sito web (o delle directory locali) in cui processare i file di testo e le immagini grafiche che devono essere trasferite.</p>
-<p><tt class="docutils literal"><span class="pre">local</span> <span class="pre">site</span></tt> Specifica se il file deve essere copiato in una directory locale o inviato a un sito remoto. È possibile impostare questa opzione se si esegue il server web sulla stessa macchina di pywws.</p>
-<p><tt class="docutils literal"><span class="pre">secure</span></tt> Specifica se per trasferire i file utilizzando il protocollo SFTP (secure FTP) al posto del più comune FTP. Il sito web provider dovrebbe essere in grado di dirvi se è possibile utilizzare SFTP.</p>
-<p><tt class="docutils literal"><span class="pre">site</span></tt> è l&#8217;indirizzo web del sito FTP dove trasferire i file.</p>
-<p><tt class="docutils literal"><span class="pre">user</span></tt> e <tt class="docutils literal"><span class="pre">password</span></tt> sono i dati di login del sito FTP. Il provider del sito web dovrebbe avere comunicato a voi.</p>
-<p><tt class="docutils literal"><span class="pre">directory</span></tt> specifica il percorso sul sito FTP (o il file system locale) dove devono essere memorizzati i file. Nota che si potrebbe avere la necessità di sperimentare un po&#8217; - potrebbe essere necessario un carattere &#8216;/&#8217; all&#8217;inizio del percorso.</p>
+<p><code class="docutils literal"><span class="pre">local</span> <span class="pre">site</span></code> Specifica se il file deve essere copiato in una directory locale o inviato a un sito remoto. È possibile impostare questa opzione se si esegue il server web sulla stessa macchina di pywws.</p>
+<p><code class="docutils literal"><span class="pre">secure</span></code> Specifica se per trasferire i file utilizzando il protocollo SFTP (secure FTP) al posto del più comune FTP. Il sito web provider dovrebbe essere in grado di dirvi se è possibile utilizzare SFTP.</p>
+<p><code class="docutils literal"><span class="pre">site</span></code> è l&#8217;indirizzo web del sito FTP dove trasferire i file.</p>
+<p><code class="docutils literal"><span class="pre">user</span></code> e <code class="docutils literal"><span class="pre">password</span></code> sono i dati di login del sito FTP. Il provider del sito web dovrebbe avere comunicato a voi.</p>
+<p><code class="docutils literal"><span class="pre">directory</span></code> specifica il percorso sul sito FTP (o il file system locale) dove devono essere memorizzati i file. Nota che si potrebbe avere la necessità di sperimentare un po&#8217; - potrebbe essere necessario un carattere &#8216;/&#8217; all&#8217;inizio del percorso.</p>
 </div>
 <div class="section" id="twitter-configuration-of-posting-to-twitter">
 <h2>twitter: Configurazione della pubblicazione su Twitter<a class="headerlink" href="#twitter-configuration-of-posting-to-twitter" title="link permanente per questa intestazione">¶</a></h2>
@@ -228,8 +228,8 @@ directory = public_html/weather/data/
 <span class="n">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.251</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">secret</span></tt> and <tt class="docutils literal"><span class="pre">key</span></tt> sono i dati di autenticazione forniti da Twitter. Per averli, usa il programma <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.TwitterAuth</span></tt></a>.</p>
-<p><tt class="docutils literal"><span class="pre">latitude</span></tt> and <tt class="docutils literal"><span class="pre">longitude</span></tt> sono i dati di posizione facoltativi. Se si include la vostra stazione meteo tweet avrà informazioni sulla posizione in modo che gli utenti possano vedere dov&#8217;è la vostra stazione meteo. Potrebbe anche consentire alle persone di trovare la vostra stazione meteo tweet se si cerca per località.</p>
+<p><code class="docutils literal"><span class="pre">secret</span></code> and <code class="docutils literal"><span class="pre">key</span></code> sono i dati di autenticazione forniti da Twitter. Per averli, usa il programma <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><code class="xref py py-mod docutils literal"><span class="pre">pywws.TwitterAuth</span></code></a>.</p>
+<p><code class="docutils literal"><span class="pre">latitude</span></code> and <code class="docutils literal"><span class="pre">longitude</span></code> sono i dati di posizione facoltativi. Se si include la vostra stazione meteo tweet avrà informazioni sulla posizione in modo che gli utenti possano vedere dov&#8217;è la vostra stazione meteo. Potrebbe anche consentire alle persone di trovare la vostra stazione meteo tweet se si cerca per località.</p>
 </div>
 <div class="section" id="underground-metoffice-temperaturnu-etc-configuration-of-posting-to-services">
 <h2>underground, metoffice, temperaturnu ecc: Configurazione della pubblicazione su &#8216;servizi&#8217;<a class="headerlink" href="#underground-metoffice-temperaturnu-etc-configuration-of-posting-to-services" title="link permanente per questa intestazione">¶</a></h2>
@@ -239,8 +239,8 @@ directory = public_html/weather/data/
 </pre></div>
 </div>
 <p>Queste sezioni contengono informazioni quali password e ID stazione necessari per caricare i dati in servizi meteorologici. I nomi dei dati dipendono dal servizio. L&#8217;esempio illustrato è per Weather Underground.</p>
-<p><tt class="docutils literal"><span class="pre">station</span></tt> Il PWS ID (identificativo della stazione) assegnato alla stazione meteo da Weather Underground.</p>
-<p><tt class="docutils literal"><span class="pre">password</span></tt> è la tua password di Weather Underground.</p>
+<p><code class="docutils literal"><span class="pre">station</span></code> Il PWS ID (identificativo della stazione) assegnato alla stazione meteo da Weather Underground.</p>
+<p><code class="docutils literal"><span class="pre">password</span></code> è la tua password di Weather Underground.</p>
 </div>
 </div>
 <div class="section" id="status-ini-status-file-format">
@@ -262,7 +262,7 @@ directory = public_html/weather/data/
 fixed block = {...}
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">fixed</span> <span class="pre">block</span></tt> tutti i dati memorizzati nei primi 256 byte di memoria della stazione. Questo include i valori massimi e minimi, impostazioni di soglia di allarme, unità di visualizzazione e così via.</p>
+<p><code class="docutils literal"><span class="pre">fixed</span> <span class="pre">block</span></code> tutti i dati memorizzati nei primi 256 byte di memoria della stazione. Questo include i valori massimi e minimi, impostazioni di soglia di allarme, unità di visualizzazione e così via.</p>
 </div>
 <div class="section" id="clock-synchronisation-information">
 <h2>clock: informazioni di sincronizzazione<a class="headerlink" href="#clock-synchronisation-information" title="link permanente per questa intestazione">¶</a></h2>
@@ -295,7 +295,7 @@ metoffice = 2013-05-30 18:59:15
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -329,7 +329,7 @@ metoffice = 2013-05-30 18:59:15
   <h4>Argomento successivo</h4>
   <p class="topless"><a href="humidex.html"
                         title="capitolo successivo">Indice di umidità (Humidex)</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Ricerca veloce</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -346,7 +346,7 @@ metoffice = 2013-05-30 18:59:15
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -365,9 +365,9 @@ metoffice = 2013-05-30 18:59:15
           <li><a href="index.html" >Guide per gli utenti</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

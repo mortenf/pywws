@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to integrate pywws with various weather services &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>How to integrate pywws with various weather services &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to configure pywws to post messages to Twitter" href="twitter.html" />
     <link rel="prev" title="How to set up ‘live’ logging with pywws" href="livelogging.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-integrate-pywws-with-various-weather-services">
 <h1>How to integrate pywws with various weather services<a class="headerlink" href="#how-to-integrate-pywws-with-various-weather-services" title="Permalink to this headline">¶</a></h1>
@@ -67,11 +67,11 @@ This is easy to do:</p>
 <ol class="arabic">
 <li><p class="first">Stop all pywws software</p>
 </li>
-<li><p class="first">Copy the <tt class="docutils literal"><span class="pre">yowindow.xml</span></tt> example template to your text template directory.</p>
+<li><p class="first">Copy the <code class="docutils literal"><span class="pre">yowindow.xml</span></code> example template to your text template directory.</p>
 </li>
-<li><p class="first">If you haven&#8217;t already done so, edit <tt class="docutils literal"><span class="pre">weather.ini</span></tt> and set the <tt class="docutils literal"><span class="pre">local_files</span></tt> entry in the <tt class="docutils literal"><span class="pre">[paths]</span></tt> section to a suitable directory for your yowindow file.</p>
+<li><p class="first">If you haven&#8217;t already done so, edit <code class="docutils literal"><span class="pre">weather.ini</span></code> and set the <code class="docutils literal"><span class="pre">local_files</span></code> entry in the <code class="docutils literal"><span class="pre">[paths]</span></code> section to a suitable directory for your yowindow file.</p>
 </li>
-<li><p class="first">Add the yowindow template to the <tt class="docutils literal"><span class="pre">[live]</span></tt> tasks in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>. Set its flags to <tt class="docutils literal"><span class="pre">'L'</span></tt> so the result is copied to your local directory instead of being uploaded to an ftp site:</p>
+<li><p class="first">Add the yowindow template to the <code class="docutils literal"><span class="pre">[live]</span></code> tasks in <code class="docutils literal"><span class="pre">weather.ini</span></code>. Set its flags to <code class="docutils literal"><span class="pre">'L'</span></code> so the result is copied to your local directory instead of being uploaded to an ftp site:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">live</span><span class="p">]</span>
 <span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;yowindow.xml&#39;</span><span class="p">,</span> <span class="s">&#39;L&#39;</span><span class="p">)]</span>
 </pre></div>
@@ -80,7 +80,7 @@ This is easy to do:</p>
 <li><p class="first">Restart pywws live logging.</p>
 </li>
 </ol>
-<p>You can check the file is being updated every 48 seconds by using <tt class="docutils literal"><span class="pre">more</span></tt> or <tt class="docutils literal"><span class="pre">cat</span></tt> to dump it to the screen.</p>
+<p>You can check the file is being updated every 48 seconds by using <code class="docutils literal"><span class="pre">more</span></code> or <code class="docutils literal"><span class="pre">cat</span></code> to dump it to the screen.</p>
 <p>Finally configure yowindow to use this file.
 See <a class="reference external" href="http://yowindow.com/pws_setup.php">http://yowindow.com/pws_setup.php</a> for instructions on how to do this.</p>
 </div>
@@ -90,7 +90,7 @@ See <a class="reference external" href="http://yowindow.com/pws_setup.php">http:
 </div>
 <div class="section" id="other-services">
 <span id="guides-integration-other"></span><h2>Other &#8220;services&#8221;<a class="headerlink" href="#other-services" title="Permalink to this headline">¶</a></h2>
-<p>The remaining weather service uploads are handled by the <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> module.
+<p>The remaining weather service uploads are handled by the <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><code class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></code></a> module.
 See the module&#8217;s documentation for general configuration options.
 The following subsections give further information about some of the available services.</p>
 <div class="section" id="citizen-weather-observer-program">
@@ -105,7 +105,7 @@ The following subsections give further information about some of the available s
 </li>
 <li><p class="first">API: <a class="reference external" href="http://www.wxqa.com/faq.html">http://www.wxqa.com/faq.html</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[cwop]
 designator = EW9999
 latitude = 5130.06N
@@ -125,9 +125,9 @@ longitude = 00008.52E
 <p>Note that the latitude and longitude must be in &#8220;LORAN&#8221; format and leading zeros are required.
 See question 3 in the <a class="reference external" href="http://www.wxqa.com/faq.html">CWOP FAQ</a> for more information.</p>
 <p>Licensed radio hams use their callsign as the designator and need a passcode.
-They should use the service name <tt class="docutils literal"><span class="pre">cwop_ham</span></tt> instead of <tt class="docutils literal"><span class="pre">cwop</span></tt> when running <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></tt></a> directly and in the <tt class="docutils literal"><span class="pre">weather.ini</span></tt> <tt class="docutils literal"><span class="pre">services</span></tt> entries.
-(The same <tt class="docutils literal"><span class="pre">[cwop]</span></tt> config section is used for both.)</p>
-<p>CWOP uploads are rate-limited by pywws, so you can safely add it to both the <tt class="docutils literal"><span class="pre">[live]</span></tt> and <tt class="docutils literal"><span class="pre">[logged]</span></tt> sections in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>.</p>
+They should use the service name <code class="docutils literal"><span class="pre">cwop_ham</span></code> instead of <code class="docutils literal"><span class="pre">cwop</span></code> when running <a class="reference internal" href="../api/pywws.toservice.html#module-pywws.toservice" title="pywws.toservice"><code class="xref py py-mod docutils literal"><span class="pre">pywws.toservice</span></code></a> directly and in the <code class="docutils literal"><span class="pre">weather.ini</span></code> <code class="docutils literal"><span class="pre">services</span></code> entries.
+(The same <code class="docutils literal"><span class="pre">[cwop]</span></code> config section is used for both.)</p>
+<p>CWOP uploads are rate-limited by pywws, so you can safely add it to both the <code class="docutils literal"><span class="pre">[live]</span></code> and <code class="docutils literal"><span class="pre">[logged]</span></code> sections in <code class="docutils literal"><span class="pre">weather.ini</span></code>.</p>
 <p>The CWOP/APRS uploader is based on code by Marco Trevisan &lt;<a class="reference external" href="mailto:mail&#37;&#52;&#48;3v1n0&#46;net">mail<span>&#64;</span>3v1n0<span>&#46;</span>net</a>&gt;.</p>
 </div>
 <div class="section" id="mqtt">
@@ -135,7 +135,7 @@ They should use the service name <tt class="docutils literal"><span class="pre">
 <div class="versionadded">
 <p><span class="versionmodified">New in version 14.12.0.dev1260.</span></p>
 </div>
-<p>MQTT is a &#8220;message broker&#8221; system, typically running on <tt class="docutils literal"><span class="pre">localhost</span></tt> or another computer in your home network.
+<p>MQTT is a &#8220;message broker&#8221; system, typically running on <code class="docutils literal"><span class="pre">localhost</span></code> or another computer in your home network.
 Use of MQTT with pywws requires an additional library.
 See <a class="reference internal" href="../essentials/dependencies.html#dependencies-mqtt"><em>Dependencies - MQTT</em></a> for details.</p>
 <ul>
@@ -143,7 +143,7 @@ See <a class="reference internal" href="../essentials/dependencies.html#dependen
 </li>
 <li><p class="first">Mosquitto (a lightweight broker): <a class="reference external" href="http://mosquitto.org/">http://mosquitto.org/</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[mqtt]
 topic = /weather/pywws
 hostname = localhost
@@ -157,16 +157,16 @@ password = unknown
 </div>
 </li>
 </ul>
-<p>pywws will publish a JSON string of the data specified in the <tt class="docutils literal"><span class="pre">mqtt_template_1080.txt</span></tt> file.
+<p>pywws will publish a JSON string of the data specified in the <code class="docutils literal"><span class="pre">mqtt_template_1080.txt</span></code> file.
 This data will be published to the broker running on hostname, with the port number specified.
 (An IP address can be used instead of a host name.)
-<tt class="docutils literal"><span class="pre">client_id</span></tt> is a note of who published the data to the topic.
-<tt class="docutils literal"><span class="pre">topic</span></tt> can be any string value, this needs to be the topic that a subscriber is aware of.</p>
-<p><tt class="docutils literal"><span class="pre">retain</span></tt> is a boolean and should be set to <tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt> (or left at the default <tt class="docutils literal"><span class="pre">unknown</span></tt>).
-If set to <tt class="docutils literal"><span class="pre">True</span></tt> this will flag the message sent to the broker to be retained.
+<code class="docutils literal"><span class="pre">client_id</span></code> is a note of who published the data to the topic.
+<code class="docutils literal"><span class="pre">topic</span></code> can be any string value, this needs to be the topic that a subscriber is aware of.</p>
+<p><code class="docutils literal"><span class="pre">retain</span></code> is a boolean and should be set to <code class="docutils literal"><span class="pre">True</span></code> or <code class="docutils literal"><span class="pre">False</span></code> (or left at the default <code class="docutils literal"><span class="pre">unknown</span></code>).
+If set to <code class="docutils literal"><span class="pre">True</span></code> this will flag the message sent to the broker to be retained.
 Otherwise the broker discards the message if no client is subscribing to this topic.
 This allows clients to get an immediate response when they subscribe to a topic, without having to wait until the next message is published.</p>
-<p><tt class="docutils literal"><span class="pre">auth</span></tt>, <tt class="docutils literal"><span class="pre">user</span></tt> and <tt class="docutils literal"><span class="pre">password</span></tt> can be used for MQTT authentication.</p>
+<p><code class="docutils literal"><span class="pre">auth</span></code>, <code class="docutils literal"><span class="pre">user</span></code> and <code class="docutils literal"><span class="pre">password</span></code> can be used for MQTT authentication.</p>
 <p>If these aren&#8217;t obvious to you it&#8217;s worth doing a bit of reading around MQTT.
 It&#8217;s a great lightweight messaging system from IBM, recently made more popular when Facebook published information on their use of it.</p>
 <p>This has been tested with the Mosquitto Open Source MQTT broker, running on a Raspberry Pi (Raspian OS).
@@ -185,7 +185,7 @@ TLS (mqtt data encryption) is not yet implemented.</p>
 </li>
 <li><p class="first">API: <a class="reference external" href="http://wow.metoffice.gov.uk/support/dataformats#automatic">http://wow.metoffice.gov.uk/support/dataformats#automatic</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[metoffice]
 site id = 12345678
 aws pin = 987654
@@ -203,7 +203,7 @@ aws pin = 987654
 </li>
 <li><p class="first">API: <a class="reference external" href="http://openweathermap.org/API">http://openweathermap.org/API</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[openweathermap]
 lat = 51.501
 long = -0.142
@@ -216,8 +216,8 @@ id = Buck House
 </li>
 </ul>
 <p>The default behaviour is to use your user name to identify the weather station.
-However, it&#8217;s possible for a user to have more than one weather station, so there is an undocumented <tt class="docutils literal"><span class="pre">name</span></tt> parameter in the API that can be used to identify the station.
-This appears as <tt class="docutils literal"><span class="pre">id</span></tt> in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>.
+However, it&#8217;s possible for a user to have more than one weather station, so there is an undocumented <code class="docutils literal"><span class="pre">name</span></code> parameter in the API that can be used to identify the station.
+This appears as <code class="docutils literal"><span class="pre">id</span></code> in <code class="docutils literal"><span class="pre">weather.ini</span></code>.
 Make sure you don&#8217;t choose a name that is already in use.</p>
 </div>
 <div class="section" id="pws-weather">
@@ -229,7 +229,7 @@ Make sure you don&#8217;t choose a name that is already in use.</p>
 </li>
 <li><p class="first">API based on WU protocol: <a class="reference external" href="http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol">http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">pwsweather</span><span class="p">]</span>
 <span class="n">station</span> <span class="o">=</span> <span class="n">ABCDEFGH1</span>
 <span class="n">password</span> <span class="o">=</span> <span class="n">xxxxxxx</span>
@@ -243,7 +243,7 @@ Make sure you don&#8217;t choose a name that is already in use.</p>
 <ul>
 <li><p class="first">Web site: <a class="reference external" href="http://www.temperatur.nu/">http://www.temperatur.nu/</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre>[temperaturnu]
 id = ???
 town = ???
@@ -259,7 +259,7 @@ town = ???
 </li>
 <li><p class="first">API: <a class="reference external" href="http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol">http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">underground</span><span class="p">]</span>
 <span class="n">station</span> <span class="o">=</span> <span class="n">ABCDEFGH1</span>
 <span class="n">password</span> <span class="o">=</span> <span class="n">xxxxxxx</span>
@@ -271,7 +271,7 @@ town = ???
 <div class="section" id="weather-underground-rapidfire-updates">
 <h3>Weather Underground &#8220;RapidFire&#8221; updates<a class="headerlink" href="#weather-underground-rapidfire-updates" title="Permalink to this headline">¶</a></h3>
 <p>Weather Underground has a second upload URL for real time updates as little as 2.5 seconds apart.
-If you run pywws in &#8216;live logging&#8217; mode (see <a class="reference internal" href="livelogging.html"><em>How to set up &#8216;live&#8217; logging with pywws</em></a>) you can use this to send updates every 48 seconds, by adding &#8216;underground_rf&#8217; to the <tt class="docutils literal"><span class="pre">[live]</span></tt> tasks section in <tt class="docutils literal"><span class="pre">weather.ini</span></tt>:</p>
+If you run pywws in &#8216;live logging&#8217; mode (see <a class="reference internal" href="livelogging.html"><em>How to set up &#8216;live&#8217; logging with pywws</em></a>) you can use this to send updates every 48 seconds, by adding &#8216;underground_rf&#8217; to the <code class="docutils literal"><span class="pre">[live]</span></code> tasks section in <code class="docutils literal"><span class="pre">weather.ini</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">live</span><span class="p">]</span>
 <span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground_rf&#39;</span><span class="p">]</span>
 
@@ -279,7 +279,7 @@ If you run pywws in &#8216;live logging&#8217; mode (see <a class="reference int
 <span class="n">services</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;underground&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Make sure you still have an &#8216;underground&#8217; service in <tt class="docutils literal"><span class="pre">[logged]</span></tt> or <tt class="docutils literal"><span class="pre">[hourly]</span></tt>.
+<p>Make sure you still have an &#8216;underground&#8217; service in <code class="docutils literal"><span class="pre">[logged]</span></code> or <code class="docutils literal"><span class="pre">[hourly]</span></code>.
 This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps if your station goes offline for some reason.</p>
 </div>
 <div class="section" id="wetter-com">
@@ -289,7 +289,7 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
 </li>
 <li><p class="first">Register station: <a class="reference external" href="http://www.wetter.com/mein_wetter/wetterstation/willkommen/">http://www.wetter.com/mein_wetter/wetterstation/willkommen/</a></p>
 </li>
-<li><p class="first">Example <tt class="docutils literal"><span class="pre">weather.ini</span></tt> section:</p>
+<li><p class="first">Example <code class="docutils literal"><span class="pre">weather.ini</span></code> section:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">wetterarchivde</span><span class="p">]</span>
 <span class="n">user_id</span> <span class="o">=</span> <span class="mi">12345</span>
 <span class="n">kennwort</span> <span class="o">=</span> <span class="n">ab1d3456i8</span>
@@ -308,7 +308,7 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -340,7 +340,7 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
   <h4>Next topic</h4>
   <p class="topless"><a href="twitter.html"
                         title="next chapter">How to configure pywws to post messages to Twitter</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -357,7 +357,7 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -372,13 +372,13 @@ This will ensure that &#8216;catchup&#8217; records are sent to fill in any gaps
         <li class="right" >
           <a href="livelogging.html" title="How to set up ‘live’ logging with pywws"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

@@ -28,8 +28,8 @@
     <link rel="top" title="documentation pywws 13.09_r1069" href="#" />
     <link rel="next" title="Licence Publique Générale GNU" href="essentials/LICENCE.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,7 +48,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="pywws">
 <h1>pywws<a class="headerlink" href="#pywws" title="Lien permanent vers ce titre">¶</a></h1>
@@ -85,11 +85,11 @@
 </pre></div>
 </div>
 <p>Si vous n&#8217;avez pas les privilèges sur la racine, ou ne désirez pas installer pywws, vous pouvez télécharger le fichier zip ou .tar.gz  à partir de PyPI et extraire les fichiers dans un dossier  de votre choix, sur votre ordinateur</p>
-<p>Les fichiers PyPI contiennent un instantané de la version du logiciel - une nouvelle version est publiée tous les quelques mois.  Si vous souhaitez être au fait des derniers développements de pywws, vous pouvez utiliser <tt class="docutils literal"><span class="pre">git</span></tt> pour cloner le répertoire pywws:</p>
+<p>Les fichiers PyPI contiennent un instantané de la version du logiciel - une nouvelle version est publiée tous les quelques mois.  Si vous souhaitez être au fait des derniers développements de pywws, vous pouvez utiliser <code class="docutils literal"><span class="pre">git</span></code> pour cloner le répertoire pywws:</p>
 <div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/jim-easterbrook/pywws.git
 </pre></div>
 </div>
-<p>Par la suite, vous pouvez compiler la documentation et les fichiers de localisation de langue (ce qui nécessite les logiciels <tt class="docutils literal"><span class="pre">gettext</span></tt> et <tt class="docutils literal"><span class="pre">sphinx</span></tt>):</p>
+<p>Par la suite, vous pouvez compiler la documentation et les fichiers de localisation de langue (ce qui nécessite les logiciels <code class="docutils literal"><span class="pre">gettext</span></code> et <code class="docutils literal"><span class="pre">sphinx</span></code>):</p>
 <div class="highlight-python"><div class="highlight"><pre>cd pywws
 python setup.py build_sphinx
 python setup.py msgfmt
@@ -98,8 +98,8 @@ python setup.py msgfmt
 <p>Pour plus de détails, voir <a class="reference internal" href="guides/getstarted.html"><em>Comment démarrer avec pywws</em></a>.</p>
 <div class="section" id="upgrading-pywws">
 <h3>Mettre à jour pywws<a class="headerlink" href="#upgrading-pywws" title="Lien permanent vers ce titre">¶</a></h3>
-<p>La méthode employée pour faire la mise à jour de pywws dépend de la façon dont vous l&#8217;avez à l&#8217;origine obtenu. Si vous avez téléchargé un fichier zip ou tar.gz, vous devez procédé de la même manière avec la nouvelle version, puis supprimez le téléchargement obsolète quand vous avez terminé l&#8217;installation de la nouvelle version.  (Notez que l&#8217;évolution est beaucoup plus facile si vous n&#8217;entreposez pas vos fichiers de calibration, modules utilisateur et données météo dans le même répertoire que les fichiers téléchargés.) Si vous aviez utilisé  <tt class="docutils literal"><span class="pre">pip</span></tt> vous n&#8217;avez qu&#8217;à répéter la commande. Les utilisateurs de <tt class="docutils literal"><span class="pre">git</span></tt> n&#8217;ont qu&#8217;à faire la commande <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt>.</p>
-<p>Certaines récentes versions de pywws ont changé ce qui est stocké dans les fichiers de données horaires, quotidiens ou mensuels. Ces nouvelles versions sont incompatibles avec les données traitées par les versions antérieures. : le module <a class="reference internal" href="api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></tt></a> régénère toutes les données récapitulatives. Il devrait être exécuté après chaque mise à jour principale</p>
+<p>La méthode employée pour faire la mise à jour de pywws dépend de la façon dont vous l&#8217;avez à l&#8217;origine obtenu. Si vous avez téléchargé un fichier zip ou tar.gz, vous devez procédé de la même manière avec la nouvelle version, puis supprimez le téléchargement obsolète quand vous avez terminé l&#8217;installation de la nouvelle version.  (Notez que l&#8217;évolution est beaucoup plus facile si vous n&#8217;entreposez pas vos fichiers de calibration, modules utilisateur et données météo dans le même répertoire que les fichiers téléchargés.) Si vous aviez utilisé  <code class="docutils literal"><span class="pre">pip</span></code> vous n&#8217;avez qu&#8217;à répéter la commande. Les utilisateurs de <code class="docutils literal"><span class="pre">git</span></code> n&#8217;ont qu&#8217;à faire la commande <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
+<p>Certaines récentes versions de pywws ont changé ce qui est stocké dans les fichiers de données horaires, quotidiens ou mensuels. Ces nouvelles versions sont incompatibles avec les données traitées par les versions antérieures. : le module <a class="reference internal" href="api/pywws.Reprocess.html#module-pywws.Reprocess" title="pywws.Reprocess"><code class="xref py py-mod docutils literal"><span class="pre">pywws.Reprocess</span></code></a> régénère toutes les données récapitulatives. Il devrait être exécuté après chaque mise à jour principale</p>
 </div>
 </div>
 <div class="section" id="documentation">
@@ -202,7 +202,7 @@ python setup.py msgfmt
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="#">
               <img class="logo" src="_static/pywws_logo.png" alt="Logo"/>
@@ -230,7 +230,7 @@ python setup.py msgfmt
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="essentials/LICENCE.html"
                         title="Chapitre suivant">Licence Publique Générale GNU</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -247,7 +247,7 @@ python setup.py msgfmt
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -262,9 +262,9 @@ python setup.py msgfmt
         <li><a href="#">documentation pywws 13.09_r1069</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

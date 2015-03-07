@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pywws.TwitterAuth &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>pywws.TwitterAuth &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="Python programs and modules" href="../api_index.html" />
     <link rel="next" title="pywws.USBQualityTest" href="pywws.USBQualityTest.html" />
     <link rel="prev" title="pywws.Reprocess" href="pywws.Reprocess.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="pywws.Reprocess.html" title="pywws.Reprocess"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" accesskey="U">Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.TwitterAuth">
 <span id="pywws-twitterauth"></span><h1>pywws.TwitterAuth<a class="headerlink" href="#module-pywws.TwitterAuth" title="Permalink to this headline">¶</a></h1>
@@ -64,12 +64,12 @@ options are:
 data_dir is the root directory of the weather data
 </pre></div>
 </div>
-<p>This program authorises <a class="reference internal" href="pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><tt class="xref py py-mod docutils literal"><span class="pre">pywws.ToTwitter</span></tt></a> to post to a Twitter
+<p>This program authorises <a class="reference internal" href="pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><code class="xref py py-mod docutils literal"><span class="pre">pywws.ToTwitter</span></code></a> to post to a Twitter
 account. You need to create an account before running
-<tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt>. It opens a web browser window (or gives you a
+<code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code>. It opens a web browser window (or gives you a
 URL to copy to your web browser) where you log in to your Twitter
 account. If the login is successful the browser will display a 7 digit
-number which you then copy to <tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt>.</p>
+number which you then copy to <code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code>.</p>
 <p>See <a class="reference internal" href="../guides/twitter.html"><em>How to configure pywws to post messages to Twitter</em></a> for more detail on using Twitter with
 pywws.</p>
 <p class="rubric">Functions</p>
@@ -79,10 +79,10 @@ pywws.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.TwitterAuth.TwitterAuth" title="pywws.TwitterAuth.TwitterAuth"><tt class="xref py py-obj docutils literal"><span class="pre">TwitterAuth</span></tt></a>(params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.TwitterAuth.TwitterAuth" title="pywws.TwitterAuth.TwitterAuth"><code class="xref py py-obj docutils literal"><span class="pre">TwitterAuth</span></code></a>(params)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.TwitterAuth.main" title="pywws.TwitterAuth.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.TwitterAuth.main" title="pywws.TwitterAuth.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -94,19 +94,19 @@ pywws.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">Twitter</span></tt></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Twitter</span></code></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="pywws.TwitterAuth.TwitterAuth">
-<tt class="descclassname">pywws.TwitterAuth.</tt><tt class="descname">TwitterAuth</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#TwitterAuth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.TwitterAuth" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.TwitterAuth.</code><code class="descname">TwitterAuth</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#TwitterAuth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.TwitterAuth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pywws.TwitterAuth.main">
-<tt class="descclassname">pywws.TwitterAuth.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.main" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pywws.TwitterAuth.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/TwitterAuth.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.TwitterAuth.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr class="docutils" />
@@ -118,7 +118,7 @@ pywws.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -129,7 +129,7 @@ pywws.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="pywws.USBQualityTest.html"
                         title="next chapter">pywws.USBQualityTest</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -146,7 +146,7 @@ pywws.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -161,13 +161,13 @@ pywws.</p>
         <li class="right" >
           <a href="pywws.Reprocess.html" title="pywws.Reprocess"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="../api_index.html" >Python programs and modules</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.LogData" href="pywws.LogData.html" />
     <link rel="prev" title="pywws.EWtoPy" href="pywws.EWtoPy.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.Tasks">
 <span id="pywws-tasks"></span><h1>pywws.Tasks<a class="headerlink" href="#module-pywws.Tasks" title="Lien permanent vers ce titre">¶</a></h1>
@@ -66,25 +66,24 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">Calib</span></tt>(params,&nbsp;status)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Calib</span></code>(params,&nbsp;status)</td>
 <td><p class="first last">Classe qui implémente la calibration par défaut ou la calibration par l&#8217;utilisateur.</p>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.Tasks.RegularTasks" title="pywws.Tasks.RegularTasks"><tt class="xref py py-obj docutils literal"><span class="pre">RegularTasks</span></tt></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.Tasks.RegularTasks" title="pywws.Tasks.RegularTasks"><code class="xref py py-obj docutils literal"><span class="pre">RegularTasks</span></code></a>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ToService</span></tt>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ToService</span></code>(params,&nbsp;status,&nbsp;calib_data,&nbsp;...)</td>
 <td><p class="first last">Téléverse les données météo pour les services météorologiques tels que Weather Underground.</p>
 </td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td><p class="first last">datetime(année, mois, jour[, heure[, minute[, seconde[, microseconde[,tzinfo]]]]])</p>
-</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">deque</span></tt></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">deque</span></code></td>
 <td>deque([iterable[, maxlen]]) &#8211;&gt; deque object</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Différence entre deux valeurs de datetime.</p>
 </td>
 </tr>
@@ -92,40 +91,40 @@
 </table>
 <dl class="class">
 <dt id="pywws.Tasks.RegularTasks">
-<em class="property">class </em><tt class="descclassname">pywws.Tasks.</tt><tt class="descname">RegularTasks</tt><big>(</big><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>asynch=False</em><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pywws.Tasks.</code><code class="descname">RegularTasks</code><span class="sig-paren">(</span><em>params</em>, <em>status</em>, <em>calib_data</em>, <em>hourly_data</em>, <em>daily_data</em>, <em>monthly_data</em>, <em>asynch=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks" title="Permalien vers cette définition">¶</a></dt>
 <dd><dl class="method">
 <dt id="pywws.Tasks.RegularTasks.stop_thread">
-<tt class="descname">stop_thread</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.stop_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.stop_thread" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">stop_thread</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.stop_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.stop_thread" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Tasks.RegularTasks.has_live_tasks">
-<tt class="descname">has_live_tasks</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.has_live_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.has_live_tasks" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">has_live_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.has_live_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.has_live_tasks" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Tasks.RegularTasks.do_live">
-<tt class="descname">do_live</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_live"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_live" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">do_live</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_live"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_live" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Tasks.RegularTasks.do_tasks">
-<tt class="descname">do_tasks</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_tasks" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">do_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_tasks" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Tasks.RegularTasks.do_twitter">
-<tt class="descname">do_twitter</tt><big>(</big><em>template</em>, <em>data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_twitter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_twitter" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">do_twitter</code><span class="sig-paren">(</span><em>template</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_twitter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_twitter" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Tasks.RegularTasks.do_plot">
-<tt class="descname">do_plot</tt><big>(</big><em>template</em><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_plot" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">do_plot</code><span class="sig-paren">(</span><em>template</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_plot" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pywws.Tasks.RegularTasks.do_template">
-<tt class="descname">do_template</tt><big>(</big><em>template</em>, <em>data=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_template" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="descname">do_template</code><span class="sig-paren">(</span><em>template</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/Tasks.html#RegularTasks.do_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pywws.Tasks.RegularTasks.do_template" title="Permalien vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -136,7 +135,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -147,7 +146,7 @@
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="pywws.LogData.html"
                         title="Chapitre suivant">pywws.LogData</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -164,7 +163,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -183,9 +182,9 @@
           <li><a href="index.html" >Programmes et des modules Python</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

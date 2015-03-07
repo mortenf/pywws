@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to configure pywws to post messages to Twitter &mdash; pywws 15.01.0.dev1277 documentation</title>
+    <title>How to configure pywws to post messages to Twitter &mdash; pywws 15.03.0.dev1281 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '15.01.0.dev1277',
+        VERSION:     '15.03.0.dev1281',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/pywws_logo.ico"/>
-    <link rel="top" title="pywws 15.01.0.dev1277 documentation" href="../index.html" />
+    <link rel="top" title="pywws 15.03.0.dev1281 documentation" href="../index.html" />
     <link rel="up" title="User guides" href="index.html" />
     <link rel="next" title="How to use pywws in another language" href="language.html" />
     <link rel="prev" title="How to integrate pywws with various weather services" href="integration.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="integration.html" title="How to integrate pywws with various weather services"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">User guides</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +53,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-configure-pywws-to-post-messages-to-twitter">
 <h1>How to configure pywws to post messages to Twitter<a class="headerlink" href="#how-to-configure-pywws-to-post-messages-to-twitter" title="Permalink to this headline">¶</a></h1>
@@ -69,21 +69,21 @@ This could be useful to someone who lives in your area, but doesn&#8217;t want t
 </div>
 <div class="section" id="authorise-pywws-to-post-to-your-twitter-account">
 <h2>Authorise pywws to post to your Twitter account<a class="headerlink" href="#authorise-pywws-to-post-to-your-twitter-account" title="Permalink to this headline">¶</a></h2>
-<p>If you run pywws on a low power device such as a router, you may find it easier to run this authorisation step on another computer, as long as it has <tt class="docutils literal"><span class="pre">python-oauth2</span></tt> installed.
-Use an empty &#8216;data&#8217; directory &#8211; a <tt class="docutils literal"><span class="pre">weather.ini</span></tt> file will be created whose contents can be copied into your real <tt class="docutils literal"><span class="pre">weather.ini</span></tt> file using any text editor.</p>
-<p>Make sure no other pywws software is running, then run <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt></a>:</p>
+<p>If you run pywws on a low power device such as a router, you may find it easier to run this authorisation step on another computer, as long as it has <code class="docutils literal"><span class="pre">python-oauth2</span></code> installed.
+Use an empty &#8216;data&#8217; directory &#8211; a <code class="docutils literal"><span class="pre">weather.ini</span></code> file will be created whose contents can be copied into your real <code class="docutils literal"><span class="pre">weather.ini</span></code> file using any text editor.</p>
+<p>Make sure no other pywws software is running, then run <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.TwitterAuth ~/weather/data
 </pre></div>
 </div>
-<p>(Replace <tt class="docutils literal"><span class="pre">~/weather/data</span></tt> with your data directory.)</p>
+<p>(Replace <code class="docutils literal"><span class="pre">~/weather/data</span></code> with your data directory.)</p>
 <p>This will open a web browser window (or give you a URL to copy to your web browser) where you can log in to your Twitter account and authorise pywws to post.
-Your web browser will then show a 7 digit number which you need to copy to the <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><tt class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></tt></a> program.
-If successful, your <tt class="docutils literal"><span class="pre">weather.ini</span></tt> file will now have a <tt class="docutils literal"><span class="pre">[twitter]</span></tt> section with <tt class="docutils literal"><span class="pre">secret</span></tt> and <tt class="docutils literal"><span class="pre">key</span></tt> entries.
+Your web browser will then show a 7 digit number which you need to copy to the <a class="reference internal" href="../api/pywws.TwitterAuth.html#module-pywws.TwitterAuth" title="pywws.TwitterAuth"><code class="xref py py-mod docutils literal"><span class="pre">TwitterAuth</span></code></a> program.
+If successful, your <code class="docutils literal"><span class="pre">weather.ini</span></code> file will now have a <code class="docutils literal"><span class="pre">[twitter]</span></code> section with <code class="docutils literal"><span class="pre">secret</span></code> and <code class="docutils literal"><span class="pre">key</span></code> entries.
 (Don&#8217;t disclose these to anyone else.)</p>
 </div>
 <div class="section" id="add-location-data-optional">
 <h2>Add location data (optional)<a class="headerlink" href="#add-location-data-optional" title="Permalink to this headline">¶</a></h2>
-<p>Edit your <tt class="docutils literal"><span class="pre">weather.ini</span></tt> file and add <tt class="docutils literal"><span class="pre">latitude</span></tt> and <tt class="docutils literal"><span class="pre">longitude</span></tt> entries to the <tt class="docutils literal"><span class="pre">[twitter]</span></tt> section.
+<p>Edit your <code class="docutils literal"><span class="pre">weather.ini</span></code> file and add <code class="docutils literal"><span class="pre">latitude</span></code> and <code class="docutils literal"><span class="pre">longitude</span></code> entries to the <code class="docutils literal"><span class="pre">[twitter]</span></code> section.
 For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">twitter</span><span class="p">]</span>
 <span class="n">secret</span> <span class="o">=</span> <span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
@@ -101,12 +101,12 @@ Copy the example template &#8216;tweet.txt&#8217; to your template directory, th
 cat tweet.txt
 </pre></div>
 </div>
-<p>(Replace <tt class="docutils literal"><span class="pre">~/weather/data</span></tt> and <tt class="docutils literal"><span class="pre">~/weather/templates</span></tt> with your data and template directories.)
+<p>(Replace <code class="docutils literal"><span class="pre">~/weather/data</span></code> and <code class="docutils literal"><span class="pre">~/weather/templates</span></code> with your data and template directories.)
 If you need to change the template (e.g. to change the units or language used) you can edit it now or later.</p>
 </div>
 <div class="section" id="post-your-first-weather-tweet">
 <h2>Post your first weather Tweet<a class="headerlink" href="#post-your-first-weather-tweet" title="Permalink to this headline">¶</a></h2>
-<p>Now everything is prepared for <a class="reference internal" href="../api/pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><tt class="xref py py-mod docutils literal"><span class="pre">ToTwitter</span></tt></a> to be run:</p>
+<p>Now everything is prepared for <a class="reference internal" href="../api/pywws.ToTwitter.html#module-pywws.ToTwitter" title="pywws.ToTwitter"><code class="xref py py-mod docutils literal"><span class="pre">ToTwitter</span></code></a> to be run:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m pywws.ToTwitter ~/weather/data tweet.txt
 </pre></div>
 </div>
@@ -115,7 +115,7 @@ If you need to change the template (e.g. to change the units or language used) y
 </div>
 <div class="section" id="add-twitter-updates-to-your-hourly-tasks">
 <h2>Add Twitter updates to your hourly tasks<a class="headerlink" href="#add-twitter-updates-to-your-hourly-tasks" title="Permalink to this headline">¶</a></h2>
-<p>Edit your <tt class="docutils literal"><span class="pre">weather.ini</span></tt> file and edit the <tt class="docutils literal"><span class="pre">[hourly]</span></tt> section.
+<p>Edit your <code class="docutils literal"><span class="pre">weather.ini</span></code> file and edit the <code class="docutils literal"><span class="pre">[hourly]</span></code> section.
 For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">hourly</span><span class="p">]</span>
 <span class="n">services</span> <span class="o">=</span> <span class="p">[]</span>
@@ -123,11 +123,11 @@ For example:</p>
 <span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;tweet.txt&#39;</span><span class="p">,</span> <span class="s">&#39;T&#39;</span><span class="p">),</span> <span class="s">&#39;24hrs.txt&#39;</span><span class="p">,</span> <span class="s">&#39;6hrs.txt&#39;</span><span class="p">,</span> <span class="s">&#39;7days.txt&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Note the use of the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag &#8211; this tells pywws to tweet the template result instead of uploading it to your ftp site.</p>
-<p>You could change the <tt class="docutils literal"><span class="pre">[logged]</span></tt>, <tt class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></tt> or <tt class="docutils literal"><span class="pre">[daily]</span></tt> sections instead, but I think <tt class="docutils literal"><span class="pre">[hourly]</span></tt> is most appropriate for Twitter updates.</p>
+<p>Note the use of the <code class="docutils literal"><span class="pre">'T'</span></code> flag &#8211; this tells pywws to tweet the template result instead of uploading it to your ftp site.</p>
+<p>You could change the <code class="docutils literal"><span class="pre">[logged]</span></code>, <code class="docutils literal"><span class="pre">[12</span> <span class="pre">hourly]</span></code> or <code class="docutils literal"><span class="pre">[daily]</span></code> sections instead, but I think <code class="docutils literal"><span class="pre">[hourly]</span></code> is most appropriate for Twitter updates.</p>
 <div class="versionchanged">
-<p><span class="versionmodified">Changed in version 13.06_r1015: </span>added the <tt class="docutils literal"><span class="pre">'T'</span></tt> flag.
-Previously Twitter templates were listed separately in <tt class="docutils literal"><span class="pre">twitter</span></tt> entries in the <tt class="docutils literal"><span class="pre">[hourly]</span></tt> and other sections.
+<p><span class="versionmodified">Changed in version 13.06_r1015: </span>added the <code class="docutils literal"><span class="pre">'T'</span></code> flag.
+Previously Twitter templates were listed separately in <code class="docutils literal"><span class="pre">twitter</span></code> entries in the <code class="docutils literal"><span class="pre">[hourly]</span></code> and other sections.
 The older syntax still works, but is deprecated.</p>
 </div>
 </div>
@@ -137,11 +137,11 @@ The older syntax still works, but is deprecated.</p>
 <p><span class="versionmodified">New in version 14.05.dev1216.</span></p>
 </div>
 <p>You can add an image to your tweets by specifying an image file location in the tweet template.
-Make the first line of the tweet <tt class="docutils literal"><span class="pre">media</span> <span class="pre">path</span></tt> where <tt class="docutils literal"><span class="pre">path</span></tt> is the absolute location of the file.
+Make the first line of the tweet <code class="docutils literal"><span class="pre">media</span> <span class="pre">path</span></code> where <code class="docutils literal"><span class="pre">path</span></code> is the absolute location of the file.
 The &#8220;tweet_media.txt&#8221; example template shows how to do this.</p>
 <p>The image could be from a web cam, or for a weather forecast it could be an icon representing the forecast.
 To add a weather graph you need to make sure the graph is drawn before the tweet is sent.
-I do this by using two <tt class="docutils literal"><span class="pre">[cron</span> <span class="pre">xxx]</span></tt> sections in weather.ini:</p>
+I do this by using two <code class="docutils literal"><span class="pre">[cron</span> <span class="pre">xxx]</span></code> sections in weather.ini:</p>
 <div class="highlight-python"><div class="highlight"><pre>[cron prehourly]
 format = 59 * * * *
 services = []
@@ -165,7 +165,7 @@ text = [(&#39;tweet_media.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -191,7 +191,7 @@ text = [(&#39;tweet_media.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs
   <h4>Next topic</h4>
   <p class="topless"><a href="language.html"
                         title="next chapter">How to use pywws in another language</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -208,7 +208,7 @@ text = [(&#39;tweet_media.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -223,13 +223,13 @@ text = [(&#39;tweet_media.txt&#39;, &#39;T&#39;), &#39;24hrs.txt&#39;, &#39;6hrs
         <li class="right" >
           <a href="integration.html" title="How to integrate pywws with various weather services"
              >previous</a> |</li>
-        <li><a href="../index.html">pywws 15.01.0.dev1277 documentation</a> &raquo;</li>
+        <li><a href="../index.html">pywws 15.03.0.dev1281 documentation</a> &raquo;</li>
           <li><a href="index.html" >User guides</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-15, Jim Easterbrook.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

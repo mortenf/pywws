@@ -30,8 +30,8 @@
     <link rel="next" title="Indice Humidité (Humidex)" href="humidex.html" />
     <link rel="prev" title="Comment utiliser pywws dans une autre langue" href="language.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="weather-ini-configuration-file-format">
 <h1>weather.ini - format du fichier de configuration<a class="headerlink" href="#weather-ini-configuration-file-format" title="Lien permanent vers ce titre">¶</a></h1>
@@ -98,13 +98,13 @@ logdata sync = 1
 rain day threshold = 0.2
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span></tt> est le &#8220;type&#8221; de station. Il devrait être fixé à <tt class="docutils literal"><span class="pre">1080</span></tt> pour la plupart des stations météo, ou <tt class="docutils literal"><span class="pre">3080</span></tt> si la console de votre station affiche l&#8217;éclairement solaire.</p>
-<p><tt class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></tt> est la fin du &#8220;<a class="reference external" href="http://en.wikipedia.org/wiki/Meteorological_day">jour météorologique</a>&#8221;, selon l&#8217;heure locale sans tenir compte de l&#8217;heure d&#8217;été. Généralement, les valeurs sont 21, 9, ou 24.</p>
-<p><tt class="docutils literal"><span class="pre">gnuplot</span> <span class="pre">encoding</span></tt> est l&#8217;encodage de texte utilisé lors du tracé de graphes. La valeur par défaut est <tt class="docutils literal"><span class="pre">iso_8859_1</span></tt> permettant le symbole des degrés, fort utile dans une application météorologique! D&#8217;autres valeurs peuvent être nécessaire si votre langue comporte des caractères accentués. Les valeurs possible dépendent de votre installation gnuplot, quelques expérimentations peuvent donc être nécessaire.</p>
-<p><tt class="docutils literal"><span class="pre">template</span> <span class="pre">encoding</span></tt> est l&#8217;encodage de text utilisé pour le gabarit. La valeur par défaut est <tt class="docutils literal"><span class="pre">iso-8859-1</span></tt>, ce qui est l&#8217;encodage utilisé dans les gabarits d&#8217;exemple. Si vous créez des gabarits avec un autre jeu de caractère, vous devez changer cette valeur pour celle de vos gabarits.</p>
-<p><tt class="docutils literal"><span class="pre">language</span></tt> est utilisé pour traduire pywws. Il est optionnel, puisque pywws utilise habituellement la langue par défaut de l&#8217;ordinateur tel que configuré par la variable d&#8217;environnement LANG. Vous trouverez les langages disponibles dans le sous-dossier <tt class="docutils literal"><span class="pre">translations</span></tt> de votre installation pywws. Si vous configurez une langue qui n&#8217;est pas inclue, pywws affichera en anglais.</p>
-<p><tt class="docutils literal"><span class="pre">logdata</span> <span class="pre">sync</span></tt> configure la qualité de la synchronisation utilisé par <a class="reference internal" href="../api/pywws.LogData.html"><em>pywws.LogData</em></a>. Fixer à 0 pour rapide &amp; imprécis ou 1 pour plus lent, mais précis.</p>
-<p><tt class="docutils literal"><span class="pre">rain</span> <span class="pre">day</span> <span class="pre">threshold</span></tt> est la quantité de pluie (en mm) tombée en une journée pour qu&#8217;elle puisse être considéré comme un jour de pluie dans les données sommaires mensuels .</p>
+<p><code class="docutils literal"><span class="pre">ws</span> <span class="pre">type</span></code> est le &#8220;type&#8221; de station. Il devrait être fixé à <code class="docutils literal"><span class="pre">1080</span></code> pour la plupart des stations météo, ou <code class="docutils literal"><span class="pre">3080</span></code> si la console de votre station affiche l&#8217;éclairement solaire.</p>
+<p><code class="docutils literal"><span class="pre">day</span> <span class="pre">end</span> <span class="pre">hour</span></code> est la fin du &#8220;<a class="reference external" href="http://en.wikipedia.org/wiki/Meteorological_day">jour météorologique</a>&#8221;, selon l&#8217;heure locale sans tenir compte de l&#8217;heure d&#8217;été. Généralement, les valeurs sont 21, 9, ou 24.</p>
+<p><code class="docutils literal"><span class="pre">gnuplot</span> <span class="pre">encoding</span></code> est l&#8217;encodage de texte utilisé lors du tracé de graphes. La valeur par défaut est <code class="docutils literal"><span class="pre">iso_8859_1</span></code> permettant le symbole des degrés, fort utile dans une application météorologique! D&#8217;autres valeurs peuvent être nécessaire si votre langue comporte des caractères accentués. Les valeurs possible dépendent de votre installation gnuplot, quelques expérimentations peuvent donc être nécessaire.</p>
+<p><code class="docutils literal"><span class="pre">template</span> <span class="pre">encoding</span></code> est l&#8217;encodage de text utilisé pour le gabarit. La valeur par défaut est <code class="docutils literal"><span class="pre">iso-8859-1</span></code>, ce qui est l&#8217;encodage utilisé dans les gabarits d&#8217;exemple. Si vous créez des gabarits avec un autre jeu de caractère, vous devez changer cette valeur pour celle de vos gabarits.</p>
+<p><code class="docutils literal"><span class="pre">language</span></code> est utilisé pour traduire pywws. Il est optionnel, puisque pywws utilise habituellement la langue par défaut de l&#8217;ordinateur tel que configuré par la variable d&#8217;environnement LANG. Vous trouverez les langages disponibles dans le sous-dossier <code class="docutils literal"><span class="pre">translations</span></code> de votre installation pywws. Si vous configurez une langue qui n&#8217;est pas inclue, pywws affichera en anglais.</p>
+<p><code class="docutils literal"><span class="pre">logdata</span> <span class="pre">sync</span></code> configure la qualité de la synchronisation utilisé par <a class="reference internal" href="../api/pywws.LogData.html"><em>pywws.LogData</em></a>. Fixer à 0 pour rapide &amp; imprécis ou 1 pour plus lent, mais précis.</p>
+<p><code class="docutils literal"><span class="pre">rain</span> <span class="pre">day</span> <span class="pre">threshold</span></code> est la quantité de pluie (en mm) tombée en une journée pour qu&#8217;elle puisse être considéré comme un jour de pluie dans les données sommaires mensuels .</p>
 </div>
 <div class="section" id="paths-directories-in-which-templates-etc-are-stored">
 <h2>paths: dossiers dans lesquels sont emmagasinés les gabarits, etc.<a class="headerlink" href="#paths-directories-in-which-templates-etc-are-stored" title="Lien permanent vers ce titre">¶</a></h2>
@@ -128,10 +128,10 @@ yowindow = /home/jim/data/yowindow.xml
 </pre></div>
 </div>
 <p>Cette section spécifie les tâche devant être effectuées pour chaque échantillonnage pendant la &#8216;journalisation temps réel&#8217;, c.à.d. chaque 48 secondes. Il est peu probable que vous vouliez faire autre chose que le téléversement à Weather Underground ou la mise à jour du fichier YoWindow aussi souvent.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
-<p><tt class="docutils literal"><span class="pre">twitter</span></tt> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> et <tt class="docutils literal"><span class="pre">plot</span></tt> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
-<p><tt class="docutils literal"><span class="pre">yowindow</span></tt> indique le chemin complet du fichier au format xml à générer pour le widget YoWindow weather (voir <a class="reference external" href="http://yowindow.com/">http://yowindow.com/</a>). Si vous n&#8217;employez pas YoWindow, omettez cette entrée.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <code class="docutils literal"><span class="pre">pywws/services/</span></code>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
+<p><code class="docutils literal"><span class="pre">twitter</span></code> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> et <code class="docutils literal"><span class="pre">plot</span></code> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
+<p><code class="docutils literal"><span class="pre">yowindow</span></code> indique le chemin complet du fichier au format xml à générer pour le widget YoWindow weather (voir <a class="reference external" href="http://yowindow.com/">http://yowindow.com/</a>). Si vous n&#8217;employez pas YoWindow, omettez cette entrée.</p>
 </div>
 <div class="section" id="logged-tasks-to-be-done-every-time-the-station-logs-a-data-record">
 <h2>logged: tâches à accomplir chaque fois que la station enregistre une lecture<a class="headerlink" href="#logged-tasks-to-be-done-every-time-the-station-logs-a-data-record" title="Lien permanent vers ce titre">¶</a></h2>
@@ -143,9 +143,9 @@ yowindow = /home/jim/data/yowindow.xml
 </pre></div>
 </div>
 <p>Cette section spécifie les tâche devant être réalisées chaque fois qu&#8217;une donnée est lue en mode &#8216;temps réel&#8217; ou chaque fois qu&#8217;une tâche horaire cron est exécutée.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
-<p><tt class="docutils literal"><span class="pre">twitter</span></tt> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> et <tt class="docutils literal"><span class="pre">plot</span></tt> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <code class="docutils literal"><span class="pre">pywws/services/</span></code>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
+<p><code class="docutils literal"><span class="pre">twitter</span></code> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> et <code class="docutils literal"><span class="pre">plot</span></code> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
 </div>
 <div class="section" id="hourly-tasks-to-be-done-every-hour">
 <h2>hourly: tâches à réaliser à chaque heure<a class="headerlink" href="#hourly-tasks-to-be-done-every-hour" title="Lien permanent vers ce titre">¶</a></h2>
@@ -157,9 +157,9 @@ yowindow = /home/jim/data/yowindow.xml
 </pre></div>
 </div>
 <p>Cette section spécifie les tâches à réaliser à chaque heure en mode &#8216;temps réel&#8217; ou exécutées en tant que tâche horaire cron.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
-<p><tt class="docutils literal"><span class="pre">twitter</span></tt> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> et <tt class="docutils literal"><span class="pre">plot</span></tt> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <code class="docutils literal"><span class="pre">pywws/services/</span></code>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
+<p><code class="docutils literal"><span class="pre">twitter</span></code> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> et <code class="docutils literal"><span class="pre">plot</span></code> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
 </div>
 <div class="section" id="hourly-tasks-to-be-done-every-12-hours">
 <h2>12 hourly: tâches à réaliser à chaque 12 heures<a class="headerlink" href="#hourly-tasks-to-be-done-every-12-hours" title="Lien permanent vers ce titre">¶</a></h2>
@@ -171,9 +171,9 @@ plot = []
 </pre></div>
 </div>
 <p>Cette section spécifie les tâches à réaliser à chaque 12 heures en mode &#8216;temps réel&#8217; ou exécutées en tant que tâche horaire cron. Utilisez pour des choses qui ne changent pas très souvent, tel que les graphes mensuels.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
-<p><tt class="docutils literal"><span class="pre">twitter</span></tt> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> et <tt class="docutils literal"><span class="pre">plot</span></tt> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <code class="docutils literal"><span class="pre">pywws/services/</span></code>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
+<p><code class="docutils literal"><span class="pre">twitter</span></code> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> et <code class="docutils literal"><span class="pre">plot</span></code> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
 </div>
 <div class="section" id="daily-tasks-to-be-done-every-24-hours">
 <h2>daily: tâches à faire à chaque 24 heures<a class="headerlink" href="#daily-tasks-to-be-done-every-24-hours" title="Lien permanent vers ce titre">¶</a></h2>
@@ -185,9 +185,9 @@ plot = []
 </pre></div>
 </div>
 <p>Cette section spécifie les tâches à réaliser à chaque jour en mode &#8216;temps réel&#8217; exécutées en tant que tâche horaire cron. Utilisez pour des choses qui ne changent pas très souvent, tel que les graphes mensuels ou annuels.</p>
-<p><tt class="docutils literal"><span class="pre">services</span></tt> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <tt class="docutils literal"><span class="pre">pywws/services/</span></tt>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
-<p><tt class="docutils literal"><span class="pre">twitter</span></tt> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
-<p><tt class="docutils literal"><span class="pre">text</span></tt> et <tt class="docutils literal"><span class="pre">plot</span></tt> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
+<p><code class="docutils literal"><span class="pre">services</span></code> est une liste de &#8216;services&#8217; auxquels envoyer vos données. Chaque service listé doit avoir un fichier de configuration dans le dossier <code class="docutils literal"><span class="pre">pywws/services/</span></code>. Voir <a class="reference internal" href="../api/pywws.toservice.html"><em>pywws.toservice</em></a> pour plus de détails.</p>
+<p><code class="docutils literal"><span class="pre">twitter</span></code> est une liste de gabarit texte à traiter avant de les poster sur Twitter.</p>
+<p><code class="docutils literal"><span class="pre">text</span></code> et <code class="docutils literal"><span class="pre">plot</span></code> sont des listes de gabarits texte et graphe à traiter et à téléverser sur votre site web.</p>
 </div>
 <div class="section" id="ftp-configuration-of-uploading-to-a-website">
 <h2>ftp: configuration du téléversement à un site web<a class="headerlink" href="#ftp-configuration-of-uploading-to-a-website" title="Lien permanent vers ce titre">¶</a></h2>
@@ -201,11 +201,11 @@ directory = public_html/weather/data/
 </pre></div>
 </div>
 <p>Ces entrées fournissent des détails sur votre site web (ou répertoire local) où doivent être transférés les fichier de texte et de graphe traités.</p>
-<p><tt class="docutils literal"><span class="pre">local</span> <span class="pre">site</span></tt> spécifie si les fichiers doivent être copiés dans un dossier local ou envoyé sur un site distant. Vous pouvez vouloir fixer ce paramètre si votre serveur web fonctionne sur le même ordinateur qui exécute pywws.</p>
-<p><tt class="docutils literal"><span class="pre">secure</span></tt> spécifie si le transfert des fichiers utilise SFTP (FTP sécurisé) au lieu de l&#8217;habituel FTP. Votre hébergeur doit être en mesure de vous dire si vous pouvez utiliser SFTP.</p>
-<p><tt class="docutils literal"><span class="pre">site</span></tt> est l&#8217;adresse web de votre site FTP à laquelle transférer vos fichiers.</p>
-<p><tt class="docutils literal"><span class="pre">user</span></tt> et <tt class="docutils literal"><span class="pre">password</span></tt> sont les informations de branchement pour votre site FTP. Votre hébergeur doit vous avoir fourni ces informations.</p>
-<p><tt class="docutils literal"><span class="pre">directory</span></tt> spécifie où sur le site FTP (ou le disque local) les fichiers doivent être envoyés. Notez que vous pourriez devoir expérimenter quelque peu  - vous pourriez par exemple devoir utiliser un caractère &#8216;/&#8217; au début de votre adresse.</p>
+<p><code class="docutils literal"><span class="pre">local</span> <span class="pre">site</span></code> spécifie si les fichiers doivent être copiés dans un dossier local ou envoyé sur un site distant. Vous pouvez vouloir fixer ce paramètre si votre serveur web fonctionne sur le même ordinateur qui exécute pywws.</p>
+<p><code class="docutils literal"><span class="pre">secure</span></code> spécifie si le transfert des fichiers utilise SFTP (FTP sécurisé) au lieu de l&#8217;habituel FTP. Votre hébergeur doit être en mesure de vous dire si vous pouvez utiliser SFTP.</p>
+<p><code class="docutils literal"><span class="pre">site</span></code> est l&#8217;adresse web de votre site FTP à laquelle transférer vos fichiers.</p>
+<p><code class="docutils literal"><span class="pre">user</span></code> et <code class="docutils literal"><span class="pre">password</span></code> sont les informations de branchement pour votre site FTP. Votre hébergeur doit vous avoir fourni ces informations.</p>
+<p><code class="docutils literal"><span class="pre">directory</span></code> spécifie où sur le site FTP (ou le disque local) les fichiers doivent être envoyés. Notez que vous pourriez devoir expérimenter quelque peu  - vous pourriez par exemple devoir utiliser un caractère &#8216;/&#8217; au début de votre adresse.</p>
 </div>
 <div class="section" id="twitter-configuration-of-posting-to-twitter">
 <h2>twitter: configuration pour poster sur Twitter<a class="headerlink" href="#twitter-configuration-of-posting-to-twitter" title="Lien permanent vers ce titre">¶</a></h2>
@@ -216,8 +216,8 @@ directory = public_html/weather/data/
 <span class="n">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.251</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">secret</span></tt> et <tt class="docutils literal"><span class="pre">key</span></tt> sont les données d&#8217;authentification fournies par Twitter. Pour les configurer, exécutez le programme <tt class="docutils literal"><span class="pre">TwitterAuth.py</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">latitude</span></tt> et <tt class="docutils literal"><span class="pre">longitude</span></tt> sont vos données de localisation et sont optionnelles. Si vous les incluez dans vos &#8216;tweets météo&#8217; vos utilisateurs pourront voir où est située votre station. Ce qui pourrait aider les utilisateurs à trouver votre station s&#8217;ils cherchent par localisation.</p>
+<p><code class="docutils literal"><span class="pre">secret</span></code> et <code class="docutils literal"><span class="pre">key</span></code> sont les données d&#8217;authentification fournies par Twitter. Pour les configurer, exécutez le programme <code class="docutils literal"><span class="pre">TwitterAuth.py</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">latitude</span></code> et <code class="docutils literal"><span class="pre">longitude</span></code> sont vos données de localisation et sont optionnelles. Si vous les incluez dans vos &#8216;tweets météo&#8217; vos utilisateurs pourront voir où est située votre station. Ce qui pourrait aider les utilisateurs à trouver votre station s&#8217;ils cherchent par localisation.</p>
 </div>
 <div class="section" id="underground-metoffice-temperaturnu-etc-configuration-of-posting-to-services">
 <h2>underground, metoffice, temperaturnu etc: configuration pour poster sur ces &#8216;services&#8217;<a class="headerlink" href="#underground-metoffice-temperaturnu-etc-configuration-of-posting-to-services" title="Lien permanent vers ce titre">¶</a></h2>
@@ -227,8 +227,8 @@ directory = public_html/weather/data/
 </pre></div>
 </div>
 <p>Ces sections contiennent l&#8217;information nécessaire pour envoyer vos données sur ces services météo, tel que mot de passe et ID de votre station. Le nom de ces entrées de données dépend du service. L&#8217;exemple montré affiche les informations pour Weather Underground.</p>
-<p><tt class="docutils literal"><span class="pre">station</span></tt> est le PWS ID (Identificateur de station) alloué à la station météo par Weather Underground.</p>
-<p><tt class="docutils literal"><span class="pre">password</span></tt> est votre mot de passe pour Weather Underground.</p>
+<p><code class="docutils literal"><span class="pre">station</span></code> est le PWS ID (Identificateur de station) alloué à la station météo par Weather Underground.</p>
+<p><code class="docutils literal"><span class="pre">password</span></code> est votre mot de passe pour Weather Underground.</p>
 </div>
 </div>
 <div class="section" id="status-ini-status-file-format">
@@ -251,8 +251,8 @@ pressure offset = 7.4
 fixed block = {...}
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></tt> est la différence entre la pression de l&#8217;air absolue et relative; copié à partir de la station météorologique, en supposant que vous l&#8217;avez configuré pour afficher la bonne pression relative.</p>
-<p><tt class="docutils literal"><span class="pre">fixed</span> <span class="pre">block</span></tt> est toutes les données stockées dans les 256 octets de mémoire de la station. Cela comprend les valeures minimales et maximum, les paramètres de seuil d&#8217;alarme, unités de mesure et ainsi de suite.</p>
+<p><code class="docutils literal"><span class="pre">pressure</span> <span class="pre">offset</span></code> est la différence entre la pression de l&#8217;air absolue et relative; copié à partir de la station météorologique, en supposant que vous l&#8217;avez configuré pour afficher la bonne pression relative.</p>
+<p><code class="docutils literal"><span class="pre">fixed</span> <span class="pre">block</span></code> est toutes les données stockées dans les 256 octets de mémoire de la station. Cela comprend les valeures minimales et maximum, les paramètres de seuil d&#8217;alarme, unités de mesure et ainsi de suite.</p>
 </div>
 <div class="section" id="clock-synchronisation-information">
 <h2>clock: information de synchronisation<a class="headerlink" href="#clock-synchronisation-information" title="Lien permanent vers ce titre">¶</a></h2>
@@ -283,7 +283,7 @@ metoffice = 2013-05-30 18:59:15
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -317,7 +317,7 @@ metoffice = 2013-05-30 18:59:15
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="humidex.html"
                         title="Chapitre suivant">Indice Humidité (Humidex)</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Recherche rapide</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -334,7 +334,7 @@ metoffice = 2013-05-30 18:59:15
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -353,9 +353,9 @@ metoffice = 2013-05-30 18:59:15
           <li><a href="index.html" >Guides utilisateur</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>

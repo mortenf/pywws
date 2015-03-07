@@ -30,8 +30,8 @@
     <link rel="next" title="pywws.Reprocess" href="pywws.Reprocess.html" />
     <link rel="prev" title="pywws.Hourly" href="pywws.Hourly.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,7 +54,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-pywws.LiveLog">
 <span id="pywws-livelog"></span><h1>pywws.LiveLog<a class="headerlink" href="#module-pywws.LiveLog" title="link permanente per questa intestazione">¶</a></h1>
@@ -68,7 +68,7 @@ options are:
 data_dir is the root directory of the weather data (e.g. /data/weather)
 </pre></div>
 </div>
-<p>Per ulteriori informazioni sull&#8217;utilizzo di <tt class="docutils literal"><span class="pre">LiveLog.py</span></tt>, see <a class="reference internal" href="../guides/livelogging.html"><em>Come impostare una registrazione &#8216;live&#8217; con pywws</em></a>.</p>
+<p>Per ulteriori informazioni sull&#8217;utilizzo di <code class="docutils literal"><span class="pre">LiveLog.py</span></code>, see <a class="reference internal" href="../guides/livelogging.html"><em>Come impostare una registrazione &#8216;live&#8217; con pywws</em></a>.</p>
 <p class="rubric">Funzioni</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -76,13 +76,13 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></tt>(verbose[,&nbsp;logfile])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ApplicationLogger</span></code>(verbose[,&nbsp;logfile])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#pywws.LiveLog.LiveLog" title="pywws.LiveLog.LiveLog"><tt class="xref py py-obj docutils literal"><span class="pre">LiveLog</span></tt></a>(data_dir)</td>
+<tr class="row-even"><td><a class="reference internal" href="#pywws.LiveLog.LiveLog" title="pywws.LiveLog.LiveLog"><code class="xref py py-obj docutils literal"><span class="pre">LiveLog</span></code></a>(data_dir)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#pywws.LiveLog.main" title="pywws.LiveLog.main"><tt class="xref py py-obj docutils literal"><span class="pre">main</span></tt></a>([argv])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#pywws.LiveLog.main" title="pywws.LiveLog.main"><code class="xref py py-obj docutils literal"><span class="pre">main</span></code></a>([argv])</td>
 <td></td>
 </tr>
 </tbody>
@@ -94,13 +94,13 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DataLogger</span></tt>(params,&nbsp;status,&nbsp;raw_data)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">DataLogger</span></code>(params,&nbsp;status,&nbsp;raw_data)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">datetime</span></tt></td>
-<td>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code>(year,&nbsp;month,&nbsp;day[,&nbsp;hour[,&nbsp;minute[,&nbsp;...)</td>
+<td>The year, month and day arguments are required.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">timedelta</span></tt></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">timedelta</span></code></td>
 <td><p class="first last">Differenza tra due valori datetime.</p>
 </td>
 </tr>
@@ -108,12 +108,12 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
 </table>
 <dl class="function">
 <dt id="pywws.LiveLog.LiveLog">
-<tt class="descclassname">pywws.LiveLog.</tt><tt class="descname">LiveLog</tt><big>(</big><em>data_dir</em><big>)</big><a class="reference internal" href="../_modules/pywws/LiveLog.html#LiveLog"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.LiveLog.LiveLog" title="link permanente per questa definizione">¶</a></dt>
+<code class="descclassname">pywws.LiveLog.</code><code class="descname">LiveLog</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/LiveLog.html#LiveLog"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.LiveLog.LiveLog" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pywws.LiveLog.main">
-<tt class="descclassname">pywws.LiveLog.</tt><tt class="descname">main</tt><big>(</big><em>argv=None</em><big>)</big><a class="reference internal" href="../_modules/pywws/LiveLog.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.LiveLog.main" title="link permanente per questa definizione">¶</a></dt>
+<code class="descclassname">pywws.LiveLog.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pywws/LiveLog.html#main"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#pywws.LiveLog.main" title="link permanente per questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -122,7 +122,7 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/pywws_logo.png" alt="Logo"/>
@@ -133,7 +133,7 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
   <h4>Argomento successivo</h4>
   <p class="topless"><a href="pywws.Reprocess.html"
                         title="capitolo successivo">pywws.Reprocess</a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Ricerca veloce</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -150,7 +150,7 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigazione</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -169,9 +169,9 @@ data_dir is the root directory of the weather data (e.g. /data/weather)
           <li><a href="../api_index.html" >Programmi Python e moduli</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-13, Jim Easterbrook.
-      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Creato con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
     </div>
   </body>
 </html>
