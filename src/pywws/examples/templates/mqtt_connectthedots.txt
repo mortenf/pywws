@@ -17,18 +17,24 @@
 #! Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. #
 #raw#
 #timezone utc#
+#roundtime False#
 #jump -1#
 #jump 1#
 {
-	"timecreated": "#idx '%Y-%m-%dT%H:%M:%SZ'#",
-	"wind_dir_deg": "#wind_dir '%0.0f' '' 'winddir_degrees(x)'#",
-	"wind_dir_txt": "#wind_dir '%s' '' 'winddir_text(x)'#",
-	"wind_speed_mps": "#wind_ave '%0.2f'#",
-	"wind_gust_mps": "#wind_gust '%0.2f'#",
-	"hum_out_perc": "#hum_out '%0.0d'#",
-	"temp_out_c": "#temp_out '%0.1f'#",
-	"hum_in_perc": "#hum_in '%0.0d'#",
-	"temp_in_c": "#temp_in '%0.1f'#",
-	"rel_pressure_hpa": "#rel_pressure '%0.2f'#",
-	"rain_mm": "#calc 'data["rain"]-prevdata["rain"]' '%0.1f'#"
+	"guid": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+	"displayname": "?",
+	"organization": "?",
+	"location": "?",
+	"timecreated": "#calc 'datetime.utcnow()' '%Y-%m-%dT%H:%M:%SZ'#",
+	"wind_dir_deg": #wind_dir '%0.0f' 'null' 'winddir_degrees(x)'#,
+	"wind_dir_txt": #wind_dir '"%s"' 'null' 'winddir_text(x)'#,
+	"wind_speed_mps": #wind_ave '%0.2f' 'null'#,
+	"wind_gust_mps": #wind_gust '%0.2f' 'null'#,
+	"hum_out_perc": #hum_out '%0.0d' 'null'#,
+	"temp_out_c": #temp_out '%0.1f' 'null'#,
+	"hum_in_perc": #hum_in '%0.0d' 'null'#,
+	"temp_in_c": #temp_in '%0.1f' 'null'#,
+	"rel_pressure_hpa": #rel_pressure '%0.2f' 'null'#,
+	"rain_mm": #calc 'data["rain"]-prevdata["rain"]' '%0.1f' 'null'#
+
 }
