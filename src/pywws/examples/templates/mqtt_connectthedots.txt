@@ -26,15 +26,15 @@
 	"organization": "?",
 	"location": "?",
 	"timecreated": "#calc 'datetime.utcnow()' '%Y-%m-%dT%H:%M:%SZ'#",
-	"wind_dir_deg": #wind_dir '%0.0f' 'null' 'winddir_degrees(x)'#,
-	"wind_dir_txt": #wind_dir '"%s"' 'null' 'winddir_text(x)'#,
-	"wind_speed_mps": #wind_ave '%0.2f' 'null'#,
-	"wind_gust_mps": #wind_gust '%0.2f' 'null'#,
-	"hum_out_perc": #hum_out '%0.0d' 'null'#,
-	"temp_out_c": #temp_out '%0.1f' 'null'#,
-	"hum_in_perc": #hum_in '%0.0d' 'null'#,
-	"temp_in_c": #temp_in '%0.1f' 'null'#,
-	"rel_pressure_hpa": #rel_pressure '%0.2f' 'null'#,
-	"rain_mm": #calc 'data["rain"]-prevdata["rain"]' '%0.1f' 'null'#
+	"wind_dir_deg": #wind_dir '%0.0f' 'None' 'winddir_degrees(x)'#,
+	"wind_dir_txt": #wind_dir '"%s"' 'None' 'winddir_text(x)'#,
+	"wind_speed_mps": #wind_ave '%0.2f' 'None'#,
+	"wind_gust_mps": #wind_gust '%0.2f' 'None'#,
+	"hum_out_perc": #hum_out '%0.0d' 'None'#,
+	"temp_out_c": #temp_out '%0.1f' 'None'#,
+	"hum_in_perc": #hum_in '%0.0d' 'None'#,
+	"temp_in_c": #temp_in '%0.1f' 'None'#,
+	"rel_pressure_hpa": #rel_pressure '%0.2f' 'None'#,
+	"rain_mm": #calc 'data["rain"]-prevdata["rain"]' '%0.1f' 'None'#
 
 }

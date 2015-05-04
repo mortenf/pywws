@@ -132,7 +132,7 @@ See :ref:`Dependencies - MQTT <dependencies-mqtt>` for details.
     [logged]
     services = ['mqtt', 'underground']
 
-pywws will publish a JSON string of the data specified in the ``mqtt_template_1080.txt`` file.
+pywws will publish a JSON string of the Python data structure specified in the ``mqtt_template_1080.txt`` file (or the file specified with ``template``).
 This data will be published to the broker running on hostname, with the port number specified.
 (An IP address can be used instead of a host name.)
 ``client_id`` is a note of who published the data to the topic.
